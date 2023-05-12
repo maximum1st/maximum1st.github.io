@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>サスペンション計算 - ニュルブルクリンク</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    form {
+      margin-bottom: 1rem;
+    }
+    label, input, select {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .error {
+      color: red;
+      font-size: 0.9rem;
+      margin-top: -0.5rem;
+      margin-bottom: 1rem;
+    }
+  </style>
+  <script>
+    function displayBaseSettings() {
+      const baseSettings = {
+        springConstant: "500 N/mm",
+        damperCompression: "20",
+        damperRebound: "30",
+        antiRollBar: "22 mm",
+        camber: "-2.5°",
+        weightDistribution: "50% F / 50% R",
+        brakeBalance: "50% F / 50% R",
+        tirePressure: "32 psi",
+        downforce: "200 kg"
+      };
+
+      // 設定値を表示する要素を取得
+      const settingsElement = document.getElementById("settings");
+
+      // 設定値をHTMLに反映
+      settingsElement.innerHTML = `
+        <h2>ニュルブルクリンクのベース設定</h2>
+        <p>バネ定数: ${baseSettings.springConstant}</p>
+        <p>ダンパー定数（縮み側）: ${baseSettings.damperCompression}</p>
+        <p>ダンパー定数（伸び側）: ${baseSettings.damperRebound}</p>
+        <p>アンチロールバー径: ${baseSettings.antiRollBar}</p>
+        <p>キャンバー角: ${baseSettings.camber}</p>
+        <p>重量配分: ${baseSettings.weightDistribution}</p>
+        <p>ブレーキバランス: ${baseSettings.brakeBalance}</p>
+        <p>タイヤ空気圧: ${baseSettings.tirePressure}</p>
+        <p>ダウンフォース: ${baseSettings.downforce}</p>
+      `;
+    }
+  </script>
+</head>
+<body onload="displayBaseSettings()">
+  <h1>サスペンション計算 - ニュルブルクリンク</h1>
+  <div id="settings"></div>
+</body>
+</html>
