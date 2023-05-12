@@ -106,26 +106,19 @@
     <li><a href="#" target="_blank">New Link 3</a></li>
     </ul>
     
-    
     <script>
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+function goBack() {
+    if (window.history.length > 1) {
+        window.history.back();
+    } else {
+        window.location.href = 'https://example.com'; // ここにリダイレクト先のURLを指定します。
+    }
+}
 
-        function handleScroll() {
-            const backToTopBtn = document.getElementById('backToTopBtn');
-            if (window.pageYOffset > 0) {
-                backToTopBtn.style.display = 'block';
-            } else {
-                backToTopBtn.style.display = 'none';
-            }
-        }
+document.getElementById('backButton').addEventListener('click', goBack);
+</script>
 
-        function goBack() {
-            window.history.back();
-        }
-
-        window.addEventListener('scroll', handleScroll);
-    </script>
+  
+    
 </body>
 </html>
