@@ -120,50 +120,45 @@
 
 
 <script>
-    function goBack() {
-        if (window.history.length > 1) {
-            window.history.back();
-        } else {
-            window.location.href = 'https://www.twitch.tv/toshishige_maximum1st?lang=ja'; // ここにリダイレクト先のURLを指定します。
-        }
+   function goBack() {
+    if (window.history.length > 1) {
+        window.history.back();
+    } else {
+        window.location.href = 'https://www.twitch.tv/toshishige_maximum1st?lang=ja'; // ここにリダイレクト先のURLを指定します。
     }
+}
 
-    document.getElementById('goBackBtn').addEventListener('click', goBack);
+document.getElementById('goBackBtn').addEventListener('click', goBack);
 
-    function scrollToTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function scrollToBottom() {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+}
+
+window.onscroll = function () {
+    toggleBackToTopBtn();
+    toggleScrollToBottomBtn();
+};
+
+function toggleBackToTopBtn() {
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        document.getElementById("backToTopBtn").style.display = "block";
+    } else {
+        document.getElementById("backToTopBtn").style.display = "none";
     }
+}
 
-    window.onscroll = function () {
-        toggleBackToTopBtn();
-    };
-
-    function toggleBackToTopBtn() {
-        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-            document.getElementById("backToTopBtn").style.display = "block";
-        } else {
-            document.getElementById("backToTopBtn").style.display = "none";
-        }
+function toggleScrollToBottomBtn() {
+    if (document.body.scrollTop < document.body.scrollHeight - window.innerHeight - 50 || document.documentElement.scrollTop < document.documentElement.scrollHeight - window.innerHeight - 50) {
+        document.getElementById("scrollToBottomBtn").style.display = "block";
+    } else {
+        document.getElementById("scrollToBottomBtn").style.display = "none";
     }
-        
-         function scrollToBottom() {
-        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    }
+}
 
-    function toggleScrollToBottomBtn() {
-        if (document.body.scrollTop < document.body.scrollHeight - window.innerHeight - 50 || document.documentElement.scrollTop < document.documentElement.scrollHeight - window.innerHeight - 50) {
-            document.getElementById("scrollToBottomBtn").style.display = "block";
-        } else {
-            document.getElementById("scrollToBottomBtn").style.display = "none";
-        }
-    }
-
-    window.onscroll = function () {
-        toggleBackToTopBtn();
-        toggleScrollToBottomBtn();
-    };
-        
-        
 </script>
 </body>
 </html>
