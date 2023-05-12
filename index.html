@@ -50,6 +50,10 @@
         a {
             text-decoration: none;
             color: inherit;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.5;
         }
 
         #backToTopBtn {
@@ -63,17 +67,6 @@
             cursor: pointer;
             font-size: 1.2rem;
             border-radius: 5px;
-        }
-
-        /* リンクの改行を制御 */
-        .link-list li {
-            white-space: nowrap; /* テキストを折り返さない */
-        }
-
-        /* リンクの間にスペースを挿入 */
-        .link-list li:not(:last-child)::after {
-            content: " |"; /* スペースと区切り文字を表示 */
-            margin-left: 5px; /* スペースの幅 */
         }
     </style>
 </head>
