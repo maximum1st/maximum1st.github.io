@@ -54,7 +54,7 @@
             color: inherit;
         }
         
-        #backToTopBtn {
+    #backToTopBtn {
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -85,7 +85,12 @@
    引っ越ししたらまた７時間歩いて１時間走ろうと思います。それとまだ公にはなっていませんが銚子のゲーム博物館の会員になっています。今のところ少数精鋭で
    会員の募集をしているところですが気になった方はHPを探してコンタクトを取り館長と仲良くなってからだと会員になりやすいです。会員になった方は数人ならば、、
   さい低限度寝泊まりできるスペースがありますので銚子観光も館内のゲームも自由に遊べるようになっています。会員になられた方は立ち寄ると良いです。</p>
- <button id="backToTopBtn" onclick="scrollToTop()" style="display:none;">戻る</button>
+ 
+    
+    <button id="backToTopBtn" onclick="goBack()" style="display:none;">戻る</button>
+
+    
+    
 <h2>LINK`s</h2>
 <ul>
     <li><a href="https://www.twitch.tv/toshishige_maximum1st?lang=ja" target="_self">Twich My</a></li>
@@ -106,14 +111,19 @@
 
     function handleScroll() {
         const backToTopBtn = document.getElementById('backToTopBtn');
-    if (window.pageYOffset > 0) {
-        backToTopBtn.style.display = 'block';
-    } else {
-        backToTopBtn.style.display = 'none';
+        if (window.pageYOffset > 0) {
+            backToTopBtn.style.display = 'block';
+        } else {
+            backToTopBtn.style.display = 'none';
+        }
     }
-}
 
-window.addEventListener('scroll', handleScroll);
+    function goBack() {
+        window.history.back();
+    }
+
+    window.addEventListener('scroll', handleScroll);
 </script>
+
 </body>
 </html>
