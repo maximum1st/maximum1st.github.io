@@ -53,8 +53,38 @@
             text-decoration: none;
             color: inherit;
         }
+        
+        #backToTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #181919;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
     </style>
 </head>
+    <script>
+    function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function handleScroll() {
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    if (window.pageYOffset > 200) {
+        backToTopBtn.style.display = 'block';
+    } else {
+        backToTopBtn.style.display = 'none';
+    }
+}
+
+window.addEventListener('scroll', handleScroll);
+
+    </script>
 </head>
 <body>
     
@@ -86,6 +116,8 @@
     <li><a href="#" target="_blank">New Link 2</a></li>
     <li><a href="#" target="_blank">New Link 3</a></li>
 </ul> 
+    <button id="backToTopBtn" onclick="scrollToTop()" style="display:none;">戻る</button>
+
     </body>
 </html>
 
