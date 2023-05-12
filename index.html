@@ -117,6 +117,23 @@ function goBack() {
 }
 
 document.getElementById('goBackBtn').addEventListener('click', goBack);
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+window.onscroll = function() {
+    toggleBackToTopBtn();
+};
+
+function toggleBackToTopBtn() {
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        document.getElementById("backToTopBtn").style.display = "block";
+    } else {
+        document.getElementById("backToTopBtn").style.display = "none";
+    }
+}
+
 </script>
  
 
