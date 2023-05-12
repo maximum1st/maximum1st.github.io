@@ -87,7 +87,8 @@
   さい低限度寝泊まりできるスペースがありますので銚子観光も館内のゲームも自由に遊べるようになっています。会員になられた方は立ち寄ると良いです。</p>
  
     
-    <button id="backToTopBtn" onclick="goBack()" style="display:none;">戻る</button>
+    <button id="backToTopBtn" onclick="scrollToTop()" style="display:none;">戻る</button>
+    <button id="goBackBtn" onclick="goBack()">前のページに戻る</button>
 
     
     
@@ -103,27 +104,28 @@
     <li><a href="https://gamemuseum.kikirara.jp/" target="_blank">ニルギリゲーム博物館</a></li>
     <li><a href="#" target="_blank">New Link 2</a></li>
     <li><a href="#" target="_blank">New Link 3</a></li>
-</ul> 
-<script>
-    function scrollToTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function handleScroll() {
-        const backToTopBtn = document.getElementById('backToTopBtn');
-        if (window.pageYOffset > 0) {
-            backToTopBtn.style.display = 'block';
-        } else {
-            backToTopBtn.style.display = 'none';
+    </ul>
+    
+    
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-    }
 
-    function goBack() {
-        window.history.back();
-    }
+        function handleScroll() {
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            if (window.pageYOffset > 0) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        }
 
-    window.addEventListener('scroll', handleScroll);
-</script>
+        function goBack() {
+            window.history.back();
+        }
 
+        window.addEventListener('scroll', handleScroll);
+    </script>
 </body>
 </html>
