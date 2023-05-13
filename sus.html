@@ -1,62 +1,56 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>サスペンション計算 - ニュルブルクリンク</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
-    form {
-      margin-bottom: 1rem;
-    }
-    label, input, select {
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-    .error {
-      color: red;
-      font-size: 0.9rem;
-      margin-top: -0.5rem;
-      margin-bottom: 1rem;
-    }
-  </style>
-  <script>
-    function displayBaseSettings() {
-      const baseSettings = {
-        springConstant: "500 N/mm",
-        damperCompression: "20",
-        damperRebound: "30",
-        antiRollBar: "22 mm",
-        camber: "-2.5°",
-        weightDistribution: "50% F / 50% R",
-        brakeBalance: "50% F / 50% R",
-        tirePressure: "32 psi",
-        downforce: "200 kg"
-      };
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>レーシングサスペンション計算フォーム</title>
+    <script>
+        function calculateSuspensionSettings() {
+            // 計算ロジックを実装
 
-      // 設定値を表示する要素を取得
-      const settingsElement = document.getElementById("settings");
+            // 前の入力値を取得
+            var frontWeight = parseFloat(document.getElementById("frontWeight").value);
+            var frontSpringRate = parseFloat(document.getElementById("frontSpringRate").value);
+            // 後ろの入力値を取得
+            var rearWeight = parseFloat(document.getElementById("rearWeight").value);
+            var rearSpringRate = parseFloat(document.getElementById("rearSpringRate").value);
 
-      // 設定値をHTMLに反映
-      settingsElement.innerHTML = `
-        <h2>ニュルブルクリンクのベース設定</h2>
-        <p>バネ定数: ${baseSettings.springConstant}</p>
-        <p>ダンパー定数（縮み側）: ${baseSettings.damperCompression}</p>
-        <p>ダンパー定数（伸び側）: ${baseSettings.damperRebound}</p>
-        <p>アンチロールバー径: ${baseSettings.antiRollBar}</p>
-        <p>キャンバー角: ${baseSettings.camber}</p>
-        <p>重量配分: ${baseSettings.weightDistribution}</p>
-        <p>ブレーキバランス: ${baseSettings.brakeBalance}</p>
-        <p>タイヤ空気圧: ${baseSettings.tirePressure}</p>
-        <p>ダウンフォース: ${baseSettings.downforce}</p>
-      `;
-    }
-  </script>
+            // 計算結果を表示するための変数
+            var resultText = "";
+
+            // 前後のバネレート周波数を計算
+            var frontSpringRateFrequency = Math.sqrt(frontSpringRate / frontWeight) / (2 * Math.PI);
+            var rearSpringRateFrequency = Math.sqrt(rearSpringRate / rearWeight) / (2 * Math.PI);
+
+            // 計算結果をセット
+            resultText += "前のバネレート周波数: " + frontSpringRateFrequency.toFixed(2) + " Hz<br>";
+            resultText += "後ろのバネレート周波数: " + rearSpringRateFrequency.toFixed(2) + " Hz<br>";
+
+            // 計算結果を表示
+            document.getElementById("result").innerHTML = resultText;
+        }
+    </script>
 </head>
-<body onload="displayBaseSettings()">
-  <h1>サスペンション計算 - ニュルブルクリンク</h1>
-  <div id="settings"></div>
+<body>
+  <h1>レーシングサスペンション計算フォーム</h1>
+  <form onsubmit="event.preventDefault(); calculateSuspensionSettings();">
+    <div>
+        <h2>前</h2>
+        <label for="frontWeight">車重 (kg):</label>
+        <input type="number" id="frontWeight" step="0.1" required><br>
+        <label for="frontSpringRate">バネレート (N/m):</label>
+        <input type="number" id="frontSpringRate" step="0.1" required><br>
+    </div>
+    <div>
+        <h2>後ろ</h2>
+        <label for="rearWeight">車重 (kg):</label>
+        <input type="number" id="rearWeight" step="0.1" required><br>
+        <label for="rearSpringRate">バネレート (N/m):</label>
+        <input type="number" id="rearSpringRate" step="0.1" required><br>
+    </div>
+    <input type="submit" value="計算">
+  </form>
+  <div id="result"></div>
 </body>
 </html>
+
