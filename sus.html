@@ -9,12 +9,8 @@
             const engineWeight = getEngineWeight();
             const frontWeight = parseFloat(document.getElementById("frontWeight").value) + engineWeight;
             const rearWeight = parseFloat(document.getElementById("rearWeight").value);
-            // 以降は既存の計算処理が続く
-        }
-        function calculateSuspension() {
+
             // 前後の入力値を取得
-            const frontWeight = parseFloat(document.getElementById("frontWeight").value);
-            const rearWeight = parseFloat(document.getElementById("rearWeight").value);
             const frontSpringFreq = parseFloat(document.getElementById("frontSpringFreq").value);
             const rearSpringFreq = parseFloat(document.getElementById("rearSpringFreq").value);
             const frontCurrentHeight = parseFloat(document.getElementById("frontCurrentHeight").value);
@@ -47,32 +43,34 @@
             document.getElementById("frontSpringRateFreq").innerText = frontSpringFreq.toFixed(2);
             document.getElementById("rearSpringRateFreq").innerText = rearSpringFreq.toFixed(2);
             document.getElementById("frontOptimalHeightStreet").innerText = frontOptimalHeight.toFixed(2);
-document.getElementById("rearOptimalHeightStreet").innerText = rearOptimalHeight.toFixed(2);
-document.getElementById("frontOptimalHeightNurburgring").innerText = frontOptimalHeightNurburgring.toFixed(2);
-document.getElementById("rearOptimalHeightNurburgring").innerText = rearOptimalHeightNurburgring.toFixed(2);
-document.getElementById("frontOptimalHeightTsukuba").innerText = frontOptimalHeightTsukuba.toFixed(2);
-document.getElementById("rearOptimalHeightTsukuba").innerText = rearOptimalHeightTsukuba.toFixed(2);
-}
-            function getEngineWeight() {
-        const engineType = document.getElementById("engineType").value;
-        const customWeight = parseFloat(document.getElementById("customWeight").value);
-        let weight;
-
-        switch (engineType) {
-            // エンジンタイプごとの重量を設定
-            case "v12":
-                weight = 300;
-                break;
-            // 他のエンジンタイプの重量を設定
+            document.getElementById("rearOptimalHeightStreet").innerText = rearOptimalHeight.toFixed(2);
+            document.getElementById("frontOptimalHeightNurburgring").innerText = frontOptimalHeightNurburgring.toFixed(2);
+            document.getElementById("rearOptimalHeightNurburgring").innerText = rearOptimalHeightN
+            document.getElementById("rearOptimalHeightNurburgring").innerText = rearOptimalHeightNurburgring.toFixed(2);
+            document.getElementById("frontOptimalHeightTsukuba").innerText = frontOptimalHeightTsukuba.toFixed(2);
+            document.getElementById("rearOptimalHeightTsukuba").innerText = rearOptimalHeightTsukuba.toFixed(2);
         }
 
-        if (customWeight > 0) {
-            weight = customWeight;
-        }
+        function getEngineWeight() {
+            const engineType = document.getElementById("engineType").value;
+            const customWeight = parseFloat(document.getElementById("customWeight").value);
+            let weight;
 
-        return weight;
-    }
-</script>
+            switch (engineType) {
+                // エンジンタイプごとの重量を設定
+                case "v12":
+                    weight = 300;
+                    break;
+                // 他のエンジンタイプの重量を設定
+            }
+
+            if (customWeight > 0) {
+                weight = customWeight;
+            }
+
+            return weight;
+        }
+    </script>
 </head>
 <body>
     <h1>レーシングサスペンション計算</h1>
@@ -83,6 +81,7 @@ document.getElementById("rearOptimalHeightTsukuba").innerText = rearOptimalHeigh
         </select></label><br>
         <label>カスタムエンジン重量 (kg) (オプション): <input type="number" id="customWeight" value="0"></label><br>
     </div>
+    <div>
         <h2>前</h2>
         <label>車重         (kg): <input type="number" id="frontWeight"></label><br>
         <label>バネ周波数 (Hz): <input type="number" id="frontSpringFreq" step="0.01"></label><br>
@@ -102,12 +101,13 @@ document.getElementById("rearOptimalHeightTsukuba").innerText = rearOptimalHeigh
     <h2>計算結果</h2>
     <p>前のバネレート周波数: <span id="frontSpringRateFreq"></span> Hz</p>
     <p>後ろのバネレート周波数: <span id="rearSpringRateFreq"></span> Hz</p>
-    <p>ストリート特化 前の最適車高: <span id="frontOptimalHeightStreet"></span> mm</p>
-    <p>ストリート特化 後ろの最適車高: <span id="rearOptimalHeightStreet"></span> mm</p>
-    <p>ニュルブルクリンク特化 前の最適車高: <span id="frontOptimalHeightNurburgring"></span> mm</p>
-    <p>ニュルブルクリンク特化 後ろの最適車高: <span id="rearOptimalHeightNurburgring"></span> mm</p>
-    <p>筑波特化 前の最適車高: <span id="frontOptimalHeightTsukuba"></span> mm</p>
+<p>ストリート特化 前の最適車高: <span id="frontOptimalHeightStreet"></span> mm</p>
+<p>ストリート特化 後ろの最適車高: <span id="rearOptimalHeightStreet"></span> mm</p>
+<p>ニュルブルクリンク特化 前の最適車高: <span id="frontOptimalHeightNurburgring"></span> mm</p>
+<p>ニュルブルクリンク特化 後ろの最適車高: <span id="rearOptimalHeightNurburgring"></span> mm</p>
+<p>筑波特化 前の最適車高: <span id="frontOptimalHeightTsukuba"></span> mm</p>
 <p>筑波特化 後ろの最適車高: <span id="rearOptimalHeightTsukuba"></span> mm</p>
 </body>
 </html>
+
 
