@@ -25,8 +25,8 @@
             const rearOptimalHeight = (rearMinHeight + rearMaxHeight) / 2;
 
             // 計算結果を表示
-            document.getElementById("frontSpringRate").innerText = frontSpringRate.toFixed(2);
-            document.getElementById("rearSpringRate").innerText = rearSpringRate.toFixed(2);
+            document.getElementById("frontSpringRateFreq").innerText = frontSpringFreq.toFixed(2);
+            document.getElementById("rearSpringRateFreq").innerText = rearSpringFreq.toFixed(2);
             document.getElementById("frontOptimalHeight").innerText = frontOptimalHeight.toFixed(2);
             document.getElementById("rearOptimalHeight").innerText = rearOptimalHeight.toFixed(2);
         }
@@ -46,13 +46,15 @@
         <label>車重 (kg): <input type="number" id="rearWeight"></label><br>
         <label>バネ周波数 (Hz): <input type="number" id="rearSpringFreq" step="0.01"></label><br>
         <label>最小車高: <input type="number" id="rearMinHeight"></label><br>
-        <label>最最大車高: <input type="number" id="rearMaxHeight"></label><br>
-</div>
-<button onclick="calculateSuspension()">計算</button>
-<h2>計算結果</h2>
-<p>前のバネレート: <span id="frontSpringRate"></span> N/m</p>
-<p>後ろのバネレート: <span id="rearSpringRate"></span> N/m</p>
-<p>前の最適車高: <span id="frontOptimalHeight"></span> mm</p>
-<p>後ろの最適車高: <span id="rearOptimalHeight"></span> mm</p>
+                <label>最大車高: <input type="number" id="rearMaxHeight"></label><br>
+    </div>
+    <button onclick="calculateSuspension()">計算</button>
+    <h2>計算結果</h2>
+    <p>前のバネレート周波数: <span id="frontSpringRateFreq"></span> Hz</p>
+    <p>後ろのバネレート周波数: <span id="rearSpringRateFreq"></span> Hz</p>
+    <p>前の最適車高: <span id="frontOptimalHeight"></span> mm</p>
+    <p>後ろの最適車高: <span id="rearOptimalHeight"></span> mm</p>
 </body>
 </html>
+
+
