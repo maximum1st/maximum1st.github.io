@@ -25,13 +25,17 @@
             const frontSpringRate = (Math.pow((frontSpringFreq * 2 * Math.PI), 2)) * frontWeight;
             const rearSpringRate = (Math.pow((rearSpringFreq * 2 * Math.PI), 2)) * rearWeight;
 
+            // 現在の車高が最大車高を超えていないかチェックし、超えている場合は最大車高に制限
+            const limitedFrontCurrentHeight = Math.min(frontCurrentHeight, frontMaxHeight);
+            const limitedRearCurrentHeight = Math.min(rearCurrentHeight, rearMaxHeight);
+
             // 前後の最適車高を計算
             const frontOptimalHeight = (frontMinHeight + frontMaxHeight) / 2;
             const rearOptimalHeight = (rearMinHeight + rearMaxHeight) / 2;
 
             // ニュルブルクリンクに特化した最適車高の計算
-            const frontOptimalHeightNurburgring = Math.max(frontCurrentHeight * nurburgringFactor, frontMinHeight);
-            const rearOptimalHeightNurburgring = Math.max(rearCurrentHeight * nurburgringFactor, rearMinHeight);
+            const frontOptimalHeightNurburgring = Math.max(limitedFrontCurrentHeight * nurburgringFactor, frontMinHeight);
+            const rearOptimalHeightNurburgring = Math.max(limitedRearCurrentHeight * nurburgringFactor, rearMinHeight);
 
             // 計算結果を表示
             document.getElementById("frontSpringRateFreq").innerText = frontSpringFreq.toFixed(2);
