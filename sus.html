@@ -33,54 +33,54 @@
             const frontOptimalHeightTsukuba = Math.max(frontCurrentHeight * tsukubaFactor, frontMinHeight);
             const rearOptimalHeightTsukuba = Math.max(rearCurrentHeight * tsukubaFactor, rearMinHeight);
 
-            document.getElementById("frontSpringRateFreq").innerText = frontSpringFreq.toFixed(2);
-            document.getElementById("rearSpringRateFreq").innerText = rearSpringFreq.toFixed(2);
+            document.getElementById("frontSpringRate").innerText = frontSpringRate.toFixed(2);
+            document.getElementById("rearSpringRate").innerText = rearSpringRate.toFixed(2);
             document.getElementById("frontOptimalHeightStreet").innerText = frontOptimalHeight.toFixed(2);
             document.getElementById("rearOptimalHeightStreet").innerText = rearOptimalHeight.toFixed(2);
             document.getElementById("frontOptimalHeightNurburgring").innerText = frontOptimalHeightNurburgring.toFixed(2);
             document.getElementById("rearOptimalHeightNurburgring").innerText = rearOptimalHeightNurburgring.toFixed(2);
             document.getElementById("frontOptimalHeightTsukuba").innerText = frontOptimalHeightTsukuba.toFixed(2);
             document.getElementById("rearOptimalHeightTsukuba").innerText = rearOptimalHeightTsukuba.toFixed(2);
-        }
-
-        function getEngineWeight() {
-            const engineModel = document.getElementById("engineModel").value;
-            const customWeight = parseFloat(document.getElementById("customWeight").value);
-            let weight;
-
-            switch (engineModel) {
-                case "small_4cyl":
-                    weight = 100;
-                    break;
-                case "mid_4cyl":
-weight = 150;
-break;
-case "large_4cyl":
-weight = 200;
-break;
-case "small_6cyl":
-weight = 250;
-break;
-case "mid_6cyl":
-weight = 300;
-break;
-case "large_6cyl":
-weight = 350;
-break;
-case "small_8cyl":
-weight = 400;
-break;
-case "mid_8cyl":
-weight = 450;
-break;
-case "large_8cyl":
-weight = 500;
-break;
-default:
-weight = 0;
 }
-            
-                    if (customWeight > 0) {
+        
+            function getEngineWeight() {
+        const engineModel = document.getElementById("engineModel").value;
+        const customWeight = parseFloat(document.getElementById("customWeight").value);
+        let weight;
+
+        switch (engineModel) {
+            case "small_4cyl":
+                weight = 100;
+                break;
+            case "mid_4cyl":
+                weight = 150;
+                break;
+            case "large_4cyl":
+                weight = 200;
+                break;
+            case "small_6cyl":
+                weight = 250;
+                break;
+            case "mid_6cyl":
+                weight = 300;
+                break;
+            case "large_6cyl":
+                weight = 350;
+                break;
+            case "small_8cyl":
+                weight = 400;
+                break;
+            case "mid_8cyl":
+                weight = 450;
+                break;
+            case "large_8cyl":
+                weight = 500;
+                break;
+            default:
+                weight = 0;
+        }
+        
+        if (customWeight > 0) {
             weight = customWeight;
         }
 
@@ -116,9 +116,9 @@ weight = 0;
         <h2>後ろ</h2>
         <label>車重 (kg): <input type="number" id="rearWeight"></label><br>
         <label>バネ周波数 (Hz): <input type="number" id="rearSpringFreq" step="0.01"></label><br>
-        <label>現在の車高: <input type="number" id="rearCurrentHeight"></label><br>
-        <label>最小車高: <input type="number" id="rearMinHeight"></label><br>
-        <label>最大車高: <input type="number" id="rearMaxHeight"></label><br>
+<label>現在の車高: <input type="number" id="rearCurrentHeight"></label><br>
+<label>最小車高: <input type="number" id="rearMinHeight"></label><br>
+<label>最大車高: <input type="number" id="rearMaxHeight"></label><br>
 </div>
 <button onclick="calculateSuspension()">計算</button>
 <h2>結果</h2>
@@ -138,4 +138,3 @@ weight = 0;
 </div>
 </body>
 </html>
-
