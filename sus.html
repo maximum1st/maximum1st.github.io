@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ニュルブルクリンク特化レーシングサスペンション計算</title>
+    <title>レーシングサスペンション計算</title>
     <script>
         function calculateSuspension() {
             // 前後の入力値を取得
@@ -18,37 +18,39 @@
             const rearMinHeight = parseFloat(document.getElementById("rearMinHeight").value);
             const rearMaxHeight = parseFloat(document.getElementById("rearMaxHeight").value);
 
-            // ニュルブルクリンク特化のパラメータ
+            // サーキット特化のパラメータ
             const nurburgringFactor = 0.8;
+            const tsukubaFactor = 0.9; // ここで筑波特化のパラメータを設定
 
             // 前後のバネレートを計算
             const frontSpringRate = (Math.pow((frontSpringFreq * 2 * Math.PI), 2)) * frontWeight;
             const rearSpringRate = (Math.pow((rearSpringFreq * 2 * Math.PI), 2)) * rearWeight;
 
-            // 現在の車高が最大車高を超えていないかチェックし、超えている場合は最大車高に制限
-            const limitedFrontCurrentHeight = Math.min(frontCurrentHeight, frontMaxHeight);
-            const limitedRearCurrentHeight = Math.min(rearCurrentHeight, rearMaxHeight);
-
             // 前後の最適車高を計算
             const frontOptimalHeight = (frontMinHeight + frontMaxHeight) / 2;
             const rearOptimalHeight = (rearMinHeight + rearMaxHeight) / 2;
 
-            // ニュルブルクリンクに特化した最適車高の計算
-            const frontOptimalHeightNurburgring = Math.max(limitedFrontCurrentHeight * nurburgringFactor, frontMinHeight);
-            const rearOptimalHeightNurburgring = Math.max(limitedRearCurrentHeight * nurburgringFactor, rearMinHeight);
+            // サーキット特化した最適車高の計算
+            const frontOptimalHeightNurburgring = Math.max(frontCurrentHeight * nurburgringFactor, frontMinHeight);
+            const rearOptimalHeightNurburgring = Math.max(rearCurrentHeight * nurburgringFactor, rearMinHeight);
+
+            const frontOptimalHeightTsukuba = Math.max(frontCurrentHeight * tsukubaFactor, frontMinHeight);
+            const rearOptimalHeightTsukuba = Math.max(rearCurrentHeight * tsukubaFactor, rearMinHeight);
 
             // 計算結果を表示
             document.getElementById("frontSpringRateFreq").innerText = frontSpringFreq.toFixed(2);
             document.getElementById("rearSpringRateFreq").innerText = rearSpringFreq.toFixed(2);
-            document.getElementById("frontOptimalHeight").innerText = frontOptimalHeight.toFixed(2);
-            document.getElementById("rearOptimalHeight").innerText = rearOptimalHeight.toFixed(2);
-            document.getElementById("frontOptimalHeightNurburgring").innerText = frontOptimalHeightNurburgring.toFixed(2);
-            document.getElementById("rearOptimalHeightNurburgring").innerText = rearOptimalHeightNurburgring.toFixed(2);
-        }
-    </script>
+            document.getElementById("frontOptimalHeightStreet").innerText = frontOptimalHeight.toFixed2);
+document.getElementById("rearOptimalHeightStreet").innerText = rearOptimalHeight.toFixed(2);
+document.getElementById("frontOptimalHeightNurburgring").innerText = frontOptimalHeightNurburgring.toFixed(2);
+document.getElementById("rearOptimalHeightNurburgring").innerText = rearOptimalHeightNurburgring.toFixed(2);
+document.getElementById("frontOptimalHeightTsukuba").innerText = frontOptimalHeightTsukuba.toFixed(2);
+document.getElementById("rearOptimalHeightTsukuba").innerText = rearOptimalHeightTsukuba.toFixed(2);
+}
+</script>
 </head>
 <body>
-    <h1>ニュルブルクリンク特化レーシングサスペンション計算</h1>
+    <h1>レーシングサスペンション計算</h1>
     <div>
         <h2>前</h2>
         <label>車重         (kg): <input type="number" id="frontWeight"></label><br>
@@ -69,9 +71,12 @@
     <h2>計算結果</h2>
     <p>前のバネレート周波数: <span id="frontSpringRateFreq"></span> Hz</p>
     <p>後ろのバネレート周波数: <span id="rearSpringRateFreq"></span> Hz</p>
-    <p>前の最適車高: <span id="frontOptimalHeight"></span> mm</p>
-    <p>後ろの最適車高: <span id="rearOptimalHeight"></span> mm</p>
+    <p>ストリート特化 前の最適車高: <span id="frontOptimalHeightStreet"></span> mm</p>
+    <p>ストリート特化 後ろの最適車高: <span id="rearOptimalHeightStreet"></span> mm</p>
     <p>ニュルブルクリンク特化 前の最適車高: <span id="frontOptimalHeightNurburgring"></span> mm</p>
     <p>ニュルブルクリンク特化 後ろの最適車高: <span id="rearOptimalHeightNurburgring"></span> mm</p>
+    <p>筑波特化 前の最適車高: <span id="frontOptimalHeightTsukuba"></span> mm</p>
+<p>筑波特化 後ろの最適車高: <span id="rearOptimalHeightTsukuba"></span> mm</p>
 </body>
 </html>
+
