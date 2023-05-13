@@ -30,8 +30,8 @@
             const rearOptimalHeight = (rearMinHeight + rearMaxHeight) / 2;
 
             // ニュルブルクリンクに特化した最適車高の計算
-            const frontOptimalHeightNurburgring = frontCurrentHeight * nurburgringFactor;
-            const rearOptimalHeightNurburgring = rearCurrentHeight * nurburgringFactor;
+            const frontOptimalHeightNurburgring = Math.max(frontCurrentHeight * nurburgringFactor, frontMinHeight);
+            const rearOptimalHeightNurburgring = Math.max(rearCurrentHeight * nurburgringFactor, rearMinHeight);
 
             // 計算結果を表示
             document.getElementById("frontSpringRateFreq").innerText = frontSpringFreq.toFixed(2);
@@ -71,4 +71,3 @@
     <p>ニュルブルクリンク特化 後ろの最適車高: <span id="rearOptimalHeightNurburgring"></span> mm</p>
 </body>
 </html>
-
