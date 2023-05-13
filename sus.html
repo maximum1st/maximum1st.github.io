@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>レーシングサスペンション計算</title>
+    <title>ニュルブルクリンク特化レーシングサスペンション計算</title>
     <script>
         function calculateSuspension() {
             // 前後の入力値を取得
@@ -11,10 +11,15 @@
             const rearWeight = parseFloat(document.getElementById("rearWeight").value);
             const frontSpringFreq = parseFloat(document.getElementById("frontSpringFreq").value);
             const rearSpringFreq = parseFloat(document.getElementById("rearSpringFreq").value);
+            const frontCurrentHeight = parseFloat(document.getElementById("frontCurrentHeight").value);
+            const rearCurrentHeight = parseFloat(document.getElementById("rearCurrentHeight").value);
             const frontMinHeight = parseFloat(document.getElementById("frontMinHeight").value);
             const frontMaxHeight = parseFloat(document.getElementById("frontMaxHeight").value);
             const rearMinHeight = parseFloat(document.getElementById("rearMinHeight").value);
             const rearMaxHeight = parseFloat(document.getElementById("rearMaxHeight").value);
+
+            // ニュルブルクリンク特化のパラメータ
+            const nurburgringFactor = 0.8;
 
             // 前後のバネレートを計算
             const frontSpringRate = (Math.pow((frontSpringFreq * 2 * Math.PI), 2)) * frontWeight;
@@ -24,20 +29,27 @@
             const frontOptimalHeight = (frontMinHeight + frontMaxHeight) / 2;
             const rearOptimalHeight = (rearMinHeight + rearMaxHeight) / 2;
 
+            // ニュルブルクリンクに特化した最適車高の計算
+            const frontOptimalHeightNurburgring = frontCurrentHeight * nurburgringFactor;
+            const rearOptimalHeightNurburgring = rearCurrentHeight * nurburgringFactor;
+
             // 計算結果を表示
             document.getElementById("frontSpringRateFreq").innerText = frontSpringFreq.toFixed(2);
             document.getElementById("rearSpringRateFreq").innerText = rearSpringFreq.toFixed(2);
             document.getElementById("frontOptimalHeight").innerText = frontOptimalHeight.toFixed(2);
             document.getElementById("rearOptimalHeight").innerText = rearOptimalHeight.toFixed(2);
+            document.getElementById("frontOptimalHeightNurburgring").innerText = frontOptimalHeightNurburgring.toFixed(2);
+            document.getElementById("rearOptimalHeightNurburgring").innerText = rearOptimalHeightNurburgring.toFixed(2);
         }
     </script>
 </head>
 <body>
-    <h1>レーシングサスペンション計算</h1>
+    <h1>ニュルブルクリンク特化レーシングサスペンション計算</h1>
     <div>
         <h2>前</h2>
-        <label>車重 (kg): <input type="number" id="frontWeight"></label><br>
+        <label>車重         (kg): <input type="number" id="frontWeight"></label><br>
         <label>バネ周波数 (Hz): <input type="number" id="frontSpringFreq" step="0.01"></label><br>
+        <label>現在の車高: <input type="number" id="frontCurrentHeight"></label><br>
         <label>最小車高: <input type="number" id="frontMinHeight"></label><br>
         <label>最大車高: <input type="number" id="frontMaxHeight"></label><br>
     </div>
@@ -45,8 +57,9 @@
         <h2>後ろ</h2>
         <label>車重 (kg): <input type="number" id="rearWeight"></label><br>
         <label>バネ周波数 (Hz): <input type="number" id="rearSpringFreq" step="0.01"></label><br>
+        <label>現在の車高: <input type="number" id="rearCurrentHeight"></label><br>
         <label>最小車高: <input type="number" id="rearMinHeight"></label><br>
-                <label>最大車高: <input type="number" id="rearMaxHeight"></label><br>
+        <label>最大車高: <input type="number" id="rearMaxHeight"></label><br>
     </div>
     <button onclick="calculateSuspension()">計算</button>
     <h2>計算結果</h2>
@@ -54,7 +67,8 @@
     <p>後ろのバネレート周波数: <span id="rearSpringRateFreq"></span> Hz</p>
     <p>前の最適車高: <span id="frontOptimalHeight"></span> mm</p>
     <p>後ろの最適車高: <span id="rearOptimalHeight"></span> mm</p>
+    <p>ニュルブルクリンク特化 前の最適車高: <span id="frontOptimalHeightNurburgring"></span> mm</p>
+    <p>ニュルブルクリンク特化 後ろの最適車高: <span id="rearOptimalHeightNurburgring"></span> mm</p>
 </body>
 </html>
-
 
