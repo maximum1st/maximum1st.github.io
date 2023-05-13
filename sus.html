@@ -11,20 +11,24 @@
             const rearWeight = parseFloat(document.getElementById("rearWeight").value);
             const frontSpringRate = parseFloat(document.getElementById("frontSpringRate").value);
             const rearSpringRate = parseFloat(document.getElementById("rearSpringRate").value);
-            const camber = parseFloat(document.getElementById("camber").value);
-            const toe = parseFloat(document.getElementById("toe").value);
-            const caster = parseFloat(document.getElementById("caster").value);
-            const wheelbase = parseFloat(document.getElementById("wheelbase").value);
-            const treadWidth = parseFloat(document.getElementById("treadWidth").value);
-            const downForce = parseFloat(document.getElementById("downForce").value);
+            const frontMinHeight = parseFloat(document.getElementById("frontMinHeight").value);
+            const frontMaxHeight = parseFloat(document.getElementById("frontMaxHeight").value);
+            const rearMinHeight = parseFloat(document.getElementById("rearMinHeight").value);
+            const rearMaxHeight = parseFloat(document.getElementById("rearMaxHeight").value);
 
             // 前後のバネレート周波数を計算
             const frontSpringFreq = Math.sqrt(frontSpringRate / frontWeight) / (2 * Math.PI);
             const rearSpringFreq = Math.sqrt(rearSpringRate / rearWeight) / (2 * Math.PI);
 
+            // 前後の最適車高を計算
+            const frontOptimalHeight = (frontMinHeight + frontMaxHeight) / 2;
+            const rearOptimalHeight = (rearMinHeight + rearMaxHeight) / 2;
+
             // 計算結果を表示
             document.getElementById("frontSpringFreq").innerText = frontSpringFreq.toFixed(2);
             document.getElementById("rearSpringFreq").innerText = rearSpringFreq.toFixed(2);
+            document.getElementById("frontOptimalHeight").innerText = frontOptimalHeight.toFixed(2);
+            document.getElementById("rearOptimalHeight").innerText = rearOptimalHeight.toFixed(2);
         }
     </script>
 </head>
@@ -33,24 +37,23 @@
     <div>
         <h2>前</h2>
         <label>車重 (kg): <input type="number" id="frontWeight"></label><br>
-        <label>バネレート (N/m): <input type="number" id="frontSpringRate"></label>
+        <label>バネレート (N/m): <input type="number" id="frontSpringRate"></label><br>
+        <label>最小車高: <input type="number" id="frontMinHeight"></label><br>
+        <label>最大車高: <input type="number" id="frontMaxHeight"></label><br>
     </div>
     <div>
         <h2>後ろ</h2>
         <label>車重 (kg): <input type="number" id="rearWeight"></label><br>
-        <label>バネレート (N/m): <input type="number" id="rearSpringRate"></label>
+        <label>バネレート (N/m): <input type="number" id="rearSpringRate"></label><br>
+        <label>最小車高: <input type="number" id="rearMinHeight"></label><br>
+                <label>最大車高: <input type="number" id="rearMaxHeight"></label><br>
     </div>
-    <label>キャンバー角: <input type="number" id="camber" step="0.1" min="-1" max="1"></label><br>
-    <label>トー角 (度): <input type="number" id="toe"></label><br>
-    <label>キャスター角: <input type="number" id="caster"></label><br>
-    <label>ホイールベース: <input type="number" id="wheelbase"></label><br>
-    <label>トレッド幅: <input type="number" id="treadWidth"></label><br>
-    <label>ダウンフォース (kg): <input type="number" id="downForce"></label><br>
-        <button onclick="calculateSuspension()">計算</button>
+    <button onclick="calculateSuspension()">計算</button>
     <h2>計算結果</h2>
     <p>前のバネレート周波数: <span id="frontSpringFreq"></span> Hz</p>
     <p>後ろのバネレート周波数: <span id="rearSpringFreq"></span> Hz</p>
+    <p>前の最適車高: <span id="frontOptimalHeight"></span> mm</p>
+    <p>後ろの最適車高: <span id="rearOptimalHeight"></span> mm</p>
 </body>
 </html>
-
 
