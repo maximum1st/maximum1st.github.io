@@ -41,51 +41,78 @@
             document.getElementById("rearOptimalHeightNurburgring").innerText = rearOptimalHeightNurburgring.toFixed(2);
             document.getElementById("frontOptimalHeightTsukuba").innerText = frontOptimalHeightTsukuba.toFixed(2);
             document.getElementById("rearOptimalHeightTsukuba").innerText = rearOptimalHeightTsukuba.toFixed(2);
+        }
+        
+        function getEngineWeight() {
+            const engineModel = document.getElementById("engineModel").value;
+            const customWeight = parseFloat(document.getElementById("customWeight").value);
+            let weight;
+
+            switch (engineModel) {
+                case "small_4cyl":
+                    weight = 100;
+                    break;
+                case "mid_4cyl":
+                    weight = 150;
+break;
+case "large_4cyl":
+weight = 200;
+break;
+case "small_6cyl":
+weight = 250;
+break;
+case "mid_6cyl":
+weight = 300;
+break;
+case "large_6cyl":
+weight = 350;
+break;
+case "small_v4":
+weight = 180;
+break;
+case "mid_v4":
+weight = 220;
+break;
+case "large_v4":
+weight = 260;
+break;
+case "small_v6":
+weight = 270;
+break;
+case "mid_v6":
+weight = 320;
+break;
+case "large_v6":
+weight = 370;
+break;
+case "small_8cyl":
+weight = 400;
+break;
+case "mid_8cyl":
+weight = 450;
+break;
+case "large_8cyl":
+weight = 500;
+break;
+case "small_v12":
+weight = 550;
+break;
+case "mid_v12":
+weight = 600;
+break;
+case "large_v12":
+weight = 650;
+break;
+default:
+weight = 0;
 }
-        
-            function getEngineWeight() {
-        const engineModel = document.getElementById("engineModel").value;
-        const customWeight = parseFloat(document.getElementById("customWeight").value);
-        let weight;
+            
+       if (customWeight > 0) {
+       weight = customWeight;
+       }
 
-        switch (engineModel) {
-            case "small_4cyl":
-                weight = 100;
-                break;
-            case "mid_4cyl":
-                weight = 150;
-                break;
-            case "large_4cyl":
-                weight = 200;
-                break;
-            case "small_6cyl":
-                weight = 250;
-                break;
-            case "mid_6cyl":
-                weight = 300;
-                break;
-            case "large_6cyl":
-                weight = 350;
-                break;
-            case "small_8cyl":
-                weight = 400;
-                break;
-            case "mid_8cyl":
-                weight = 450;
-                break;
-            case "large_8cyl":
-                weight = 500;
-                break;
-            default:
-                weight = 0;
-        }
-        
-        if (customWeight > 0) {
-            weight = customWeight;
-        }
-
-        return weight;
-    }
+       return weight;
+       }
 </script>
 </head>
 <body>
@@ -98,43 +125,55 @@
             <option value="small_6cyl">小型6気筒</option>
             <option value="mid_6cyl">中型6気筒</option>
             <option value="large_6cyl">大型6気筒</option>
+            <option value="small_v4">小型V4</option>
+            <option value="mid_v4">中型V4</option>
+            <option value="large_v4">大型V4</option>
+            <option value="small_v6">小型V6</option>
+            <option value="mid_v6">中型V6</option>
+            <option value="large_v6">大型V6</option>
             <option value="small_8cyl">小型8気筒</option>
             <option value="mid_8cyl">中型8気筒</option>
             <option value="large_8cyl">大型8気筒</option>
+            <option value="small_v12">小型V12</option>
+            <option value="mid_v12">中型V12</option>
+            <option value="large_v12">大型V12</option>
         </select></label><br>
         <label>カスタムエンジン重量 (kg) (オプション): <input type="number" id="customWeight" value="0"></label><br>
     </div>
     <div>
         <h2>前</h2>
-        <label>車重 (kg): <input type="number" id="frontWeight"></label><br>
-        <label>バネ周波数 (Hz): <input type="number" id="frontSpringFreq" step="0.01"></label><br>
-        <label>現在の車高: <input type="number" id="frontCurrentHeight"></label><br>
-        <label>最小車高: <input type="number" id="frontMinHeight"></label><br>
-        <label>最大車高: <input type="number" id="frontMaxHeight"></label><br>
-    </div>
-    <div>
-        <h2>後ろ</h2>
-        <label>車重 (kg): <input type="number" id="rearWeight"></label><br>
-        <label>バネ周波数 (Hz): <input type="number" id="rearSpringFreq" step="0.01"></label><br>
-<label>現在の車高: <input type="number" id="rearCurrentHeight"></label><br>
-<label>最小車高: <input type="number" id="rearMinHeight"></label><br>
-<label>最大車高: <input type="number" id="rearMaxHeight"></label><br>
+        <label>車重 (kg): <input type="number" id="frontWeight" value="0"></label><br>
+<label>バネ周波数 (Hz): <input type="number" id="frontSpringFreq" value="0"></label><br>
+<label>現在の車高 (mm): <input type="number" id="frontCurrentHeight" value="0"></label><br>
+<label>最低車高 (mm): <input type="number" id="frontMinHeight" value="0"></label><br>
+<label>最大車高 (mm): <input type="number" id="frontMaxHeight" value="0"></label><br>
 </div>
-<button onclick="calculateSuspension()">計算</button>
+<div>
+<h2>後ろ</h2>
+<label>車重 (kg): <input type="number" id="rearWeight" value="0"></label><br>
+<label>バネ周波数 (Hz): <input type="number" id="rearSpringFreq" value="0"></label><br>
+<label>現在の車高 (mm): <input type="number" id="rearCurrentHeight" value="0"></label><br>
+<label>最低車高 (mm): <input type="number" id="rearMinHeight" value="0"></label><br>
+<label>最大車高 (mm): <input type="number" id="rearMaxHeight" value="0"></label><br>
+</div>
+<button onclick="calculateSuspension()">計算する</button>
 <h2>結果</h2>
 <div>
 <h3>前</h3>
-<p>バネ周波数: <span id="frontSpringRateFreq">-</span> Hz</p>
-<p>最適車高 (ストリート): <span id="frontOptimalHeightStreet">-</span> mm</p>
-<p>最適車高 (ニュルブルクリンク): <span id="frontOptimalHeightNurburgring">-</span> mm</p>
-<p>最適車高 (筑波サーキット): <span id="frontOptimalHeightTsukuba">-</span> mm</p>
+<p>バネレート: <span id="frontSpringRate">0.00</span> N/mm</p>
+<p>最適車高 (通常): <span id="frontOptimalHeightStreet">0.00</span> mm</p>
+<p>最適車高 (ニュルブルクリンク): <span id="frontOptimalHeightNurburgring">0.00</span> mm</p>
+<p>最適車高 (筑波): <span id="frontOptimalHeightTsukuba">0.00</span> mm</p>
 </div>
 <div>
 <h3>後ろ</h3>
-<p>バネ周波数: <span id="rearSpringRateFreq">-</span> Hz</p>
-<p>最適車高 (ストリート): <span id="rearOptimalHeightStreet">-</span> mm</p>
-<p>最適車高 (ニュルブルクリンク): <span id="rearOptimalHeightNurburgring">-</span> mm</p>
-<p>最適車高 (筑波サーキット): <span id="rearOptimalHeightTsukuba">-</span> mm</p>
+<p>バネレート: <span id="rearSpringRate">0.00</span> N/mm</p>
+<p>最適車高 (通常): <span id="rearOptimalHeightStreet">0.00</span> mm</p>
+<p>最適車高 (ニュルブルクリンク): <span id="rearOptimalHeightNurburgring">0.00</span> mm</p>
+<p>最適車高 (筑波): <span id="rearOptimalHeightTsukuba">0.00</span> mm</p>
 </div>
 </body>
 </html>
+
+
+    
