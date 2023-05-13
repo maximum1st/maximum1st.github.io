@@ -3,54 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>レーシングサスペンション計算フォーム</title>
+    <title>レーシングサスペンション計算</title>
     <script>
-        function calculateSuspensionSettings() {
-            // 計算ロジックを実装
-
-            // 前の入力値を取得
-            var frontWeight = parseFloat(document.getElementById("frontWeight").value);
-            var frontSpringRate = parseFloat(document.getElementById("frontSpringRate").value);
-            // 後ろの入力値を取得
-            var rearWeight = parseFloat(document.getElementById("rearWeight").value);
-            var rearSpringRate = parseFloat(document.getElementById("rearSpringRate").value);
-
-            // 計算結果を表示するための変数
-            var resultText = "";
+        function calculateSuspension() {
+            // 前後の入力値を取得
+            const frontWeight = parseFloat(document.getElementById("frontWeight").value);
+            const rearWeight = parseFloat(document.getElementById("rearWeight").value);
+            const frontSpringRate = parseFloat(document.getElementById("frontSpringRate").value);
+            const rearSpringRate = parseFloat(document.getElementById("rearSpringRate").value);
+            const camber = parseFloat(document.getElementById("camber").value);
+            const toe = parseFloat(document.getElementById("toe").value);
+            const caster = parseFloat(document.getElementById("caster").value);
+            const wheelbase = parseFloat(document.getElementById("wheelbase").value);
+            const treadWidth = parseFloat(document.getElementById("treadWidth").value);
+            const downForce = parseFloat(document.getElementById("downForce").value);
 
             // 前後のバネレート周波数を計算
-            var frontSpringRateFrequency = Math.sqrt(frontSpringRate / frontWeight) / (2 * Math.PI);
-            var rearSpringRateFrequency = Math.sqrt(rearSpringRate / rearWeight) / (2 * Math.PI);
-
-            // 計算結果をセット
-            resultText += "前のバネレート周波数: " + frontSpringRateFrequency.toFixed(2) + " Hz<br>";
-            resultText += "後ろのバネレート周波数: " + rearSpringRateFrequency.toFixed(2) + " Hz<br>";
+            const frontSpringFreq = Math.sqrt(frontSpringRate / frontWeight) / (2 * Math.PI);
+            const rearSpringFreq = Math.sqrt(rearSpringRate / rearWeight) / (2 * Math.PI);
 
             // 計算結果を表示
-            document.getElementById("result").innerHTML = resultText;
+            document.getElementById("frontSpringFreq").innerText = frontSpringFreq.toFixed(2);
+            document.getElementById("rearSpringFreq").innerText = rearSpringFreq.toFixed(2);
         }
     </script>
 </head>
 <body>
-  <h1>レーシングサスペンション計算フォーム</h1>
-  <form onsubmit="event.preventDefault(); calculateSuspensionSettings();">
+    <h1>レーシングサスペンション計算</h1>
     <div>
         <h2>前</h2>
-        <label for="frontWeight">車重 (kg):</label>
-        <input type="number" id="frontWeight" step="0.1" required><br>
-        <label for="frontSpringRate">バネレート (N/m):</label>
-        <input type="number" id="frontSpringRate" step="0.1" required><br>
+        <label>車重 (kg): <input type="number" id="frontWeight"></label><br>
+        <label>バネレート (N/m): <input type="number" id="frontSpringRate"></label>
     </div>
     <div>
         <h2>後ろ</h2>
-        <label for="rearWeight">車重 (kg):</label>
-        <input type="number" id="rearWeight" step="0.1" required><br>
-        <label for="rearSpringRate">バネレート (N/m):</label>
-        <input type="number" id="rearSpringRate" step="0.1" required><br>
+        <label>車重 (kg): <input type="number" id="rearWeight"></label><br>
+        <label>バネレート (N/m): <input type="number" id="rearSpringRate"></label>
     </div>
-    <input type="submit" value="計算">
-  </form>
-  <div id="result"></div>
+    <label>キャンバー角: <input type="number" id="camber" step="0.1" min="-1" max="1"></label><br>
+    <label>トー角 (度): <input type="number" id="toe"></label><br>
+    <label>キャスター角: <input type="number" id="caster"></label><br>
+    <label>ホイールベース: <input type="number" id="wheelbase"></label><br>
+    <label>トレッド幅: <input type="number" id="treadWidth"></label><br>
+    <label>ダウンフォース (kg): <input type="number" id="downForce"></label><br>
+        <button onclick="calculateSuspension()">計算</button>
+    <h2>計算結果</h2>
+    <p>前のバネレート周波数: <span id="frontSpringFreq"></span> Hz</p>
+    <p>後ろのバネレート周波数: <span id="rearSpringFreq"></span> Hz</p>
 </body>
 </html>
+
 
