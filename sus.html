@@ -54,66 +54,67 @@
                     break;
                 case "mid_4cyl":
                     weight = 150;
-break;
-case "large_4cyl":
-weight = 200;
-break;
-case "small_6cyl":
-weight = 250;
-break;
-case "mid_6cyl":
-weight = 300;
-break;
-case "large_6cyl":
-weight = 350;
-break;
-case "small_v4":
-weight = 180;
-break;
-case "mid_v4":
-weight = 220;
-break;
-case "large_v4":
-weight = 260;
-break;
-case "small_v6":
-weight = 270;
-break;
-case "mid_v6":
-weight = 320;
-break;
-case "large_v6":
-weight = 370;
-break;
-case "small_8cyl":
-weight = 400;
-break;
-case "mid_8cyl":
-weight = 450;
-break;
-case "large_8cyl":
-weight = 500;
-break;
-case "small_v12":
-weight = 550;
-break;
-case "mid_v12":
-weight = 600;
-break;
-case "large_v12":
-weight = 650;
-break;
-default:
-weight = 0;
-}
-            
-       if (customWeight > 0) {
-       weight = customWeight;
-       }
+                    break;
+                
+                case "large_4cyl":
+                    weight = 200;
+                    break;
+                case "small_6cyl":
+                    weight = 250;
+                    break;
+                case "mid_6cyl":
+                    weight = 300;
+                    break;
+                case "large_6cyl":
+                    weight = 350;
+                    break;
+                case "small_v4":
+                    weight = 180;
+                    break;
+                case "mid_v4":
+                    weight = 220;
+                    break;
+                case "large_v4":
+                    weight = 260;
+                    break;
+                case "small_v6":
+                    weight = 270;
+                    break;
+                case "mid_v6":
+                    weight = 320;
+                    break;
+                case "large_v6":
+                    weight = 370;
+                    break;
+                case "small_8cyl":
+                    weight = 400;
+                    break;
+                case "mid_8cyl":
+                    weight = 450;
+                    break;
+                case "large_8cyl":
+                    weight = 500;
+                    break;
+                case "small_v12":
+                    weight = 550;
+                    break;
+                case "mid_v12":
+                    weight = 600;
+                    break;
+                case "large_v12":
+                    weight = 650;
+                    break;
+                default:
+                    weight = 0;
+            }
 
-       return weight;
-       }
-</script>
+            if (customWeight > 0) {
+                weight = customWeight;
+            }
+
+            return weight;
+        }
+    </script>
 </head>
 <body>
     <h1>レーシングサスペンション計算</h1>
@@ -141,39 +142,34 @@ weight = 0;
         <label>カスタムエンジン重量 (kg) (オプション): <input type="number" id="customWeight" value="0"></label><br>
     </div>
     <div>
-        <h2>前</h2>
-        <label>車重 (kg): <input type="number" id="frontWeight" value="0"></label><br>
-<label>バネ周波数 (Hz): <input type="number" id="frontSpringFreq" value="0"></label><br>
-<label>現在の車高 (mm): <input type="number" id="frontCurrentHeight" value="0"></label><br>
-<label>最低車高 (mm): <input type="number" id="frontMinHeight" value="0"></label><br>
-<label>最大車高 (mm): <input type="number" id="frontMaxHeight" value="0"></label><br>
-</div>
-<div>
-<h2>後ろ</h2>
-<label>車重 (kg): <input type="number" id="rearWeight" value="0"></label><br>
-<label>バネ周波数 (Hz): <input type="number" id="rearSpringFreq" value="0"></label><br>
-<label>現在の車高 (mm): <input type="number" id="rearCurrentHeight" value="0"></label><br>
-<label>最低車高 (mm): <input type="number" id="rearMinHeight" value="0"></label><br>
-<label>最大車高 (mm): <input type="number" id="rearMaxHeight" value="0"></label><br>
-</div>
-<button onclick="calculateSuspension()">計算する</button>
-<h2>結果</h2>
-<div>
-<h3>前</h3>
-<p>バネレート: <span id="frontSpringRate">0.00</span> N/mm</p>
-<p>最適車高 (通常): <span id="frontOptimalHeightStreet">0.00</span> mm</p>
-<p>最適車高 (ニュルブルクリンク): <span id="frontOptimalHeightNurburgring">0.00</span> mm</p>
-<p>最適車高 (筑波): <span id="frontOptimalHeightTsukuba">0.00</span> mm</p>
-</div>
-<div>
-<h3>後ろ</h3>
-<p>バネレート: <span id="rearSpringRate">0.00</span> N/mm</p>
-<p>最適車高 (通常): <span id="rearOptimalHeightStreet">0.00</span> mm</p>
-<p>最適車高 (ニュルブルクリンク): <span id="rearOptimalHeightNurburgring">0.00</span> mm</p>
-<p>最適車高 (筑波): <span id="rearOptimalHeightTsukuba">0.00</span> mm</p>
-</div>
+                <h2>サスペンション情報</h2>
+        <label>フロント重量 (kg): <input type="number" id="frontWeight" value="0"></label><br>
+        <label>リア重量 (kg): <input type="number" id="rearWeight" value="0"></label><br>
+        <label>フロントスプリング周波数 (Hz): <input type="number" id="frontSpringFreq" value="0"></label><br>
+        <label>リアスプリング周波数 (Hz): <input type="number" id="rearSpringFreq" value="0"></label><br>
+        <label>フロント現在の車高 (mm): <input type="number" id="frontCurrentHeight" value="0"></label><br>
+        <label>リア現在の車高 (mm): <input type="number" id="rearCurrentHeight" value="0"></label><br>
+        <label>フロント最低車高 (mm): <input type="number" id="frontMinHeight" value="0"></label><br>
+        <label>フロント最高車高 (mm): <input type="number" id="frontMaxHeight" value="0"></label><br>
+        <label>リア最低車高 (mm): <input type="number" id="rearMinHeight" value="0"></label><br>
+        <label>リア最高車高 (mm): <input type="number" id="rearMaxHeight" value="0"></label><br>
+    </div>
+    <button onclick="calculateSuspension()">計算</button>
+    <div>
+        <h2>計算結果</h2>
+        <p>フロントスプリングレート: <span id="frontSpringRate">0</span> N/m</p>
+        <p>リアスプリングレート: <span id="rearSpringRate">0</span> N/m</p>
+        <p>フロント最適車高 (通常): <span id="frontOptimalHeightStreet">0</span> mm</p>
+        <p>リア最適車高 (通常): <span id="rearOptimalHeightStreet">0</span> mm</p>
+        <p>フロント最適車高 (ニュルブルクリンク): <span id="frontOptimalHeightNurburgring">0</span> mm</p>
+        <p>リア最適車高 (ニュルブルクリンク): <span id="rearOptimalHeightNurburgring">0</span> mm</p>
+        <p>フロント最適車高 (筑波サーキット): <span id="frontOptimalHeightTsukuba">0</span> mm</p>
+        <p>リア最適車高 (筑波サーキット): <span id="rearOptimalHeightTsukuba">0</span> mm</p>
+    </div>
 </body>
 </html>
+
+
 
 
     
