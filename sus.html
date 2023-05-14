@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>レーシングサスペンション計算</title>
+    <style>
+        .form-container {
+            display: flex;
+            flex-direction: column;
+        }
+        </style>
     <script>
         function calculateSuspension() {
             const engineWeight = getEngineWeight();
@@ -142,17 +148,23 @@
         <label>カスタムエンジン重量 (kg) (オプション): <input type="number" id="customWeight" value="0"></label><br>
     </div>
     <div>
-                <h2>サスペンション情報</h2>
-        <label>フロント重量 (kg): <input type="number" id="frontWeight" value="0"></label><br>
-        <label>リア重量 (kg): <input type="number" id="rearWeight" value="0"></label><br>
-        <label>フロントスプリング周波数 (Hz): <input type="number" id="frontSpringFreq" value="0"></label><br>
-        <label>リアスプリング周波数 (Hz): <input type="number" id="rearSpringFreq" value="0"></label><br>
-        <label>フロント現在の車高 (mm): <input type="number" id="frontCurrentHeight" value="0"></label><br>
-        <label>リア現在の車高 (mm): <input type="number" id="rearCurrentHeight" value="0"></label><br>
-        <label>フロント最低車高 (mm): <input type="number" id="frontMinHeight" value="0"></label><br>
-        <label>フロント最高車高 (mm): <input type="number" id="frontMaxHeight" value="0"></label><br>
-        <label>リア最低車高 (mm): <input type="number" id="rearMinHeight" value="0"></label><br>
-        <label>リア最高車高 (mm): <input type="number" id="rearMaxHeight" value="0"></label><br>
+            <!-- フロント用フォーム -->
+            <h2>フロントサスペンション情報</h2>
+            <label>フロント重量 (kg): <input type="number" id="frontWeight" value="0"></label><br>
+            <label>フロントスプリング周波数 (Hz): <input type="number" id="frontSpringFreq" value="0"></label><br>
+            <label>フロント現在の車高 (mm): <input type="number" id="frontCurrentHeight" value="0"></label><br>
+            <label>フロント最低車高 (mm): <input type="number" id="frontMinHeight" value="0"></label><br>
+            <label>フロント最高車高 (mm): <input type="number" id="frontMaxHeight" value="0"></label><br>
+        </div>
+        <div>
+            <!-- リア用フォーム -->
+            <h2>リアサスペンション情報</h2>
+            <label>リア重量 (kg): <input type="number" id="rearWeight" value="0"></label><br>
+            <label>リアスプリング周波数 (Hz): <input type="number" id="rearSpringFreq" value="0"></label><br>
+            <label>リア現在の車高 (mm): <input type="number" id="rearCurrentHeight" value="0"></label><br>
+            <label>リア最低車高 (mm): <input type="number" id="rearMinHeight" value="0"></label><br>
+            <label>リア最高車高 (mm): <input type="number" id="rearMaxHeight" value="0"></label><br>
+        </div>
     </div>
     <button onclick="calculateSuspension()">計算</button>
     <div>
