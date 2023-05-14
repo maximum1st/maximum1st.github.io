@@ -40,15 +40,14 @@
             const frontOptimalHeightTsukuba = Math.max(frontCurrentHeight * tsukubaFactor, frontMinHeight) + (engineWeight * engineWeightFactor);
             const rearOptimalHeightTsukuba = Math.max(rearCurrentHeight * tsukubaFactor, rearMinHeight) - (engineWeight * engineWeightFactor);
 
+            document.getElementById("engineWeightDisplay").innerText = engineWeight.toFixed(2);
             document.getElementById("frontSpringRate").innerText = frontSpringRate.toFixed(2);
             document.getElementById("rearSpringRate").innerText = rearSpringRate.toFixed(2);
             document.getElementById("frontOptimalHeightStreet").innerText = frontOptimalHeight.toFixed(2);
             document.getElementById("rearOptimalHeightStreet").innerText = rearOptimalHeight.toFixed(2);
             document.getElementById("frontOptimalHeightNurburgring").innerText = frontOptimalHeightNurburgring.toFixed(2);
-            document.getElementById("rearOptimalHeightNurburgring").innerText = rearOptimalHeightNurburgring.toFixed(2);
-            document.getElementById("frontOptimalHeightTsukuba").innerText = frontOpt
-
-                        document.getElementById("frontOptimalHeightTsukuba").innerText = frontOptimalHeightTsukuba.toFixed(2);
+            document.getElementById("rearOptimalHeightNurburgring").innerText = rearOptimalHeightNurburgring.toFixed(            2);
+            document.getElementById("frontOptimalHeightTsukuba").innerText = frontOptimalHeightTsukuba.toFixed(2);
             document.getElementById("rearOptimalHeightTsukuba").innerText = rearOptimalHeightTsukuba.toFixed(2);
         }
 
@@ -66,6 +65,9 @@
                 case "Supercharged":
                     engineWeight = 220;
                     break;
+                case "V12":
+                    engineWeight = 250;
+                    break;
                 default:
                     engineWeight = 150;
             }
@@ -81,7 +83,9 @@
             <option value="NA">NA</option>
             <option value="Turbo">Turbo</option>
             <option value="Supercharged">Supercharged</option>
+            <option value="V12">V12</option>
         </select>
+        <p>エンジン重量: <span id="engineWeightDisplay">150</span> kg</p>
         <label for="frontWeight">フロント重量 (kg):</label>
         <input id="frontWeight" type="number" step="0.01">
         <label for="rearWeight">リア重量 (kg):</label>
@@ -102,21 +106,22 @@
         <input id="rearMinHeight" type="number" step="0.01">
         <label for="rearMaxHeight">リア最大車高 (mm):</label>
         <input id="rearMaxHeight" type="number" step="0.01">
+        <button onclick="calculateSuspension()">計算</button>
     </div>
-    <button onclick="calculateSuspension()">計算</button>
-    <div>
-        <h2>計算結果</h2>
-        <p>フロントスプリングレート: <span id="frontSpringRate">0</span> N/m</p>
-       
-        <p>リアスプリングレート: <span id="rearSpringRate">0</span> N/m</p>
-        <p>フロント最適車高 (ストリート): <span id="frontOptimalHeightStreet">0</span> mm</p>
-        <p>リア最適車高 (ストリート): <span id="rearOptimalHeightStreet">0</span> mm</p>
-        <p>フロント最適車高 (ニュルブルクリンク): <span id="frontOptimalHeightNurburgring">0</span> mm</p>
-        <p>リア最適車高 (ニュルブルクリンク): <span id="rearOptimalHeightNurburgring">0</span> mm</p>
-        <p>フロント最適車高 (筑波サーキット): <span id="frontOptimalHeightTsukuba">0</span> mm</p>
-        <p>リア最適車高 (筑波サーキット): <span id="rearOptimalHeightTsukuba">0</span> mm</p>
-    </div>
+    <h2>結果</h2>
+    <p>フロントスプリングレート: <span id="frontSpringRate">-</span> N/m</p>
+    <p>リアスプリングレート: <span id="rearSpringRate">-</span> N/m</p>
+    <h3>最適車高 (ストリート)</h3>
+    <p>フロント: <span id="frontOptimalHeightStreet">-</span> mm</p>
+    <p>リア: <span id="rearOptimalHeightStreet">-</span> mm</p>
+    <h3>最適車高 (ニュルブルクリンク)</h3>
+    <p>フロント: <span id="frontOptimalHeightNurburgring">-</span> mm</p>
+    <p>リア: <span id="rearOptimalHeightNurburgring">-</span> mm</p>
+    <h3>最適車高 (筑波)</h3>
+    <p>フロント: <span id="frontOptimalHeightTsukuba">-</span> mm</p>
+    <p>リア: <span id="rearOptimalHeightTsukuba">-</span> mm</p>
 </body>
 </html>
 
-            
+
+
