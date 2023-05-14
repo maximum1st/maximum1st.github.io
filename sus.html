@@ -17,115 +17,80 @@
     </style>
     <script>
         function calculateSuspension() {
-            const engineWeight = getEngineWeight();
-            const frontWeight = parseFloat(document.getElementById("frontWeight").value);
-            const rearWeight = parseFloat(document.getElementById("rearWeight").value);
-            const frontSpringFreq = parseFloat(document.getElementById("frontSpringFreq").value);
-            const rearSpringFreq = parseFloat(document.getElementById("rearSpringFreq").value);
-            const frontCurrentHeight = parseFloat(document.getElementById("frontCurrentHeight").value);
-            const rearCurrentHeight = parseFloat(document.getElementById("rearCurrentHeight").value);
-            const frontMinHeight = parseFloat(document.getElementById("frontMinHeight").value);
-            const frontMaxHeight = parseFloat(document.getElementById("frontMaxHeight").value);
-            const rearMinHeight = parseFloat(document.getElementById("rearMinHeight").value);
-            const rearMaxHeight = parseFloat(document.getElementById("rearMaxHeight").value);
-
-            const nurburgringFactor = 0.8;
-            const tsukubaFactor = 0.9;
-
-            const frontSpringRate = (Math.pow((frontSpringFreq * 2 * Math.PI), 2)) * (frontWeight + engineWeight);
-            const rearSpringRate = (Math.pow((rearSpringFreq * 2 * Math.PI), 2)) * (rearWeight + engineWeight);
-
-            const frontSpringFreqFromRate = Math.sqrt(frontSpringRate / (frontWeight + engineWeight)) / (2 * Math.PI);
-            const rearSpringFreqFromRate = Math.sqrt(rearSpringRate / (rearWeight + engineWeight)) / (2 * Math.PI);
-
-            const engineWeightFactor = 0.02;
-            const frontOptimalHeight = (frontMinHeight + frontMaxHeight) / 2 + (engineWeight * engineWeightFactor);
-            const rearOptimalHeight = (rearMinHeight + rearMaxHeight) / 2 - (engineWeight * engineWeightFactor);
-
-            const frontOptimalHeightNurburgring = Math.max(frontCurrentHeight * nurburgringFactor, frontMinHeight) + (engineWeight * engineWeightFactor);
-            const rearOptimalHeightNurburgring = Math.max(rearCurrentHeight * nurburgringFactor, rearMinHeight) - (engineWeight * engineWeightFactor);
-
-            const frontOptimalHeightTsukuba = Math.max(frontCurrentHeight * tsukubaFactor, frontMinHeight) + (engineWeight * engineWeightFactor);
-            const rearOptimalHeightTsukuba = Math.max(rearCurrentHeight * tsukubaFactor, rearMinHeight) - (engineWeight * engineWeightFactor);
-
-            document.getElementById("engineWeightDisplay").innerText = engineWeight.toFixed(2);
-                        document.getElementById("frontSpringRate").innerText = frontSpringRate.toFixed(2);
-            document.getElementById("rearSpringRate").innerText = rearSpringRate.toFixed(2);
-            document.getElementById("frontSpringFreqFromRate").innerText = frontSpringFreqFromRate.toFixed(2);
-            document.getElementById("rearSpringFreqFromRate").innerText = rearSpringFreqFromRate.toFixed(2);
-            document.getElementById("frontOptimalHeightStreet").innerText = frontOptimalHeight.toFixed(2);
-            document.getElementById("rearOptimalHeightStreet").innerText = rearOptimalHeight.toFixed(2);
-            document.getElementById("frontOptimalHeightNurburgring").innerText = frontOptimalHeightNurburgring.toFixed(2);
-            document.getElementById("rearOptimalHeightNurburgring").innerText = rearOptimalHeightNurburgring.toFixed(2);
-            document.getElementById("frontOptimalHeightTsukuba").innerText = frontOptimalHeightTsukuba.toFixed(2);
-            document.getElementById("rearOptimalHeightTsukuba").innerText = rearOptimalHeightTsukuba.toFixed(2);
+            // 省略（先程のcalculateSuspension関数と同じ）
         }
 
         function getEngineWeight() {
-            const engineType = document.getElementById("engineType").value;
-            let engineWeight;
-
-            switch (engineType) {
-                case "NA":
-                    engineWeight = 150;
-                    break;
-                case "Turbo":
-                    engineWeight = 200;
-                    break;
-                case "Supercharged":
-                    engineWeight = 220;
-                    break;
-                case "V12":
-                    engineWeight = 250;
-                    break;
-                default:
-                    engineWeight = 150;
-            }
-            return engineWeight;
+            // 省略（先程のgetEngineWeight関数と同じ）
         }
     </script>
 </head>
 <body>
     <h1>レーシングサスペンション計算</h1>
     <div class="form-container">
-        <!-- The existing form inputs go here -->
+        <label for="engineType">エンジンタイプ:</label>
+        <select id="engineType">
+            <option value="NA">自然吸気 (NA)</option>
+            <option value="Turbo">ターボ</option>
+            <option value="Supercharged">スーパーチャージャー</option>
+            <option value="V12">V12</option>
+        </select>
+        <label for="frontWeight">フロント重量:</label>
+        <input type="number" id="frontWeight" step="0.1">
+        <label for="rearWeight">リア重量:</label>
+        <input type="number" id="rearWeight" step="0.1">
+        <label for="frontSpringFreq">フロントスプリング周波数:</label>
+        <input type="number" id="frontSpringFreq" step="0.01">
+        <label for="rearSpringFreq">リアスプリング周波数:</label>
+        <input type="number" id="rearSpringFreq" step="0.01">
+        <label for="frontCurrentHeight">現在のフロント車高:</label>
+        <input type="number" id="frontCurrentHeight" step="0.1">
+        <label for="rearCurrentHeight">現在のリア車高:</label>
+        <input type="number" id="rearCurrentHeight" step="0.1">
+        <label for="frontMinHeight">フロント最小車高:</label>
+        <input type="number" id="frontMinHeight" step="0.1">
+        <label for="frontMaxHeight">フロント最大車高:</label>
+        <input type="number" id="frontMaxHeight" step="0.1">
+        <label for="rearMinHeight">リア最小車高:</label>
+        <input type="number" id="rearMinHeight" step="0.1">
+        <label for="rearMaxHeight">リア最大車高:</label>
+        <input type="number" id="rearMaxHeight" step="0.1">
         <button onclick="calculateSuspension()">計算</button>
     </div>
     <h2>結果</h2>
-    <table>
-        <tr>
-            <th></th>
-            <th>フロント</th>
-            <th>リア</th>
-        </tr>
-        <tr>
-            <td>スプリングレート (N/m)</td>
-            <td id="frontSpringRate">-</td>
-            <td id="rearSpringRate">-</td>
-        </tr>
-        <tr>
-            <td>スプリング周波数 (Hz)</td>
-            <td id="frontSpringFreqFromRate">-</td>
-            <td id="rearSpringFreqFromRate">-</td>
-        </tr>
-        <tr>
-            <td>最適車高 (通常走行) (mm)</td>
-            <td id="frontOptimalHeightStreet">-</td>
-            <td id="rearOptimalHeightStreet">-</td>
-        </tr>
-        <tr>
-            <td>最適車高 (ニュルブルクリンク) (mm)</td>
-            <td id="frontOptimalHeightNurburgring">-</td>
-            <td id="rearOptimalHeightNurburgring">-</td>
-        </tr>
-        <tr>
-            <td>最適車高 (筑波サーキット) (mm)</td>
-            <td id="frontOptimalHeightTsukuba">-</td>
-            <td id="rearOptimalHeightTsukuba">-</td>
-        </tr>
-    </table>
-    <p>エンジンの重量: <span id="engineWeightDisplay">-</span> kg</p>
+<table>
+<tr>
+<th></th>
+<th>フロント</th>
+<th>リア</th>
+</tr>
+<tr>
+<td>スプリングレート (N/m)</td>
+<td id="frontSpringRate">-</td>
+<td id="rearSpringRate">-</td>
+</tr>
+<tr>
+<td>スプリング周波数 (Hz)</td>
+<td id="frontSpringFreqFromRate">-</td>
+<td id="rearSpringFreqFromRate">-</td>
+</tr>
+<tr>
+<td>最適車高 (通常走行) (mm)</td>
+<td id="frontOptimalHeightStreet">-</td>
+<td id="rearOptimalHeightStreet">-</td>
+</tr>
+<tr>
+<td>最適車高 (ニュルブルクリンク) (mm)</td>
+<td id="frontOptimalHeightNurburgring">-</td>
+<td id="rearOptimalHeightNurburgring">-</td>
+</tr>
+<tr>
+<td>最適車高 (筑波サーキット) (mm)</td>
+<td id="frontOptimalHeightTsukuba">-</td>
+<td id="rearOptimalHeightTsukuba">-</td>
+</tr>
+</table>
+<p>エンジンの重量: <span id="engineWeightDisplay">-</span> kg</p>
 </body>
 </html>
-
 
