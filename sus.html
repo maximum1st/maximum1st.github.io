@@ -18,7 +18,7 @@
     <script>
         function calculateSuspension() {
             const engineWeight = getEngineWeight();
-            const totalWeight = parseFloat(document.getElementById("totalWeight").value) * 10; // kgから10g単位に変換
+            const totalWeight = parseFloat(document.getElementById("totalWeight").value);
             const weightRatio = parseFloat(document.getElementById("weightRatio").value) / 100;
             const frontWeight = totalWeight * weightRatio;
             const rearWeight = totalWeight * (1 - weightRatio);
@@ -50,9 +50,9 @@
             const frontOptimalHeightTsukuba = Math.max(frontCurrentHeight * tsukubaFactor, frontMinHeight) + (engineWeight * engineWeightFactor);
             const rearOptimalHeightTsukuba = Math.max(rearCurrentHeight * tsukubaFactor, rearMinHeight) - (engineWeight * engineWeightFactor);
 
-            document.getElementById("engineWeightDisplay").innerText = (engineWeight / 10).toFixed(2); // 10g単位からkg単位に変換
-            document.getElementById("frontWeightDisplay").innerText = (frontWeight / 10).toFixed(2); // 10g単位からkg単位に変換
-            document.getElementById("rearWeightDisplay").innerText = (rearWeight / 10).toFixed(2); // 10g単位からkg単位に変換
+            document.getElementById("engineWeightDisplay").innerText = engineWeight.toFixed(2);
+            document.getElementById("frontWeightDisplay").innerText = frontWeight.toFixed(2);
+            document.getElementById("rearWeightDisplay").innerText = rearWeight.toFixed(2);
             document.getElementById("frontSpringRate").innerText = frontSpringRate.toFixed(2);
             document.getElementById("rearSpringRate").innerText = rearSpringRate.toFixed(2);
             document.getElementById("frontSpringFreqFromRate").innerText = frontSpringFreqFromRate.toFixed(2);
@@ -99,8 +99,8 @@
             <option value="Supercharged">スーパーチャージャー</option>
             <option value="V12">V12</option>
         </select>
-        <label for="totalWeight">車両重量 (10g単位):</label>
-        <input type="number" id="totalWeight" step="0.1">
+        <label for="totalWeight">車両重量 (kg単位):</label>
+        <input type="number" id="totalWeight" step="1" min="0" max="9999">
         <label for="weightRatio">重量配分 (%):</label>
         <input type="number" id="weightRatio" step="1" min="0" max="100">
         <label for="frontSpringFreq">フロントスプリング周波数:</label>
@@ -108,36 +108,38 @@
         <label for="rearSpringFreq">リアスプリング周波数:</label>
         <input type="number" id="rearSpringFreq" step="0.01" value="2.00">
         <label for="frontCurrentHeight">現在のフロント車高:</label>
-        <input type="number" id="frontCurrentHeight" step="0.01">
+        <input type="number" id="frontCurrentHeight" step="1">
         <label for="rearCurrentHeight">現在のリア車高:</label>
-        <input type="number" id="rearCurrentHeight" step="0.01">
-        <label for="frontMinHeight">フロント最小車高:</label>
-        <input type="number" id="frontMinHeight" step="0.01">
-        <label for="frontMaxHeight">フロント最大車高:</label>
-        <input type="number" id="frontMaxHeight" step="0.01">
-        <label for="rearMinHeight">リア最小車高:</label>
-        <input type="number" id="rearMinHeight" step="0.01">
-        <label for="rearMaxHeight">リア最大車高:</label>
-        <input type="number" id="rearMaxHeight" step="0.01">
-
+        <input type="number" id="rearCurrentHeight" step="1">
+        <label for="frontMinHeight">フロント車高の最小値:</label>
+        <input type="number" id="frontMinHeight" step="1">
+        <label for="frontMaxHeight">フロント車高の最大値:</label>
+        <input type="number" id="frontMaxHeight" step="1">
+        <label for="rearMinHeight">リア車高の最小値:</label>
+        <input type="number" id="rearMinHeight" step="1">
+        <label for="rearMaxHeight">リア車高の最大値:</label>
+        <input type="number" id="rearMaxHeight" step="1">
         <button onclick="calculateSuspension()">計算</button>
-
-        <p>エンジン重量: <span id="engineWeightDisplay"></span> kg</p>
-        <p>フロント重量: <span id="frontWeightDisplay"></span> kg</p>
-        <p>リア重量: <span id="rearWeightDisplay"></span> kg</p>
-        <p>フロントスプリングレート: <span id="frontSpringRate"></span> N/m</p>
-        <p>リアスプリングレート: <span id="rearSpringRate"></span> N/m</p>
-        <p>フロントスプリング周波数（レートから算出）: <span id="frontSpringFreqFromRate"></span> Hz</p>
-        <p>リアスプリング周波数（レートから算出）: <span id="rearSpringFreqFromRate"></span> Hz</p>
-        <p>最適フロント車高（ストリート）: <span id="frontOptimalHeightStreet"></span> mm</p>
-        <p>最適リア車高（ストリート）: <span id="rearOptimalHeightStreet"></span> mm</p>
-        <p>最適フロント車高（ニュルブルクリンク）: <span id="frontOptimalHeightNurburgring"></span> mm</p>
-        <p>最適リア車高（ニュルブルクリンク）: <span id="rearOptimalHeightNurburgring"></span> mm</p>
-        <p>最適フロント車高（筑波サーキット）: <span id="frontOptimalHeightTsukuba"></span> mm</p>
-        <p>最適リア車高（筑波サーキット）: <span id="rearOptimalHeightTsukuba"></span> mm</p>
     </div>
+    <h2>結果</h2>
+    <p>エンジン重量: <span id="engineWeightDisplay"></span> kg</p>
+    <p>フロント重量: <span id="frontWeightDisplay"></span> kg</p>
+    <p>リア重量: <span id="rearWeightDisplay"></span> kg</p>
+    <p>フロントスプリングレート: <span id="frontSpringRate"></span> N/m</p>
+    <p>リアスプリングレート: <span id="rearSpringRate"></span> N/m</p>
+    <p>フロントスプリング周波数 (レートから算出): <span id="frontSpringFreqFromRate"></span> Hz</p>
+    <p>リアスプリング周波数 (レートから算出): <span id="rearSpringFreqFromRate"></span> Hz</p>
+    <p>ストリート走行用最適フロント車高: <span id="frontOptimalHeightStreet"></span> mm</p>
+    <p>ストリート走行用最適リア車高: <span id="rearOptimalHeightStreet"></span> mm</p>
+    <p>ニュルブルクリンク走行用最適フロント車高: <span id="frontOptimalHeightNurburgring"></span> mm</p>
+    <p>ニュルブルクリンク走行用最適リア車高: <span id="rearOptimalHeightNurburgring"></span> mm</p>
+    <p>筑波サーキット走行用最適フロント車高: <span id="frontOptimalHeightTsukuba"></span> mm</p>
+    <p>筑波サーキット走行用最適リア車高: <span id="rearOptimalHeightTsukuba"></span> mm</p>
 </body>
 </html>
+
+
+
 
 
 
