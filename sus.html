@@ -9,7 +9,7 @@
             display: flex;
             flex-direction: column;
         }
-        </style>
+    </style>
     <script>
         function calculateSuspension() {
             const engineWeight = getEngineWeight();
@@ -30,14 +30,15 @@
             const frontSpringRate = (Math.pow((frontSpringFreq * 2 * Math.PI), 2)) * (frontWeight + engineWeight);
             const rearSpringRate = (Math.pow((rearSpringFreq * 2 * Math.PI), 2)) * (rearWeight + engineWeight);
 
-            const frontOptimalHeight = (frontMinHeight + frontMaxHeight) / 2;
-            const rearOptimalHeight = (rearMinHeight + rearMaxHeight) / 2;
+            const engineWeightFactor = 0.02;
+            const frontOptimalHeight = (frontMinHeight + frontMaxHeight) / 2 + (engineWeight * engineWeightFactor);
+            const rearOptimalHeight = (rearMinHeight + rearMaxHeight) / 2 - (engineWeight * engineWeightFactor);
 
-            const frontOptimalHeightNurburgring = Math.max(frontCurrentHeight * nurburgringFactor, frontMinHeight);
-            const rearOptimalHeightNurburgring = Math.max(rearCurrentHeight * nurburgringFactor, rearMinHeight);
+            const frontOptimalHeightNurburgring = Math.max(frontCurrentHeight * nurburgringFactor, frontMinHeight) + (engineWeight * engineWeightFactor);
+            const rearOptimalHeightNurburgring = Math.max(rearCurrentHeight * nurburgringFactor, rearMinHeight) - (engineWeight * engineWeightFactor);
 
-            const frontOptimalHeightTsukuba = Math.max(frontCurrentHeight * tsukubaFactor, frontMinHeight);
-            const rearOptimalHeightTsukuba = Math.max(rearCurrentHeight * tsukubaFactor, rearMinHeight);
+            const frontOptimalHeightTsukuba = Math.max(frontCurrentHeight * tsukubaFactor, frontMinHeight) + (engineWeight * engineWeightFactor);
+            const rearOptimalHeightTsukuba = Math.max(rearCurrentHeight * tsukubaFactor, rearMinHeight) - (engineWeight * engineWeightFactor);
 
             document.getElementById("frontSpringRate").innerText = frontSpringRate.toFixed(2);
             document.getElementById("rearSpringRate").innerText = rearSpringRate.toFixed(2);
@@ -45,134 +46,71 @@
             document.getElementById("rearOptimalHeightStreet").innerText = rearOptimalHeight.toFixed(2);
             document.getElementById("frontOptimalHeightNurburgring").innerText = frontOptimalHeightNurburgring.toFixed(2);
             document.getElementById("rearOptimalHeightNurburgring").innerText = rearOptimalHeightNurburgring.toFixed(2);
-            document.getElementById("frontOptimalHeightTsukuba").innerText = frontOptimalHeightTsukuba.toFixed(2);
+            document.getElementById("frontOptimalHeightTsukuba").innerText = frontOpt
+
+                        document.getElementById("frontOptimalHeightTsukuba").innerText = frontOptimalHeightTsukuba.toFixed(2);
             document.getElementById("rearOptimalHeightTsukuba").innerText = rearOptimalHeightTsukuba.toFixed(2);
         }
-        
-        function getEngineWeight() {
-            const engineModel = document.getElementById("engineModel").value;
-            const customWeight = parseFloat(document.getElementById("customWeight").value);
-            let weight;
 
-            switch (engineModel) {
-                case "small_4cyl":
-                    weight = 100;
+        function getEngineWeight() {
+            const engineType = document.getElementById("engineType").value;
+            let engineWeight;
+
+            switch (engineType) {
+                case "NA":
+                    engineWeight = 150;
                     break;
-                case "mid_4cyl":
-                    weight = 150;
+                case "Turbo":
+                    engineWeight = 200;
                     break;
-                
-                case "large_4cyl":
-                    weight = 200;
-                    break;
-                case "small_6cyl":
-                    weight = 250;
-                    break;
-                case "mid_6cyl":
-                    weight = 300;
-                    break;
-                case "large_6cyl":
-                    weight = 350;
-                    break;
-                case "small_v4":
-                    weight = 180;
-                    break;
-                case "mid_v4":
-                    weight = 220;
-                    break;
-                case "large_v4":
-                    weight = 260;
-                    break;
-                case "small_v6":
-                    weight = 270;
-                    break;
-                case "mid_v6":
-                    weight = 320;
-                    break;
-                case "large_v6":
-                    weight = 370;
-                    break;
-                case "small_8cyl":
-                    weight = 400;
-                    break;
-                case "mid_8cyl":
-                    weight = 450;
-                    break;
-                case "large_8cyl":
-                    weight = 500;
-                    break;
-                case "small_v12":
-                    weight = 550;
-                    break;
-                case "mid_v12":
-                    weight = 600;
-                    break;
-                case "large_v12":
-                    weight = 650;
+                case "Supercharged":
+                    engineWeight = 220;
                     break;
                 default:
-                    weight = 0;
+                    engineWeight = 150;
             }
-
-            if (customWeight > 0) {
-                weight = customWeight;
-            }
-
-            return weight;
+            return engineWeight;
         }
     </script>
 </head>
 <body>
     <h1>レーシングサスペンション計算</h1>
-    <div>
-        <label>エンジンモデル: <select id="engineModel">
-            <option value="small_4cyl">小型4気筒</option>
-            <option value="mid_4cyl">中型4気筒</option>
-            <option value="large_4cyl">大型4気筒</option>
-            <option value="small_6cyl">小型6気筒</option>
-            <option value="mid_6cyl">中型6気筒</option>
-            <option value="large_6cyl">大型6気筒</option>
-            <option value="small_v4">小型V4</option>
-            <option value="mid_v4">中型V4</option>
-            <option value="large_v4">大型V4</option>
-            <option value="small_v6">小型V6</option>
-            <option value="mid_v6">中型V6</option>
-            <option value="large_v6">大型V6</option>
-            <option value="small_8cyl">小型8気筒</option>
-            <option value="mid_8cyl">中型8気筒</option>
-            <option value="large_8cyl">大型8気筒</option>
-            <option value="small_v12">小型V12</option>
-            <option value="mid_v12">中型V12</option>
-            <option value="large_v12">大型V12</option>
-        </select></label><br>
-        <label>カスタムエンジン重量 (kg) (オプション): <input type="number" id="customWeight" value="0"></label><br>
-    </div>
-    <div>
-            <!-- フロント用フォーム -->
-            <h2>フロントサスペンション情報</h2>
-            <label>フロント重量 (kg): <input type="number" id="frontWeight" value="0"></label><br>
-            <label>フロントスプリング周波数 (Hz): <input type="number" id="frontSpringFreq" value="0"></label><br>
-            <label>フロント現在の車高 (mm): <input type="number" id="frontCurrentHeight" value="0"></label><br>
-            <label>フロント最低車高 (mm): <input type="number" id="frontMinHeight" value="0"></label><br>
-            <label>フロント最高車高 (mm): <input type="number" id="frontMaxHeight" value="0"></label><br>
-        </div>
-        <div>
-            <!-- リア用フォーム -->
-            <h2>リアサスペンション情報</h2>
-            <label>リア重量 (kg): <input type="number" id="rearWeight" value="0"></label><br>
-            <label>リアスプリング周波数 (Hz): <input type="number" id="rearSpringFreq" value="0"></label><br>
-            <label>リア現在の車高 (mm): <input type="number" id="rearCurrentHeight" value="0"></label><br>
-            <label>リア最低車高 (mm): <input type="number" id="rearMinHeight" value="0"></label><br>
-            <label>リア最高車高 (mm): <input type="number" id="rearMaxHeight" value="0"></label><br>
-        </div>
+    <div class="form-container">
+        <label for="engineType">エンジンタイプ:</label>
+        <select id="engineType">
+            <option value="NA">NA</option>
+            <option value="Turbo">Turbo</option>
+            <option value="Supercharged">Supercharged</option>
+        </select>
+        <label for="frontWeight">フロント重量 (kg):</label>
+        <input id="frontWeight" type="number" step="0.01">
+        <label for="rearWeight">リア重量 (kg):</label>
+        <input id="rearWeight" type="number" step="0.01">
+        <label for="frontSpringFreq">フロントスプリング周波数 (Hz):</label>
+        <input id="frontSpringFreq" type="number" step="0.01">
+        <label for="rearSpringFreq">リアスプリング周波数 (Hz):</label>
+        <input id="rearSpringFreq" type="number" step="0.01">
+        <label for="frontCurrentHeight">現在のフロント車高 (mm):</label>
+        <input id="frontCurrentHeight" type="number" step="0.01">
+        <label for="rearCurrentHeight">現在のリア車高 (mm):</label>
+        <input id="rearCurrentHeight" type="number" step="0.01">
+        <label for="frontMinHeight">フロント最小車高 (mm):</label>
+        <input id="frontMinHeight" type="number" step="0.01">
+        <label for="frontMaxHeight">フロント最大車高 (mm):</label>
+        <input id="frontMaxHeight" type="number" step="0.01">
+        <label for="rearMinHeight">リア最小車高 (mm):</label>
+        <input id="rearMinHeight" type="number" step="0.01">
+        <label for="rearMaxHeight">リア最大車高 (mm):</label>
+        <input id="rearMaxHeight" type="number" step="0.01">
     </div>
     <button onclick="calculateSuspension()">計算</button>
     <div>
         <h2>計算結果</h2>
         <p>フロントスプリングレート: <span id="frontSpringRate">0</span> N/m</p>
+       
         <p>リアスプリングレート: <span id="rearSpringRate">0</span> N/m</p>
-        <p>フロント最適車高 (通常): <span id="frontOptimalHeightStreet">0</span> mm</p>
-        <p>リア最適車高 (通常): <span id="rearOptimalHeightStreet">0</span> mm</p>
+        <p>フロント最適車高 (ストリート): <span id="frontOptimalHeightStreet">0</span> mm</p>
+        <p>リア最適車高 (ストリート): <span id="rearOptimalHeightStreet">0</span> mm</p>
         <p>フロント最適車高 (ニュルブルクリンク): <span id="frontOptimalHeightNurburgring">0</span> mm</p>
         <p>リア最適車高 (ニュルブルクリンク): <span id="rearOptimalHeightNurburgring">0</span> mm</p>
         <p>フロント最適車高 (筑波サーキット): <span id="frontOptimalHeightTsukuba">0</span> mm</p>
@@ -181,7 +119,4 @@
 </body>
 </html>
 
-
-
-
-    
+            
