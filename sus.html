@@ -46,8 +46,8 @@
             document.getElementById("frontOptimalHeightStreet").innerText = frontOptimalHeight.toFixed(2);
             document.getElementById("rearOptimalHeightStreet").innerText = rearOptimalHeight.toFixed(2);
             document.getElementById("frontOptimalHeightNurburgring").innerText = frontOptimalHeightNurburgring.toFixed(2);
-            document.getElementById("rearOptimalHeightNurburgring").innerText = rearOptimalHeightNurburgring.toFixed(            2);
-            document.getElementById("frontOptimalHeightTsukuba").innerText = frontOptimalHeightTsukuba.toFixed(2);
+            document.getElementById("rearOptimalHeightNurburgring").innerText = rearOptimalHeightNurburgring.toFixed(2);
+                        document.getElementById("frontOptimalHeightTsukuba").innerText = frontOptimalHeightTsukuba.toFixed(2);
             document.getElementById("rearOptimalHeightTsukuba").innerText = rearOptimalHeightTsukuba.toFixed(2);
         }
 
@@ -105,23 +105,40 @@
         <label for="rearMinHeight">リア最小車高 (mm):</label>
         <input id="rearMinHeight" type="number" step="0.01">
         <label for="rearMaxHeight">リア最大車高 (mm):</label>
-        <input id="rearMaxHeight" type="number" step="0.01">
+                <input id="rearMaxHeight" type="number" step="0.01">
         <button onclick="calculateSuspension()">計算</button>
     </div>
     <h2>結果</h2>
-    <p>フロントスプリングレート: <span id="frontSpringRate">-</span> N/m</p>
-    <p>リアスプリングレート: <span id="rearSpringRate">-</span> N/m</p>
-    <h3>最適車高 (ストリート)</h3>
-    <p>フロント: <span id="frontOptimalHeightStreet">-</span> mm</p>
-    <p>リア: <span id="rearOptimalHeightStreet">-</span> mm</p>
-    <h3>最適車高 (ニュルブルクリンク)</h3>
-    <p>フロント: <span id="frontOptimalHeightNurburgring">-</span> mm</p>
-    <p>リア: <span id="rearOptimalHeightNurburgring">-</span> mm</p>
-    <h3>最適車高 (筑波)</h3>
-    <p>フロント: <span id="frontOptimalHeightTsukuba">-</span> mm</p>
-    <p>リア: <span id="rearOptimalHeightTsukuba">-</span> mm</p>
+    <table>
+        <tr>
+            <th></th>
+            <th>フロント</th>
+            <th>リア</th>
+        </tr>
+        <tr>
+            <td>スプリングレート (N/m)</td>
+            <td id="frontSpringRate">-</td>
+            <td id="rearSpringRate">-</td>
+        </tr>
+        <tr>
+            <td>最適車高 (通常走行) (mm)</td>
+            <td id="frontOptimalHeightStreet">-</td>
+            <td id="rearOptimalHeightStreet">-</td>
+        </tr>
+        <tr>
+            <td>最適車高 (ニュルブルクリンク) (mm)</td>
+            <td id="frontOptimalHeightNurburgring">-</td>
+            <td id="rearOptimalHeightNurburgring">-</td>
+        </tr>
+        <tr>
+            <td>最適車高 (筑波サーキット) (mm)</td>
+            <td id="frontOptimalHeightTsukuba">-</td>
+            <td id="rearOptimalHeightTsukuba">-</td>
+        </tr>
+    </table>
 </body>
 </html>
+
 
 
 
