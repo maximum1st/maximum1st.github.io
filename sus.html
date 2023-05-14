@@ -17,11 +17,71 @@
     </style>
     <script>
         function calculateSuspension() {
-            // 省略（先程のcalculateSuspension関数と同じ）
-        }
+    const engineWeight = getEngineWeight();
+    const frontWeight = parseFloat(document.getElementById("frontWeight").value);
+    const rearWeight = parseFloat(document.getElementById("rearWeight").value);
+    const frontSpringFreq = parseFloat(document.getElementById("frontSpringFreq").value);
+    const rearSpringFreq = parseFloat(document.getElementById("rearSpringFreq").value);
+    const frontCurrentHeight = parseFloat(document.getElementById("frontCurrentHeight").value);
+    const rearCurrentHeight = parseFloat(document.getElementById("rearCurrentHeight").value);
+    const frontMinHeight = parseFloat(document.getElementById("frontMinHeight").value);
+    const frontMaxHeight = parseFloat(document.getElementById("frontMaxHeight").value);
+    const rearMinHeight = parseFloat(document.getElementById("rearMinHeight").value);
+    const rearMaxHeight = parseFloat(document.getElementById("rearMaxHeight").value);
+
+    const nurburgringFactor = 0.8;
+    const tsukubaFactor = 0.9;
+
+    const frontSpringRate = (Math.pow((frontSpringFreq * 2 * Math.PI), 2)) * (frontWeight + engineWeight);
+    const rearSpringRate = (Math.pow((rearSpringFreq * 2 * Math.PI), 2)) * (rearWeight + engineWeight);
+
+    const frontSpringFreqFromRate = Math.sqrt(frontSpringRate / (frontWeight + engineWeight)) / (2 * Math.PI);
+    const rearSpringFreqFromRate = Math.sqrt(rearSpringRate / (rearWeight + engineWeight)) / (2 * Math.PI);
+
+    const engineWeightFactor = 0.02;
+    const frontOptimalHeight = (frontMinHeight + frontMaxHeight) / 2 + (engineWeight * engineWeightFactor);
+    const rearOptimalHeight = (rearMinHeight + rearMaxHeight) / 2 - (engineWeight * engineWeightFactor);
+
+    const frontOptimalHeightNurburgring = Math.max(frontCurrentHeight * nurburgringFactor, frontMinHeight) + (engineWeight * engineWeightFactor);
+    const rearOptimalHeightNurburgring = Math.max(rearCurrentHeight * nurburgringFactor, rearMinHeight) - (engineWeight * engineWeightFactor);
+
+    const frontOptimalHeightTsukuba = Math.max(frontCurrentHeight * tsukubaFactor, frontMinHeight) + (engineWeight * engineWeightFactor);
+    const rearOptimalHeightTsukuba = Math.max(rearCurrentHeight * tsukubaFactor, rearMinHeight) - (engineWeight * engineWeightFactor);
+
+    document.getElementById("engineWeightDisplay").innerText = engineWeight.toFixed(2);
+    document.getElementById("frontSpringRate").innerText = frontSpringRate.toFixed(2);
+    document.getElementById("rearSpringRate").innerText = rearSpringRate.toFixed(2);
+    document.getElementById("frontSpringFreqFromRate").innerText = frontSpringFreqFromRate.toFixed(2);
+    document.getElementById("rearSpringFreqFromRate").innerText = rearSpringFreqFromRate.toFixed(2);
+    document.getElementById("frontOptimalHeightStreet").innerText = frontOptimalHeight.toFixed(2);
+    document.getElementById("rearOptimalHeightStreet").innerText = rearOptimalHeight.toFixed(2);
+    document.getElementById("frontOptimalHeightNurburgring").innerText = frontOptimalHeightNurburgring.toFixed(2);
+    document.getElementById("rearOptimalHeightNurburgring").innerText = rearOptimalHeightNurburgring
+
 
         function getEngineWeight() {
-            // 省略（先程のgetEngineWeight関数と同じ）
+    const engineType = document.getElementById("engineType").value;
+    let engineWeight;
+
+    switch (engineType) {
+        case "NA":
+            engineWeight = 150;
+            break;
+        case "Turbo":
+            engineWeight = 200;
+            break;
+        case "Supercharged":
+            engineWeight = 220;
+            break;
+        case "V12":
+            engineWeight = 250;
+            break;
+        default:
+            engineWeight = 150;
+    }
+    return engineWeight;
+}
+
         }
     </script>
 </head>
@@ -80,12 +140,12 @@
 <td id="rearOptimalHeightStreet">-</td>
 </tr>
 <tr>
-<td>最適車高 (ニュルブルクリンク) (mm)</td>
+<td>最適車高 (ニュル) (mm)</td>
 <td id="frontOptimalHeightNurburgring">-</td>
 <td id="rearOptimalHeightNurburgring">-</td>
 </tr>
 <tr>
-<td>最適車高 (筑波サーキット) (mm)</td>
+<td>最適車高 (筑波) (mm)</td>
 <td id="frontOptimalHeightTsukuba">-</td>
 <td id="rearOptimalHeightTsukuba">-</td>
 </tr>
