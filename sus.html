@@ -50,7 +50,7 @@
             const frontOptimalHeightTsukuba = Math.max(frontCurrentHeight * tsukubaFactor, frontMinHeight) + (engineWeight * engineWeightFactor);
             const rearOptimalHeightTsukuba = Math.max(rearCurrentHeight * tsukubaFactor, rearMinHeight) - (engineWeight * engineWeightFactor);
 
-                        document.getElementById("engineWeightDisplay").innerText = (engineWeight / 10).toFixed(2); // 10g単位からkg単位に変換
+            document.getElementById("engineWeightDisplay").innerText = (engineWeight / 10).toFixed(2); // 10g単位からkg単位に変換
             document.getElementById("frontWeightDisplay").innerText = (frontWeight / 10).toFixed(2); // 10g単位からkg単位に変換
             document.getElementById("rearWeightDisplay").innerText = (rearWeight / 10).toFixed(2); // 10g単位からkg単位に変換
             document.getElementById("frontSpringRate").innerText = frontSpringRate.toFixed(2);
@@ -71,19 +71,19 @@
 
             switch (engineType) {
                 case "NA":
-                    engineWeight = 1500;
+                    engineWeight = 150;
                     break;
                 case "Turbo":
-                    engineWeight = 2000;
+                    engineWeight = 200;
                     break;
                 case "Supercharged":
-                    engineWeight = 2200;
+                    engineWeight = 220;
                     break;
                 case "V12":
-                    engineWeight = 2500;
+                    engineWeight = 250;
                     break;
                 default:
-                    engineWeight = 1500;
+                    engineWeight = 150;
             }
             return engineWeight;
         }
