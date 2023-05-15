@@ -58,38 +58,38 @@
           const tsukuba = document.getElementById("tsukuba").checked;
           const shutoExpressway = document.getElementById("shutoExpressway").checked;
 
-        let roadMu;
-        if (nurburgring || tsukuba) {
-            roadMu = 1.05; // サーキットの平均ミュー
-        } else if (shutoExpressway) {
-            roadMu = 0.95; // 一般道路の平均ミュー
-        }
+let roadMu;
+if (nurburgring || tsukuba) {
+    roadMu = 1.05; // サーキットの平均ミュー
+} else if (shutoExpressway) {
+    roadMu = 0.95; // 一般道路の平均ミュー
+}
 
-        const frontHeight = parseFloat(document.getElementById("frontHeight").value);
-        const rearHeight = parseFloat(document.getElementById("rearHeight").value);
-        const vehicleWeight = parseFloat(document.getElementById("vehicleWeight").value);
-        const weightDistribution = parseFloat(document.getElementById("weightDistribution").value) / 100;
+const frontHeight = parseFloat(document.getElementById("frontHeight").value);
+const rearHeight = parseFloat(document.getElementById("rearHeight").value);
+const vehicleWeight = parseFloat(document.getElementById("vehicleWeight").value);
+const weightDistribution = parseFloat(document.getElementById("weightDistribution").value) / 100;
 
-        const minHeight = parseFloat(document.getElementById("minHeight").value);
-        const maxHeight = parseFloat(document.getElementById("maxHeight").value);
+const minHeight = parseFloat(document.getElementById("minHeight").value);
+const maxHeight = parseFloat(document.getElementById("maxHeight").value);
 
-        // 重心移動による車高変化の計算
-        const frontWeight = vehicleWeight * weightDistribution;
-        const rearWeight = vehicleWeight * (1 - weightDistribution);
-        const frontHeightChange = frontWeight / vehicleWeight * (rearHeight - frontHeight);
-        const rearHeightChange = rearWeight / vehicleWeight * (frontHeight - rearHeight);
-        let newFrontHeight = frontHeight + frontHeightChange;
-        let newRearHeight = rearHeight + rearHeightChange;
+// 重心移動による車高変化の計算
+const frontWeight = vehicleWeight * weightDistribution;
+const rearWeight = vehicleWeight * (1 - weightDistribution);
+const frontHeightChange = frontWeight / vehicleWeight * (rearHeight - frontHeight);
+const rearHeightChange = rearWeight / vehicleWeight * (frontHeight - rearHeight);
+let newFrontHeight = frontHeight + frontHeightChange;
+let newRearHeight = rearHeight + rearHeightChange;
 
-        // 最低車高と最大車高の範囲内に収まるように調整
-        newFrontHeight = Math.max(minHeight, Math.min(maxHeight, newFrontHeight));
-        newRearHeight = Math.max(minHeight, Math.min(maxHeight, newRearHeight));
+// 最低車高と最大車高の範囲内に収まるように調整
+newFrontHeight = Math.max(minHeight, Math.min(maxHeight, newFrontHeight));
+newRearHeight = Math.max(minHeight, Math.min(maxHeight, newRearHeight));
 
-        // 計算結果を表示
-        const results = document.getElementById("results");
-        results.innerHTML = `<p>新しいフロント車高: ${newFrontHeight.toFixed(2)} mm</p>
-                             <p>新しいリア車高: ${newRearHeight.toFixed(2)} mm</p>`;
-        });
+// 計算結果を表示
+const results = document.getElementById("results");
+results.innerHTML = `<p>新しいフロント車高: ${newFrontHeight.toFixed(2)} mm</p>
+                     <p>新しいリア車高: ${newRearHeight.toFixed(2)} mm</p>`;
+});
     </script>
 </body>
 </html>
