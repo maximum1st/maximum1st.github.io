@@ -52,11 +52,8 @@
         <label for="springFrequencyRear">リアスプリング周波数:</label>
         <input type="number" id="springFrequencyRear" step="any" required>
         <br>
-        <label for="currentGroundClearanceFront">フロント現在地上高:</label>
-        <input type="number" id="currentGroundClearanceFront" step="any" required>
-        <br>
-        <label for="currentGroundClearanceRear">リア現在地上高:</label>
-        <input type="number" id="currentGroundClearanceRear" step="any" required>
+        document.getElementById("average_current_height").innerText = `平均現在地上高: ${averageCurrentHeight.toFixed(2)} mm`;
+
         <br>
         <button type="submit">計算</button>
     </form>
@@ -77,8 +74,13 @@
     </p>
     <script>
         // ここにJavaScriptの計算処理を記述します。
+    document.getElementById("calculate").addEventListener("click", function() {
     document.getElementById("calculationForm").addEventListener("submit", function (event) {
     event.preventDefault();
+
+    const frontCurrentHeight = parseFloat(document.getElementById("front_current_height").value);
+    const rearCurrentHeight = parseFloat(document.getElementById("rear_current_height").value);
+    const averageCurrentHeight = (frontCurrentHeight + rearCurrentHeight) / 2;
 
     const tireCompound = parseFloat(document.getElementById("tireCompound").value);
     const suspensionType = parseFloat(document.getElementById("suspensionType").value);
