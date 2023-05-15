@@ -3,97 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>車両セッティング計算</title>
+    <title>ダウンフォースを考慮した高度な車高調整シミュレーター</title>
+    <style>
+        input[type=number] {
+            width: 80px;
+        }
+    </style>
 </head>
 <body>
-    <form id="settingsForm">
-        <label for="tireCompound">タイヤコンパウンド:</label>
-        <select id="tireCompound" required>
-            <option value="0.7">コンフォートハード</option>
-            <option value="0.8">コンフォートミディアム</option>
-            <option value="0.9">コンフォートソフト</option>
-            <option value="1.0">スポーツハード</option>
-            <option value="1.1">スポーツミディアム</option>
-            <option value="1.2">スポーツソフト</option>
-            <option value="1.3">レーシングハード</option>
-            <option value="1.4">レーシングミディアム</option>
-            <option value="1.5">レーシングソフト</option>
+    <h1>ダウンフォースを考慮した高度な車高調整シミュレーター</h1>
+    <p>
+        総重量: <input type="number" id="totalWeight" value="1500"> kg<br>
+        前輪重量配分 (%): <input type="number" id="frontWeightDistribution" value="50"> %<br>
+        前輪の初期車高: <input type="number" id="frontInitialHeight" value="150"> mm<br>
+        後輪の初期車高: <input type="number" id="rearInitialHeight" value="150"> mm<br>
+        前輪のスプリングレート: <input type="number" id="frontSpringRate" value="5"> N/mm<br>
+        後輪のスプリングレート: <input type="number" id="rearSpringRate" value="5"> N/mm<br>
+        前輪のダウンフォース: <input type="number" id="frontDownforce" value="100"> N<br>
+        後輪のダウンフォース: <input type="number" id="rearDownforce" value="100"> N<br>
+        タイヤの種類:
+        <select id="tireType">
+            <option value="1.0">コンフォートハード</option>
+            <option value="1.1">コンフォートミディアム</option>
+            <option value="1.2">コンフォートソフト</option>
+            <option value="1.3">スポーツハード</option>
+            <option value="1.4">スポーツミディアム</option>
+            <option value="1.5">スポーツソフト</option>
+            <option value="1.6">レーシングハード</option>
+            <option value="1.7">レーシングミディアム</option>
+            <option value="1.8">レーシングソフト</option>
         </select>
-        <br>
-        <label>コース:</label>
-        <input type="checkbox" id="nurburgring" value="nurburgring"> ニュルブルクリンク
-        <input type="checkbox" id="tsukuba" value="tsukuba"> 筑波サーキット
-        <input type="checkbox" id="shutoExpressway" value="shutoExpressway"> 首都高速道路
-        <br>
-        <label for="frontHeight">フロント車高:</label>
-        <input type="number" id="frontHeight" required>
-        <br>
-        <label for="rearHeight">リア車高:</label>
-        <input type="number" id="rearHeight" required>
-        <br>
-        <label for="vehicleWeight">車両重量:</label>
-        <input type="number" id="vehicleWeight" required>
-        <br>
-        <label for="weightDistribution">重量配分（前）(%):</label>
-        <input type="number" id="weightDistribution" required>
-        <br>
-        <label for="minHeight">最低車高:</label>
-        <input type="number" id="minHeight" required>
-        <br>
-        <label for="maxHeight">最大車高:</label>
-        <input type="number" id="maxHeight" required>
-        <br>
-        <label for="downforce">ダウンフォース (前/後):</label>
-        <input type="number" id="frontDownforce" required>
-        <input type="number" id="rearDownforce" required>
-        <br>
-        <input type="submit" value="計算">
-    </form>
-    <div id="results">
-        </div>
-<script>
-document.getElementById("settingsForm").addEventListener("submit", function (event) {
-event.preventDefault();
-      const tireCompound = parseFloat(document.getElementById("tireCompound").value);
-
-      const nurburgring = document.getElementById("nurburgring").checked;
-      const tsukuba = document.getElementById("tsukuba").checked;
-      const shutoExpressway = document.getElementById("shutoExpressway").checked;
-let roadMu;
-if (nurburgring || tsukuba) {
-roadMu = 1.05; // サーキットの平均ミュー
-} else if (shutoExpressway) {
-roadMu = 0.95; // 一般道路の平均ミュー
-}
-
-const frontHeight = parseFloat(document.getElementById("frontHeight").value);
-const rearHeight = parseFloat(document.getElementById("rearHeight").value);
-const vehicleWeight = parseFloat(document.getElementById("vehicleWeight").value);
-const weightDistribution = parseFloat(document.getElementById("weightDistribution").value) / 100;
-
-const minHeight = parseFloat(document.getElementById("minHeight").value);
-const maxHeight = parseFloat(document.getElementById("maxHeight").value);
-
+        <button onclick="calculateOptimalHeight()">最適車高を計算</button>
+    </p>
+    <p id="result"></p>
+    <script>
+    function calculateOptimalHeight() {
+        const totalWeight = parseFloat(document.getElementById("totalWeight").value);
+        const frontWeightDistribution = parseFloat(document.getElementById("frontWeightDistribution").value) / 100;
+        const frontInitialHeight = parseFloat(document.getElementById("frontInitialHeight").value);
+        const rearInitialHeight = parseFloat(document.getElementById("rearInitialHeight").value);
+        const frontSpringRate = parseFloat(document.getElementById("frontSpringRate").value);
+        const rearSpringRate = parseFloat(document.getElementById("rearSpringRate").value);
 const frontDownforce = parseFloat(document.getElementById("frontDownforce").value);
 const rearDownforce = parseFloat(document.getElementById("rearDownforce").value);
+const tireType = parseFloat(document.getElementById("tireType").value);
+                const frontWeight = totalWeight * frontWeightDistribution;
+        const rearWeight = totalWeight * (1 - frontWeightDistribution);
 
-// 重心移動による車高変化の計算
-const frontWeight = vehicleWeight * weightDistribution;
-const rearWeight = vehicleWeight * (1 - weightDistribution);
-const frontHeightChange = frontWeight / vehicleWeight * (rearHeight - frontHeight) + frontDownforce;
-const rearHeightChange = rearWeight / vehicleWeight * (frontHeight - rearHeight) + rearDownforce;
-let newFrontHeight = frontHeight + frontHeightChange;
-let newRearHeight = rearHeight + rearHeightChange;
+        const frontEffectiveWeight = frontWeight + frontDownforce / 9.81;
+        const rearEffectiveWeight = rearWeight + rearDownforce / 9.81;
 
-// 最低車高と最大車高の範囲内に収まるように調整
-newFrontHeight = Math.max(minHeight, Math.min(maxHeight, newFrontHeight));
-newRearHeight = Math.max(minHeight, Math.min(maxHeight, newRearHeight));
+        const frontCompression = frontEffectiveWeight / 2 * 9.81 / frontSpringRate;
+        const rearCompression = rearEffectiveWeight / 2 * 9.81 / rearSpringRate;
 
-// 計算結果を表示
-const results = document.getElementById("results");
-results.innerHTML = `<p>新しいフロント車高: ${newFrontHeight.toFixed(2)} mm</p>
-                     <p>新しいリア車高: ${newRearHeight.toFixed(2)} mm</p>`;
-});
+        const frontOptimalHeight = frontInitialHeight - frontCompression;
+        const rearOptimalHeight = rearInitialHeight - rearCompression;
+
+        const optimalHeight = {
+            front: frontOptimalHeight * tireType,
+            rear: rearOptimalHeight * tireType
+        };
+
+        document.getElementById("result").innerHTML = `最適な車高:<br>前輪: ${optimalHeight.front.toFixed(2)} mm<br>後輪: ${optimalHeight.rear.toFixed(2)} mm`;
+    }
 </script>
 </body>
 </html>
