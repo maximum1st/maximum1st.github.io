@@ -51,9 +51,10 @@
         <br>
         <label for="springFrequencyRear">リアスプリング周波数:</label>
         <input type="number" id="springFrequencyRear" step="any" required>
-        <br>
+        <br><script>
         document.getElementById("average_current_height").innerText = `平均現在地上高: ${averageCurrentHeight.toFixed(2)} mm`;
-
+        </script>
+        
         <br>
         <button type="submit">計算</button>
     </form>
