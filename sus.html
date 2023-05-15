@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>サスペンション計算ツール</title>
+    <title>車両セッティング計算</title>
 </head>
 <body>
-    <h1>サスペンション計算ツール</h1>
-    <form id="suspensionForm">
+    <form id="settingsForm">
         <label for="tireCompound">タイヤコンパウンド:</label>
         <select id="tireCompound" required>
             <option value="0.7">コンフォートハード</option>
@@ -21,122 +20,77 @@
             <option value="1.5">レーシングソフト</option>
         </select>
         <br>
-        <label for="streetSuspension">ストリートサスペンション:</label>
-        <input type="checkbox" id="streetSuspension">
+        <label>コース:</label>
+        <input type="checkbox" id="nurburgring" value="nurburgring"> ニュルブルクリンク
+        <input type="checkbox" id="tsukuba" value="tsukuba"> 筑波サーキット
+        <input type="checkbox" id="shutoExpressway" value="shutoExpressway"> 首都高速道路
         <br>
-        <label for="semiRacingSuspension">セミレーシングサスペンション:</label>
-        <input type="checkbox" id="semiRacingSuspension">
+        <label for="frontHeight">フロント車高:</label>
+        <input type="number" id="frontHeight" required>
         <br>
-        <label for="racingSuspension">レーシングサスペンション:</label>
-        <input type="checkbox" id="racingSuspension">
-        <br>
-        <label for="engineType">エンジンタイプ (小型/大型/中型):</label>
-        <select id="engineType" required>
-            <option value="small">小型</option>
-            <option value="medium">中型</option>
-            <option value="large">大型</option>
-        </select>
-        <br>
-        <label for="customEngineWeight">カスタムエンジン重量:</label>
-        <input type="number" id="customEngineWeight" step="any" required>
+        <label for="rearHeight">リア車高:</label>
+        <input type="number" id="rearHeight" required>
         <br>
         <label for="vehicleWeight">車両重量:</label>
-        <input type="number" id="vehicleWeight" step="any" required>
+        <input type="number" id="vehicleWeight" required>
         <br>
-        <label for="weightDistributionFront">重量配分（前）(%):</label>
-        <input type="number" id="weightDistributionFront" step="any" required>
+        <label for="weightDistribution">重量配分（前）(%):</label>
+        <input type="number" id="weightDistribution" required>
         <br>
-        <label for="springFrequencyFront">フロントスプリング周波数:</label>
-        <input type="number" id="springFrequencyFront" step="any" required>
+        <label for="minHeight">最低車高:</label>
+        <input type="number" id="minHeight" required>
         <br>
-        <label for="springFrequencyRear">リアスプリング周波数:</label>
-        <input type="number" id="springFrequencyRear" step="any" required>
-        <br><script>
-        document.getElementById("average_current_height").innerText = `平均現在地上高: ${averageCurrentHeight.toFixed(2)} mm`;
-        </script>
-        
+        <label for="maxHeight">最大車高:</label>
+        <input type="number" id="maxHeight" required>
         <br>
-        <button type="submit">計算</button>
+        <input type="submit" value="計算">
     </form>
-    <h2>計算結果</h2>
-    <p id="results">
-        F.スプリングレート: N/A<br>
-        R.スプリングレート: N/A<br>
-        F.スプリング周波数（レートから算出）: N/A<br>
-        R.スプリング周波数（レートから算出）: N/A<br>
-        F.最適周波数（ニュルブルクリンク）: N/A<br>
-        R.最適周波数（ニュルブルクリンク）: N/A<br>
-        F.最適周波数（筑波）: N/A<br>
-        R.最適周波数（筑波）: N/A<br>
-        総重量: N/A<br>
-        F.重量: N/A<br>
-        R.重量: N/A<br>
-        エンジン重量: N/A
-    </p>
+    <div id="results">
+        <!-- 計算結果表示 -->
+    </div>
     <script>
-        // ここにJavaScriptの計算処理を記述します。
-    document.getElementById("calculate").addEventListener("click", function() {
-    document.getElementById("calculationForm").addEventListener("submit", function (event) {
-    event.preventDefault();
+        document.getElementById("settingsForm").addEventListener("submit", function (event) {
+          event.preventDefault();
 
-    const frontCurrentHeight = parseFloat(document.getElementById("front_current_height").value);
-    const rearCurrentHeight = parseFloat(document.getElementById("rear_current_height").value);
-    const averageCurrentHeight = (frontCurrentHeight + rearCurrentHeight) / 2;
+          const tireCompound = parseFloat(document.getElementById("tireCompound").value);
 
-    const tireCompound = parseFloat(document.getElementById("tireCompound").value);
-    const suspensionType = parseFloat(document.getElementById("suspensionType").value);
-    const engineType = document.getElementById("engineType").value;
-    const customEngineWeight = parseFloat(document.getElementById("customEngineWeight").value);
-    const carWeight = parseFloat(document.getElementById("carWeight").value);
-    const weightDistributionFront = parseFloat(document.getElementById("weightDistributionFront").value);
-    const springFrequencyFront = parseFloat(document.getElementById("springFrequencyFront").value);
-    const springFrequencyRear = parseFloat(document.getElementById("springFrequencyRear").value);
-    const currentGroundClearanceFront = parseFloat(document.getElementById("currentGroundClearanceFront").value);
-    const currentGroundClearanceRear = parseFloat(document.getElementById("currentGroundClearanceRear").value);
+          const nurburgring = document.getElementById("nurburgring").checked;
+          const tsukuba = document.getElementById("tsukuba").checked;
+          const shutoExpressway = document.getElementById("shutoExpressway").checked;
 
-    // 計算処理
-    const frontWeight = carWeight * weightDistributionFront / 100;
-    const rearWeight = carWeight - frontWeight;
-    const totalWeight = frontWeight + rearWeight;
+        let roadMu;
+        if (nurburgring || tsukuba) {
+            roadMu = 1.05; // サーキットの平均ミュー
+        } else if (shutoExpressway) {
+            roadMu = 0.95; // 一般道路の平均ミュー
+        }
 
-    const engineWeight = engineType === "small" ? 0.7 * customEngineWeight : (engineType === "medium" ? 1.0 * customEngineWeight : 1.3 * customEngineWeight);
+        const frontHeight = parseFloat(document.getElementById("frontHeight").value);
+        const rearHeight = parseFloat(document.getElementById("rearHeight").value);
+        const vehicleWeight = parseFloat(document.getElementById("vehicleWeight").value);
+        const weightDistribution = parseFloat(document.getElementById("weightDistribution").value) / 100;
 
-    const frontSpringRate = frontWeight / tireCompound * suspensionType * 1000;
-    const rearSpringRate = rearWeight / tireCompound * suspensionType * 1000;
+        const minHeight = parseFloat(document.getElementById("minHeight").value);
+        const maxHeight = parseFloat(document.getElementById("maxHeight").value);
 
-    const frontSpringFrequency = springFrequencyFront * 2 * Math.PI;
-    const rearSpringFrequency = springFrequencyRear * 2 * Math.PI;
+        // 重心移動による車高変化の計算
+        const frontWeight = vehicleWeight * weightDistribution;
+        const rearWeight = vehicleWeight * (1 - weightDistribution);
+        const frontHeightChange = frontWeight / vehicleWeight * (rearHeight - frontHeight);
+        const rearHeightChange = rearWeight / vehicleWeight * (frontHeight - rearHeight);
+        let newFrontHeight = frontHeight + frontHeightChange;
+        let newRearHeight = rearHeight + rearHeightChange;
 
-    const optimalFrequencyFrontNurburgring = frontSpringFrequency * 1.3;
-    const optimalFrequencyRearNurburgring = rearSpringFrequency * 1.3;
+        // 最低車高と最大車高の範囲内に収まるように調整
+        newFrontHeight = Math.max(minHeight, Math.min(maxHeight, newFrontHeight));
+        newRearHeight = Math.max(minHeight, Math.min(maxHeight, newRearHeight));
 
-    const optimalFrequencyFrontTsukuba = frontSpringFrequency * 1.4;
-    const optimalFrequencyRearTsukuba = rearSpringFrequency * 1.4;
-
-    // 計算結果の表示
-    document.getElementById("results").innerHTML = `
-        F.スプリングレート: ${frontSpringRate.toFixed(2)} N/mm<br>
-        R.スプリングレート: ${rearSpringRate.toFixed(2)} N/mm<br>
-        F.スプリング周波数（レートから算出）: ${frontSpringFrequency.toFixed(2)} Hz<br>
-        R.スプリング周波数（レートから算出）: ${rearSpringFrequency.toFixed(2)} Hz<br>
-        F.最適周波数（ニュルブルクリンク）: ${optimalFrequencyFrontNurburgring.toFixed(2)} Hz<br>
-        R.最適周波数（ニュルブルクリンク）: ${optimalFrequencyRearNurburgring.toFixed(2)} Hz<br>
-        F.最適周波数（筑波）: ${optimalFrequencyFrontTsukuba.toFixed(2)} Hz<br>
-        R.最適周波数（筑波）: ${optimalFrequencyRearTsukuba.toFixed(2)} Hz<br>
-        総重量: ${totalWeight.toFixed(2)} kg<br>
-        F.重量: ${frontWeight.toFixed(2)} kg<br>
-        R.重量: ${rearWeight.toFixed(2)} kg<br>
-        エンジン重量: ${engineWeight.toFixed(2)} kg
-    `;
-});
-
-
+        // 計算結果を表示
+        const results = document.getElementById("results");
+        results.innerHTML = `<p>新しいフロント車高: ${newFrontHeight.toFixed(2)} mm</p>
+                             <p>新しいリア車高: ${newRearHeight.toFixed(2)} mm</p>`;
+        });
     </script>
 </body>
 </html>
-
-
-
-
-
 
