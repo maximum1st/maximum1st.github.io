@@ -3,146 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>レーシングサスペンション計算</title>
-    <style>
-        .form-container {
-            display: flex;
-            flex-direction: column;
-            max-width: 250px;
-            margin: left;
-        }
-        input, select, button {
-            max-width: 100%;
-        }
-    </style>
+    <title>サスペンションチューニング計算ツール</title>
     <script>
-        function calculateSuspension() {
-            const tireCompoundFactors = {
-                "コンフォートハード": 0.7,
-                "コンフォートミディアム": 0.8,
-                "コンフォートソフト": 0.9,
-                "スポーツハード": 1.0,
-                "スポーツミディアム": 1.1,
-                "スポーツソフト": 1.2,
-                "レーシングハード": 1.3,
-                "レーシングミディアム": 1.4,
-                "レーシングソフト": 1.5
-            };
+        function calculate() {
+            // 入力値を取得
+            let weight = parseFloat(document.getElementById("weight").value);
+            let weightDistribution = parseFloat(document.getElementById("weightDistribution").value) / 100;
+            let springFrequencyFront = parseFloat(document.getElementById("springFrequencyFront").value);
+            let springFrequencyRear = parseFloat(document.getElementById("springFrequencyRear").value);
 
-            const tireCompound = document.getElementById("tireCompound").value;
-            const tireFactor = tireCompoundFactors[tireCompound];
+            // 計算
+            let frontWeight = weight * weightDistribution;
+            let rearWeight = weight * (1 - weightDistribution);
 
-            const engineWeight = getEngineWeight();
-            const customEngineWeight = parseFloat(document.getElementById("customEngineWeight").value);
-            const totalWeight = parseFloat(document.getElementById("totalWeight").value);
-            const weightRatio = parseFloat(document.getElementById("weightRatio").value) / 100;
-            const frontWeight = totalWeight * weightRatio;
-            const rearWeight = totalWeight * (1 - weightRatio);
-            const frontSpringFreq = parseFloat(document.getElementById("frontSpringFreq").value);
-            const rearSpringFreq = parseFloat(document.getElementById("rearSpringFreq").value);
-            const frontCurrentHeight = parseFloat(document.getElementById("frontCurrentHeight").value);
-            const rearCurrentHeight = parseFloat(document.getElementById("rearCurrentHeight").value);
+            let springRateFront = (springFrequencyFront * springFrequencyFront * frontWeight) / 9.81;
+            let springRateRear = (springFrequencyRear * springFrequencyRear * rearWeight) / 9.81;
 
-            const defaultAverageHeight = 100; // 適切な平均値に変更してください。
+            let nurburgringFrequencyFront = springFrequencyFront * 1.1;
+            let nurburgringFrequencyRear = springFrequencyRear * 1.1;
 
-            const nurburgringFactor = 0.8;
-            const tsukubaFactor = 0.9;
+            let tsukubaFrequencyFront = springFrequencyFront * 0.9;
+            let tsukubaFrequencyRear = springFrequencyRear * 0.9;
 
-            const frontSpringRate = (Math.pow((frontSpringFreq * 2 * Math.PI), 2)) * (frontWeight + engineWeight + customEngineWeight) * tireFactor;
-            const rearSpringRate = (Math.pow((rearSpringFreq * 2 * Math.PI), 2)) * (rearWeight + engineWeight + customEngineWeight) * tireFactor;
-
-            const frontSpringFreqFromRate = Math.sqrt(frontSpringRate / (frontWeight + engineWeight + customEngineWeight)) / (2 * Math.PI);
-            const rearSpringFreqFromRate = Math.sqrt(rearSpringRate / (rearWeight + engineWeight + customEngineWeight)) / (2 * Math.PI);
-
-            const optimalFreqNurburgring = calculateOptimalFreqNurburgring(frontCurrentHeight, rearCurrentHeight, defaultAverageHeight);
-            const optimalFreqTsukuba = calculateOptimalFreqTsukuba(frontCurrentHeight, rearCurrentHeight, defaultAverageHeight);
-
-            document.getElementById("frontSpringRate").innerText = frontSpringRate.toFixed(2) + " N/mm";
-            document.getElementById("rearSpringRate").innerText = rearSpringRate.toFixed(2) + " N/mm";
-
-            document.getElementById("frontSpringFreqFromRate").innerText = frontSpringFreqFromRate.toFixed(2) + " Hz";
-            document.getElementById("rearSpringFreqFromRate").innerText = rearSpringFreqFromRate.toFixed(2) + " Hz";
-
-            document.getElementById("optimalFreqNurburgring").innerText = optimalFreqNurburgring.toFixed(2) + " Hz";
-            document.getElementById("optimalFreqTsukuba").innerText = optimalFreqTsukuba.toFixed(2) + " Hz";
-        }
-
-        function calculateOptimalFreqNurburgring(frontCurrentHeight, rearCurrentHeight, defaultAverageHeight) {
-            return (frontCurrentHeight + rearCurrentHeight) / (2 * defaultAverageHeight);
-        }
-
-        function calculateOptimalFreqTsukuba(frontCurrentHeight, rearCurrentHeight, defaultAverageHeight) {
-            return (frontCurrentHeight + rearCurrentHeight) / (2 * defaultAverageHeight) * 1.2;
-        }
-
-        function getEngineWeight() {
-            const engineType = document.getElementById("engineType").value;
-            switch (engineType) {
-                case "0":
-                    return 0;
-                case "1":
-                    return 20;
-                case "2":
-                    return 40;
-                case "3":
-                    return 60;
-                default:
-                    return 0;
-            }
+            // 結果を表示
+            document.getElementById("resultSpringRateFront").innerText = springRateFront.toFixed(2) + " N/mm";
+            document.getElementById("resultSpringRateRear").innerText = springRateRear.toFixed(2) + " N/mm";
+            document.getElementById("resultSpringFrequencyFront").innerText = springFrequencyFront.toFixed(2) + " Hz";
+            document.getElementById("resultSpringFrequencyRear").innerText = springFrequencyRear.toFixed(2) + " Hz";
+            document.getElementById("resultNurburgringFrequencyFront").innerText = nurburgringFrequencyFront.toFixed(2) + " Hz";
+            document.getElementById("resultNurburgringFrequencyRear").innerText = nurburgringFrequencyRear.toFixed(2) + " Hz";
+            document.getElementById("resultTsukubaFrequencyFront").innerText = tsukubaFrequencyFront.toFixed(2) + " Hz";
+            document.getElementById("resultTsukubaFrequencyRear").innerText = tsukubaFrequencyRear.toFixed(2) + " Hz";
         }
     </script>
 </head>
 <body>
-    <h1>レーシングサスペンション計算</h1>
-    <div class="form-container">
-        <label for="tireCompound">タイヤコンパウンド:</label>
-        <select id="tireCompound">
-            <option value="コンフォートハード">コンフォートハード</option>
-            <option value="コンフォートミディアム">コンフォートミディアム</option>
-            <option value="コンフォートソフト">コンフォートソフト</option>
-            <option value="スポーツハード">スポーツハード</option>
-            <option value="スポーツミディアム">スポーツミディアム</option>
-            <option value="スポーツソフト">スポーツソフト</option>
-            <option value="レーシングハード">レーシングハード</option>
-            <option value="レーシングミディアム">レーシングミディアム</option>
-            <option value="レーシングソフト">レーシングソフト</option>
-        </select>
-        <label for="engineType">エンジンタイプ:</label>
-        <select id="engineType">
-            <option value="0">スタンダード</option>
-            <option value="1">チューニング1</option>
-            <option value="2">チューニング2</option>
-            <option value="3">チューニング3</option>
-        </select>
-        <label for="customEngineWeight">カスタムエンジン重量:</label>
-        <input type="number" id="customEngineWeight" value="0">
-        <label for="totalWeight">車両重量:</label>
-        <input type="number" id="totalWeight" value="1000">
-        <label for="weightRatio">重量配分（前）(%):</label>
-        <input type="number" id="weightRatio" value="50">
-        <label for="frontSpringFreq">フロントスプリング周波数:</label>
-        <input type="number" id="frontSpringFreq" value="1.8">
-        <label for="rearSpringFreq">リアスプリング周波数:</label>
-        <input type="number" id="rearSpringFreq" value="1.8">
-        <label for="frontCurrentHeight">フロント現在地上高:</label>
-        <input type="number" id="frontCurrentHeight" value="100">
-        <label for="rearCurrentHeight">リア現在地上高:</label>
-        <input type="number" id="rearCurrentHeight" value="100">
-
-        <button onclick="calculateSuspension()">計算する</button>
-
-        <div>
-            <p>F.スプリングレート: <span id="frontSpringRate"></span></p>
-            <p>R.スプリングレート: <span id="rearSpringRate"></span></p>
-            <p>F.スプリング周波数（レートから算出）: <span id="frontSpringFreqFromRate"></span></p>
-            <p>R.スプリング周波数（レートから算出）: <span id="rearSpringFreqFromRate"></span></p>
-            <p>最適周波数（ニュルブルクリンク）: <span id="optimalFreqNurburgring"></span></p>
-            <p>最適周波数（筑波）: <span id="optimalFreqTsukuba"></span></p>
-        </div>
-    </div>
+    <h1>サスペンションチューニング計算ツール</h1>
+    <form onsubmit="event.preventDefault(); calculate();">
+        <label for="weight">車重 (kg):</label>
+        <input type="number" id="weight" step="any" required>
+        <br>
+        <label for="weightDistribution">重量配分 (前後 %):</label>
+        <input type="number" id="weightDistribution" step="any" required>
+        <br>
+        <label for="springFrequencyFront">F.スプリング周波数 (Hz):</label>
+        <input type="number" id="springFrequencyFront" step="any" required>
+        <br>
+        <label for="springFrequencyRear">R.スプリング周波数 (Hz):</label>
+        <input type="number" id="springFrequencyRear" step="any" required>
+        <br>
+        <input type="submit" value="計算">
+    </form>
+    <h2>計算結果</h2>
+    <p>F.スプリングレート: <span id="resultSpringRateFront"></span></p>
+    <p>R.スプリングレート: <span id="resultSpringRateRear"></span></p>
+    <p>F.スプリング周波数（レートから算出）: <span id="resultSpringFrequencyFront"></span></p>
+    <p>R.スプリング周波数（レートから算出）: <span id="resultSpringFrequencyRear"></span></p>
+    <p>F.最適周波数（ニュルブルクリンク）: <span id="resultNurburgringFrequencyFront"></span></p>
+    <p>R.最適周波数（ニュルブルクリンク）: <span id="resultNurburgringFrequencyRear"></span></p>
+    <p>F.最適周波数（筑波）: <span id="resultTsukubaFrequencyFront"></span></p>
+    <p>R.最適周波数（筑波）: <span id="resultTsukubaFrequencyRear"></span></p>
 </body>
 </html>
-
 
 
 
