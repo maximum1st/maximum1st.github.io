@@ -43,26 +43,27 @@
         <label for="maxHeight">最大車高:</label>
         <input type="number" id="maxHeight" required>
         <br>
+        <label for="downforce">ダウンフォース (前/後):</label>
+        <input type="number" id="frontDownforce" required>
+        <input type="number" id="rearDownforce" required>
+        <br>
         <input type="submit" value="計算">
     </form>
     <div id="results">
-        <!-- 計算結果表示 -->
-    </div>
-    <script>
-        document.getElementById("settingsForm").addEventListener("submit", function (event) {
-          event.preventDefault();
+        </div>
+<script>
+document.getElementById("settingsForm").addEventListener("submit", function (event) {
+event.preventDefault();
+      const tireCompound = parseFloat(document.getElementById("tireCompound").value);
 
-          const tireCompound = parseFloat(document.getElementById("tireCompound").value);
-
-          const nurburgring = document.getElementById("nurburgring").checked;
-          const tsukuba = document.getElementById("tsukuba").checked;
-          const shutoExpressway = document.getElementById("shutoExpressway").checked;
-
+      const nurburgring = document.getElementById("nurburgring").checked;
+      const tsukuba = document.getElementById("tsukuba").checked;
+      const shutoExpressway = document.getElementById("shutoExpressway").checked;
 let roadMu;
 if (nurburgring || tsukuba) {
-    roadMu = 1.05; // サーキットの平均ミュー
+roadMu = 1.05; // サーキットの平均ミュー
 } else if (shutoExpressway) {
-    roadMu = 0.95; // 一般道路の平均ミュー
+roadMu = 0.95; // 一般道路の平均ミュー
 }
 
 const frontHeight = parseFloat(document.getElementById("frontHeight").value);
@@ -73,11 +74,14 @@ const weightDistribution = parseFloat(document.getElementById("weightDistributio
 const minHeight = parseFloat(document.getElementById("minHeight").value);
 const maxHeight = parseFloat(document.getElementById("maxHeight").value);
 
+const frontDownforce = parseFloat(document.getElementById("frontDownforce").value);
+const rearDownforce = parseFloat(document.getElementById("rearDownforce").value);
+
 // 重心移動による車高変化の計算
 const frontWeight = vehicleWeight * weightDistribution;
 const rearWeight = vehicleWeight * (1 - weightDistribution);
-const frontHeightChange = frontWeight / vehicleWeight * (rearHeight - frontHeight);
-const rearHeightChange = rearWeight / vehicleWeight * (frontHeight - rearHeight);
+const frontHeightChange = frontWeight / vehicleWeight * (rearHeight - frontHeight) + frontDownforce;
+const rearHeightChange = rearWeight / vehicleWeight * (frontHeight - rearHeight) + rearDownforce;
 let newFrontHeight = frontHeight + frontHeightChange;
 let newRearHeight = rearHeight + rearHeightChange;
 
@@ -87,10 +91,8 @@ newRearHeight = Math.max(minHeight, Math.min(maxHeight, newRearHeight));
 
 // 計算結果を表示
 const results = document.getElementById("results");
-results.innerHTML = `<p>新しいフロント車高: ${newFrontHeight.toFixed(2)} mm</p>
-                     <p>新しいリア車高: ${newRearHeight.toFixed(2)} mm</p>`;
+results.innerHTML = <p>新しいフロント車高: ${newFrontHeight.toFixed(2)} mm</p> <p>新しいリア車高: ${newRearHeight.toFixed(2)} mm</p>;
 });
-    </script>
+</script>
 </body>
 </html>
-
