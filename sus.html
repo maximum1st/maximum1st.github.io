@@ -91,7 +91,8 @@ newRearHeight = Math.max(minHeight, Math.min(maxHeight, newRearHeight));
 
 // 計算結果を表示
 const results = document.getElementById("results");
-results.innerHTML = <p>新しいフロント車高: ${newFrontHeight.toFixed(2)} mm</p> <p>新しいリア車高: ${newRearHeight.toFixed(2)} mm</p>;
+results.innerHTML = `<p>新しいフロント車高: ${newFrontHeight.toFixed(2)} mm</p>
+                     <p>新しいリア車高: ${newRearHeight.toFixed(2)} mm</p>`;
 });
 </script>
 </body>
