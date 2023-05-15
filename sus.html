@@ -104,34 +104,35 @@
         <label for="rearSpringFreq">リア周波数 (Hz):</label>
         <input type="number" id="rearSpringFreq" step="0.01" value="2.5">
         <label for="frontCurrentHeight">フロント現在の高さ (mm):</label>
-        <input type="number" id="frontCurrentHeight" step="0.01" value="300">
+        <input type="number" id="frontCurrentHeight" step"0.01" value="100">
         <label for="rearCurrentHeight">リア現在の高さ (mm):</label>
-        <input type="number" id="rearCurrentHeight" step="0.01" value="300">
-        <label for="frontMinHeight">フロント最低高さ (mm):</label>
-        <input type="number" id="frontMinHeight" step="0.01" value="250">
+        <input type="number" id="rearCurrentHeight" step="0.01" value="100">
+        <label for="frontMinHeight">フロント最小高さ (mm):</label>
+        <input type="number" id="frontMinHeight" step="0.01" value="80">
         <label for="frontMaxHeight">フロント最大高さ (mm):</label>
-        <input type="number" id="frontMaxHeight" step="0.01" value="350">
-        <label for="rearMinHeight">リア最低高さ (mm):</label>
-        <input type="number" id="rearMinHeight" step="0.01" value="250">
+        <input type="number" id="frontMaxHeight" step="0.01" value="120">
+        <label for="rearMinHeight">リア最小高さ (mm):</label>
+        <input type="number" id="rearMinHeight" step="0.01" value="80">
         <label for="rearMaxHeight">リア最大高さ (mm):</label>
-        <input type="number" id="rearMaxHeight" step="0.01" value="350">
-        <button onclick="calculateSuspension()">計算</button>
-        <hr>
-        <h3>結果:</h3>
-        <p>フロントバネ定数: <span id="frontSpringRate"></span></p>
-        <p>リアバネ定数: <span id="rearSpringRate"></span></p>
-        <p>フロント周波数 (バネ定数から計算): <span id="frontSpringFreqFromRate"></span></p>
-        <p>リア周波数 (バネ定数から計算): <span id="rearSpringFreqFromRate"></span></p>
-        <p>ニュルブルクリンク最適周波数: <span id="optimalFreqNurburgring"></span></p>
-        <p>フロント最適高さ: <span id="frontOptimalHeight"></span></p>
-        <p>リア最適高さ: <span id="rearOptimalHeight"></span></p>
-        <p>ニュルブルクリンクフロント最適高さ: <span id="frontOptimalHeightNurburgring"></span></p>
-        <p>ニュルブルクリンクリア最適高さ: <span id="rearOptimalHeightNurburgring"></span></p>
-        <p>筑波フロント最適高さ: <span id="frontOptimalHeightTsukuba"></span></p>
-        <p>筑波リア最適高さ: <span id="rearOptimalHeightTsukuba"></span></p>
+        <input type="number" id="rearMaxHeight" step="0.01" value="120">
+        <button type="button" onclick="calculateSuspension()">計算</button>
+        <h2>結果</h2>
+        <p>フロントバネレート: <span id="frontSpringRate"></span></p>
+        <p>リアバネレート: <span id="rearSpringRate"></span></p>
+        <p>フロント周波数 (バネレートから): <span id="frontSpringFreqFromRate"></span></p>
+        <p>リア周波数 (バネレートから): <span id="rearSpringFreqFromRate"></span></p>
+        <p>最適周波数 (ニュルブルクリンク): <span id="optimalFreqNurburgring"></span></p>
+        <p>最適フロント高さ: <span id="frontOptimalHeight"></span></p>
+        <p>最適リア高さ: <span id="rearOptimalHeight"></span></p>
+        <p>最適フロント高さ (ニュルブルクリンク): <span id="frontOptimalHeightNurburgring"></span></p>
+        <p>最適リア高さ (ニュルブルクリンク): <span id="rearOptimalHeightNurburgring"></span></p>
+        <p>最適フロント高さ (筑波サーキット): <span id="frontOptimalHeightTsukuba"></span></p>
+        <p>最適リア高さ (筑波サーキット): <span id="rearOptimalHeightTsukuba"></span></p>
     </div>
 </body>
 </html>
+
+
 
 
 
