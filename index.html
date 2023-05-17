@@ -68,7 +68,7 @@
             font-size: 1.2rem;
             border-radius: 5px;
         }
-        
+
         #scrollToBottomBtn {
             position: fixed;
             top: 20px;
@@ -84,7 +84,6 @@
     </style>
 </head>
 <body>
-    
     <img src="https://maximum1st.github.io/IMG_2545.JPG" alt="プロフィール画像">
     <h1>とっくん研究</h1>
     <p>僕はTwitchでPS5を使って動画制作やブロードキャスト配信を行っています。性格は臆病でお調子者ですが、
@@ -94,16 +93,15 @@
         また、現在は恋愛を諦めて、手入れのしやすい坊主頭にしています。
         銚子に引っ越すまで運動を控えていますが、引っ越したら運動をまた再開したいです。</p>
     
-    <p>銚子のゲーム博物館の会員になっており、興味があれば館長と仲良くなることで会員になりやすくなります。会員になると、
-    銚子観光や館内のゲームを自由に楽しめます。</p>
+     <p>銚子のゲーム博物館の会員になっており、興味があれば館長と仲良くなることで会員になりやすくなります。会員になると、
+     銚子観光や館内のゲームを自由に楽しめます。</p>
 
-<p>主な目的はPS5での友達を作ることが大前提です。<br><br>
-    PlaystationIDは「maximum1st」です。皆さんの応援をお願いします！</p>
+        <p>主な目的はPS5での友達を作ることが大前提です。<br><br>
+        PlaystationIDは「maximum1st」です。皆さんの応援をお願いします！</p>
 
 <button id="backToTopBtn" onclick="scrollToTop()" style="display:none;">戻る↑</button>
 <button id="scrollToBottomBtn" onclick="scrollToBottom()" style="display:none;">リンク↓</button>
 <button id="goBackBtn" onclick="goBack()">前のページに戻る</button>
-<button id="closeTabBtn">タブを閉じる</button>
 
 <h2>LINK`s</h2>
 <ul class="link-list">
@@ -118,54 +116,49 @@
     <li><a href="#" target="_blank">New Link 2</a></li>
     <li><a href="#" target="_blank">New Link 3</a></li>
 </ul>
-
 <script>
-    function goBack() {
-        if (window.history.length > 1) {
-            window.history.back();
-        } else {
-            window.location.href = 'https://www.twitch.tv/toshishige_maximum1st?lang=ja'; // ここにリダイレクト先のURLを指定します。
-        }
+   function goBack() {
+    if (window.history.length > 1) {
+        window.history.back();
+    } else {
+        window.location.href = 'https://www.twitch.tv/toshishige_maximum1st?lang=ja'; // ここにリダイレクト先のURLを指定します。
     }
+}
 
-    document.getElementById('goBackBtn').addEventListener('click', goBack);
+document.getElementById('goBackBtn').addEventListener('click', goBack);
 
-    function scrollToTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
-    function scrollToBottom() {
-        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth'
+function scrollToBottom() {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+}
 
-    }
+window.onscroll = function () {
+    toggleBackToTopBtn();
+    toggleScrollToBottomBtn();
+};
 
-    window.onscroll = function () {
-        toggleBackToTopBtn();
-        toggleScrollToBottomBtn();
-    };
+function toggleBackToTopBtn() {
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        document.getElementById("backToTopBtn").style.display = "block";
+    } else
 
-    function toggleBackToTopBtn() {
-        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-            document.getElementById("backToTopBtn").style.display = "block";
-        } else {
-            document.getElementById("backToTopBtn").style.display = "none";
-        }
-    }
+{
+document.getElementById("backToTopBtn").style.display = "none";
+}
+}
 
-    function toggleScrollToBottomBtn() {
-        if (document.body.scrollTop < document.body.scrollHeight - window.innerHeight - 50 || document.documentElement.scrollTop < document.documentElement.scrollHeight - window.innerHeight - 50) {
-            document.getElementById("scrollToBottomBtn").style.display = "block";
-        } else {
-            document.getElementById("scrollToBottomBtn").style.display = "none";
-        }
-    }
-
-    document.getElementById('closeTabBtn').addEventListener('click', function() {
-        window.close();
-    });
-
+function toggleScrollToBottomBtn() {
+if (document.body.scrollTop + window.innerHeight < document.body.scrollHeight - 50 ||
+document.documentElement.scrollTop + window.innerHeight < document.documentElement.scrollHeight - 50) {
+document.getElementById("scrollToBottomBtn").style.display = "block";
+} else {
+document.getElementById("scrollToBottomBtn").style.display = "none";
+}
+}
 </script>
 </body>
 </html>
-
 
