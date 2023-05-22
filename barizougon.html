@@ -15,17 +15,23 @@
             justify-content: center;
             height: 100vh;
             text-align: center;
+            overflow: auto;  // Allow the body to be scrollable
         }
         @media (max-width: 600px) {
             body {
                 font-size: 16px;
             }
         }
+        .content {
+            width: 80%;
+            max-width: 800px;
+            margin: auto;
+        }
     </style>
 </head>
 <body>
-    <div>
-        <h1>罵詈雑言呪いの言葉館</h1>
+    <div class="content">
+        <h1 id="top">罵詈雑言呪いの言葉館</h1>
         <p>どこぞの伊藤憲広くんにいいたかったことLINE続き</p>
         <p>友達はやめるよ。やはりあわない。とらんく返せ。</p>
         <p>こっちはもっとまえからきぶんがいしてる。</p>
@@ -87,5 +93,10 @@
         <p>ホントは利用されてビジネス感覚の人が多いだろう。</p>
         <p>嫌いな人は徹底して嫌う。</p>
     </div>
+    <script>
+     window.onload = function() {
+            document.getElementById("top").scrollIntoView();
+        };
+    </script>
 </body>
 </html>
