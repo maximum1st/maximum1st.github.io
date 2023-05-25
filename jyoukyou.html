@@ -20,8 +20,22 @@
       margin: 0;
     }
 
+    .header-image {
+      display: flex;
+      justify-content: center; 
+      width: 100%;
+    }
+
+    .header-image img {
+      max-width: 60%; 
+      height: auto;
+      object-fit: cover;
+      object-position: center;
+    }
+
     .content {
       max-width: 80%;
+      margin-top: 1rem;
       margin: 0 auto;
     }
 
@@ -54,7 +68,7 @@
       text-align: center;
       padding: 1rem;
       box-sizing: border-box;
-      background-color: #181919;  /* もし背景色を透明にしたい場合、この行を削除してください */
+      background-color: #181919;
     }
 
     /* responsive design */
@@ -66,6 +80,10 @@
   </style>
 </head>
 <body>
+  <div class="header-image">
+    <img src="https://maximum1st.github.io/IMG_2545.JPG" alt="Profile picture">
+  </div>
+
   <div class="content">
     <h1>とっくん研究状況 -「Gran Turismo 7」Twich今の配信状況！</h1>
    
