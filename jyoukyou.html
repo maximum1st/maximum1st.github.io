@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>とっくん研究状況 -「Gran Turismo 7」 </title>
+    <style>
+        body {
+            background-color: #181919;
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 0.5rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            display: inline;
+            margin: 0 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.5;
+        }
+
+        #backToTopBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #181919;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            border-radius: 5px;
+        }
+
+        #scrollToBottomBtn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #181919;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+   <p></p>
+
+<button id="backToTopBtn" onclick="scrollToTop()" style="display:none;">戻る↑</button>
+<button id="scrollToBottomBtn" onclick="scrollToBottom()" style="display:none;">リンク↓</button>
+
+
+
+<script>
+   function goBack() {
+    if (window.history.length > 1) {
+        window.history.back();
+    } else {
+        window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about'; // ここにリダイレクト先のURLを指定します。
+    }
+}
+
+document.getElementById('goBackBtn').addEventListener('click', goBack);
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function scrollToBottom() {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+}
+
+window.onscroll = function () {
+    toggleBackToTopBtn();
+    toggleScrollToBottomBtn();
+};
+
+function toggleBackToTopBtn() {
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        document.getElementById("backToTopBtn").style.display = "block";
+    } else
+
+{
+document.getElementById("backToTopBtn").style.display = "none";
+}
+}
+
+function toggleScrollToBottomBtn() {
+if (document.body.scrollTop + window.innerHeight < document.body.scrollHeight - 50 ||
+document.documentElement.scrollTop + window.innerHeight < document.documentElement.scrollHeight - 50) {
+document.getElementById("scrollToBottomBtn").style.display = "block";
+} else {
+document.getElementById("scrollToBottomBtn").style.display = "none";
+}
+}
+</script>
+</body>
+</html>
