@@ -45,13 +45,24 @@
       text-align: left;
     }
 
+    .footer {
+      position: fixed;
+      bottom: 0;
+      color: yellow;
+      font-size: 0.8rem;
+      width: 100%;
+      text-align: center;
+      padding: 1rem;
+      box-sizing: border-box;
+      background-color: #181919;  /* もし背景色を透明にしたい場合、この行を削除してください */
+    }
+
     /* responsive design */
     @media (min-width: 600px) {
       .content {
         max-width: 600px;
       }
     }
-
   </style>
 </head>
 <body>
@@ -66,5 +77,6 @@
       <p>最新情報はこのページで更新されます。毎回チェックすることが吉！</p>
     </div>
   </div>
+  <div class="footer">タブを閉じると終了します。</div>
 </body>
 </html>
