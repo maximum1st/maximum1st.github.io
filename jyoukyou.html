@@ -10,11 +10,14 @@
     body {
       background-color: #181919;
       font-family: Arial, sans-serif;
-      max-width: 800px;
-      margin: 0 auto;
       padding: 2rem;
-      text-align: center;
       color: white;
+    }
+
+    .content {
+      max-width: 80%;
+      margin: 0 auto;
+      text-align: center;
     }
 
     h1 {
@@ -27,10 +30,30 @@
       margin-bottom: 1.5rem;
     }
 
+    .additional-info {
+      font-size: 1.1rem;
+      margin-top: 2rem;
+    }
+
+    /* responsive design */
+    @media (min-width: 600px) {
+      .content {
+        max-width: 600px;
+      }
+    }
+
   </style>
 </head>
 <body>
-  <h1>とっくん研究状況 -「Gran Turismo 7」</h1>
-  <p>現在の配信者の状況はPS5を修理に出しており配信できません。二ヶ月かかるかも知れません。</p>
+  <div class="content">
+    <h1>とっくん研究状況 -「Gran Turismo 7」</h1>
+    <p>現在の配信者の状況はPS5を修理に出しており配信できません。二ヶ月かかるかも知れません。</p>
+
+    <!-- 追加情報 -->
+    <div class="additional-info">
+      <p>配信の再開を心待ちにしてます。それまでの間、他のコンテンツを探索したり、新しいゲームを発見したりください。</p>
+      <p>最新情報はこのページで更新されます。毎回チェックすることをお忘れなく。</p>
+    </div>
+  </div>
 </body>
 </html>
