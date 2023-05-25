@@ -4,34 +4,15 @@
   <meta charset="UTF-8">
   <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>とっくん研究状況 -「Gran Turismo 7｜Twich」 </title>
+  <title>とっくん研究状況- Gran Turismo 7｜Twich</title>
   <style>
-    .background-image {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('https://maximum1st.github.io/IMG_1937.JPG') no-repeat center center fixed;
-      background-size: cover;
-      background-position: 0% 10%; /* 画像を10%上に移動 */
-      z-index: 1;
-    }
-
-    .overlay-image {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('https://maximum1st.github.io/toumei.png') no-repeat center center fixed;
-      background-size: cover;
-      z-index: 2;
-      pointer-events: none;
-    }
-
     body {
+      background: #181919 url('https://maximum1st.github.io/IMG_1937.JPG') no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      background-position: 0% 10%;
       font-family: Arial, sans-serif;
       color: white;
       display: flex;
@@ -41,14 +22,29 @@
       padding-top: 30vh;
       min-height: 100vh;
       margin: 0;
+      position: relative;
+    }
+
+    body::after {
+      content: "";
+      background: url('https://maximum1st.github.io/toumei.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      opacity: 1;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: 2;
     }
 
     .content {
       max-width: 80%;
       margin: 0 auto;
-      background-color: rgba(0, 0, 0, 0.5); /* 半透明の背景 */
-      border-radius: 15px; /* 角丸 */
-      padding: 20px; /* 内側のスペース */
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 15px;
+      padding: 20px;
       position: relative;
       z-index: 3;
     }
@@ -82,10 +78,10 @@
       text-align: center;
       padding: 1rem;
       box-sizing: border-box;
-      background-color: #181919; /* 元の背景色に戻す */
+      background-color: #181919;
+      z-index: 4;  /* z-indexを上げました */
     }
 
-    /* responsive design */
     @media (min-width: 600px) {
       .content {
         max-width: 600px;
@@ -94,14 +90,9 @@
   </style>
 </head>
 <body oncontextmenu="return false;">
-  <div class="background-image"></div>
-  <div class="overlay-image"></div>
   <div class="content">
     <h1>とっくん研究状況 -「Gran Turismo 7」Twich今の配信状況！</h1>
-   
     <p>現在の配信者の状況はPS5を修理に出しており配信できません。二ヶ月かかるかも知れません。</p>
-
-    <!-- 追加情報 -->
     <div class="additional-info">
       <p>配信の再開を心待ちにしてます。それまでの間、他のコンテンツを探索したり、新しいゲームを発見したりしてね。</p>
       <p>最新情報はこのページで更新されます。毎回チェックすることが吉！</p>
