@@ -23,6 +23,22 @@
       padding-top: 30vh;
       min-height: 100vh;
       margin: 0;
+      position: relative; /* 追加 */
+    }
+
+    /* 透明画像の配置 */
+    body::after {
+      content: "";
+      background: url('https://maximum1st.github.io/toumei.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      opacity: 0.4; 
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: 2; /* 追加 */
     }
 
     .content {
@@ -31,6 +47,8 @@
       background-color: rgba(0, 0, 0, 0.5); /* 半透明の背景 */
       border-radius: 15px; /* 角丸 */
       padding: 20px; /* 内側のスペース */
+      position: relative; /* 追加 */
+      z-index: 3; /* 追加 */
     }
 
     h1 {
@@ -62,29 +80,4 @@
       text-align: center;
       padding: 1rem;
       box-sizing: border-box;
-      background-color: #181919; /* 元の背景色に戻す */
-    }
-
-    /* responsive design */
-    @media (min-width: 600px) {
-      .content {
-        max-width: 600px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="content">
-    <h1>とっくん研究状況 -「Gran Turismo 7」Twich今の配信状況！</h1>
-   
-    <p>現在の配信者の状況はPS5を修理に出しており配信できません。二ヶ月かかるかも知れません。</p>
-
-    <!-- 追加情報 -->
-    <div class="additional-info">
-      <p>配信の再開を心待ちにしてます。それまでの間、他のコンテンツを探索したり、新しいゲームを発見したりしてね。</p>
-      <p>最新情報はこのページで更新されます。毎回チェックすることが吉！</p>
-    </div>
-  </div>
-  <div class="footer">タブを閉じると終了します。全ページPCでの動作を想定。</div>
-</body>
-</html>
+      background-color: #181919; /* 元の背景色に
