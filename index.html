@@ -233,14 +233,12 @@ a {
         }
     });
 
-    function updateClock() {
+   function updateClock() {
         var now = new Date();
-        var now_utc = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),
-        now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
 
-        // Convert to Japan Standard Time (UTC+9)
-        var japanTime = new Date(now_utc);
-        japanTime.setHours(japanTime.getHours() + 9);
+        // Asia/Tokyo のタイムゾーンオフセットを取得
+        var offset = now.getTimezoneOffset() / 60; // 分単位から時単位に変換
+        var japanTime = new Date(now.getTime() + offset * 3600000); // オフセットを加算
 
         var year = japanTime.getFullYear();
         var month = japanTime.getMonth() + 1;
@@ -255,7 +253,7 @@ a {
         minutes = minutes < 10 ? '0' + minutes : minutes;
         seconds = seconds < 10 ? '0' + seconds : seconds;
 
-        var time = year + '/' + month + '/' + date + ' ' + hours + ':' + minutes + ':' + seconds + " JST"; // "JST"を追加
+        var time = year + '/' + month + '/' + date + ' ' + hours + ':' + minutes + ':' + seconds + " JST";
 
         document.getElementById('clock').innerText = time;
 
