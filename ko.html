@@ -8,147 +8,146 @@
     <title>토끼 연구 - Gran Turismo 7의 브로드캐스트 방송과 게임 설정 연구</title>
     <style>
         body {
-    background-color: #181919;
-    font-family: Arial, sans-serif;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
-    color: white;
-}
+            background-color: #181919;
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+        }
 
-.image-wrapper {
-    position: relative;
-    display: inline-block;
-}
+        .image-wrapper {
+            position: relative;
+            display: inline-block;
+        }
 
-.image-wrapper img {
-    max-width: 200px;
-    height: auto;
-    border-radius: 50%;
-    margin-bottom: 0.5rem;
-}
+        .image-wrapper img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 0.5rem;
+        }
 
-.image-wrapper .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    border-radius: 50%;
-}
+        .image-wrapper .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            border-radius: 50%;
+        }
 
-h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
 
-h2 {
-    color: #00C300;
-    font-size: 1.5rem;
-    margin-top: 3rem;
-    margin-bottom: 1rem;
-}
+        h2 {
+            color: #00C300;
+            font-size: 1.5rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+        }
 
-p {
-    font-size: 1.2rem;
-}
+        p {
+            font-size: 1.2rem;
+        }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-}
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
 
-li {
-    display: inline;
-    margin: 0 1rem;
-}
+        li {
+            display: inline;
+            margin: 0 1rem;
+        }
 
-a {
-    text-decoration: none;
-    color: inherit;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 1.5;
-}
+        a {
+            text-decoration: none;
+            color: inherit;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.5;
+        }
 
-#backToTopBtn, #scrollToBottomBtn {
-    position: fixed;
-    background-color: #181919;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    border-radius: 5px;
-}
+        #backToTopBtn, #scrollToBottomBtn {
+            position: fixed;
+            background-color: #181919;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            border-radius: 5px;
+        }
 
-#backToTopBtn {
-    bottom: 20px;
-    right: 20px;
-}
+        #backToTopBtn {
+            bottom: 20px;
+            right: 20px;
+        }
 
-#scrollToBottomBtn {
-    top: 20px;
-    right: 20px;
-}
+        #scrollToBottomBtn {
+            top: 20px;
+            right: 20px;
+        }
 
-@keyframes blink {
-    0% { color: white; }
-    50% { color: red; }
-    100% { color: white; }
-}
+        @keyframes blink {
+            0% { color: white; }
+            50% { color: red; }
+            100% { color: white; }
+        }
 
-.blink {
-    animation: blink 1.5s linear infinite;
-}
+        .blink {
+            animation: blink 1.5s linear infinite;
+        }
 
-.language-switcher {
-    position: fixed;
-    top: 20px;
-    right: 125px;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    border-radius: 5px;
-    z-index: 1000;
-}
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 125px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+        }
 
-.language-switcher a {
-    color: #00C300;
-    margin-right: 10px;
-    text-decoration: none;
-}
+        .language-switcher a {
+            color: #00C300;
+            margin-right: 10px;
+            text-decoration: none;
+        }
 
-.language-switcher a:hover {
-    color: #008200;
-}
+        .language-switcher a:hover {
+            color: #008200;
+        }
 
-.clock {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    color: white;
-    border-radius: 0 0 5px 0; /* Rounded bottom right corner */
-    font-size: 1rem;
-    z-index: 1000;
-}
-
+        .clock {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            color: white;
+            border-radius: 0 0 5px 0; /* 右下の角を丸くする */
+            font-size: 1rem;
+            z-index: 1000;
+        }
     </style>
 </head>
 <body>
     <div id="clock" class="clock"></div>
 
     <div class="language-switcher">
-    <a href="https://maximum1st.github.io/">日本語</a>
-    <a href="en.html">English</a>
-    <a href="ko.html">한국어</a>
-    <a href="zh.html">中文</a>
-    <a href="ru.html">Русский</a>
-</div>
+        <a href="https://maximum1st.github.io/">日本語</a>
+        <a href="en.html">English</a>
+        <a href="ko.html">한국어</a>
+        <a href="zh.html">中文</a>
+        <a href="ru.html">Русский</a>
+    </div>
 
     <div class="image-wrapper">
         <img src="r9T4y7U1I3O6P1A7S4D6F8G7H2J1K6L9M1N6B7V5C9X3.jpg" alt="프로필 이미지">
@@ -156,85 +155,78 @@ a {
     </div>
     
     <h1>토끼 연구</h1>
-   <p>레이싱 게임 'Gran Turismo 7 (GT7)'을 PS5를 통해 Twitch에서 생방송 중입니다. 게임 플레이를 공유하는 것뿐만 아니라, 게임 설정에 대한 연구도 함께 진행하고 있으니, 많은 시청 부탁드립니다. 조금 소심하고 장난스러운 성격이지만, 종종 친절하다는 말을 듣습니다. 함께 즐거운 시간을 보낼 수 있었으면 좋겠습니다. 때때로 방송에 대한 이야기나 캐주얼한 대화를 하는 방송도 진행하고 있습니다. 매일 방송하는 것은 아니나, 보통 밤 10시 전에는 방송을 시작합니다. 조금 졸리기도 하네요~...</p>
+    <p>레이싱 게임 'Gran Turismo 7 (GT7)'을 PS5를 통해 Twitch에서 생방송 중입니다. 게임 플레이를 공유하는 것뿐만 아니라, 게임 설정에 대한 연구도 함께 진행하고 있으니, 많은 시청 부탁드립니다. 조금 소심하고 장난스러운 성격이지만, 종종 친절하다는 말을 듣습니다. 함께 즐거운 시간을 보낼 수 있었으면 좋겠습니다. 때때로 방송에 대한 이야기나 캐주얼한 대화를 하는 방송도 진행하고 있습니다. 매일 방송하는 것은 아니나, 보통 밤 10시 전에는 방송을 시작합니다. 조금 졸리기도 하네요~...</p>
     
     <p>레이싱 게임은 반복적인 작업으로 인해 시청자가 많지 않은 경향이 있습니다. 그러나 팔로우하거나 댓글을 달아 주시면 정말 감사하겠습니다. 댓글은 제 모국어를 사용할 수 있는 분들만 부탁드립니다.</p>
 
-   
-
-<button id="backToTopBtn" onclick="scrollToTop()" style="display:none;">Top↑</button>
-<button id="scrollToBottomBtn" onclick="scrollToBottom()" style="display:none;">DownPage↓</button>
-<button id="goBackBtn" onclick="goBack()">이전 페이지</button><br>
-     
-
-
-      
-
+    <button id="backToTopBtn" onclick="scrollToTop()" style="display:none;">Top↑</button>
+    <button id="scrollToBottomBtn" onclick="scrollToBottom()" style="display:none;">DownPage↓</button>
+    <button id="goBackBtn" onclick="goBack()">이전 페이지</button><br>
 
     <script type="text/javascript">
-    function goBack() {
-        if (window.history.length > 1) {
-            window.history.back();
-        } else {
-            window.location.href = 'https://www.google.com';
+        function goBack() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = 'https://www.google.com';
+            }
         }
-    }
 
-    function scrollToTop() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        function scrollToBottom() {
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth'
+            });
+        }
+
+        window.addEventListener('scroll', function() {
+            var scrollPosition = window.pageYOffset;
+            var windowHeight = window.innerHeight;
+            var fullHeight = document.body.offsetHeight;
+
+            if (scrollPosition > windowHeight * 0.5) {
+                document.getElementById('backToTopBtn').style.display = "block";
+            } else {
+                document.getElementById('backToTopBtn').style.display = "none";
+            }
+
+            if (scrollPosition + windowHeight < fullHeight * 0.95) {
+                document.getElementById('scrollToBottomBtn').style.display = "block";
+            } else {
+                document.getElementById('scrollToBottomBtn').style.display = "none";
+            }
         });
-    }
 
-    function scrollToBottom() {
-        window.scrollTo({
-            top: document.body.scrollHeight,
-            behavior: 'smooth'
-        });
-    }
+        function updateClock() {
+            var now = new Date();
+            var year = now.getFullYear();
+            var month = now.getMonth() + 1;
+            var date = now.getDate();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
 
-    window.addEventListener('scroll', function() {
-        var scrollPosition = window.pageYOffset;
-        var windowHeight = window.innerHeight;
-        var fullHeight = document.body.offsetHeight;
+            month = month < 10 ? '0' + month : month;
+            date = date < 10 ? '0' + date : date;
+            hours = hours < 10 ? '0' + hours : hours;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
 
-        if (scrollPosition > windowHeight * 0.5) {
-            document.getElementById('backToTopBtn').style.display = "block";
-        } else {
-            document.getElementById('backToTopBtn').style.display = "none";
+            var time = year + '/' + month + '/' + date + ' ' + hours + ':' + minutes + ':' + seconds;
+
+            document.getElementById('clock').innerText = time + " 서울";
+
+            setTimeout(updateClock, 1000);
         }
 
-        if (scrollPosition + windowHeight < fullHeight * 0.95) {
-            document.getElementById('scrollToBottomBtn').style.display = "block";
-        } else {
-            document.getElementById('scrollToBottomBtn').style.display = "none";
-        }
-    });
-      function updateClock() {
-    var now = new Date();
-    var year = now.getFullYear();
-    var month = now.getMonth() + 1;
-    var date = now.getDate();
-    var hours = now.getHours();
-    var minutes = now.getMinutes();
-    var seconds = now.getSeconds();
-    
-    month = month < 10 ? '0' + month : month;
-    date = date < 10 ? '0' + date : date;
-    hours = hours < 10 ? '0' + hours : hours;
-    minutes = minutes < 10 ? '0' + minutes : minutes;
-    seconds = seconds < 10 ? '0' + seconds : seconds;
-
-    var time = year + '/' + month + '/' + date + ' ' + hours + ':' + minutes + ':' + seconds;
-
-    document.getElementById('clock').innerText = time + " 서울";
-
-    setTimeout(updateClock, 1000);
-}
-
-window.onload = updateClock;
-
+        window.onload = updateClock;
     </script>
 </body>
 </html>
