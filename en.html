@@ -1,240 +1,232 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="Gran Turismo 7, GT7, Twitch, PS5, gaming, broadcasting, livestream, レーシングシュミレータ, 銚子">
-    <meta name="description" content="「とっくん研究」はGran Turismo 7（GT7）のブロードキャスト配信とゲームセッティングの研究を行っています。PS5を使ってTwitchで配信しており、視聴者との交流も大切にしています。">
-    <title>とっくん研究 - Gran Turismo 7のブロードキャスト配信とゲームセッティング研究</title>
+    <meta name="keywords" content="Gran Turismo 7, GT7, Twitch, PS5, gaming, broadcasting, livestream, racing simulator, Choshi">
+    <meta name="description" content="Tokkun Kenkyu (Tokkun Research) conducts live broadcasts and game setting research for Gran Turismo 7 (GT7). Streaming on Twitch using a PS5, I value interaction with viewers.">
+    <title>Tokkun Kenkyu - Broadcasting and Game Setting Research for Gran Turismo 7</title>
     <style>
         body {
-    background-color: #181919;
-    font-family: Arial, sans-serif;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
-    color: white;
-}
-
-.image-wrapper {
-    position: relative;
-    display: inline-block;
-}
-
-.image-wrapper img {
-    max-width: 200px;
-    height: auto;
-    border-radius: 50%;
-    margin-bottom: 0.5rem;
-}
-
-.image-wrapper .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    border-radius: 50%;
-}
-
-h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-h2 {
-    color: #00C300;
-    font-size: 1.5rem;
-    margin-top: 3rem;
-    margin-bottom: 1rem;
-}
-
-p {
-    font-size: 1.2rem;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    display: inline;
-    margin: 0 1rem;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 1.5;
-}
-
-#backToTopBtn, #scrollToBottomBtn {
-    position: fixed;
-    background-color: #181919;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    border-radius: 5px;
-}
-
-#backToTopBtn {
-    bottom: 20px;
-    right: 20px;
-}
-
-#scrollToBottomBtn {
-    top: 20px;
-    right: 20px;
-}
-
-@keyframes blink {
-    0% { color: white; }
-    50% { color: red; }
-    100% { color: white; }
-}
-
-.blink {
-    animation: blink 1.5s linear infinite;
-}
-
-.language-switcher {
-    position: fixed;
-    top: 20px;
-    right: 125px;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    border-radius: 5px;
-    z-index: 1000;
-}
-
-.language-switcher a {
-    color: #00C300;
-    margin-right: 10px;
-    text-decoration: none;
-}
-
-.language-switcher a:hover {
-    color: #008200;
-}
-
-.clock {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    color: white;
-    border-radius: 0 0 5px 0; /* Rounded bottom right corner */
-    font-size: 1rem;
-    z-index: 1000;
-}
-
+            background-color: #181919;
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+        }
+        
+        .image-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .image-wrapper img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 0.5rem;
+        }
+        
+        .image-wrapper .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            border-radius: 50%;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            color: #00C300;
+            font-size: 1.5rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            font-size: 1.2rem;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        li {
+            display: inline;
+            margin: 0 1rem;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.5;
+        }
+        
+        #backToTopBtn, #scrollToBottomBtn {
+            position: fixed;
+            background-color: #181919;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            border-radius: 5px;
+        }
+        
+        #backToTopBtn {
+            bottom: 20px;
+            right: 20px;
+        }
+        
+        #scrollToBottomBtn {
+            top: 20px;
+            right: 20px;
+        }
+        
+        @keyframes blink {
+            0% { color: white; }
+            50% { color: red; }
+            100% { color: white; }
+        }
+        
+        .blink {
+            animation: blink 1.5s linear infinite;
+        }
+        
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 125px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+        
+        .language-switcher a {
+            color: #00C300;
+            margin-right: 10px;
+            text-decoration: none;
+        }
+        
+        .language-switcher a:hover {
+            color: #008200;
+        }
+        
+        .clock {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            color: white;
+            border-radius: 0 0 5px 0;
+            font-size: 1rem;
+            z-index: 1000;
+        }
     </style>
 </head>
 <body>
     <div id="clock" class="clock"></div>
 
     <div class="language-switcher">
-    <a href="https://maximum1st.github.io/">日本語</a>
-    <a href="en.html">English</a>
-    <a href="ko.html">한국어</a>
-    <a href="zh.html">中文</a>
-    <a href="ru.html">Русский</a>
-</div>
+        <a href="https://maximum1st.github.io/">日本語</a>
+        <a href="en.html">English</a>
+        <a href="ko.html">한국어</a>
+        <a href="zh.html">中文</a>
+        <a href="ru.html">Русский</a>
+    </div>
 
     <div class="image-wrapper">
         <img src="r9T4y7U1I3O6P1A7S4D6F8G7H2J1K6L9M1N6B7V5C9X3.jpg" alt="Profile image">
         <img src="https://maximum1st.github.io/toumei.png" class="overlay" alt="Profile image overlay">
     </div>
     
-    <h1>とっくん研究</h1>
-   <p>I'm live-streaming the racing game 'Gran Turismo 7 (GT7)' on Twitch using my PS5. In addition to sharing my gameplay, I also delve into the intricacies of the game's settings, so I'd love for you to tune in. I'm often described as a bit timid and playful, but also known for my kind heart. It would be wonderful to establish a friendly rapport with you, my viewers. From time to time, I host streams where we discuss the broadcast or just have casual conversations. I don't stream every day, but when I do, it's usually before 10 PM. Be warned though, it can get a little tiring!</p>
+    <h1>Tokkun Kenkyu</h1>
+    <p>I'm live-streaming the racing game 'Gran Turismo 7 (GT7)' on Twitch using my PS5. In addition to sharing my gameplay, I also delve into the intricacies of the game's settings, so I'd love for you to tune in. I'm often described as a bit timid and playful, but also known for my kind heart. It would be wonderful to establish a friendly rapport with you, my viewers. From time to time, I host streams where we discuss the broadcast or just have casual conversations. I don't stream every day, but when I do, it's usually before 10 PM. Be warned though, it can get a little tiring!</p>
     
     <p>Racing games can be a bit repetitive, which often leads to fewer viewers. That's why I truly appreciate you tuning in. However, as I'm not proficient in English, I would be grateful if you could leave comments in my native language.</p>
 
-   
-
-<button id="backToTopBtn" onclick="scrollToTop()" style="display:none;">Top↑</button>
-<button id="scrollToBottomBtn" onclick="scrollToBottom()" style="display:none;">DownPage↓</button>
-<button id="goBackBtn" onclick="goBack()">Return Page</button><br>
+    <button id="backToTopBtn" onclick="scrollToTop()" style="display:none;">Top↑</button>
+    <button id="scrollToBottomBtn" onclick="scrollToBottom()" style="display:none;">DownPage↓</button>
+    <button id="goBackBtn" onclick="goBack()">Return Page</button><br>
      
-
-
-      
-
-
     <script type="text/javascript">
-    function goBack() {
-        if (window.history.length > 1) {
-            window.history.back();
-        } else {
-            window.location.href = 'https://www.google.com';
+        function goBack() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = 'https://www.google.com';
+            }
         }
-    }
-
-    function scrollToTop() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    }
-
-    function scrollToBottom() {
-        window.scrollTo({
-            top: document.body.scrollHeight,
-            behavior: 'smooth'
-        });
-    }
-
-    window.addEventListener('scroll', function() {
-        var scrollPosition = window.pageYOffset;
-        var windowHeight = window.innerHeight;
-        var fullHeight = document.body.offsetHeight;
-
-        if (scrollPosition > windowHeight * 0.5) {
-            document.getElementById('backToTopBtn').style.display = "block";
-        } else {
-            document.getElementById('backToTopBtn').style.display = "none";
-        }
-
-        if (scrollPosition + windowHeight < fullHeight * 0.95) {
-            document.getElementById('scrollToBottomBtn').style.display = "block";
-        } else {
-            document.getElementById('scrollToBottomBtn').style.display = "none";
-        }
-    });
-      function updateClock() {
-    var now = new Date();
-    var year = now.getFullYear();
-    var month = now.getMonth() + 1;
-    var date = now.getDate();
-    var hours = now.getHours();
-    var minutes = now.getMinutes();
-    var seconds = now.getSeconds();
     
-    month = month < 10 ? '0' + month : month;
-    date = date < 10 ? '0' + date : date;
-    hours = hours < 10 ? '0' + hours : hours;
-    minutes = minutes < 10 ? '0' + minutes : minutes;
-    seconds = seconds < 10 ? '0' + seconds : seconds;
-
-    var time = year + '/' + month + '/' + date + ' ' + hours + ':' + minutes + ':' + seconds;
-
-    document.getElementById('clock').innerText = time;
-
-    setTimeout(updateClock, 1000);
-}
-
-window.onload = updateClock;
-
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    
+        function scrollToBottom() {
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth'
+            });
+        }
+    
+        window.addEventListener('scroll', function() {
+            var scrollPosition = window.pageYOffset;
+            var windowHeight = window.innerHeight;
+            var fullHeight = document.body.offsetHeight;
+    
+            if (scrollPosition > windowHeight * 0.5) {
+                document.getElementById('backToTopBtn').style.display = "block";
+            } else {
+                document.getElementById('backToTopBtn').style.display = "none";
+            }
+    
+            if (scrollPosition + windowHeight < fullHeight * 0.95) {
+                document.getElementById('scrollToBottomBtn').style.display = "block";
+            } else {
+                document.getElementById('scrollToBottomBtn').style.display = "none";
+            }
+        });
+    
+        function updateClock() {
+            var now = new Date();
+            var year = now.getFullYear();
+            var month = now.getMonth() + 1;
+            var date = now.getDate();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+            
+            month = month < 10 ? '0' + month : month;
+            date = date < 10 ? '0' + date : date;
+            hours = hours < 10 ? '0' + hours : hours;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+    
+            var time = year + '/' + month + '/' + date + ' ' + hours + ':' + minutes + ':' + seconds + " Washington DC Time";
+    
+            document.getElementById('clock').innerText = time;
+    
+            setTimeout(updateClock, 1000);
+        }
+    
+        window.onload = updateClock;
     </script>
 </body>
 </html>
