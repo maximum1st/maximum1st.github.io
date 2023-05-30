@@ -132,7 +132,7 @@
             background-color: rgba(0, 0, 0, 0.5);
             padding: 10px;
             color: white;
-            border-radius: 0 0 5px 0;
+            border-radius: 0 0 5px 0; /* Rounded bottom right corner */
             font-size: 1rem;
             z-index: 1000;
         }
@@ -209,7 +209,7 @@
             var year = now.getFullYear();
             var month = now.getMonth() + 1;
             var date = now.getDate();
-            var hours = now.getHours();
+            var hours = now.getUTCHours() - 4; // UTCから4時間を引いてワシントンDCの時間に調整
             var minutes = now.getMinutes();
             var seconds = now.getSeconds();
             
