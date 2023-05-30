@@ -234,33 +234,31 @@ a {
     });
 
     function updateClock() {
-        var now = new Date();
+    var now = new Date();
 
-        var japanTime = new Date(now.getTime() + 0 * 0); // 9時間をミリ秒単位で加算
+    var japanTime = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Tokyo" }));
 
-        var year = japanTime.getFullYear();
-        var month = japanTime.getMonth() + 1;
-        var date = japanTime.getDate();
-        var hours = japanTime.getHours();
-        var minutes = japanTime.getMinutes();
-        var seconds = japanTime.getSeconds();
+    var year = japanTime.getFullYear();
+    var month = japanTime.getMonth() + 1;
+    var date = japanTime.getDate();
+    var hours = japanTime.getHours();
+    var minutes = japanTime.getMinutes();
+    var seconds = japanTime.getSeconds();
 
-        month = month < 10 ? '0' + month : month;
-        date = date < 10 ? '0' + date : date;
-        hours = hours < 10 ? '0' + hours : hours;
-        minutes = minutes < 10 ? '0' + minutes : minutes;
-        seconds = seconds < 10 ? '0' + seconds : seconds;
+    month = month < 10 ? '0' + month : month;
+    date = date < 10 ? '0' + date : date;
+    hours = hours < 10 ? '0' + hours : hours;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
 
-        var time = year + '/' + month + '/' + date + ' ' + hours + ':' + minutes + ':' + seconds + " Japan/Tokyo";
+    var time = year + '/' + month + '/' + date + ' ' + hours + ':' + minutes + ':' + seconds + " JST";
 
-        document.getElementById('clock').innerText = time;
+    document.getElementById('clock').innerText = time;
 
-        setTimeout(updateClock, 1000);
-    }
+    setTimeout(updateClock, 1000);
+}
 
-    window.onload = updateClock;
-
-
+window.onload = updateClock;
     </script>
 </body>
 </html>
