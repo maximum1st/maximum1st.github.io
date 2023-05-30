@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="Gran Turismo 7, GT7, Twitch, PS5, gaming, broadcasting, livestream, 레이싱 시뮬레이터, 철원">
-    <meta name="description" content="토끼 연구는 Gran Turismo 7 (GT7)의 브로드캐스트 방송 및 게임 설정 연구를 진행하고 있습니다. PS5를 사용하여 Twitch에서 방송하며 시청자와의 교류도 중요시하고 있습니다.">
-    <title>토끼 연구 - Gran Turismo 7의 브로드캐스트 방송 및 게임 설정 연구</title>
+    <meta name="keywords" content="Gran Turismo 7, GT7, Twitch, PS5, gaming, broadcasting, livestream, 레이싱시뮬레이터, 철마">
+    <meta name="description" content="‘토쿤 연구’는 Gran Turismo 7 (GT7)의 브로드캐스트 스트리밍과 게임 설정 연구를 진행하고 있습니다. PS5를 사용하여 Twitch에서 스트리밍을 하며 시청자와의 교류도 중요시하고 있습니다.">
+    <title>토쿤 연구 - Gran Turismo 7의 브로드캐스트 스트리밍과 게임 설정 연구</title>
     <style>
         body {
             background-color: #181919;
@@ -100,9 +100,11 @@
             0% {
                 color: white;
             }
+
             50% {
                 color: red;
             }
+
             100% {
                 color: white;
             }
@@ -158,14 +160,14 @@
     </div>
 
     <div class="image-wrapper">
-        <img src="r9T4y7U1I3O6P1A7S4D6F8G7H2J1K6L9M1N6B7V5C9X3.jpg" alt="프로필 이미지">
-        <img src="https://maximum1st.github.io/toumei.png" class="overlay" alt="프로필 이미지 오버레이">
+        <img src="r9T4y7U1I3O6P1A7S4D6F8G7H2J1K6L9M1N6B7V5C9X3.jpg" alt="Profile image">
+        <img src="https://maximum1st.github.io/toumei.png" class="overlay" alt="Profile image overlay">
     </div>
 
-    <h1>토끼 연구</h1>
-    <p>'Gran Turismo 7 (GT7)' 레이싱 게임을 PS5를 통해 Twitch에서 생방송하고 있습니다. 게임 플레이를 공유하는 것뿐만 아니라, 게임 설정에 대한 연구도 진행하고 있으니 많은 시청 바랍니다. 조금 소심하고 장난스러운 성격이지만, 시청자와의 친밀한 소통을 중요하게 생각합니다. 때때로 방송 내에서 방송에 대해 이야기하거나 일상적인 대화를 나누기도 합니다. 매일은 방송하지 않지만, 보통 10시 이전에 시작합니다. 다만, 조금 피곤할 수 있습니다!</p>
+    <h1>토쿤 연구</h1>
+    <p>레이싱 게임 'Gran Turismo 7 (GT7)'을 PS5를 통해 Twitch에서 생방송 중입니다. 게임 플레이를 공유하는 것뿐만 아니라, 게임 설정에 대한 연구도 함께 진행하고 있으니, 많은 시청 부탁드립니다. 조금 소심하고 장난스러운 성격이지만, 종종 친절하다는 말을 듣습니다. 함께 즐거운 시간을 보낼 수 있었으면 좋겠습니다. 때때로 방송에 대한 이야기나 캐주얼한 대화를 하는 방송도 진행하고 있습니다. 매일 방송하는 것은 아니나, 보통 밤 10시 전에는 방송을 시작합니다. 조금 졸리기도 하네요~...</p>
 
-    <p>레이싱 게임은 반복적인 플레이로 인해 시청자 수가 적을 수 있습니다. 그러나 팔로우하고 댓글을 남겨주신다면 정말로 감사하겠습니다. 댓글은 제 모국어로 작성해 주시기 바랍니다.</p>
+    <p>레이싱 게임은 반복적인 작업으로 인해 시청자가 많지 않은 경향이 있습니다. 그러나 팔로우하거나 댓글을 달아 주시면 정말 감사하겠습니다. 댓글은 제 모국어를 사용할 수 있는 분들만 부탁드립니다.</p>
 
     <button id="backToTopBtn" onclick="scrollToTop()" style="display:none;">Top↑</button>
     <button id="scrollToBottomBtn" onclick="scrollToBottom()" style="display:none;">DownPage↓</button>
@@ -200,36 +202,24 @@
             var fullHeight = document.body.offsetHeight;
 
             if (scrollPosition > windowHeight * 0.5) {
-                document.getElementById('backToTopBtn').style.display = 'block';
+                document.getElementById('backToTopBtn').style.display = "block";
             } else {
-                document.getElementById('backToTopBtn').style.display = 'none';
+                document.getElementById('backToTopBtn').style.display = "none";
             }
 
             if (scrollPosition + windowHeight < fullHeight * 0.95) {
-                document.getElementById('scrollToBottomBtn').style.display = 'block';
+                document.getElementById('scrollToBottomBtn').style.display = "block";
             } else {
-                document.getElementById('scrollToBottomBtn').style.display = 'none';
+                document.getElementById('scrollToBottomBtn').style.display = "none";
             }
         });
 
         function updateClock() {
             var now = new Date();
-            var year = now.getFullYear();
-            var month = now.getMonth() + 1;
-            var date = now.getDate();
-            var hours = now.getHours() + 8; // 시차를 반영하여 8시간을 더합니다.
-            var minutes = now.getMinutes();
-            var seconds = now.getSeconds();
+            var options = { timeZone: "Asia/Seoul" };
+            var koreaTime = now.toLocaleString("ko-KR", options);
 
-            month = month < 10 ? '0' + month : month;
-            date = date < 10 ? '0' + date : date;
-            hours = hours < 10 ? '0' + hours : hours;
-            minutes = minutes < 10 ? '0' + minutes : minutes;
-            seconds = seconds < 10 ? '0' + seconds : seconds;
-
-            var time = year + '/' + month + '/' + date + ' ' + hours + ':' + minutes + ':' + seconds;
-
-            document.getElementById('clock').innerText = time + ' 서울';
+            document.getElementById('clock').innerText = koreaTime;
 
             setTimeout(updateClock, 1000);
         }
