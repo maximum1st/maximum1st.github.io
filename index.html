@@ -125,9 +125,23 @@ a {
     color: #008200;
 }
 
+.clock {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    color: white;
+    border-radius: 0 0 5px 0; /* Rounded bottom right corner */
+    font-size: 1rem;
+    z-index: 1000;
+}
+
     </style>
 </head>
 <body>
+    <div id="clock" class="clock"></div>
+
     <div class="language-switcher">
     <a href="https://maximum1st.github.io/">日本語</a>
     <a href="en.html">English</a>
@@ -218,6 +232,30 @@ a {
             document.getElementById('scrollToBottomBtn').style.display = "none";
         }
     });
+      function updateClock() {
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = now.getMonth() + 1;
+    var date = now.getDate();
+    var hours = now.getHours();
+    var minutes = now.getMinutes();
+    var seconds = now.getSeconds();
+    
+    month = month < 10 ? '0' + month : month;
+    date = date < 10 ? '0' + date : date;
+    hours = hours < 10 ? '0' + hours : hours;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+
+    var time = year + '/' + month + '/' + date + ' ' + hours + ':' + minutes + ':' + seconds;
+
+    document.getElementById('clock').innerText = time;
+
+    setTimeout(updateClock, 1000);
+}
+
+window.onload = updateClock;
+
     </script>
 </body>
 </html>
