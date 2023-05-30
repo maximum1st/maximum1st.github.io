@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="Gran Turismo 7, GT7, Twitch, PS5, gaming, broadcasting, livestream, 레이싱 시뮬레이터, 철원">
-    <meta name="description" content="‘토끼 연구’는 Gran Turismo 7 (GT7)의 방송과 게임 설정에 대한 연구를 진행하고 있습니다. PS5를 사용하여 Twitch에서 방송하며 시청자와의 교류도 중요하게 생각합니다.">
-    <title>토끼 연구 - Gran Turismo 7의 방송 및 게임 설정 연구</title>
+    <meta name="description" content="토끼 연구는 Gran Turismo 7 (GT7)의 브로드캐스트 방송 및 게임 설정 연구를 진행하고 있습니다. PS5를 사용하여 Twitch에서 방송하며 시청자와의 교류도 중요시하고 있습니다.">
+    <title>토끼 연구 - Gran Turismo 7의 브로드캐스트 방송 및 게임 설정 연구</title>
     <style>
         body {
             background-color: #181919;
@@ -100,11 +100,9 @@
             0% {
                 color: white;
             }
-
             50% {
                 color: red;
             }
-
             100% {
                 color: white;
             }
@@ -142,34 +140,35 @@
             padding: 10px;
             color: white;
             border-radius: 0 0 5px 0;
+            /* Rounded bottom right corner */
             font-size: 1rem;
             z-index: 1000;
         }
-
     </style>
 </head>
 <body>
     <div id="clock" class="clock"></div>
 
     <div class="language-switcher">
-        <a href="https://maximum1st.github.io/">日本</a>한국어
+        <a href="https://maximum1st.github.io/">日本語</a>
         <a href="en.html">English</a>
+        <a href="ko.html">한국어</a>
         <a href="zh.html">中文</a>
         <a href="ru.html">Русский</a>
     </div>
 
     <div class="image-wrapper">
-        <img src="r9T4y7U1I3O6P1A7S4D6F8G7H2J1K6L9M1N6B7V5C9X3.jpg" alt="Profile image">
-        <img src="https://maximum1st.github.io/toumei.png" class="overlay" alt="Profile image overlay">
+        <img src="r9T4y7U1I3O6P1A7S4D6F8G7H2J1K6L9M1N6B7V5C9X3.jpg" alt="프로필 이미지">
+        <img src="https://maximum1st.github.io/toumei.png" class="overlay" alt="프로필 이미지 오버레이">
     </div>
-    
-    <h1>토끼 연구</h1>
-    <p>Gran Turismo 7 (GT7)를 PS5로 플레이하고 Twitch에서 방송하고 있습니다. 게임 플레이를 공유하는 것뿐만 아니라, 게임 설정에 대한 연구도 진행하고 있으며 시청자와의 교류도 중요시하고 있습니다.</p>
-    
-    <p>가끔 방송 내에서 방송에 대한 이야기를 나누거나 캐주얼한 대화도 진행하고 있습니다. 매일은 아니지만 보통 10시 이전에 방송을 시작합니다. 조금 피곤할 때도 있으니까요~</p>
 
-    <button id="backToTopBtn" onclick="scrollToTop()" style="display:none;">맨 위로↑</button>
-    <button id="scrollToBottomBtn" onclick="scrollToBottom()" style="display:none;">아래로 스크롤↓</button>
+    <h1>토끼 연구</h1>
+    <p>'Gran Turismo 7 (GT7)' 레이싱 게임을 PS5를 통해 Twitch에서 생방송하고 있습니다. 게임 플레이를 공유하는 것뿐만 아니라, 게임 설정에 대한 연구도 진행하고 있으니 많은 시청 바랍니다. 조금 소심하고 장난스러운 성격이지만, 시청자와의 친밀한 소통을 중요하게 생각합니다. 때때로 방송 내에서 방송에 대해 이야기하거나 일상적인 대화를 나누기도 합니다. 매일은 방송하지 않지만, 보통 10시 이전에 시작합니다. 다만, 조금 피곤할 수 있습니다!</p>
+
+    <p>레이싱 게임은 반복적인 플레이로 인해 시청자 수가 적을 수 있습니다. 그러나 팔로우하고 댓글을 남겨주신다면 정말로 감사하겠습니다. 댓글은 제 모국어로 작성해 주시기 바랍니다.</p>
+
+    <button id="backToTopBtn" onclick="scrollToTop()" style="display:none;">Top↑</button>
+    <button id="scrollToBottomBtn" onclick="scrollToBottom()" style="display:none;">DownPage↓</button>
     <button id="goBackBtn" onclick="goBack()">이전 페이지</button><br>
 
     <script type="text/javascript">
@@ -195,21 +194,21 @@
             });
         }
 
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             var scrollPosition = window.pageYOffset;
             var windowHeight = window.innerHeight;
             var fullHeight = document.body.offsetHeight;
 
             if (scrollPosition > windowHeight * 0.5) {
-                document.getElementById('backToTopBtn').style.display = "block";
+                document.getElementById('backToTopBtn').style.display = 'block';
             } else {
-                document.getElementById('backToTopBtn').style.display = "none";
+                document.getElementById('backToTopBtn').style.display = 'none';
             }
 
             if (scrollPosition + windowHeight < fullHeight * 0.95) {
-                document.getElementById('scrollToBottomBtn').style.display = "block";
+                document.getElementById('scrollToBottomBtn').style.display = 'block';
             } else {
-                document.getElementById('scrollToBottomBtn').style.display = "none";
+                document.getElementById('scrollToBottomBtn').style.display = 'none';
             }
         });
 
@@ -218,19 +217,19 @@
             var year = now.getFullYear();
             var month = now.getMonth() + 1;
             var date = now.getDate();
-            var hours = now.getHours();
+            var hours = now.getHours() + 8; // 시차를 반영하여 8시간을 더합니다.
             var minutes = now.getMinutes();
             var seconds = now.getSeconds();
-            
+
             month = month < 10 ? '0' + month : month;
             date = date < 10 ? '0' + date : date;
             hours = hours < 10 ? '0' + hours : hours;
             minutes = minutes < 10 ? '0' + minutes : minutes;
             seconds = seconds < 10 ? '0' + seconds : seconds;
 
-            var time = year + '/' + month + '/' + date + ' ' + hours + ':' + minutes + ':' + seconds + " 서울";
+            var time = year + '/' + month + '/' + date + ' ' + hours + ':' + minutes + ':' + seconds;
 
-            document.getElementById('clock').innerText = time;
+            document.getElementById('clock').innerText = time + ' 서울';
 
             setTimeout(updateClock, 1000);
         }
