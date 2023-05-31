@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="Gran Turismo 7, GT7, Twitch, PS5, gaming, broadcasting, livestream, racing simulator, Choshi">
     <meta name="description" content="Tokkun Kenkyu (Tokkun Research) conducts live broadcasts and game setting research for Gran Turismo 7 (GT7). Streaming on Twitch using a PS5, I value interaction with viewers.">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"></script>
+
     <title>Tokkun Kenkyu - Broadcasting and Game Setting Research for Gran Turismo 7</title>
     <style>
         body {
@@ -204,27 +207,29 @@
             }
         });
     
-        function updateClock() {
-            var now = new Date();
-            var year = now.getFullYear();
-            var month = now.getMonth() + 1;
-            var date = now.getDate();
-            var hours = now.getUTCHours() - 4; // UTCから4時間を引いてワシントンDCの時間に調整
-            var minutes = now.getMinutes();
-            var seconds = now.getSeconds();
-            
-            month = month < 10 ? '0' + month : month;
-            date = date < 10 ? '0' + date : date;
-            hours = hours < 10 ? '0' + hours : hours;
-            minutes = minutes < 10 ? '0' + minutes : minutes;
-            seconds = seconds < 10 ? '0' + seconds : seconds;
+       function updateClock() {
+    var now = moment().tz("America/New_York");
     
-            var time = year + '/' + month + '/' + date + ' ' + hours + ':' + minutes + ':' + seconds + " Washington DC";
+    var year = now.year();
+    var month = now.month() + 1;
+    var date = now.date();
+    var hours = now.hours();
+    var minutes = now.minutes();
+    var seconds = now.seconds();
     
-            document.getElementById('clock').innerText = time;
-    
-            setTimeout(updateClock, 1000);
-        }
+    month = month < 10 ? '0' + month : month;
+    date = date < 10 ? '0' + date : date;
+    hours = hours < 10 ? '0' + hours : hours;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+
+    var time = year + '/' + month + '/' + date + ' ' + hours + ':' + minutes + ':' + seconds + " Washington DC";
+
+    document.getElementById('clock').innerText = time;
+
+    setTimeout(updateClock, 1000);
+}
+
     
         window.onload = updateClock;
     </script>
