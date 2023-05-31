@@ -212,30 +212,31 @@ a {
             document.getElementById('scrollToBottomBtn').style.display = "none";
         }
     });
-      function updateClock() {
-    var now = new Date();
-    var year = now.getFullYear();
-    var month = now.getMonth() + 1;
-    var date = now.getDate();
-    var hours = now.getHours();
-    var minutes = now.getMinutes();
-    var seconds = now.getSeconds();
-    
-    month = month < 10 ? '0' + month : month;
-    date = date < 10 ? '0' + date : date;
-    hours = hours < 10 ? '0' + hours : hours;
-    minutes = minutes < 10 ? '0' + minutes : minutes;
-    seconds = seconds < 10 ? '0' + seconds : seconds;
+      
+        function updateClock() {
+        var now = moment().utcOffset("+08:00"); // Beijing Time
 
-    var time = year + '/' + month + '/' + date + ' ' + hours + ':' + minutes + ':' + seconds;
+        var year = now.year();
+        var month = now.month() + 1; // month() is zero indexed
+        var date = now.date();
+        var hours = now.hours();
+        var minutes = now.minutes();
+        var seconds = now.seconds();
 
-    document.getElementById('clock').innerText = time;
+        month = month < 10 ? '0' + month : month;
+        date = date < 10 ? '0' + date : date;
+        hours = hours < 10 ? '0' + hours : hours;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
 
-    setTimeout(updateClock, 1000);
-}
+        var time = year + '/' + month + '/' + date + ' ' + hours + ':' + minutes + ':' + seconds + ' 北京';
 
-window.onload = updateClock;
+        document.getElementById('clock').innerText = time;
 
+        setTimeout(updateClock, 1000);
+    }
+
+    window.onload = updateClock;
     </script>
 </body>
 </html>
