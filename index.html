@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="Gran Turismo 7, GT7, Twitch, PS5, gaming, broadcasting, livestream, レーシングシュミレータ, 銚子">
     <meta name="description" content="「とっくん研究」はGran Turismo 7（GT7）のブロードキャスト配信とゲームセッティングの研究を行っています。PS5を使ってTwitchで配信しており、視聴者との交流も大切にしています。">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
+
     <title>とっくん研究 - Gran Turismo 7のブロードキャスト配信とゲームセッティング研究</title>
     <style>
           body {
@@ -233,32 +236,17 @@ a {
         }
     });
 
-    function updateClock() {
-    var now = new Date();
+   function updateClock() {
+    var now = moment().tz("Asia/Tokyo");
+    var time = now.format('YYYY/MM/DD HH:mm:ss');
 
-    var japanTime = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Tokyo" }));
-
-    var year = japanTime.getFullYear();
-    var month = japanTime.getMonth() + 1;
-    var date = japanTime.getDate();
-    var hours = japanTime.getHours();
-    var minutes = japanTime.getMinutes();
-    var seconds = japanTime.getSeconds();
-
-    month = month < 10 ? '0' + month : month;
-    date = date < 10 ? '0' + date : date;
-    hours = hours < 10 ? '0' + hours : hours;
-    minutes = minutes < 10 ? '0' + minutes : minutes;
-    seconds = seconds < 10 ? '0' + seconds : seconds;
-
-    var time = year + '/' + month + '/' + date + ' ' + hours + ':' + minutes + ':' + seconds + " Japan/Tokyo";
-
-    document.getElementById('clock').innerText = time;
+    document.getElementById('clock').innerText = time + " Japan/Tokyo";
 
     setTimeout(updateClock, 1000);
 }
 
 window.onload = updateClock;
+
     </script>
 </body>
 </html>
