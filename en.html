@@ -167,13 +167,18 @@
     <button id="goBackBtn" onclick="goBack()">Return Page</button><br>
      
     <script type="text/javascript">
-        function goBack() {
-            if (window.history.length > 1) {
-                window.history.back();
-            } else {
-                window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about';
-            }
+       function goBack() {
+    if (window.history.length > 1) {
+        window.history.back();
+    } else {
+        // モバイルデバイスでの処理
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            window.location.href = 'twitch://';  // twitchアプリを開く（該当アプリが独自のURLスキームをサポートしている場合）
+        } else {
+            window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about';
         }
+    }
+}
     
         function scrollToTop() {
             window.scrollTo({
