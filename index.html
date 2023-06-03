@@ -175,7 +175,8 @@ ul.link-list {
 
 <button id="backToTopBtn" onclick="scrollToTop()" style="display:none;">戻る↑</button>
 <button id="scrollToBottomBtn" onclick="scrollToBottom()" style="display:none;">リンク↓</button>
- <button id="openTwitchApp">Twitchアプリへ</button><br>
+<button id="openTwitchAppPC" style="display:none;" onclick="openTwitchAppPC()">Twitch Web</button>
+<button id="openTwitchAppMobile" style="display:none;" onclick="openTwitchAppMobile()">Twitch APP iOS</button><br>
      
 
 
@@ -242,7 +243,30 @@ ul.link-list {
 }
 
 window.onload = updateClock;
+        
+    // URLスキームとウェブアドレスを定義
+    var appUrlScheme = "twitch://open";
+    var webUrl = "https://www.twitch.tv/toshishige_maximum1st/about";
 
+    // ボタンの参照を取得
+    var openTwitchAppPC = document.getElementById("openTwitchAppPC");
+    var openTwitchAppMobile = document.getElementById("openTwitchAppMobile");
+
+    function checkDeviceType() {
+        var deviceType = navigator.userAgent;
+        if (deviceType.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {
+            openTwitchAppMobile.style.display = "block"; // モバイルデバイスの場合、Twitchアプリボタンを表示
+            openTwitchAppMobile.addEventListener("click", function(){
+                window.location = appUrlScheme; // アプリURLスキームを開く
+            });
+        } else {
+            openTwitchAppPC.style.display = "block"; // PCの場合、Twitchウェブボタンを表示
+            openTwitchAppPC.addEventListener("click", function(){
+                window.location = webUrl; // ウェブURLを開く
+            });
+        }
+    }
+    window.onload = checkDeviceType; // ページが読み込まれた時にデバイスタイプを確認
     </script>
 </body>
 </html>
