@@ -137,6 +137,16 @@
         ul.link-list {
             line-height: 50px;
         }
+
+        .blink {
+            animation: blink 1.5s linear infinite;
+        }
+
+        @keyframes blink {
+            0% { color: white; }
+            50% { color: red; }
+            100% { color: white; }
+        }
     </style>
 </head>
 <body>
