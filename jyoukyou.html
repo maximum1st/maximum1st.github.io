@@ -95,10 +95,26 @@
         max-width: 600px;
       }
     }
-  </style>
+  
+  .timestamp-container {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 4;
+}
 
+#timestamp-input {
+  padding: 5px;
+  font-size: 1rem;
+  color: black;
+}
+</style>
 </head>
 <body oncontextmenu="return false;">
+  <div class="timestamp-container">
+  <input type="text" id="timestamp-input" placeholder="2023/06/03 10:50">
+</div>
+
   <div class="content">
     <h1>とっくん研究状況 -「Gran Turismo 7」Twich今の配信状況！</h1>
     <p>もう少しでPS5帰ってくるよ。１週間以内！</p>
