@@ -175,19 +175,16 @@ a {
 
 
     <script type="text/javascript">
-     function goBack() {
-    if (window.history.length > 1) {
+  function goBack() {
+      if (window.history.length > 1) {
         window.history.back();
-    } else {
-        // モバイルデバイスでの処理
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            window.location.href = 'twitch://';  // twitchアプリを開く（該当アプリが独自のURLスキームをサポートしている場合）
-        } else {
-            window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about';
-        }
+      } else {
+        window.location.href = 'twitch://open'; // まずはTwitchアプリを開こうとします
+        setTimeout(function() { // Twitchアプリが開けなかった場合に備えて、一定時間後にWebページに遷移するようにします
+          window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about';
+        }, 500); // 500ミリ秒 = 0.5秒後に実行
+      }
     }
-}
-
     function scrollToTop() {
         window.scrollTo({
             top: 0,
