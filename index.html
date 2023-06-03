@@ -211,7 +211,8 @@
 
     <script type="text/javascript">
        
-    function openTwitchApp(deviceType) {
+       function openTwitchApp(event, deviceType) {
+        event.preventDefault();
         if (deviceType === 'PC') {
             window.open("https://www.twitch.tv/toshishige_maximum1st/about", "_blank");
         } else {
@@ -222,6 +223,7 @@
             }, 25);
         }
     }
+
 
         function backToTop() {
             window.scrollTo({
