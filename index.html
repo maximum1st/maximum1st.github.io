@@ -78,8 +78,10 @@
         }
 
         #backToTopBtn,
-        #scrollToBottomBtn {
-            position: fixed;
+        #scrollToBottomBtn,
+        #openTwitchAppPC,
+        #openTwitchAppMobile {
+            display: inline-block;
             background-color: #181919;
             color: white;
             border: none;
@@ -87,6 +89,7 @@
             cursor: pointer;
             font-size: 1.2rem;
             border-radius: 5px;
+            margin-top: 10px;
         }
 
         #backToTopBtn {
@@ -95,24 +98,8 @@
         }
 
         #scrollToBottomBtn {
-            top: 0px;
-            right: 0px;
-        }
-
-        @keyframes blink {
-            0% {
-                color: white;
-            }
-            50% {
-                color: red;
-            }
-            100% {
-                color: white;
-            }
-        }
-
-        .blink {
-            animation: blink 1.5s linear infinite;
+            top: 0;
+            right: 20px;
         }
 
         .language-switcher {
@@ -169,23 +156,27 @@
     </div>
 
     <h1>とっくん研究</h1>
-    <p>　レースゲームの「Gran Turismo 7（GT7）」をTwitchでPS5を使ってブロードキャスト配信を行っています。
+    <p>
+        レースゲームの「Gran Turismo 7（GT7）」をTwitchでPS5を使ってブロードキャスト配信を行っています。
         ゲームプレイを共有するだけでなく、ゲームのセッティングについての研究も行っていますので、ぜひ見てください。
         性格は臆病でお調子者ですが、優しいと言われることが多いです。仲良くしていただけると嬉しいです。
-        配信についてや雑談配信もたまにやっています。毎日配信はしていませんが、22時前に配信してます。眠いなぁ〜、、、。</p>
+        配信についてや雑談配信もたまにやっています。毎日配信はしていませんが、22時前に配信してます。眠いなぁ〜、、、。
+    </p>
 
-    <p>レースゲームは単純作業で視聴者が少ないため、フォローやコメントをいただけるとうれしいです。また、現在は相棒と復縁中。
-        身を固めるため手入れのしやすい坊主頭です。今は、銚子に引っ越すまで運動を控えていますが、引っ越したら運動を再開したいな。</p>
+    <p>
+        レースゲームは単純作業で視聴者が少ないため、フォローやコメントをいただけるとうれしいです。また、現在は相棒と復縁中。
+        身を固めるため手入れのしやすい坊主頭です。今は、銚子に引っ越すまで運動を控えていますが、引っ越したら運動を再開したいな。
+    </p>
 
-    <p>主な目的はPS5、特に「プレイステーションネットワーク」で友達を作ることが大前提!<br>
-        PlaystationIDは「maximum1st」です。皆さんの応援をお願いします！</p>
-
+    <p>
+        主な目的はPS5、特に「プレイステーションネットワーク」で友達を作ることが大前提!<br>
+        PlaystationIDは「maximum1st」です。皆さんの応援をお願いします！
+    </p>
 
     <button id="backToTopBtn" style="display:none;" onclick="backToTop()">戻る↑</button>
     <button id="scrollToBottomBtn" style="display:none;" onclick="scrollToBottom()">リンク↓</button>
     <button id="openTwitchAppPC" style="display:none;" onclick="openTwitchApp('PC')">Twitch Web</button>
     <button id="openTwitchAppMobile" style="display:none;" onclick="openTwitchApp('Mobile')">Twitch APP iOS</button>
-
 
     <h2>LINK`s</h2>
     <ul class="link-list">
@@ -198,8 +189,7 @@
     <ul class="link-list">
         <li><a href="https://maximum1st.github.io/barizougon.html" target="_blank">罵詈雑言呪の言葉</a></li>
         <li><a class="blink" href="https://maximum1st.github.io/jyoukyou.html" target="_blank">現在状況!</a></li>
-        <li><a href="https://calendar.google.com/calendar/embed?src=4dfce5e0adadb668659312dcd34b5d90de28c3d2bfd3a0e2b1d331f3fd41974c%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank">
-                配信予定</a></li>
+        <li><a href="https://calendar.google.com/calendar/embed?src=4dfce5e0adadb668659312dcd34b5d90de28c3d2bfd3a0e2b1d331f3fd41974c%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank">配信予定</a></li>
         <li><a href="#" target="_blank">完成設定(未設定)</a></li>
         <li><a href="#" target="_blank">動画制約(未設定)</a></li>
     </ul>
@@ -245,7 +235,7 @@
         }
 
         // ページの読み込み時にクロックを開始
-        window.onload = function () {
+        window.onload = function() {
             updateClock();
             checkDeviceType();
         }
@@ -257,13 +247,13 @@
             var openTwitchAppMobile = document.getElementById("openTwitchAppMobile");
 
             if (deviceType.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {
-                openTwitchAppMobile.style.display = "block";
-                openTwitchAppMobile.addEventListener("click", function () {
+                openTwitchAppMobile.style.display = "inline-block";
+                openTwitchAppMobile.addEventListener("click", function(){
                     window.location = "twitch://open";
                 });
             } else {
-                openTwitchAppPC.style.display = "block";
-                openTwitchAppPC.addEventListener("click", function () {
+                openTwitchAppPC.style.display = "inline-block";
+                openTwitchAppPC.addEventListener("click", function(){
                     window.location = "https://www.twitch.tv/toshishige_maximum1st/about";
                 });
             }
