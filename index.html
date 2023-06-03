@@ -210,16 +210,16 @@
     </ul>
 
     <script type="text/javascript">
-        function openTwitchApp(deviceType) {
+       
+    function openTwitchApp(deviceType) {
         if (deviceType === 'PC') {
             window.open("https://www.twitch.tv/toshishige_maximum1st/about", "_blank");
         } else {
             var now = new Date().valueOf();
             setTimeout(function () {
                 if (new Date().valueOf() - now > 100) return;
-                window.open("https://www.twitch.tv", "_blank");
+                window.location.href = "twitch://open";
             }, 25);
-            window.location.href = "twitch://open";
         }
     }
 
