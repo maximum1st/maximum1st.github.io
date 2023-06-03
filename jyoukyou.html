@@ -121,6 +121,9 @@
     window.onload = function() {
       var input = document.getElementById('timestamp-input');
 
+      // Set the initial width based on the placeholder text
+      input.style.width = ((input.placeholder.length + 1) * 8) + 'px';
+
       input.oninput = function() {
         this.style.width = ((this.value.length + 1) * 8) + 'px';
       };
