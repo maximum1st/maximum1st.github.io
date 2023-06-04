@@ -238,7 +238,29 @@
     setTimeout(updateClock, 1000);
 }
     
-    window.onload = updateClock
+    window.onload = updateClock;
+        function openTwitchWeb() {
+    window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about'; // Open in browser
+}
+
+function openTwitchApp() {
+    var ua = navigator.userAgent.toLowerCase();
+    if (ua.indexOf('iphone') > -1 || ua.indexOf('ipad') > -1) {
+        // iOS devices
+        try {
+            window.location.href = 'twitch://open'; // Try to open Twitch app
+            setTimeout(function() {
+                window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about'; // If Twitch app is not available, open in browser
+            }, 500); // 0.5 seconds delay
+        } catch (e) {
+            window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about'; // If an error occurred, open in browser
+        }
+    } else {
+        // Non-iOS devices
+        window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about'; // Open in browser
+    }
+}
+
     </script>
 </body>
 </html>
