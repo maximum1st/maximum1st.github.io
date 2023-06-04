@@ -179,88 +179,83 @@
     
     <p>Racing games can be a bit repetitive, which often leads to fewer viewers. That's why I truly appreciate you tuning in. However, as I'm not proficient in English, I would be grateful if you could leave comments in my native language.</p>
 
-<button id="openTwitchWebBtn" onclick="openTwitchWeb()">Open Twitch Web</button>
-<button id="openTwitchAppBtn" onclick="openTwitchApp()">Open Twitch App</button>
+<button id="openTwitchWebBtn" style="display: none" onclick="openTwitchWeb()">Open Twitch Web</button>
+<button id="openTwitchAppBtn" style="display: none" onclick="openTwitchApp()">Open Twitch App</button>
 <br>
      
     <script type="text/javascript">
-       function openTwitch() {
-    var ua = navigator.userAgent.toLowerCase();
-    if (ua.indexOf('iphone') > -1 || ua.indexOf('ipad') > -1) {
-        // iOS devices
+    function openTwitch() {
+      var ua = navigator.userAgent.toLowerCase();
+      if (ua.indexOf('iphone') > -1 || ua.indexOf('ipad') > -1) {
         try {
-            window.location.href = 'twitch://open'; // Try to open Twitch app
-            setTimeout(function() {
-                window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about'; // If Twitch app is not available, open in browser
-            }, 500); // 0.5 seconds delay
+          window.location.href = 'twitch://open';
+          setTimeout(function() {
+            window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about';
+          }, 500);
         } catch (e) {
-            window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about'; // If an error occurred, open in browser
+          window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about';
         }
-    } else {
-        // Non-iOS devices
-        window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about'; // Open in browser
+      } else {
+        window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about';
+      }
     }
-}
 
-        
-        
-        function goBack() {
+    function openTwitchWeb() {
+      window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about';
+    }
+
+    function openTwitchApp() {
+      try {
+        window.location.href = 'twitch://open';
+        setTimeout(function() {
+          window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about';
+        }, 500);
+      } catch (e) {
+        window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about';
+      }
+    } 
+
+    function goBack() {
       if (window.history.length > 1) {
         window.history.back();
       } else {
-        window.location.href = 'twitch://open'; // まずはTwitchアプリを開こうとします
-        setTimeout(function() { // Twitchアプリが開けなかった場合に備えて、一定時間後にWebページに遷移するようにします
-          window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about';
-        }, 500); // 500ミリ秒 = 0.5秒後に実行
+        openTwitchApp();
       }
     }
-    
+
     function updateClock() {
-    var now = moment().tz("America/New_York");
-    
-    var year = now.year();
-    var month = now.month() + 1;
-    var date = now.date();
-    var hours = now.hours();
-    var minutes = now.minutes();
-    var seconds = now.seconds();
-    
-    month = month < 10 ? '0' + month : month;
-    date = date < 10 ? '0' + date : date;
-    hours = hours < 10 ? '0' + hours : hours;
-    minutes = minutes < 10 ? '0' + minutes : minutes;
-    seconds = seconds < 10 ? '0' + seconds : seconds;
+      var now = moment().tz("America/New_York");
 
-    var time = year + '/' + month + '/' + date + ' ' + hours + ':' + minutes + ':' + seconds + " Washington DC";
+      var year = now.year();
+      var month = now.month() + 1;
+      var date = now.date();
+      var hours = now.hours();
+      var minutes = now.minutes();
+      var seconds = now.seconds();
 
-    document.getElementById('clock').innerText = time;
+      month = month < 10 ? '0' + month : month;
+      date = date < 10 ? '0' + date : date;
+      hours = hours < 10 ? '0' + hours : hours;
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      seconds = seconds < 10 ? '0' + seconds : seconds;
 
-    setTimeout(updateClock, 1000);
-}
-    
-    window.onload = updateClock;
-        function openTwitchWeb() {
-    window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about'; // Open in browser
-}
+      var time = year + '/' + month + '/' + date + ' ' + hours + ':' + minutes + ':' + seconds + " Washington DC";
 
-function openTwitchApp() {
-    var ua = navigator.userAgent.toLowerCase();
-    if (ua.indexOf('iphone') > -1 || ua.indexOf('ipad') > -1) {
-        // iOS devices
-        try {
-            window.location.href = 'twitch://open'; // Try to open Twitch app
-            setTimeout(function() {
-                window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about'; // If Twitch app is not available, open in browser
-            }, 500); // 0.5 seconds delay
-        } catch (e) {
-            window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about'; // If an error occurred, open in browser
-        }
-    } else {
-        // Non-iOS devices
-        window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about'; // Open in browser
+      document.getElementById('clock').innerText = time;
+
+      setTimeout(updateClock, 1000);
     }
-}
 
+    window.onload = function() {
+      updateClock();
+
+      var ua = navigator.userAgent.toLowerCase();
+      if (ua.indexOf('iphone') > -1 || ua.indexOf('ipad') > -1) {
+        document.getElementById('openTwitchAppBtn').style.display = 'inline-block';
+      } else {
+        document.getElementById('openTwitchWebBtn').style.display = 'inline-block';
+      }
+    }
     </script>
 </body>
 </html>
