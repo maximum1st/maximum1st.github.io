@@ -99,18 +99,20 @@
         }
         
     #openTwitchWebBtn, #openTwitchAppBtn {
-            background-color: orange;
-            color: white;
-            border: none;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 10px;
-            height: 2em;
-            transition: background-color 0.3s ease;
-            border-radius: 15px; /* Added border-radius here */
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: flex; /* ボタン内のテキストを中央揃えにするために flex を用います。 */
+    justify-content: center; /* テキストを水平方向に中央揃えにします。 */
+    align-items: center; /* テキストを垂直方向に中央揃えにします。 */
+    font-size: 16px;
+    margin: 10px;
+    height: 3em;
+    transition: background-color 0.3s ease;
+    border-radius: 15px;
         }
 
         #openTwitchWebBtn:hover, #openTwitchAppBtn:hover {
