@@ -98,22 +98,23 @@
             right: 0px;
         }
         
-   #openTwitchWebBtn, #openTwitchAppBtn {
-    background-color: orange;
-    color: white;
-    border: none;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 10px;
-    transition: background-color 0.3s ease;
-}
+    #openTwitchWebBtn, #openTwitchAppBtn {
+            background-color: orange;
+            color: white;
+            border: none;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px;
+            transition: background-color 0.3s ease;
+            border-radius: 15px; /* Added border-radius here */
+        }
 
-#openTwitchWebBtn:hover, #openTwitchAppBtn:hover {
-    background-color: darkorange;
-}
+        #openTwitchWebBtn:hover, #openTwitchAppBtn:hover {
+            background-color: darkorange;
+        }
         
         @keyframes blink {
             0% { color: white; }
@@ -179,8 +180,8 @@
     
     <p>Racing games can be a bit repetitive, which often leads to fewer viewers. That's why I truly appreciate you tuning in. However, as I'm not proficient in English, I would be grateful if you could leave comments in my native language.</p>
 
-<button id="openTwitchWebBtn" style="display: none" onclick="openTwitchWeb()">Open Twitch Web</button>
-<button id="openTwitchAppBtn" style="display: none" onclick="openTwitchApp()">Open Twitch App</button>
+    <button id="openTwitchWebBtn" style="display: none" onclick="openTwitchWeb()">Open Twitch Web</button>
+    <button id="openTwitchAppBtn" style="display: none" onclick="openTwitchApp()">Open Twitch App</button>
 <br>
      
     <script type="text/javascript">
