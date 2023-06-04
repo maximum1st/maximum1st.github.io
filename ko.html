@@ -162,8 +162,7 @@
     
     <p>레이싱 게임은 반복적인 작업으로 인해 시청자가 많지 않은 경향이 있습니다. 그러나 팔로우하거나 댓글을 달아 주시면 정말 감사하겠습니다. 댓글은 제 모국어를 사용할 수 있는 분들만 부탁드립니다.</p>
 
-    <button id="backToTopBtn" onclick="scrollToTop()" style="display:none;">Top↑</button>
-    <button id="scrollToBottomBtn" onclick="scrollToBottom()" style="display:none;">DownPage↓</button>
+    
     <button id="goBackBtn" onclick="goBack()">이전 페이지</button><br>
 
     <script type="text/javascript">
@@ -171,44 +170,12 @@
       if (window.history.length > 1) {
         window.history.back();
       } else {
-        window.location.href = 'twitch://open'; // まずはTwitchアプリを開こうとします
-        setTimeout(function() { // Twitchアプリが開けなかった場合に備えて、一定時間後にWebページに遷移するようにします
+        window.location.href = 'twitch://open'; 
+        setTimeout(function() { 
           window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about';
-        }, 500); // 500ミリ秒 = 0.5秒後に実行
+        }, 500); 
       }
     }
-
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-        function scrollToBottom() {
-            window.scrollTo({
-                top: document.body.scrollHeight,
-                behavior: 'smooth'
-            });
-        }
-
-        window.addEventListener('scroll', function() {
-            var scrollPosition = window.pageYOffset;
-            var windowHeight = window.innerHeight;
-            var fullHeight = document.body.offsetHeight;
-
-            if (scrollPosition > windowHeight * 0.5) {
-                document.getElementById('backToTopBtn').style.display = "block";
-            } else {
-                document.getElementById('backToTopBtn').style.display = "none";
-            }
-
-            if (scrollPosition + windowHeight < fullHeight * 0.95) {
-                document.getElementById('scrollToBottomBtn').style.display = "block";
-            } else {
-                document.getElementById('scrollToBottomBtn').style.display = "none";
-            }
-        });
 
         function updateClock() {
             var now = moment().tz("Asia/Seoul");
