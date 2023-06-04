@@ -185,36 +185,25 @@
 <br>
      
     <script type="text/javascript">
-    function openTwitch() {
-    var ua = navigator.userAgent.toLowerCase();
-    if (ua.indexOf('iphone') > -1 || ua.indexOf('ipad') > -1) {
+    function openTwitchWeb() {
+        window.open('https://www.twitch.tv/toshishige_maximum1st/about', '_blank');
+    }
+
+    function openTwitchApp() {
+        var timeout;
         try {
-            window.location.href = 'twitch://open';
-            setTimeout(function() {
+            document.location = 'twitch://open'; 
+            timeout = setTimeout(function() {
                 window.open('https://www.twitch.tv/toshishige_maximum1st/about', '_blank');
             }, 500);
         } catch (e) {
             window.open('https://www.twitch.tv/toshishige_maximum1st/about', '_blank');
         }
-    } else {
-        window.open('https://www.twitch.tv/toshishige_maximum1st/about', '_blank');
-    }
-}
 
-function openTwitchWeb() {
-    window.open('https://www.twitch.tv/toshishige_maximum1st/about', '_blank');
-}
-
-function openTwitchApp() {
-    try {
-        window.location.href = 'twitch://open';
-        setTimeout(function() {
-            window.open('https://www.twitch.tv/toshishige_maximum1st/about', '_blank');
-        }, 500);
-    } catch (e) {
-        window.open('https://www.twitch.tv/toshishige_maximum1st/about', '_blank');
+        window.onblur = function() {
+            clearTimeout(timeout);
+        }
     }
-}
     function goBack() {
       if (window.history.length > 1) {
         window.history.back();
