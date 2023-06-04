@@ -186,36 +186,35 @@
      
     <script type="text/javascript">
     function openTwitch() {
-      var ua = navigator.userAgent.toLowerCase();
-      if (ua.indexOf('iphone') > -1 || ua.indexOf('ipad') > -1) {
+    var ua = navigator.userAgent.toLowerCase();
+    if (ua.indexOf('iphone') > -1 || ua.indexOf('ipad') > -1) {
         try {
-          window.location.href = 'twitch://open';
-          setTimeout(function() {
-            window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about';
-          }, 500);
+            window.location.href = 'twitch://open';
+            setTimeout(function() {
+                window.open('https://www.twitch.tv/toshishige_maximum1st/about', '_blank');
+            }, 500);
         } catch (e) {
-          window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about';
+            window.open('https://www.twitch.tv/toshishige_maximum1st/about', '_blank');
         }
-      } else {
-        window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about';
-      }
+    } else {
+        window.open('https://www.twitch.tv/toshishige_maximum1st/about', '_blank');
     }
+}
 
-    function openTwitchWeb() {
-      window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about';
-    }
+function openTwitchWeb() {
+    window.open('https://www.twitch.tv/toshishige_maximum1st/about', '_blank');
+}
 
-    function openTwitchApp() {
-      try {
+function openTwitchApp() {
+    try {
         window.location.href = 'twitch://open';
         setTimeout(function() {
-          window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about';
+            window.open('https://www.twitch.tv/toshishige_maximum1st/about', '_blank');
         }, 500);
-      } catch (e) {
-        window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about';
-      }
-    } 
-
+    } catch (e) {
+        window.open('https://www.twitch.tv/toshishige_maximum1st/about', '_blank');
+    }
+}
     function goBack() {
       if (window.history.length > 1) {
         window.history.back();
