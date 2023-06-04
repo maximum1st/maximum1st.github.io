@@ -162,8 +162,7 @@
     
     <p>Racing games can be a bit repetitive, which often leads to fewer viewers. That's why I truly appreciate you tuning in. However, as I'm not proficient in English, I would be grateful if you could leave comments in my native language.</p>
 
-    <button id="backToTopBtn" onclick="scrollToTop()" style="display:none;">Top↑</button>
-    <button id="scrollToBottomBtn" onclick="scrollToBottom()" style="display:none;">DownPage↓</button>
+    
     <button id="goBackBtn" onclick="goBack()">Return Page</button><br>
      
     <script type="text/javascript">
@@ -178,39 +177,7 @@
       }
     }
     
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-    
-        function scrollToBottom() {
-            window.scrollTo({
-                top: document.body.scrollHeight,
-                behavior: 'smooth'
-            });
-        }
-    
-        window.addEventListener('scroll', function() {
-            var scrollPosition = window.pageYOffset;
-            var windowHeight = window.innerHeight;
-            var fullHeight = document.body.offsetHeight;
-    
-            if (scrollPosition > windowHeight * 0.5) {
-                document.getElementById('backToTopBtn').style.display = "block";
-            } else {
-                document.getElementById('backToTopBtn').style.display = "none";
-            }
-    
-            if (scrollPosition + windowHeight < fullHeight * 0.95) {
-                document.getElementById('scrollToBottomBtn').style.display = "block";
-            } else {
-                document.getElementById('scrollToBottomBtn').style.display = "none";
-            }
-        });
-    
-       function updateClock() {
+    function updateClock() {
     var now = moment().tz("America/New_York");
     
     var year = now.year();
@@ -232,9 +199,8 @@
 
     setTimeout(updateClock, 1000);
 }
-
     
-        window.onload = updateClock;
+    window.onload = updateClock
     </script>
 </body>
 </html>
