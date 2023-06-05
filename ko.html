@@ -10,7 +10,15 @@
 
     <title>とっくん研究 - Gran Turismo 7의 브로드캐스트 방송과 게임 설정 연구</title>
     <style>
-        body {
+       body {
+            /* 追加: bodyをフレキシブルボックスにし、中央に配置する */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            
+            /* 元のスタイル */
             background-color: #181919;
             font-family: Arial, sans-serif;
             max-width: 800px;
@@ -19,6 +27,7 @@
             text-align: center;
             color: white;
         }
+
         
         .image-wrapper {
             position: relative;
@@ -41,12 +50,7 @@
             z-index: 10;
             border-radius: 50%;
         }
-        .button-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+       
         
         h1 {
             font-size: 2rem;
