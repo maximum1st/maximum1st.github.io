@@ -15,6 +15,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            background-color: #181919;  /* Dark background */
+            color: #ffffff;  /* Light text */
         }
         
         /* Image styling */
@@ -81,8 +83,8 @@
         }
         
     #openTwitchWebBtn, #openTwitchAppBtn { 
-    background-color: orange;
-    color: white;
+    background-color: #ffffff;  /* Light background */
+    color: #181919;  /* Dark text */
     border: none;
     padding: 10px 20px;
     cursor: pointer;
@@ -95,7 +97,7 @@
     transition: background-color 0.3s ease;
         }
     #openTwitchWebBtn:hover, #openTwitchAppBtn:hover {
-    background-color: darkorange;
+    background-color: #dddddd;  /* Light hover */
 }
 
         /* Blinking text */
@@ -113,7 +115,7 @@
             position: fixed;
             top: 35px;
             right: 20px;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(255, 255, 255, 0.5);  /* Light background */
             padding: 10px;
             border-radius: 5px;
             z-index: 1000;
@@ -129,17 +131,14 @@
             color: #008200;
         }
     
-        
-        
-        
         /* Clock styling */
         .clock {
             position: fixed;
             top: 0;
             left: 0;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(255, 255, 255, 0.5);  /* Light background */
             padding: 10px;
-            color: white;
+            color: #181919;  /* Dark text */
             border-radius: 0 0 5px 0;
             font-size: 1rem;
             z-index: 1000;
