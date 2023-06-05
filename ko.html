@@ -187,16 +187,56 @@
     <button id="goBackBtn" onclick="goBack()">이전 페이지</button><br>
 
     <script type="text/javascript">
-    function goBack() {
-      if (window.history.length > 1) {
-        window.history.back();
-      } else {
-        window.location.href = 'twitch://open'; 
-        setTimeout(function() { 
-          window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about';
-        }, 500); 
-      }
-    }
+      #openTwitchWebBtn, #openTwitchAppBtn {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: flex; /* ボタン内のテキストを中央揃えにするために flex を用います。 */
+    justify-content: center; /* テキストを水平方向に中央揃えにします。 */
+    align-items: center; /* テキストを垂直方向に中央揃えにします。 */
+    font-size: 16px;
+    margin: 10px;
+    height: 3em;
+    transition: background-color 0.3s ease;
+    border-radius: 15px;
+        }
+
+        #openTwitchWebBtn:hover, #openTwitchAppBtn:hover {
+            background-color: darkorange;
+        }
+        
+        @keyframes blink {
+            0% { color: white; }
+            50% { color: red; }
+            100% { color: white; }
+        }
+        
+        .blink {
+            animation: blink 1.5s linear infinite;
+        }
+        
+    .language-switcher {
+    position: fixed;
+    top: 35px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+        
+        .language-switcher a {
+            color: #00C300;
+            margin-right: 10px;
+            text-decoration: none;
+        }
+        
+        .language-switcher a:hover {
+            color: #008200;
+        }
 
         function updateClock() {
             var now = moment().tz("Asia/Seoul");
