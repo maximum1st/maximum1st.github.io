@@ -203,8 +203,13 @@
         }
 
         function showButtons() {
-            document.getElementById('openTwitchWebBtn').style.display = 'block';
-            document.getElementById('openTwitchAppBtn').style.display = 'block';
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            // iOSデバイスであるかをチェック
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                document.getElementById('openTwitchAppBtn').style.display = 'block';
+            } else {
+                document.getElementById('openTwitchWebBtn').style.display = 'block';
+            }
         }
 
         function openTwitchWeb() {
