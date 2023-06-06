@@ -224,20 +224,19 @@
 
         // クロックを更新する関数
         function updateClock() {
-            var now = moment().tz("Asia/Tokyo");
-            var time = now.format('YYYY/MM/DD HH:mm:ss');
+        var now = moment().tz("Asia/Shanghai"); //ここを「Asia/Shanghai」に変更しました
+        var time = now.format('YYYY/MM/DD HH:mm:ss');
 
-            document.getElementById('clock').innerText = time + " Japan/Tokyo";
+        document.getElementById('clock').innerText = time + " China/Beijing"; //ここも都市名を「Beijing」に変更しました
 
-            setTimeout(updateClock, 1000);
-        }
+        setTimeout(updateClock, 1000);
+    }
 
         // ページの読み込み時にクロックを開始
         window.onload = function() {
-            updateClock();
-            checkDeviceType();
-        }
-
+        updateClock();
+        checkDeviceType();
+    }
         // デバイスタイプをチェックしてTwitchアプリボタンを表示する関数
         function checkDeviceType() {
         var deviceType = navigator.userAgent;
