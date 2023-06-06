@@ -116,6 +116,15 @@
   font-size: 1rem;
   color: white;
 }
+   .timestamp-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background-color: #000000; /* You can change this to any color you want */
+      z-index: 5; /* Make sure this is less than the z-index of .timestamp-container */
+    }
 </style>
   <script defer>
     window.onload = function() {
@@ -130,7 +139,8 @@
     };
   </script>
 </head>
-<body oncontextmenu="return false;">
+  <body oncontextmenu="return false;">
+  <div class="timestamp-bg"></div>
   <div class="timestamp-container">
   <input type="text" id="timestamp-input" placeholder="Last2023/06/06 14:35">
 </div>
