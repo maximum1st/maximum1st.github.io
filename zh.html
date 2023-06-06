@@ -10,136 +10,153 @@
     <title>とっくん研究 - Gran Turismo 7的广播和游戏设置研究</title>
 
     <style>
-        body {
-    background-color: #181919;
-    font-family: Arial, sans-serif;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
-    color: white;
-}
+     body {
+            background-color: #181919;
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+        }
 
-.image-wrapper {
-    position: relative;
-    display: inline-block;
-}
+        .image-wrapper {
+            position: relative;
+            display: inline-block;
+        }
 
-.image-wrapper img {
-    max-width: 200px;
-    height: auto;
-    border-radius: 50%;
-    margin-bottom: 0.5rem;
-}
+        .image-wrapper img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 0.5rem;
+        }
 
-.image-wrapper .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    border-radius: 50%;
-}
+        .image-wrapper .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            border-radius: 50%;
+        }
 
-h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
 
-h2 {
-    color: #00C300;
-    font-size: 1.5rem;
-    margin-top: 3rem;
-    margin-bottom: 1rem;
-}
+        h2 {
+            color: #00C300;
+            font-size: 1.5rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+        }
 
-p {
-    font-size: 1.2rem;
-}
+        p {
+            font-size: 1.2rem;
+        }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-}
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
 
-li {
-    display: inline;
-    margin: 0 1rem;
-}
+        li {
+            display: inline;
+            margin: 0 1rem;
+        }
 
-a {
-    text-decoration: none;
-    color: inherit;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 1.5;
-}
+        a {
+            text-decoration: none;
+            color: inherit;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.5;
+        }
 
-#backToTopBtn, #scrollToBottomBtn {
-    position: fixed;
-    background-color: #181919;
+        #backToTopBtn,
+        #scrollToBottomBtn,
+        #openTwitchAppPC,
+        #openTwitchAppMobile {
+    background-color: orange;
     color: white;
     border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    border-radius: 5px;
-}
-
-#backToTopBtn {
-    bottom: 20px;
-    right: 20px;
-}
-
-#scrollToBottomBtn {
-    top: 0px;
-    right: 0px;
-}
-
-@keyframes blink {
-    0% { color: white; }
-    50% { color: red; }
-    100% { color: white; }
-}
-
-.blink {
-    animation: blink 1.5s linear infinite;
-}
-
-.language-switcher {
-    position: fixed;
-    top: 35px;  /* Updated */
-    right: 20px;  /* Updated */
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    border-radius: 5px;
-    z-index: 1000;
-}
-
-.language-switcher a {
-    color: #00C300;
-    margin-right: 10px;
+    padding: 15px 32px;
+    text-align: center;
     text-decoration: none;
-}
+    display: flex; /* ボタン内のテキストを中央揃えにするために flex を用います。 */
+    justify-content: center; /* テキストを水平方向に中央揃えにします。 */
+    align-items: center; /* テキストを垂直方向に中央揃えにします。 */
+    font-size: 16px;
+    margin: 10px;
+    height: 3em;
+    transition: background-color 0.3s ease;
+    border-radius: 15px;
+        }
+        
+        #openTwitchAppPC:hover,
+        #openTwitchAppMobile:hover {
+            background-color: darkorange;
+        }
 
-.language-switcher a:hover {
-    color: #008200;
-}
+        #backToTopBtn {
+            bottom: 20px;
+            right: 20px;
+        }
 
-.clock {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    color: white;
-    border-radius: 0 0 5px 0;
-    font-size: 1rem;
-    z-index: 1000;
-}
+        #scrollToBottomBtn {
+            top: 0;
+            right: 20px;
+        }
 
+        .language-switcher {
+            position: fixed;
+            top: 35px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        .language-switcher a {
+            color: #00C300;
+            margin-right: 10px;
+            text-decoration: none;
+        }
+
+        .language-switcher a:hover {
+            color: #008200;
+        }
+
+        .clock {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            color: white;
+            border-radius: 0 0 5px 0;
+            font-size: 1rem;
+            z-index: 1000;
+        }
+
+        ul.link-list {
+            line-height: 50px;
+        }
+
+        .blink {
+            animation: blink 1.5s linear infinite;
+        }
+
+        @keyframes blink {
+            0% { color: white; }
+            50% { color: red; }
+            100% { color: white; }
+        }
     </style>
 </head>
 <body>
@@ -165,35 +182,82 @@ a {
 
    
 
-<button id="backToTopBtn" onclick="scrollToTop()" style="display:none;">Top↑</button>
-<button id="scrollToBottomBtn" onclick="scrollToBottom()" style="display:none;">DownPage↓</button>
-<button id="goBackBtn" onclick="goBack()">返回上一页</button><br>
-     
+ <button id="backToTopBtn" style="display:none;" onclick="backToTop()">戻る↑</button>
+    <button id="scrollToBottomBtn" style="display:none;" onclick="scrollToBottom()">リンク↓</button>
+    <button id="openTwitchAppPC" style="display:none;" onclick="openTwitchApp('PC')">My Twitch Web</button>
+    <button id="openTwitchAppMobile" style="display:none;" onclick="openTwitchApp('Mobile')">Twitch APP iOS</button>
 
 
       
 
 
     <script type="text/javascript">
-   function goBack() {
-            if (window.history.length > 1) {
-              window.history.back();
-            } else {
-              window.location.href = 'twitch://open'; // まずはTwitchアプリを開こうとします
-              setTimeout(function() { // Twitchアプリが開けなかった場合に備えて、一定時間後にWebページに遷移するようにします
-                window.location.href = 'https://www.twitch.tv/toshishige_maximum1st/about';
-              }, 500); // 500ミリ秒 = 0.5秒後に実行
-            }
+    function openTwitchApp(event, deviceType) {
+        event.preventDefault();
+        if (deviceType === 'PC') {
+            window.open("https://www.twitch.tv/toshishige_maximum1st/about", "_blank");
+        } else {
+            var now = new Date().valueOf();
+            setTimeout(function () {
+                if (new Date().valueOf() - now > 100) return;
+                window.location.href = "twitch://open";
+            }, 25);
+        }
+    }
+
+
+        function backToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         }
 
+        function scrollToBottom() {
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth'
+            });
+        }
+
+        // ...その他のスクリプト...
+
+        // クロックを更新する関数
         function updateClock() {
-            var now = moment().tz("Asia/Shanghai"); // Beijing Time
-            var time = now.format('YYYY/MM/DD HH:mm:ss') + ' 北京';
-            document.getElementById('clock').innerText = time;
+            var now = moment().tz("Asia/Tokyo");
+            var time = now.format('YYYY/MM/DD HH:mm:ss');
+
+            document.getElementById('clock').innerText = time + " Japan/Tokyo";
+
             setTimeout(updateClock, 1000);
         }
 
-        window.onload = updateClock;
+        // ページの読み込み時にクロックを開始
+        window.onload = function() {
+            updateClock();
+            checkDeviceType();
+        }
+
+        // デバイスタイプをチェックしてTwitchアプリボタンを表示する関数
+        function checkDeviceType() {
+        var deviceType = navigator.userAgent;
+        var openTwitchAppPC = document.getElementById("openTwitchAppPC");
+        var openTwitchAppMobile = document.getElementById("openTwitchAppMobile");
+
+        if (deviceType.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {
+            openTwitchAppMobile.style.display = "inline-block";
+            openTwitchAppMobile.addEventListener("click", function(event){
+                event.preventDefault();  // Add this line to prevent default link behavior
+                window.location = "twitch://open";
+            });
+        } else {
+            openTwitchAppPC.style.display = "inline-block";
+            openTwitchAppPC.addEventListener("click", function(event){
+                event.preventDefault();  // Add this line to prevent default link behavior
+                window.open("https://www.twitch.tv/toshishige_maximum1st/about", "_blank");
+            });
+        }
+    }
     </script>
 </body>
 </html>
