@@ -186,37 +186,72 @@
 <br>
     
     <script type="text/javascript">
-    // ページが読み込まれたときにボタンを表示する
-        window.onload = function() {
-            updateClock();
-            showButtons();
-        };
+    function openTwitchApp(event, deviceType) {
+        event.preventDefault();
+        if (deviceType === 'PC') {
+            window.open("https://www.twitch.tv/toshishige_maximum1st/about", "_blank");
+        } else {
+            var now = new Date().valueOf();
+            setTimeout(function () {
+                if (new Date().valueOf() - now > 100) return;
+                window.location.href = "twitch://open";
+            }, 25);
+        }
+    }
 
+
+        function backToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        function scrollToBottom() {
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth'
+            });
+        }
+
+        // ...その他のスクリプト...
+
+        // クロックを更新する関数
         function updateClock() {
-            var now = moment().tz("Asia/Seoul");
+            var now = moment().tz("Asia/Tokyo");
             var time = now.format('YYYY/MM/DD HH:mm:ss');
-            document.getElementById('clock').innerText = time + " 서울";
+
+            document.getElementById('clock').innerText = time + " Japan/Tokyo";
+
             setTimeout(updateClock, 1000);
         }
 
-        function showButtons() {
-            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            // iOSデバイスであるかをチェック
-            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                document.getElementById('openTwitchAppBtn').style.display = 'block';
-            } else {
-                document.getElementById('openTwitchWebBtn').style.display = 'block';
-            }
+        // ページの読み込み時にクロックを開始
+        window.onload = function() {
+            updateClock();
+            checkDeviceType();
         }
 
-        function openTwitchWeb() {
-            window.open('https://www.twitch.tv/', '_blank');
-        }
+        // デバイスタイプをチェックしてTwitchアプリボタンを表示する関数
+        function checkDeviceType() {
+        var deviceType = navigator.userAgent;
+        var openTwitchAppPC = document.getElementById("openTwitchAppPC");
+        var openTwitchAppMobile = document.getElementById("openTwitchAppMobile");
 
-        function openTwitchApp() {
-            // iOSのTwitchアプリを開くためのURLスキーム「twitch://」を使用します。
-            window.open('twitch://', '_blank');
+        if (deviceType.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {
+            openTwitchAppMobile.style.display = "inline-block";
+            openTwitchAppMobile.addEventListener("click", function(event){
+                event.preventDefault();  // Add this line to prevent default link behavior
+                window.location = "twitch://open";
+            });
+        } else {
+            openTwitchAppPC.style.display = "inline-block";
+            openTwitchAppPC.addEventListener("click", function(event){
+                event.preventDefault();  // Add this line to prevent default link behavior
+                window.open("https://www.twitch.tv/toshishige_maximum1st/about", "_blank");
+            });
         }
+    }
     </script>
 </body>
 </html>
