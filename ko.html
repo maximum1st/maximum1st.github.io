@@ -10,29 +10,28 @@
 
     <title>とっくん研究 - Gran Turismo 7의 브로드캐스트 방송과 게임 설정 연구</title>
     <style>
-        /* Common settings */
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #181919;  /* Dark background */
-            color: #ffffff;  /* Light text */
+         body {
+            background-color: #181919;
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+            color: white;
         }
-        
-        /* Image styling */
+
         .image-wrapper {
             position: relative;
             display: inline-block;
-            vertical-align: top;
-            margin-top: 20px;
         }
-        
+
         .image-wrapper img {
             max-width: 200px;
             height: auto;
             border-radius: 50%;
+            margin-bottom: 0.5rem;
         }
-        
+
         .image-wrapper .overlay {
             position: absolute;
             top: 0;
@@ -42,26 +41,33 @@
             z-index: 10;
             border-radius: 50%;
         }
-        
-        /* Text styling */
-        h1, h2, p {
-            margin: 1rem 0;
-        }
-        
+
         h1 {
             font-size: 2rem;
+            margin-bottom: 1rem;
         }
-        
+
         h2 {
             color: #00C300;
             font-size: 1.5rem;
             margin-top: 3rem;
+            margin-bottom: 1rem;
         }
-        
+
         p {
             font-size: 1.2rem;
         }
-        
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            display: inline;
+            margin: 0 1rem;
+        }
+
         a {
             text-decoration: none;
             color: inherit;
@@ -71,77 +77,85 @@
             line-height: 1.5;
         }
 
-        /* Navigation buttons styling */
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        
-        li {
-            display: inline;
-            margin: 0 1rem;
-        }
-        
-    #openTwitchWebBtn, #openTwitchAppBtn { 
-    background-color: #ffffff;  /* Light background */
-    color: #181919;  /* Dark text */
+        #backToTopBtn,
+        #scrollToBottomBtn,
+        #openTwitchAppPC,
+        #openTwitchAppMobile {
+    background-color: orange;
+    color: white;
     border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: flex; /* ボタン内のテキストを中央揃えにするために flex を用います。 */
+    justify-content: center; /* テキストを水平方向に中央揃えにします。 */
+    align-items: center; /* テキストを垂直方向に中央揃えにします。 */
+    font-size: 16px;
+    margin: 10px;
     height: 3em;
     transition: background-color 0.3s ease;
+    border-radius: 15px;
         }
-    #openTwitchWebBtn:hover, #openTwitchAppBtn:hover {
-    background-color: #dddddd;  /* Light hover */
-}
+        
+        #openTwitchAppPC:hover,
+        #openTwitchAppMobile:hover {
+            background-color: darkorange;
+        }
 
-        /* Blinking text */
-        @keyframes blink {
-            0%, 100% { color: white; }
-            50% { color: red; }
+        #backToTopBtn {
+            bottom: 20px;
+            right: 20px;
         }
-        
-        .blink {
-            animation: blink 1.5s linear infinite;
+
+        #scrollToBottomBtn {
+            top: 0;
+            right: 20px;
         }
-        
-        /* Language switcher styling */
+
         .language-switcher {
             position: fixed;
             top: 35px;
             right: 20px;
-            background-color: rgba(255, 255, 255, 0.5);  /* Light background */
+            background-color: rgba(0, 0, 0, 0.5);
             padding: 10px;
             border-radius: 5px;
             z-index: 1000;
         }
-        
+
         .language-switcher a {
             color: #00C300;
             margin-right: 10px;
             text-decoration: none;
         }
-        
+
         .language-switcher a:hover {
             color: #008200;
         }
-    
-        /* Clock styling */
+
         .clock {
             position: fixed;
             top: 0;
             left: 0;
-            background-color: rgba(255, 255, 255, 0.5);  /* Light background */
+            background-color: rgba(0, 0, 0, 0.5);
             padding: 10px;
-            color: #181919;  /* Dark text */
+            color: white;
             border-radius: 0 0 5px 0;
             font-size: 1rem;
             z-index: 1000;
+        }
+
+        ul.link-list {
+            line-height: 50px;
+        }
+
+        .blink {
+            animation: blink 1.5s linear infinite;
+        }
+
+        @keyframes blink {
+            0% { color: white; }
+            50% { color: red; }
+            100% { color: white; }
         }
     </style>
 </head>
