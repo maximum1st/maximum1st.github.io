@@ -218,11 +218,11 @@
 
         // クロックを更新する関数
         function updateClock() {
-            var now = moment().tz("Asia/Tokyo");
-            var time = now.format('YYYY/MM/DD HH:mm:ss');
+           var now = moment().tz("Asia/Seoul");
+var time = now.format('YYYY/MM/DD HH:mm:ss');
+document.getElementById('clock').innerText = time + " Seoul/Korea";
 
-            document.getElementById('clock').innerText = time + " Japan/Tokyo";
-
+            
             setTimeout(updateClock, 1000);
         }
 
