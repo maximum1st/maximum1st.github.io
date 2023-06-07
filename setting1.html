@@ -134,22 +134,19 @@ li:last-child {
         justify-content: space-between;
         padding: 10px;
     }
-   .top-navigation {
+  .top-navigation {
         display: flex;
         justify-content: space-between;
         padding: 10px;
-        /* New code */
-        width: 100%;
     }
     
-    .top-navigation a:first-child {
-        flex: 0 0 61.8%;
-        text-align: left;
+    .top-navigation a {
+        font-weight: bold; /* 新規追加：太字に設定 */
+        color: green; /* 新規追加：文字色を緑に設定 */
     }
     
-    .top-navigation a:last-child {
-        flex: 0 0 38.2%;
-        text-align: right;
+    .top-navigation a:hover {
+        color: orange; /* 新規追加：ホバー時の色をオレンジに設定 */
     }
     </style>
 </head>
