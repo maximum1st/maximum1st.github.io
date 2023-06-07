@@ -148,15 +148,26 @@ li:last-child {
     .top-navigation a:hover {
         color: orange; /* 新規追加：ホバー時の色をオレンジに設定 */
     }
+    .fixed-top {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 40px;
+        z-index: 9999;
+        background: #333;
+    }
     </style>
 </head>
 <body>
     <div class="container">
     <h1>セッティングシート</h1>
+        <div class="fixed-top">
         <div class="top-navigation">
         <a href="https://maximum1st.github.io/completesetup.html">戻る</a>
         <a href="https://maximum1st.github.io/parts1.html">パーツ</a>
     </div>
+            </div>
     <table class="borderless" style="max-width: 600px; margin: auto; border: 0px;">
         <tr>
             <td>
