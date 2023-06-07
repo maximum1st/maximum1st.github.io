@@ -134,9 +134,22 @@ li:last-child {
         justify-content: space-between;
         padding: 10px;
     }
-    .top-navigation a {
-        color: #fff;
-        text-decoration: none;
+   .top-navigation {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        /* New code */
+        width: 100%;
+    }
+    
+    .top-navigation a:first-child {
+        flex: 0 0 61.8%;
+        text-align: left;
+    }
+    
+    .top-navigation a:last-child {
+        flex: 0 0 38.2%;
+        text-align: right;
     }
     </style>
 </head>
