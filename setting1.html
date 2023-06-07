@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -25,7 +26,7 @@
         ul {
             list-style-type: none;
             width: 800px;
-            margin: 0 auto;
+            margin: 20px auto;
             padding: 0;
             border-radius: 10px;
             overflow: hidden;
@@ -60,6 +61,17 @@
         .checked-background {
             background-color: #0000FF;
         }
+        table {
+            width: 600px;
+            margin: 0 auto;
+            color: #fff;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #666;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -76,12 +88,56 @@
         <li><input type="checkbox" disabled> レーシングミディアム</li>
         <li><input type="checkbox" disabled> レーシングソフト</li>
     </ul>
-
+    <table>
+        <tr>
+            <th></th>
+            <th>前</th>
+            <th>後</th>
+        </tr>
+        <tr>
+            <td>車高調整</td>
+            <td>91mm</td>
+            <td>89mm</td>
+        </tr>
+        <tr>
+            <td>アンチロール</td>
+            <td>5</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>縮み側</td>
+            <td>40</td>
+            <td>40</td>
+        </tr>
+        <tr>
+            <td>伸び側</td>
+            <td>40</td>
+            <td>30</td>
+        </tr>
+        <tr>
+            <td>固有振動数</td>
+            <td>3.40</td>
+            <td>2.33</td>
+        </tr>
+        <tr>
+            <td>キャンバー</td>
+            <td>1.2</td>
+            <td>1.0</td>
+        </tr>
+        <tr>
+            <td>トー角</td>
+            <td>+0.22</td>
+            <td>-0.04</td>
+        </tr>
+    </table>
     <script>
         window.onload = function() {
-            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach(function(checkbox) {
-                if (checkbox.checked
-</body>                    
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                if (checkbox.checked) {
+                    checkbox.parentNode.classList.add('checked-background');
+                }
+            });
+        };
+    </script>
+</body>
 </html>
-                    
