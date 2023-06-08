@@ -6,72 +6,82 @@
     <title>Gran Turismo 7 - パーツリスト</title>
     <style>
       body {
-            background-color: #333;
-            color: #fff;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
-        h1, h3 {
-            color: #fff;
-            text-align: center;
-            padding: 5px;
-        }
-        ul {
-            list-style-type: none;
-            max-width: 90%; /* change width to max-width and set it to 90% */
-            margin: 0 auto;
-            padding: 0;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 15px rgba(0,0,0,.1);
-        }
-        li {
-            padding: 10px;
-            border-bottom: 1px solid #444;
-            background-color: #444;
-            color: #fff;
-            transition: background-color .3s ease;
-        }
-        li:last-child {
-            border-bottom: none;
-        }
-        input[type="checkbox"]:before {
-            content: "";
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
-            vertical-align: middle;
-            background-color: #333;
-            box-shadow: 0px 0px 0px 1px rgba(0,0,0,.1);
-        }
-        input[type="checkbox"]:checked:before {
-            content: "\2713";
-            text-align: center;
-            line-height: 20px;
-            color: #4CFF00;
-        }
-        .checked-background {
-            background-color: #0000FF;
-        }
-        #back-link {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            font-size: 20px;
-            color: #008000;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        #back-link:hover {
-            color: #FFA500;
-        }
+      background-color: #333;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    
+    h1,
+    h3 {
+      color: #fff;
+      text-align: center;
+      padding: 5px;
+    }
+    
+    ul {
+      list-style-type: none;
+      max-width: 90%;
+      margin: 60px auto 0; /* 修正: 黒い帯の下にコンテンツを配置 */
+      padding: 0;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, .1);
+    }
+    
+    li {
+      padding: 10px;
+      border-bottom: 1px solid #444;
+      background-color: #444;
+      color: #fff;
+      transition: background-color .3s ease;
+    }
+    
+    li:last-child {
+      border-bottom: none;
+    }
+    
+    input[type="checkbox"]:before {
+      content: "";
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      vertical-align: middle;
+      background-color: #333;
+      box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, .1);
+    }
+    
+    input[type="checkbox"]:checked:before {
+      content: "\2713";
+      text-align: center;
+      line-height: 20px;
+      color: #4CFF00;
+    }
+    
+    .checked-background {
+      background-color: #0000FF;
+    }
+    
+    #back-link {
+      position: fixed;
+      top: 80px; /* 修正: 黒い帯の下にリンクを配置 */
+      right: 20px;
+      font-size: 20px;
+      color: #008000;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    
+    #back-link:hover {
+      color: #FFA500;
+    }
     </style>
 </head>
 <body>
