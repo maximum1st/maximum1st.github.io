@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>セッティングシート</title>
     <style>
-    html, body {
+   html, body {
         height: 100%;
         overflow-y: hidden;
         background-color: #333;
@@ -26,7 +26,7 @@
         color: #fff;
         font-family: Arial, sans-serif;
         margin: 0;
-        padding: 10px;
+        padding: 0;
         display: block;
         min-height: 100vh;
     }
@@ -47,33 +47,33 @@
     .h3flow + ul.background-content {
         margin-top: 0;
     }
-  ul {
-    list-style-type: none;
-    width: 100%;
-    max-width: 600px;
-    margin: 10px auto;
-    padding: 0;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 10px 15px rgba(0,0,0,.1);
-    box-sizing: border-box;
-    background-color: #444;
-}
+    ul {
+        list-style-type: none;
+        width: 100%;
+        max-width: 600px;
+        margin: 10px auto;
+        padding: 0;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 10px 15px rgba(0,0,0,.1);
+        box-sizing: border-box;
+        background-color: #444;
+    }
 
-li {
-    padding: 10px;
-    border-bottom: 1px solid #444;
-    color: #fff;
-    transition: background-color .3s ease;
-}
+    li {
+        padding: 10px;
+        border-bottom: 1px solid #444;
+        color: #fff;
+        transition: background-color .3s ease;
+    }
 
-li.checked-background {
-    background-color: #0000FF;
-}
+    li.checked-background {
+        background-color: #0000FF;
+    }
 
-li:last-child {
-    border-bottom: none;
-}
+    li:last-child {
+        border-bottom: none;
+    }
 
     input[type="checkbox"]:before {
         content: "";
@@ -85,15 +85,18 @@ li:last-child {
         background-color: #333;
         box-shadow: 0px 0px 0px 1px rgba(0,0,0,.1);
     }
+
     input[type="checkbox"]:checked:before {
         content: "\2713";
         text-align: center;
         line-height: 20px;
         color: #4CFF00;
     }
+
     .checked-background {
         background-color: #0000FF;
     }
+
     table {
         width: 100%;
         max-width: 600px;
@@ -104,56 +107,43 @@ li:last-child {
         padding: 10px;
         box-sizing: border-box;
     }
+
     th, td {
         padding: 10px;
         border: 1px solid #666;
         text-align: center;
     }
+
     table.borderless th, table.borderless td {
-    border-color: #333;
-}
+        border-color: #333;
     }
-    @media screen and (min-width: 600px) {
-        body {
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        h1, h3, ul, table {
-            margin: 20px auto;
-            width: 600px;
-            padding: 0;
-        }
-    }
-        .title {
+
+    .title {
         text-align: center;
     }
-         .top-navigation {
+
+    .top-navigation {
         display: flex;
         justify-content: space-between;
         padding: 10px;
+        margin-top: 60px; /* 修正: トップナビゲーションのマージンを追加 */
     }
-  .top-navigation {
-        display: flex;
-        justify-content: space-between;
-        padding: 10px;
-    }
-    
+
     .top-navigation a {
-        font-weight: bold; /* 新規追加：太字に設定 */
-        color: green; /* 新規追加：文字色を緑に設定 */
+        font-weight: bold;
+        color: green;
     }
-    
+
     .top-navigation a:hover {
-        color: orange; /* 新規追加：ホバー時の色をオレンジに設定 */
+        color: orange;
     }
+
     .fixed-top {
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
-        height: 40px;
+        height: 60px; /* 修正: 高さを60pxに設定 */
         z-index: 9999;
         background: #333;
     }
@@ -164,8 +154,8 @@ li:last-child {
     <h1>セッティングシート</h1>
         <div class="fixed-top">
         <div class="top-navigation">
-        <a href="https://maximum1st.github.io/completesetup.html">戻る</a>
-        <a href="https://maximum1st.github.io/parts1.html">パーツ</a>
+        <a href="https://maximum1st.github.io/completesetup.html" style="margin-top: 60px;">戻る</a>
+        <a href="https://maximum1st.github.io/parts1.html" style="margin-top: 60px;">パーツ</a>
     </div>
             </div>
     <table class="borderless" style="max-width: 600px; margin: auto; border: 0px;">
