@@ -18,9 +18,9 @@
         }
 
         .container {
-            max-width: 100%;  /* Added */
-            box-sizing: border-box;  /* Added */
-            width: 600px;
+            box-sizing: border-box;  /* Ensures padding doesn't add to width */
+            width: 80%;  /* Default to 80% of viewport width */
+            max-width: 600px;  /* But don't go wider than 600px */
             padding: 20px;
             box-shadow: 0 0 10px rgba(0,0,0,0.5);
             border-radius: 10px;
