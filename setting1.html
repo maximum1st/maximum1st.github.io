@@ -122,30 +122,29 @@
         text-align: center;
     }
 
-    .top-navigation {
-        display: flex;
-        justify-content: space-between;
-        padding: 10px;
-        margin-top: 60px; /* 修正: トップナビゲーションのマージンを追加 */
-    }
+  .fixed-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  z-index: 9999;
+  background: #333;
+}
 
-    .top-navigation a {
+.top-navigation {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin-top: 60px;
+}
+          .top-navigation a {
         font-weight: bold;
         color: green;
     }
 
     .top-navigation a:hover {
         color: orange;
-    }
-
-    .fixed-top {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 60px; /* 修正: 高さを60pxに設定 */
-        z-index: 9999;
-        background: #333;
     }
     </style>
 </head>
