@@ -120,41 +120,44 @@
         }
         
         @keyframes blink {
-            0% { color: white; }
-            50% { color: red; }
-            100% { color: white; }
-        }
-        @keyframes blink-blue-white {
-            0% { color: blue; }
-            50% { color: white; }
-            100% { color: blue; }
-        }
-        
-        .blink {
-            animation: blink 1.5s linear infinite;
-        }
-         .blink-blue-white {
-            animation: blink-blue-white 1.5s linear infinite;
-        
+        0% { color: white; }
+        50% { color: red; }
+        100% { color: white; }
+    }
+
+    @keyframes blink-blue-white {
+        0% { color: blue; }
+        50% { color: white; }
+        100% { color: blue; }
+    }
+
+    .blink {
+        animation: blink 1.5s linear infinite;
+    }
+
+    .blink-blue-white {
+        animation: blink-blue-white 1.5s linear infinite;
+    }
+
     .language-switcher {
-    position: fixed;
-    top: 35px;
-    right: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    border-radius: 5px;
-    z-index: 1000;
-}
-        
-        .language-switcher a {
-            color: #00C300;
-            margin-right: 10px;
-            text-decoration: none;
-        }
-        
-        .language-switcher a:hover {
-            color: #008200;
-        }
+        position: fixed;
+        top: 35px;
+        right: 20px;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 10px;
+        border-radius: 5px;
+        z-index: 1000;
+    }
+
+    .language-switcher a {
+        color: #00C300;
+        margin-right: 10px;
+        text-decoration: none;
+    }
+
+    .language-switcher a:hover {
+        color: #008200;
+    }
         
         .clock {
             position: fixed;
