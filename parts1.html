@@ -24,6 +24,10 @@
     padding: 5px;
   }
 
+  #parts-title {
+    margin-top: 120px; /* 上部マージンを60pxから120pxに変更 */
+  }
+
   ul {
     list-style-type: none;
     max-width: 90%;
@@ -33,6 +37,7 @@
     overflow: hidden;
     box-shadow: 0 10px 15px rgba(0, 0, 0, .1);
   }
+  
 
   li {
     padding: 10px;
@@ -89,7 +94,7 @@
 </head>
 <body>
   <div style="background-color: #000; height: 60px; position: fixed; top: 0; left: 0; right: 0;"></div> <!-- 黒い帯 -->
-  <h1>購入パーツ</h1>
+ <h1 id="parts-title">購入パーツ</h1>
   <h3>アヴェンタドール LP 750-4 SV '15</h3>
   <ul>
     <li><input type="checkbox" disabled> コンフォートハード</li>
