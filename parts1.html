@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gran Turismo 7 - パーツリスト</title>
   <style>
- body {
+body {
     background-color: #333;
     color: #fff;
     font-family: Arial, sans-serif;
@@ -25,20 +25,20 @@
   }
 
   #parts-title {
-    margin-top: 120px; /* 上部マージンを60pxから120pxに変更 */
+    margin-top: 120px;
   }
 
-  ul {
+  .checklist-container {
+    max-width: 90%;
+    margin: 20px auto;
     list-style-type: none;
-    margin: 60px auto 0;
     padding: 0;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 10px 15px rgba(0, 0, 0, .1);
   }
-  
 
-  li {
+  .checklist-container li {
     padding: 10px;
     border-bottom: 1px solid #444;
     background-color: #444;
@@ -46,11 +46,11 @@
     transition: background-color .3s ease;
   }
 
-  li:last-child {
+  .checklist-container li:last-child {
     border-bottom: none;
   }
 
-  input[type="checkbox"]:before {
+  .checklist-container input[type="checkbox"]:before {
     content: "";
     display: inline-block;
     width: 20px;
@@ -61,7 +61,7 @@
     box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, .1);
   }
 
-  input[type="checkbox"]:checked:before {
+  .checklist-container input[type="checkbox"]:checked:before {
     content: "\2713";
     text-align: center;
     line-height: 20px;
@@ -85,19 +85,12 @@
   #back-link:hover {
     color: #FFA500;
   }
-
-  #parts-header {
-    margin-top: 60px;
-  }
-  .checklist-container {
-    max-width: 90%;
-    margin: 0 auto;
-  }
 </style>
 </head>
 <body>
   <div style="background-color: #; height: 60px; position: fixed; top: 0; left: 0; right: 0;"></div> <!-- 黒い帯 -->
  <h1 id="parts-title">購入パーツ</h1>
+  <div class="checklist-container">
   <h3>アヴェンタドール LP 750-4 SV '15</h3>
   <ul>
     <li><input type="checkbox" disabled> コンフォートハード</li>
@@ -167,7 +160,7 @@
     <li><input type="checkbox" checked disabled> 軽量化ステージ4</li>
     <li><input type="checkbox" disabled> ナイトロシステム</li>
     <li><input type="checkbox" checked disabled> ワイドボディ※GT Autoで施工</li>
-  </ul>
+  </ul></div>
  <div class="checklist-container">
   <h3 style="margin-bottom: 20px;">エアロパーツ※GT Autoで施工</h3>
   <ul style="margin-top: 10px;">
