@@ -146,22 +146,6 @@
     </div>
 
     <script>
-        window.onload = function() {
-            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach(function(checkbox) {
-                if (checkbox.checked) {
-                    checkbox.parentNode.classList.add('checked-background');
-                }
-                 var reloadCount = 0;
-        
-        function doReload() {
-            if (reloadCount < 2) {
-                location.reload();
-                reloadCount++;
-            }
-        }
-        
-        setInterval(doReload, 2000); // 2秒ごとにリロード
     </script>
 </body>
 </html>
