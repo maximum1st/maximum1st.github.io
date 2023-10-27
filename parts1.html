@@ -5,61 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gran Turismo 7 - パーツリスト</title>
     <style>
-          /* ここに新しいスタイルを追加 */
+        /* 追加されたスタイル */
+        body {
+            display: flex;
+            justify-content: center;
+            padding-top: 60px; /* 上の黒帯のスペース */
+        }
+        .container {
+            width: 550px; /* 幅を550pxに設定 */
+        }
         .checked-background {
-            background-color: #90EE90; /* 薄い緑色 */
-            color: black; /* 任意のテキストカラー */
+            background-color: #90EE90; /* 薄い緑 */
+            color: black; /* テキスト色（お好みで変更可） */
         }
         ul {
-    list-style-type: none;
+            list-style-type: none;
+            padding: 0;
         }
         input[type="checkbox"] {
-        display: none;  /* 既存のチェックボックスを隠します */
-    }
-
-    input[type="checkbox"] + label {
-        position: relative;
-        padding-left: 30px; /* ラベルテキストの位置を調整 */
-        cursor: pointer;    /* カーソルをポインターに変更 */
-    }
-
-    input[type="checkbox"] + label:before {
-        content: "";
-        display: inline-block;
-        width: 20px; /* ボックスの幅 */
-        height: 20px; /* ボックスの高さ */
-        position: absolute;
-        left: 0;
-        top: 0;
-        border: 2px solid #000; /* ボックスの境界線 */
-        box-sizing: border-box;
-    }
-
-    /* チェックボックスがチェックされた時のスタイル */
-    input[type="checkbox"]:checked + label:after {
-        content: "";
-        display: block;
-        width: 10px; /* チェックマークの幅 */
-        height: 5px; /* チェックマークの高さ */
-        border-left: 3px solid #f00; /* チェックマークの色 */
-        border-bottom: 3px solid #f00; /* チェックマークの色 */
-        position: absolute;
-        left: 7px;
-        top: 7px;
-        transform: rotate(-45deg); /* チェックマークを傾ける */
-    }
+            display: none; /* チェックボックスを非表示に */
+        }
+        input[type="checkbox"] + label {
+            position: relative;
+            padding-left: 30px; /* ラベルテキストとカスタムボックスの間のスペース */
+            cursor: pointer; /* カーソルを指アイコンに */
+        }
+        input[type="checkbox"] + label:before {
+            content: "";
+            display: inline-block;
+            width: 20px; height: 20px;
+            position: absolute;
+            left: 0; top: 0;
+            border: 2px solid #000;
+            box-sizing: border-box;
+        }
+        input[type="checkbox"]:checked + label:after {
+            content: "";
+            display: block;
+            width: 10px; height: 5px;
+            border-left: 3px solid #f00; border-bottom: 3px solid #f00;
+            position: absolute;
+            left: 7px; top: 7px;
+            transform: rotate(-45deg);
+        }
     </style>
 </head>
 <body>
-    <div style="height: 60px; position: fixed; top: 0; left: 0; right: 0;"></div> <!-- 黒い帯 -->
-    <h1 id="parts-title">購入パーツ</h1>
-    <div class="checklist">
-        <h3>アヴェンタドール LP 750-4 SV '15</h3>
-        <ul style="list-style: none; padding: 0;"> <!-- updated inline styles -->
-            <!-- [List items remain unchanged] -->
+
+    <!-- コンテナを追加して中央揃えと幅を制御 -->
+    <div class="container">
+        <div style="height: 60px;"></div> <!-- スペーサー（黒い帯と同じ効果） -->
+        <h1 id="parts-title">購入パーツ</h1>
         
-     <ul>
-    <li><input type="checkbox" disabled> コンフォートハード</li>
+        <!-- チェックリスト部分 -->
+        <div class="checklist">
+            <h3>アヴェンタドール LP 750-4 SV '15</h3>
+            <ul>
+                <li><input type="checkbox" disabled> コンフォートハード</li>
     <li><input type="checkbox" disabled> コンフォートミディアム</li>
     <li><input type="checkbox" disabled> コンフォートソフト</li>
     <li><input type="checkbox" disabled> スポーツハード</li>
@@ -127,17 +129,21 @@
     <li><input type="checkbox" disabled> ナイトロシステム</li>
     <li><input type="checkbox" checked disabled> ワイドボディ※GT Autoで施工</li>
   </ul></div>
- <div class="checklist">
-  <h3 style="margin-bottom: 20px;">エアロパーツ※GT Autoで施工</h3>
-  <ul style="margin-top: 10px;">
-    <li><input type="checkbox" checked disabled> フロントカスタムエアロパーツ</li>
+
+        <!-- エアロパーツセクション -->
+        <div class="checklist">
+            <h3 style="margin-bottom: 20px;">エアロパーツ※GT Autoで施工</h3>
+            <ul style="margin-top: 10px;">
+                <li><input type="checkbox" checked disabled> フロントカスタムエアロパーツ</li>
     <li><input type="checkbox" checked disabled> サイドカスタムエアロパーツ</li>
     <li><input type="checkbox" checked disabled> リアカスタムウィング</li>
   </ul>
   </div>
 
-    <div style="height: 100px;"></div>
-    <a id="back-link" href="https://maximum1st.github.io/setting1.html">戻る</a>
+        <div style="height: 100px;"></div> <!-- 追加のスペース -->
+
+        <a id="back-link" href="https://maximum1st.github.io/setting1.html">戻る</a>
+    </div>
 
     <script>
         window.onload = function() {
