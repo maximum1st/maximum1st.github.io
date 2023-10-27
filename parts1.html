@@ -152,6 +152,31 @@
                 if (checkbox.checked) {
                     checkbox.parentNode.classList.add('checked-background');
                 }
+                function reloadPage() {
+            var reloadCount = 0;
+            
+            function doReload() {
+                if (reloadCount < 2) {
+                    location.reload();
+                    reloadCount++;
+                }
+            }
+            
+            setInterval(doReload, 2000); // Reload every 2 seconds
+        }
+
+        window.onload = function() {
+            // Call the reloadPage function after the page loads
+            reloadPage();
+            
+            // Add your existing code here
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(function(checkbox) {
+                if (checkbox.checked) {
+                    checkbox.parentNode.classList.add('checked-background');
+                }
+            });
+        };
             });
         };
     </script>
