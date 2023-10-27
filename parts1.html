@@ -75,6 +75,54 @@
         position: relative; /* チェックボックスが絶対位置指定されているため、親リスト項目を相対位置指定にします。 */
         padding-left: 30px; /* チェックボックスが元々占めていたスペースを補うために、テキストのパディングを調整します。 */
     }
+     input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    /* 新しいカスタムスタイルの追加 */
+    .custom-checkbox {
+        position: relative;
+        display: inline-block;
+        padding-left: 30px; /* チェックボックスのアイコン分のスペース */
+        margin-right: 10px; /* 必要に応じて調整 */
+        cursor: pointer;
+        font-size: 16px; /* 文字のサイズを調整 */
+    }
+
+    .custom-checkbox:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 20px; /* ボックスのサイズ */
+        width: 20px; /* ボックスのサイズ */
+        border: 2px solid #fff; /* ボックスのボーダー色 */
+        box-sizing: border-box;
+        border-radius: 3px; /* 角の丸み */
+    }
+
+    .custom-checkbox:after {
+        content: "";
+        position: absolute;
+        left: 5px; /* チェックマークの位置 */
+        top: 50%;
+        transform: translateY(-50%);
+        width: 10px; /* チェックマークの幅 */
+        height: 5px; /* チェックマークの高さ */
+        border-left: 2px solid transparent;
+        border-bottom: 2px solid transparent;
+        transform: rotate(-45deg) translateY(-50%);
+        transition: all 0.2s ease-in-out;
+    }
+
+    input[type="checkbox"]:checked + .custom-checkbox:after {
+        border-left: 2px solid #4CFF00; /* チェックマークの色 */
+        border-bottom: 2px solid #4CFF00; /* チェックマークの色 */
+    }
     </style>
 </head>
 <body>
