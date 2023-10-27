@@ -30,6 +30,186 @@
         .checklist {
             width: 400px;
             margin: 20px auto;
+            background-color: #111; /* moved from .checklist li */
+            border-radius: 10px; /* added */
+            box-shadow: 0 10px 15px rgba(0, 0, 0, .1);
+            padding: 0; /* added */
+        }
+
+        .checklist li {
+            padding: 10px;
+            border-bottom: 1px solid #333;
+        }
+
+        .checklist li.checked-background {
+            background-color: #0000FF;
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        .checklist input[type="checkbox"]:checked + label {
+            color: #4CFF00;
+        }
+
+        #back-link {
+            position: fixed;
+            top: 85px;
+            right: 20px;
+            font-size: 20px;
+            color: #008000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #back-link:hover {
+            color: #FFA500;
+        }
+    </style>
+</head>
+<body>
+    <div style="height: 60px; position: fixed; top: 0; left: 0; right: 0;"></div> <!-- 黒い帯 -->
+    <h1 id="parts-title">購入パーツ</h1>
+    <div class="checklist">
+        <h3>アヴェンタドール LP 750-4 SV '15</h3>
+        <ul style="list-style: none; padding: 0;"> <!-- updated inline styles -->
+            <!-- [List items remain unchanged] -->
+        
+     <ul>
+    <li><input type="checkbox" disabled> コンフォートハード</li>
+    <li><input type="checkbox" disabled> コンフォートミディアム</li>
+    <li><input type="checkbox" disabled> コンフォートソフト</li>
+    <li><input type="checkbox" disabled> スポーツハード</li>
+    <li><input type="checkbox" disabled> スポーツミディアム</li>
+    <li><input type="checkbox" checked disabled> スポーツソフト</li>
+    <li><input type="checkbox" disabled> ダート</li>
+    <li><input type="checkbox" disabled> レーシングハード</li>
+    <li><input type="checkbox" disabled> レーシングミディアム</li>
+    <li><input type="checkbox" disabled> レーシングソフト</li>
+    <li><input type="checkbox" disabled> インターミディエイト</li>
+    <li><input type="checkbox" disabled> ヘビーウェット</li>
+    <li><input type="checkbox" disabled> スポーツブレーキパッド</li>
+    <li><input type="checkbox" disabled> スポーツブレーキシステム</li>
+    <li><input type="checkbox" checked disabled> レーシングブレーキパッド</li>
+    <li><input type="checkbox" disabled> レーシングブレーキシステム(スロット)</li>
+    <li><input type="checkbox" disabled> レーシングブレーキシステム(ドリルド)</li>
+    <li><input type="checkbox" checked disabled> カーボンセラミックブレーキシステム</li>
+    <li><input type="checkbox" checked disabled> 油圧サイドブレーキ</li>
+    <li><input type="checkbox" checked disabled> ブレーキバランスコントローラ</li>
+    <li><input type="checkbox" disabled> ストリートサスペンション</li>
+    <li><input type="checkbox" disabled> スポーツサスペンション(調整式)</li>
+    <li><input type="checkbox" checked disabled> フルカスタマイズサスペンション</li>
+    <li><input type="checkbox" disabled> スポーツコンピュータ</li>
+    <li><input type="checkbox" checked disabled> フルカスタムコンピュータ</li>
+    <li><input type="checkbox" disabled> スポーツエアクリーナ</li>
+    <li><input type="checkbox" checked disabled> レーシングエアクリーナ</li>
+    <li><input type="checkbox" disabled> スポーツマフラー</li>
+    <li><input type="checkbox" disabled> セミレーシングマフラー</li>
+    <li><input type="checkbox" checked disabled> レーシングマフラー</li>
+    <li><input type="checkbox" disabled> スポーツクラッチ&フライホイール</li>
+    <li><input type="checkbox" disabled> セミレーシングクラッチ&フライホイール</li>
+    <li><input type="checkbox" checked disabled> レーシングクラッチ&フライホイール</li>
+    <li><input type="checkbox" checked disabled> ボアアップ</li>
+    <li><input type="checkbox" disabled> ハイリフトカムシャフト</li>
+    <li><input type="checkbox" disabled> ハイコンプピストン</li>
+    <li><input type="checkbox" disabled> レーシングクランクシャフト</li>
+    <li><input type="checkbox" disabled> ストロークアップ</li>
+    <li><input type="checkbox" checked disabled> エンジンバランスチューン</li>
+    <li><input type="checkbox" checked disabled> ポート研磨</li>
+    <li><input type="checkbox" checked disabled> レーシングエギゾーストマニホールド</li>
+    <li><input type="checkbox" disabled> アンチラグシステム</li>
+    <li><input type="checkbox" disabled> スーパーチャージャー(低回転)</li>
+    <li><input type="checkbox" disabled> スーパーチャージャー(高回転)</li>
+    <li><input type="checkbox" disabled> ターボチャージャー(低回転)</li>
+    <li><input type="checkbox" disabled> ターボチャージャー(中回転)</li>
+    <li><input type="checkbox" disabled> ターボチャージャー(高回転)</li>
+    <li><input type="checkbox" disabled> スポーツインタークーラー</li>
+    <li><input type="checkbox" disabled> レーシングインタークーラー</li>
+    <li><input type="checkbox" disabled> 1ウェイLSD</li>
+    <li><input type="checkbox" disabled> 2ウェイLSD</li>
+    <li><input type="checkbox" checked disabled> フルカスタマイズLSD</li>
+    <li><input type="checkbox" disabled> アクティブLSDコントローラー</li>
+    <li><input type="checkbox" checked disabled> 駆動力配分センターデフ</li>
+    <li><input type="checkbox" disabled> 4WSコントローラー</li>
+    <li><input type="checkbox" disabled> ロークロスミッション</li>
+    <li><input type="checkbox" disabled> ハイクロスミッション</li>
+    <li><input type="checkbox" checked disabled> フルカスタマイズマニュアルミッション</li>
+    <li><input type="checkbox" disabled> フルカスタマイズシーケンシャル</li>
+    <li><input type="checkbox" disabled> ステアリングアングルアダプター</li>
+    <li><input type="checkbox" checked disabled> 軽量化ステージ1</li>
+    <li><input type="checkbox" checked disabled> 軽量化ステージ2</li>
+    <li><input type="checkbox" checked disabled> 軽量化ステージ3</li>
+    <li><input type="checkbox" checked disabled> ボディ剛性アップ</li>
+    <li><input type="checkbox" checked disabled> 軽量化ステージ4</li>
+    <li><input type="checkbox" disabled> ナイトロシステム</li>
+    <li><input type="checkbox" checked disabled> ワイドボディ※GT Autoで施工</li>
+  </ul></div>
+ <div class="checklist">
+  <h3 style="margin-bottom: 20px;">エアロパーツ※GT Autoで施工</h3>
+  <ul style="margin-top: 10px;">
+    <li><input type="checkbox" checked disabled> フロントカスタムエアロパーツ</li>
+    <li><input type="checkbox" checked disabled> サイドカスタムエアロパーツ</li>
+    <li><input type="checkbox" checked disabled> リアカスタムウィング</li>
+  </ul>
+  </div>
+
+    <div style="height: 100px;"></div>
+    <a id="back-link" href="https://maximum1st.github.io/setting1.html">戻る</a>
+
+    <script>
+        window.onload = function() {
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(function(checkbox) {
+                if (checkbox.checked) {
+                    checkbox.parentNode.classList.add('checked-background');
+                }
+            });
+        };
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gran Turismo 7 - パーツリスト</title>
+    <style>
+        body {
+            background-color: #333;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1, h3 {
+            text-align: center;
+            padding: 5px;
+        }
+
+        #parts-title {
+            margin-top: 120px;
+        }
+
+        .checklist {
+            width: 400px;
+            margin: 20px auto;
             list-style-type: none;
             padding: 0;
             box-shadow: 0 10px 15px rgba(0, 0, 0, .1);
