@@ -455,7 +455,30 @@ th, td {
 
     </div>
     <script>
-   
+    // ページが読み込まれた時に実行される処理
+        window.addEventListener('load', function () {
+            // チェックボックス要素を取得
+            var checkboxes = document.querySelectorAll('.custom-table input[type="checkbox"]');
+
+            // チェックボックスの状態に応じてスタイルを適用する関数
+            function updateCheckboxStyle() {
+                checkboxes.forEach(function (checkbox) {
+                    if (checkbox.checked) {
+                        checkbox.nextElementSibling.style.backgroundColor = 'blue'; // 選択時の背景色を青に設定
+                    } else {
+                        checkbox.nextElementSibling.style.backgroundColor = 'transparent'; // 未選択時の背景色を透明に設定
+                    }
+                });
+            }
+
+            // ページ読み込み時に初期のスタイルを設定
+            updateCheckboxStyle();
+
+            // チェックボックスの状態が変更されたときにスタイルを更新
+            checkboxes.forEach(function (checkbox) {
+                checkbox.addEventListener('change', updateCheckboxStyle);
+            });
+        });
     </script>
 </body>
 </html>
