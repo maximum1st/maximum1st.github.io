@@ -1,12 +1,6 @@
-/* 選択時のチェックボックスのスタイル（青色） */
-.custom-checkbox-blue input[type="checkbox"]:checked + .checkmark {
-    background-color: blue;
-}
 
-/* 未選択時のチェックボックスのスタイル */
-.custom-checkbox-blue input[type="checkbox"]:not(:checked) + .checkmark {
-    background-color: transparent;
+.checkbox {
+  accent-color: blue;
 }
-
 
 
