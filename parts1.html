@@ -88,18 +88,19 @@
     }
     /* 新しいスタイル */
     #back-link {
-        position: fixed; /* リンクをビューポートに固定 */
-        right: 0; /* 右側にリンクを移動 */
-        top: 50px; /* トップから50pxの場所に配置 */
-        padding: 8px 16px; /* パディング追加（お好みで調整可能） */
-        background-color: rgba(0, 0, 0, 0.7); /* 背景色追加（お好みで調整可能） */
-        color: white; /* テキスト色を白に（お好みで変更可能） */
-        text-decoration: none; /* テキストの下線を削除 */
-        border-radius: 0 0 0 10px; /* 左下の角を丸く（お好みで調整可能） */
+        position: fixed;
+        right: 0;
+        top: 50px; 
+        padding: 8px 16px; 
+        /* background-color: rgba(0, 0, 0, 0.7); 背景色を削除 */
+        color: #00ff00; /* リンクの色を緑に変更 */
+        text-decoration: none;
+        border-radius: 0 0 0 10px;
     }
 
     #back-link:hover {
-        background-color: rgba(0, 0, 0, 0.9); /* ホバー時の背景色（お好みで調整可能） */
+        /* background-color: rgba(0, 0, 0, 0.9); ホバー時の背景色も削除 */
+        text-decoration: underline;
     }
     </style>
 </head>
