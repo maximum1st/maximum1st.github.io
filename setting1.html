@@ -489,7 +489,21 @@
 
     </div>
     <script>
-    
+    // ページの読み込みが完了したら実行
+        document.addEventListener("DOMContentLoaded", function() {
+            // チェックボックスのスタイルを変更
+            var checkboxes = document.querySelectorAll(".custom-checkbox input[type='checkbox']");
+            checkboxes.forEach(function(checkbox) {
+                checkbox.addEventListener("change", function() {
+                    var checkmark = this.nextElementSibling.querySelector(".checkmark");
+                    if (this.checked) {
+                        checkmark.style.display = "block";
+                    } else {
+                        checkmark.style.display = "none";
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
