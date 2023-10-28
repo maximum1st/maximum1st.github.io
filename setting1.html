@@ -21,6 +21,24 @@
         h1, .title, h3 { /* 追加：h3のテキストも中央寄せに設定 */
             text-align: center;
         }
+         .background-content {
+        /* リストを中央に配置 */
+        display: block;
+        margin: auto;
+        text-align: left;
+        /* 必要に応じてwidthを調整して、見た目のバランスを取ります。 */
+        width: fit-content;
+    }
+    .background-content li {
+        /* リストアイテムのスタイルを設定 */
+        text-align: left; /* テキストを左寄せに設定 */
+        list-style-position: inside; /* マーカーをコンテンツボックスの内側に配置 */
+    }
+    /* センタリングのためのヘルパークラスを追加 */
+    .center-helper {
+        display: flex;
+        justify-content: center;
+    }
     </style>
 </head>
 <body>
@@ -41,6 +59,7 @@
             </td>
         </tr>
     </table>
+        <div class="center-helper">
     <ul class="background-content">
         <li><input type="checkbox" disabled> コンフォートハード</li>
         <li><input type="checkbox" disabled> コンフォートミディアム</li>
@@ -53,6 +72,7 @@
         <li><input type="checkbox" disabled> レーシングミディアム</li>
         <li><input type="checkbox" disabled> レーシングソフト</li>
     </ul>
+        </div>
     <h3 class="title">サスペンション</h3>
     <table>
         <tr>
