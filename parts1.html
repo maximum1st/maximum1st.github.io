@@ -7,49 +7,100 @@
 <link rel="icon" type="image/png" sizes="16x16" href="https://maximum1st.github.io//favicon-16x16.png">
     <title>Gran Turismo 7 - パーツリスト</title>
     <style>
-        /* 追加されたスタイル */
-        body {
-            display: flex;
-            justify-content: center;
-            padding-top: 60px; /* 上の黒帯のスペース */
-        }
-        .container {
-            width: 550px; /* 幅を550pxに設定 */
-        }
-        .checked-background {
-            background-color: #90EE90; /* 薄い緑 */
-            color: black; /* テキスト色（お好みで変更可） */
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        input[type="checkbox"] {
-            display: none; /* チェックボックスを非表示に */
-        }
-        input[type="checkbox"] + label {
-            position: relative;
-            padding-left: 30px; /* ラベルテキストとカスタムボックスの間のスペース */
-            cursor: pointer; /* カーソルを指アイコンに */
-        }
-        input[type="checkbox"] + label:before {
-            content: "";
-            display: inline-block;
-            width: 20px; height: 20px;
-            position: absolute;
-            left: 0; top: 0;
-            border: 2px solid #000;
-            box-sizing: border-box;
-        }
-        input[type="checkbox"]:checked + label:after {
-            content: "";
-            display: block;
-            width: 10px; height: 5px;
-            border-left: 3px solid #f00; border-bottom: 3px solid #f00;
-            position: absolute;
-            left: 7px; top: 7px;
-            transform: rotate(-45deg);
-        }
+         /* ベースの背景とテキストの色を変更 */
+    body {
+        background-color: #121212; /* ダークテーマの背景色 */
+        color: #FFFFFF; /* テキストは白または明るいグレーに */
+        display: flex;
+        justify-content: center;
+        padding-top: 60px;
+    }
+
+    .container {
+        width: 500px;
+    }
+
+    .checked-background {
+        background-color: #2e2e2e; /* ダークテーマ用に調整 */
+        color: #FFFFFF;
+    }
+        /* その他の要素も同様に調整 */
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    input[type="checkbox"] + label {
+        position: relative;
+        padding-left: 35px;
+        cursor: pointer;
+        display: inline-block;
+        color: #FFFFFF; /* ラベルのテキスト色も変更 */
+    }
+
+    input[type="checkbox"] + label:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        border: 2px solid #FFFFFF; /* 明るい枠線 */
+        box-sizing: border-box;
+    }
+
+    input[type="checkbox"]:checked + label:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 6px;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 16px;
+        border-right: 2px solid #FFFFFF; /* チェックマークの色 */
+        border-bottom: 2px solid #FFFFFF;
+        transform: translateY(-50%) rotate(45deg);
+    }
+
+    /* 無効なチェックボックスのスタイルも更新 */
+    input[type="checkbox"]:disabled + label:before {
+        background: #2e2e2e; /* 中間色 */
+        border-color: #555; /* 枠線の色をダークテーマ用に */
+    }
+
+    input[type="checkbox"]:disabled:checked + label:after {
+        border-right: 2px solid #bbbbbb; /* チェックマークの色を中間色に */
+        border-bottom: 2px solid #bbbbbb;
+    }
+    /* リンク色の調整 */
+    a {
+        color: #BB86FC; /* 明るい紫。他の色でも可 */
+        text-decoration: none; /* 好みに応じて */
+    }
+
+    a:hover {
+        text-decoration: underline; /* ホバー効果 */
+    }
+    .checked-row {
+        background-color: blue; /* ここで任意の青色のシェードを設定できます。 */
+        color: white; /* チェックされた行のテキスト色（必要に応じて変更可能） */
+    }
+    /* 新しいスタイル */
+    #back-link {
+        position: fixed; /* リンクをビューポートに固定 */
+        right: 0; /* 右側にリンクを移動 */
+        top: 50px; /* トップから50pxの場所に配置 */
+        padding: 8px 16px; /* パディング追加（お好みで調整可能） */
+        background-color: rgba(0, 0, 0, 0.7); /* 背景色追加（お好みで調整可能） */
+        color: white; /* テキスト色を白に（お好みで変更可能） */
+        text-decoration: none; /* テキストの下線を削除 */
+        border-radius: 0 0 0 10px; /* 左下の角を丸く（お好みで調整可能） */
+    }
+
+    #back-link:hover {
+        background-color: rgba(0, 0, 0, 0.9); /* ホバー時の背景色（お好みで調整可能） */
+    }
     </style>
 </head>
 <body>
@@ -148,6 +199,32 @@
     </div>
 
     <script>
+        // ここから開始
+        document.addEventListener('DOMContentLoaded', function () {
+    // チェックボックスの状態を確認して行のスタイルを更新する関数
+    function updateRowStyles() {
+        var checkboxes = document.querySelectorAll('.checklist input[type="checkbox"]');
+        checkboxes.forEach(function(checkbox) {
+            var listItem = checkbox.parentElement;
+
+            if (checkbox.checked) {
+                listItem.classList.add('checked-row'); // チェックされた場合は青色に
+            } else {
+                listItem.classList.remove('checked-row'); // チェックが外れた場合は青色を解除
+            }
+        });
+    }
+
+    // ページの読み込み時に行のスタイルを更新
+    updateRowStyles();
+});
+        // ここまで
+        // ここ開始
+document.addEventListener('DOMContentLoaded', function() {
+    var backLink = document.getElementById('back-link');
+    backLink.style.display = 'block'; // リンクを表示状態に設定します。
+});
+        // ここまで
     </script>
 </body>
 </html>
