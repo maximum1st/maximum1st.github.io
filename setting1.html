@@ -69,6 +69,13 @@
         border-color: black;  /* チェックマークの色 */
         transform: rotate(45deg);
     }
+        .custom-checkbox label {
+    display: flex;
+    align-items: center; /* チェックボックスとテキストを中央揃え */
+}
+.custom-checkbox span {
+    margin-left: 5px; /* チェックボックスとテキストの間に少しスペースを設ける */
+}
     </style>
 </head>
 <body>
@@ -92,8 +99,8 @@
         <div class="center-helper">
     <ul class="background-content">
        
-        <li><label class="custom-checkbox"><input type="checkbox" disabled><span>コンフォートハード</span></label></li>
-        <li><label class="custom-checkbox"><input type="checkbox" disabled><span>コンフォートミディアム</span></label></li>
+        <li><label class="custom-checkbox"><input type="checkbox" disabled><span class="checkmark"></span><span>コンフォートハード</span></label></li>
+        <li><label class="custom-checkbox"><input type="checkbox" disabled><span class="checkmark"></span><span>コンフォートミディアム</span></label></li>
         <li><input type="checkbox" disabled> コンフォートソフト</li>
         <li><input type="checkbox" disabled> スポーツハード</li>
         <li><input type="checkbox" disabled> スポーツミディアム</li>
