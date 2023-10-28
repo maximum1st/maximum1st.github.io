@@ -7,159 +7,71 @@
 <link rel="icon" type="image/png" sizes="16x16" href="https://maximum1st.github.io//favicon-16x16.png">
     <title>セッティングシート</title>
     <style>
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #1f1f21;
-    color: #fff;
-}
+:root {
+            --cell-background-color: #333; /* セルの背景色を定義 */
+        }
 
-.container {
-    margin: auto;
-    max-width: 800px;
-    padding: 20px;
-    background-color: #1f1f21;
-    border-radius: 5px;
-}
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1f1f21;
+            color: #fff;
+        }
 
-h1, .title, h3 {
-    text-align: center;
-    color: #fff;
-}
+        .container {
+            margin: auto;
+            max-width: 800px;
+            padding: 20px;
+            background-color: #1f1f21;
+            border-radius: 5px;
+        }
 
-.background-content {
-    display: block;
-    margin: auto;
-    text-align: left;
-    width: fit-content;
-}
+        h1, .title, h3 {
+            text-align: center;
+            color: #fff;
+        }
 
-.background-content li {
-    text-align: left;
-    list-style-position: inside;
-}
+        .background-content {
+            display: block;
+            margin: auto;
+            text-align: left;
+            width: fit-content;
+        }
 
-.center-helper {
-    display: flex;
-    justify-content: center;
-}
+        .background-content li {
+            text-align: left;
+            list-style-position: inside;
+        }
 
-.table {
-    margin: auto;
-    text-align: left;
-    border: 1px solid #555;
-    border-collapse: collapse;
-    width: 100%;
-    background-color: #1f1f21;
-}
+        .center-helper {
+            display: flex;
+            justify-content: center;
+        }
 
-th, td {
-    border: 1px solid #555;
-    padding: 8px;
-}
+        .table {
+            margin: auto;
+            text-align: left;
+            border: 1px solid #555;
+            border-collapse: collapse;
+            width: 100%;
+            background-color: #1f1f21;
+        }
 
-.custom-checkbox-container {
-    display: flex;
-    flex-wrap: wrap;
-}
+        th, td {
+            border: 1px solid #555;
+            padding: 8px;
+            background-color: var(--cell-background-color); /* 変数を適用 */
+        }
 
-.custom-checkbox {
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-}
+        .custom-checkbox-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
 
-.custom-checkbox input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
+        /* 以下、その他のスタイルルール ... */
 
-.custom-checkbox .checkmark {
-    display: inline-block;
-    position: relative;
-    width: 16px;
-    height: 16px;
-    border: 1px solid #fff;
-    background: #444;
-    margin-right: 5px;
-}
-
-.custom-checkbox .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-    left: 4px;
-    top: 4px;
-    width: 5px;
-    height: 5px;
-    border: solid;
-    border-width: 0 2px 2px 0;
-    border-color: #fff;
-    transform: rotate(45deg);
-}
-
-.checkbox-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.checkbox-table th, .checkbox-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-    background-color: #1f1f21; /* ここでセルの背景色を設定 */
-}
-
-.checkbox-table th {
-    background-color: #f2f2f2;
-}
-
-.custom-table {
-    width: 500px;
-    margin: auto;
-}
-
-.custom-table-500 {
-    width: 500px;
-    margin: auto;
-}
-
-.aventador-table th, .aventador-table td {
-    border: 1px solid transparent;
-    padding: 8px;
-    text-align: center;
-}
-
-.custom-checkbox label {
-    display: flex;
-    align-items: center;
-}
-
-.custom-checkbox input[type="checkbox"] {
-    display: none;
-}
-
-.custom-checkbox .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 20px;
-    border: 1px solid #ddd;
-    background-color: #fff;
-}
-
-.custom-checkbox input[type="checkbox"]:checked + .checkmark {
-    background-color: #2196F3;
-}
-
-.custom-checkbox + span {
-    margin-left: 30px;
-}
-
-    
+    </style>
     </style>
 </head>
 <body>
