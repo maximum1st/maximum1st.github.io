@@ -8,45 +8,40 @@
     <title>セッティングシート</title>
     <style>
      body {
-            text-align: center; /* テキスト要素を中央寄せに */
+            text-align: center;
         }
         .container {
-            margin: auto; /* コンテナを中央寄せに */
-            max-width: 800px; /* 必要に応じてコンテナの最大幅を調整 */
+            margin: auto;
+            max-width: 800px;
         }
         table {
-            margin: auto; /* テーブル要素を中央寄せに */
-            text-align: left; /* テーブル内のテキストは左揃えにする */
+            margin: auto;
+            text-align: left;
         }
-        h1, .title, h3 { /* 追加：h3のテキストも中央寄せに設定 */
+        h1, .title, h3 {
             text-align: center;
         }
          .background-content {
-        /* リストを中央に配置 */
         display: block;
         margin: auto;
         text-align: left;
-        /* 必要に応じてwidthを調整して、見た目のバランスを取ります。 */
         width: fit-content;
     }
     .background-content li {
-        /* リストアイテムのスタイルを設定 */
-        text-align: left; /* テキストを左寄せに設定 */
-        list-style-position: inside; /* マーカーをコンテンツボックスの内側に配置 */
+        text-align: left;
+        list-style-position: inside;
     }
-    /* センタリングのためのヘルパークラスを追加 */
     .center-helper {
         display: flex;
         justify-content: center;
     }
-          /* カスタムチェックボックススタイル */
     .custom-checkbox {
         display: inline-block;
         position: relative;
-        width: 16px;  /* チェックボックスのサイズを調整 */
+        width: 16px;
         height: 16px;
-        border: 1px solid #d3d3d3;  /* チェックボックスの境界線の色 */
-        background: white;  /* チェックボックスの背景色 */
+        border: 1px solid #d3d3d3;
+        background: white;
     }
     .custom-checkbox input {
         opacity: 0;
@@ -64,17 +59,17 @@
         top: 1px;
         width: 5px;
         height: 10px;
-        border: solid;  /* チェックマークのスタイル */
-        border-width: 0 2px 2px 0;  /* チェックマークの太さ */
-        border-color: black;  /* チェックマークの色 */
+        border: solid;
+        border-width: 0 2px 2px 0;
+        border-color: black;
         transform: rotate(45deg);
     }
         .custom-checkbox label {
     display: flex;
-    align-items: center; /* チェックボックスとテキストを中央揃え */
+    align-items: center;
 }
 .custom-checkbox span {
-    margin-left: 5px; /* チェックボックスとテキストの間に少しスペースを設ける */
+    margin-left: 5px;
 }
     </style>
 </head>
