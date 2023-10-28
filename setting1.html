@@ -7,29 +7,35 @@
 <link rel="icon" type="image/png" sizes="16x16" href="https://maximum1st.github.io//favicon-16x16.png">
     <title>セッティングシート</title>
     <style>
-      body {
+    body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
+            background-color: #333; /* ダークテーマ用の背景色 */
+            color: #fff; /* ダークテーマ用のテキスト色 */
         }
         .container {
             margin: auto;
             max-width: 800px;
             padding: 20px;
+            background-color: #444; /* ダークテーマ用のコンテナ背景色 */
+            border-radius: 5px;
         }
         table {
             margin: auto;
             text-align: left;
-            border: 1px solid #d3d3d3;
+            border: 1px solid #555; /* テーブルボーダー色 */
             border-collapse: collapse;
             width: 100%;
+            background-color: #666; /* ダークテーマ用のテーブル背景色 */
         }
         th, td {
-            border: 1px solid #d3d3d3;
+            border: 1px solid #555; /* セルボーダー色 */
             padding: 8px;
         }
         h1, .title, h3 {
             text-align: center;
+            color: #fff; /* タイトルおよび見出しのテキスト色 */
         }
         .background-content {
             display: block;
@@ -67,8 +73,8 @@
             position: relative;
             width: 16px;
             height: 16px;
-            border: 1px solid #d3d3d3;
-            background: white;
+            border: 1px solid #fff; /* チェックボックスの枠色 */
+            background: #444; /* チェックボックスの背景色 */
             margin-right: 5px;
         }
         .custom-checkbox .checkmark:after {
@@ -81,7 +87,7 @@
             height: 10px;
             border: solid;
             border-width: 0 2px 2px 0;
-            border-color: black;
+            border-color: #fff; /* チェックマークの色 */
             transform: rotate(45deg);
         }
         .custom-checkbox label {
@@ -96,9 +102,9 @@
             writing-mode: horizontal-tb;
         }
         .custom-table {
-        width: 500px;
-        margin: auto;
-    }
+            width: 500px;
+            margin: auto;
+        }
     </style>
 </head>
 <body>
