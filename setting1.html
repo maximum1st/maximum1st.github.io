@@ -132,6 +132,48 @@
     display: flex;
     align-items: center; /* 中央揃え */
 }
+        .checkbox-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .checkbox-table th,
+    .checkbox-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+
+    .checkbox-table th {
+        background-color: #f2f2f2;
+    }
+
+    .custom-checkbox {
+        display: inline-block;
+        position: relative;
+    }
+
+    .custom-checkbox input[type="checkbox"] {
+        display: none;
+    }
+
+    .custom-checkbox .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        border: 1px solid #ddd;
+        background-color: #fff;
+    }
+
+    .custom-checkbox input[type="checkbox"]:checked + .checkmark {
+        background-color: #2196F3;
+    }
+
+    .custom-checkbox + span {
+        margin-left: 30px;
+    }
     </style>
 </head>
 <body>
