@@ -39,6 +39,36 @@
         display: flex;
         justify-content: center;
     }
+          /* カスタムチェックボックススタイル */
+    .custom-checkbox {
+        display: inline-block;
+        position: relative;
+        width: 16px;  /* チェックボックスのサイズを調整 */
+        height: 16px;
+        border: 1px solid #d3d3d3;  /* チェックボックスの境界線の色 */
+        background: white;  /* チェックボックスの背景色 */
+    }
+    .custom-checkbox input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+    .custom-checkbox input:checked ~ .checkmark:after {
+        display: block;
+    }
+    .custom-checkbox .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+        left: 5px;
+        top: 1px;
+        width: 5px;
+        height: 10px;
+        border: solid;  /* チェックマークのスタイル */
+        border-width: 0 2px 2px 0;  /* チェックマークの太さ */
+        border-color: black;  /* チェックマークの色 */
+        transform: rotate(45deg);
+    }
     </style>
 </head>
 <body>
@@ -61,8 +91,9 @@
     </table>
         <div class="center-helper">
     <ul class="background-content">
-        <li><input type="checkbox" disabled> コンフォートハード</li>
-        <li><input type="checkbox" disabled> コンフォートミディアム</li>
+       
+        <li><label class="custom-checkbox"><input type="checkbox" disabled><span>コンフォートハード</span></label></li>
+        <li><label class="custom-checkbox"><input type="checkbox" disabled><span>コンフォートミディアム</span></label></li>
         <li><input type="checkbox" disabled> コンフォートソフト</li>
         <li><input type="checkbox" disabled> スポーツハード</li>
         <li><input type="checkbox" disabled> スポーツミディアム</li>
