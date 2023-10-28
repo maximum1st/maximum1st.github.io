@@ -82,17 +82,18 @@
             position: absolute;
             display: none;
             left: 4px;
-            top: 2px;
+            top: 4px; /* 修正：高さを調整 */
             width: 5px;
-            height: 10px;
+            height: 5px; /* 修正：高さを調整 */
             border: solid;
             border-width: 0 2px 2px 0;
             border-color: #fff; /* チェックマークの色 */
             transform: rotate(45deg);
         }
+        /* チェックボックスラベルの高さを揃える */
         .custom-checkbox label {
             display: flex;
-            align-items: center;
+            align-items: center; /* 中央揃え */
         }
         .custom-checkbox span {
             margin-left: 5px;
@@ -120,7 +121,7 @@
             width: 500px; /* 幅を500pxに設定 */
             margin: auto;
         }
-         /* アヴェンタドールのテーブルの枠線を透明に設定 */
+        /* アヴェンタドールのテーブルの枠線を透明に設定 */
         .aventador-table th,
         .aventador-table td {
             border: 1px solid transparent; /* 枠線を透明に設定 */
