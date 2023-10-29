@@ -85,14 +85,15 @@ th, td {
 /* チェックボックスのスタイル */
 .custom-checkbox-container {
     display: flex;
-    justify-content: center; /* 水平方向に中央寄せ */
-    align-items: flex-start; /* 垂直方向に上寄せ */
+    flex-direction: row; /* チェックボックスを水平に配置 */
+    justify-content: center; /* チェックボックスを中央に配置 */
+    align-items: center; /* チェックボックスを垂直方向に中央に配置 */
 }
 
 .custom-checkbox {
-    position: relative;
-    cursor: pointer;
-    padding-left: 25px;
+    margin-right: 20px; /* チェックボックス間の横のスペースを設定 */
+    display: flex;
+    align-items: center; /* チェックボックスとテキストを垂直方向に中央に配置 */
 }
 
 .custom-checkbox input {
@@ -102,16 +103,14 @@ th, td {
 }
 
 .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     height: 15px;
     width: 15px;
     background-color: transparent;
     border: 2px solid blue;
     border-radius: 3px;
+    margin-right: 5px; /* チェックボックスとテキスト間のスペースを設定 */
 }
-
 /* チェックボックスが選択されたときのスタイル */
 .custom-checkbox input:checked ~ .checkmark {
     background-color: blue; /* チェックボックスが選択されたときの背景色を青に設定 */
