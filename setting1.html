@@ -120,18 +120,26 @@ th, td {
 .no-border td {
     border: none; /* 枠線を非表示にする */
 }
-  /* "戻る" リンクのスタイル */
+/* ページ上部のリンクスタイル */
 .top-navigation {
     display: flex;
-    justify-content: space-between; /* リンクを左右に配置 */
-    margin-top: 60px;
-    padding: 10px;
+    justify-content: space-between;
+    margin-top: 0; /* マージンを0に設定 */
+    padding: 0; /* パディングを0に設定 */
+    position: fixed; /* 固定位置に設定 */
+    top: 0; /* 上端に固定 */
+    left: 0; /* 左端に固定 */
+    right: 0; /* 右端に固定 */
+    background-color: #121212;
+    z-index: 1000; /* 他の要素よりも上に表示 */
 }
 
-        /* "戻る" リンクのスタイル */
+/* リンクのスタイル */
 .top-navigation a {
-    text-decoration: none; /* リンクの下線を削除 */
-    color: green; /* リンクの色を緑に設定 */
+    text-decoration: none;
+    color: green;
+    margin: 0; /* マージンを0に設定 */
+    padding: 10px; /* パディングを追加 */
 }
     </style>
 </head>
