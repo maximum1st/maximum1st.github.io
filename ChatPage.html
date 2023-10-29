@@ -34,6 +34,22 @@
             text-decoration: underline;
         }
 
+        .container {
+            max-width: 800px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .chatroom-table {
+            width: 90%;
+            margin-top: 20px;
+        }
+
         .chatroom-list {
             list-style: none;
             padding: 0;
@@ -41,10 +57,6 @@
 
         .chatroom-item {
             margin-bottom: 10px;
-        }
-
-        h1 {
-            margin-bottom: 20px;
         }
 
         .powered-by {
@@ -63,12 +75,15 @@
 
 <body>
     <div class="container">
-        <h1>チャットルーム</h1>
         
+<table class="chatroom-table">
+    <caption>チャットルーム一覧</caption>
+    
         <ul class="chatroom-list">
             <!-- ここに各チャットルームへのリンクをリストアップします -->
             <script src="https://minnit.chat/js/embed.js" defer></script>
             <li class="chatroom-item"><minnit-chat data-chatname="https://organizations.minnit.chat/841046088185698/Main?embed&dark&nickname=" data-style="width:90%;height:250px;max-height:90vh;"></minnit-chat><p class="powered-by-minnit"></li>
+            </table>
             <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-客人</a></li>
             <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st-2:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-雑談</a></li>
             <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st-3:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-配予</a></li>
