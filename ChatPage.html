@@ -88,11 +88,6 @@
             opacity: 1; /* 初期状態は表示 */
             transition: opacity 0.5s; /* フェードイン用のトランジション */
         }
-
-        /* 8秒後に画像を非表示にする */
-        .loaded .placeholder-image {
-            opacity: 0;
-        }
     </style>
 </head>
 
@@ -121,7 +116,12 @@
         <div>まず<a href="https://github.co.jp/" target="_blank" rel="noopener noreferrer">アカウント作成</a>それからチャットへ！</div>
     </div>
 </body>
-
+<script>
+        setTimeout(function () {
+            const placeholderImage = document.querySelector('.placeholder-image');
+            placeholderImage.style.display = 'none';
+        }, 8000); // 8秒待つ
+    </script>
 </html>
 
 
