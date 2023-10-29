@@ -82,21 +82,22 @@ table.custom-table {
 th, td {
     text-align: center;
 }
-/* カスタムチェックボックスのスタイル */
+/* チェックボックスのスタイル */
 .custom-checkbox-container {
     display: flex;
-    flex-wrap: wrap;
+    justify-content: center; /* 水平方向に中央寄せ */
+    align-items: flex-start; /* 垂直方向に上寄せ */
 }
 
 .custom-checkbox {
     position: relative;
     cursor: pointer;
-    padding-left: 25px; /* チェックボックスの横の余白を設定 */
+    padding-left: 25px;
 }
 
 .custom-checkbox input {
     position: absolute;
-    opacity: 0; /* デフォルトのチェックボックスを非表示にする */
+    opacity: 0;
     cursor: pointer;
 }
 
@@ -104,11 +105,11 @@ th, td {
     position: absolute;
     top: 0;
     left: 0;
-    height: 15px; /* チェックマークの高さ */
-    width: 15px; /* チェックマークの幅 */
-    background-color: transparent; /* チェックボックスの背景色を透明に設定 */
-    border: 2px solid blue; /* チェックボックスの境界線を青に設定 */
-    border-radius: 3px; /* チェックボックスの角を丸くする */
+    height: 15px;
+    width: 15px;
+    background-color: transparent;
+    border: 2px solid blue;
+    border-radius: 3px;
 }
 
 /* チェックボックスが選択されたときのスタイル */
