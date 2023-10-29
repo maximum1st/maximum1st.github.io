@@ -115,9 +115,10 @@ th, td {
 .custom-checkbox input:checked ~ .checkmark {
     background-color: blue; /* チェックボックスが選択されたときの背景色を青に設定 */
 }
-/* サスペンションとアヴェンタドールのセルの周りの枠線を非表示にする */
-table.custom-table td {
-    border: none;
+/* 特定のセルに対するスタイル */
+.no-border th,
+.no-border td {
+    border: none; /* 枠線を非表示にする */
 }
     </style>
 </head>
@@ -130,7 +131,7 @@ table.custom-table td {
                 <a href="https://maximum1st.github.io/parts1.html" style="margin-top: 60px;">パーツ</a>
             </div>
         </div>
-        <table class="custom-table" style="max-width: 500px; margin: auto; border: 0px;">
+        <table class="custom-table no-border" style="max-width: 500px; margin: auto; border: 0px;">
             <tr>
                 <td>
                     <h3 class="centered-h3 h3flow">アヴェンタドール LP 750-4 SV '15</h3>
@@ -218,7 +219,7 @@ table.custom-table td {
         <span>ソフト</span>
     </p>
 </td>
-    <table class="custom-table">
+    <table class="custom-table no-border">
         <tr>
             <th><h3 class="title">サスペンション</h3></th>
         </tr>
