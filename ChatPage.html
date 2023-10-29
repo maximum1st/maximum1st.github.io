@@ -12,7 +12,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="https://maximum1st.github.io//favicon-16x16.png">
     <title>とっくん研究ChatRoom！</title>
     <style>
-        body {
+         body {
             font-family: 'Arial', sans-serif;
             background-color: #121212; /* ダークテーマの背景色 */
             color: #ffffff; /* テキストの色 */
@@ -72,29 +72,45 @@
         }
 
         /* プレースホルダー画像のスタイル */
-        .placeholder-image {
+        .placeholder-image-container {
             width: 250px;
             height: 250px;
-            background: url('https://maximum1st.github.io/250.png') center center no-repeat;
-            background-size: cover;
+            position: relative;
+        }
+
+        .placeholder-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0; /* 画像を透明にして非表示 */
+            transition: opacity 0.5s; /* フェードイン用のトランジション */
+        }
+
+        /* プレースホルダー画像が読み込まれるまで表示 */
+        .placeholder-image.loaded {
+            opacity: 1;
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
+   <div class="container">
         
-
-    
         <ul class="chatroom-list">
             <!-- ここに各チャットルームへのリンクをリストアップします -->
             <li class="chatroom-item">
-               <table class="chatroom-table">
-             <li class="chatroom-item">
-            <script src="https://minnit.chat/js/embed.js" defer></script>
-                    <div class="placeholder-image"></div>
-            <minnit-chat data-chatname="https://organizations.minnit.chat/841046088185698/Main?embed&dark&nickname=" data-style="width:90%;height:250px;max-height:90vh;"></minnit-chat><p class="powered-by-minnit"></li>
-            </table>
+                <table class="chatroom-table">
+                    <li class="chatroom-item">
+                        <script src="https://minnit.chat/js/embed.js" defer></script>
+                        <div class="placeholder-image-container">
+                            <img class="placeholder-image" src="https://maximum1st.github.io/250.png" alt="プレースホルダー画像">
+                        </div>
+                        <minnit-chat data-chatname="https://organizations.minnit.chat/841046088185698/Main?embed&dark&nickname=" data-style="width:90%;height:250px;max-height:90vh;"></minnit-chat>
+                        <p class="powered-by-minnit"></li>
+                </table>
             <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-客人</a></li>
             <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st-2:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-雑談</a></li>
             <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st-3:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-配予</a></li>
