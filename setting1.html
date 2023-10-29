@@ -83,14 +83,18 @@ th, td {
 .custom-checkbox-container {
     display: flex;
     flex-direction: row; /* チェックボックスを水平に配置 */
-    justify-content: top 1em; /* チェックボックスを中央に配置 */
+    justify-content: flex-start; /* チェックボックスとテキストを左寄せに配置 */
     align-items: center; /* チェックボックスを垂直方向に中央に配置 */
 }
 
 .custom-checkbox {
-    margin-right: 20px; /* チェックボックス間の横のスペースを設定 */
+    margin-right: 20px; /* チェックボックスとテキスト間の横のスペースを設定 */
     display: flex;
     align-items: center; /* チェックボックスとテキストを垂直方向に中央に配置 */
+}
+
+.custom-checkbox span {
+    margin-left: 5px; /* テキストとチェックボックス間の横のスペースを設定 */
 }
 .custom-checkbox input {
     position: absolute;
