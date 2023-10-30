@@ -81,20 +81,12 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5); /* チャットの背景色と透明度を設定 */
             z-index: 2; /* チャットを前面に表示 */
-            display: none; /* チャットを最初は非表示に */
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
         }
-
-        minnit-chat {
-            max-width: 100%;
-            max-height: 100%;
-        }
-
-        /* クラスを追加してクリック時に表示するスタイルを適用 */
-        .show-chat {
-            display: flex;
+        
+        .chatview-style {
+            width: 100%;
+            height: 100%;
+            position: relative;
         }
     </style>
 </head>
@@ -107,12 +99,12 @@
                 <li class="chatroom-item">
                     <h1>とっくん研究ChatRoom</h1>
                     <div class="chatroom-item">
-                        <div class="placeholder-image-container">
+                        <div class="chatview-style">
                             <img class="placeholder-image" src="https://maximum1st.github.io/250.png" alt="プレースホルダー画像">
-                        </div>
-                        <div class="minnit-chat-container" id="chat-container">
-                            <script src="https://minnit.chat/js/embed.js" defer></script>
-                            <minnit-chat data-chatname="https://organizations.minnit.chat/841046088185698/Main?embed&dark&nickname=" data-style="width:100%;height:100%;"></minnit-chat>
+                            <div class="minnit-chat-container">
+                                <script src="https://minnit.chat/js/embed.js" defer></script>
+                                <minnit-chat data-chatname="https://organizations.minnit.chat/841046088185698/Main?embed&dark&nickname=" data-style="width:100%;height:100%;"></minnit-chat>
+                            </div>
                         </div>
                     </div>
                 </li>
@@ -128,15 +120,7 @@
         <div class="powered-by">Powered by Gitter and GitHub™</div>
         <div class="divider"></div>
         <div>まず<a href="https://github.co.jp/" target="_blank" rel="noopener noreferrer">アカウント作成</a>それからチャットへ！</div>
-        <!-- チャットを表示するボタンを追加 -->
-        <button onclick="showChat()">チャットを表示</button>
     </div>
-    <script>
-        function showChat() {
-            // チャットを表示するためのクラスを追加
-            document.getElementById('chat-container').classList.add('show-chat');
-        }
-    </script>
 </body>
 
 </html>
