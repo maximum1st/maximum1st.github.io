@@ -57,24 +57,30 @@
         .chatroom-item {
             margin-bottom: 10px;
             position: relative;
+            width: 250px; /* 画像と同じ幅に設定 */
+            height: 250px; /* 画像と同じ高さに設定 */
+            overflow: hidden; /* コンテンツのオーバーフローを非表示に */
         }
 
-        .chatroom-item .placeholder-image-container {
-            width: 250px;
-            height: 250px;
-        }
-
-        .chatroom-item .placeholder-image {
+        .placeholder-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block; /* 画像を表示 */
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1; /* 画像を前面に表示 */
         }
 
         .minnit-chat-container {
-            width: 100%; /* コンテナ幅を100%に設定 */
-            max-width: 800px; /* 最大幅を設定 */
-            margin: 0 auto; /* コンテナを中央寄せ */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* チャットの背景色と透明度を設定 */
+            z-index: 2; /* チャットを前面に表示 */
         }
     </style>
 </head>
@@ -86,12 +92,12 @@
                 <!-- ここに各チャットルームへのリンクをリストアップします -->
                 <li class="chatroom-item">
                     <h1>とっくん研究ChatRoom</h1>
-                    <div class="placeholder-image-container">
+                    <div class="chatroom-item">
                         <img class="placeholder-image" src="https://maximum1st.github.io/250.png" alt="プレースホルダー画像">
-                    </div>
-                    <div class="minnit-chat-container">
-                        <script src="https://minnit.chat/js/embed.js" defer></script>
-                        <minnit-chat data-chatname="https://organizations.minnit.chat/841046088185698/Main?embed&dark&nickname=" data-style="width:100%;max-height:90vh;"></minnit-chat>
+                        <div class="minnit-chat-container">
+                            <script src="https://minnit.chat/js/embed.js" defer></script>
+                            <minnit-chat data-chatname="https://organizations.minnit.chat/841046088185698/Main?embed&dark&nickname=" data-style="width:100%;height:100%;"></minnit-chat>
+                        </div>
                     </div>
                 </li>
                 <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st:gitter.im"
