@@ -18,6 +18,10 @@
             color: #ffffff; /* テキストの色 */
             line-height: 1.6;
             margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
         }
 
         a {
@@ -34,8 +38,8 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
             padding: 20px;
+            text-align: center;
         }
 
         h1 {
@@ -77,8 +81,10 @@
 
         /* 画像のスタイル */
         .centered-image {
-            width: 250px;
-            height: 250px;
+            width: 100%;
+            height: auto;
+            max-width: 250px;
+            max-height: 250px;
             object-fit: cover;
             position: absolute; /* 他の要素の上に重ねます */
             transform: translate(-50%, -50%); /* 中央揃えにするための変換 */
