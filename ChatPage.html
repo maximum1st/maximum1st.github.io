@@ -14,16 +14,25 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #121212; /* ダークテーマの背景色 */
-            color: #ffffff; /* テキストの色 */
+            background-color: #121212;
+            color: #ffffff;
             line-height: 1.6;
             margin: 0;
-            /* スクロールバーを表示 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             overflow: auto;
         }
 
+        .container {
+            width: 851px;
+            padding: 20px;
+            text-align: center;
+        }
+
         a {
-            color: #32CD32; /* リンクの色を緑に変更 */
+            color: #32CD32;
             text-decoration: none;
         }
 
@@ -31,23 +40,8 @@
             text-decoration: underline;
         }
 
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            text-align: center;
-            width: 851px; /* ページの横幅を指定 */
-            margin: 0 auto; /* ページを中央寄せ */
-        }
-
-        h1 {
-            margin-bottom: 20px;
-        }
-
         .chatroom-table {
-            width: 90%;
+            width: 100%;
             margin-top: 20px;
         }
 
@@ -59,36 +53,33 @@
         .chatroom-item {
             margin-bottom: 10px;
             position: relative;
-            width: 250px; /* 画像と同じ幅に設定 */
-            height: 250px; /* 画像と同じ高さに設定 */
-            overflow: hidden; /* コンテンツのオーバーフローを非表示に */
+        }
+
+        .chatview-style {
+            width: 851px;
+            height: 851px;
+            position: relative;
         }
 
         .placeholder-image {
-            width: 850px;
-            height: 850px;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             display: block;
             position: absolute;
             top: 0;
             left: 0;
-            z-index: 1; /* 画像を前面に表示 */
+            z-index: 1;
         }
 
         .minnit-chat-container {
             position: absolute;
             top: 0;
             left: 0;
-            width: 850px;
-            height: 850px;
-            background-color: rgba(0, 0, 0, 0.5); /* チャットの背景色と透明度を設定 */
-            z-index: 2; /* チャットを前面に表示 */
-        }
-        
-        .chatview-style {
-            width: 850px;
-            height: 850px;
-            position: relative;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2;
         }
     </style>
 </head>
@@ -97,7 +88,6 @@
     <div class="container">
         <div class="chatroom-table">
             <ul class="chatroom-list">
-                <!-- ここに各チャットルームへのリンクをリストアップします -->
                 <li class="chatroom-item">
                     <h1>とっくん研究ChatRoom</h1>
                     <div class="chatroom-item">
@@ -110,13 +100,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st:gitter.im"
-                        target="_blank" rel="noopener noreferrer">とっくん研究-客人</a></li>
-                <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st-2:gitter.im"
-                        target="_blank" rel="noopener noreferrer">とっくん研究-雑談</a></li>
-                <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st-3:gitter.im"
-                        target="_blank" rel="noopener noreferrer">とっくん研究-配予</a></li>
-                <!-- 以下、必要なだけリンクを追加 -->
+                <!-- 他のリンク -->
             </ul>
         </div>
         <div class="powered-by">Powered by Gitter and GitHub™</div>
