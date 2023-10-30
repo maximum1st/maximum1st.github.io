@@ -17,7 +17,7 @@
             const placeholderImage = document.querySelector('.placeholder-image');
             const chatroomTable = document.querySelector('.chatroom-table');
             const chatroomContainer = document.querySelector('.chatroom-list');
-// ページの読み込みを1.5秒遅らせる
+        // ページの読み込みを1.5秒遅らせる
             setTimeout(function () {
                 // 画像のサイズを読み込みページに合わせて調整
                 const containerWidth = chatroomContainer.offsetWidth;
@@ -34,7 +34,7 @@
             
     </script>
     <style>
-        body {
+         body {
             font-family: 'Arial', sans-serif;
             background-color: #121212; /* ダークテーマの背景色 */
             color: #ffffff; /* テキストの色 */
@@ -44,6 +44,7 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
+            overflow: hidden; /* スクロールバーを非表示にする */
         }
 
         a {
