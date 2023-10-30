@@ -18,6 +18,8 @@
             color: #ffffff; /* テキストの色 */
             line-height: 1.6;
             margin: 0;
+            /* スクロールバーを表示 */
+            overflow: auto;
         }
 
         a {
@@ -60,13 +62,19 @@
         .chatroom-item .placeholder-image-container {
             width: 250px;
             height: 250px;
+            position: relative;
         }
 
         .chatroom-item .placeholder-image {
             width: 100%;
-            height: 100%;
+            height: auto;
+            max-width: 250px;
+            max-height: 250px;
             object-fit: cover;
-            display: block;
+            position: absolute; /* 他の要素の上に重ねます */
+            transform: translate(-50%, -50%); /* 中央揃えにするための変換 */
+            opacity: 1;
+            z-index: 1; /* 他の要素よりも前面に表示します */
         }
 
         .chatroom-item .minnit-chat-container {
@@ -75,7 +83,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #121212;
+            background-color: #121212; /* チャットが表示される前に背景を設定 */
             z-index: 2; /* チャットを前面に表示 */
         }
     </style>
@@ -89,8 +97,7 @@
                 <li class="chatroom-item">
                     <h1>とっくん研究ChatRoom</h1>
                     <div class="placeholder-image-container">
-                        <img class="placeholder-image" src="https://maximum1st.github.io/250.png"
-                            alt="プレースホルダー画像">
+                        <img class="placeholder-image" src="https://maximum1st.github.io/250.png" alt="プレースホルダー画像">
                     </div>
                     <div class="minnit-chat-container">
                         <script>
