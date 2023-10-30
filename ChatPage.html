@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -8,20 +9,15 @@
 
     <!-- 検索エンジンのロボットを回避するためのタグ -->
     <meta name="robots" content="noindex, nofollow">
-<link rel="icon" type="image/png" sizes="32x32" href="https://maximum1st.github.io//favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="https://maximum1st.github.io//favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://maximum1st.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://maximum1st.github.io/favicon-16x16.png">
     <title>とっくん研究ChatRoom！</title>
     <style>
-body {
+        body {
             font-family: 'Arial', sans-serif;
             background-color: #121212; /* ダークテーマの背景色 */
             color: #ffffff; /* テキストの色 */
             line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
             margin: 0;
         }
 
@@ -35,10 +31,12 @@ body {
         }
 
         .container {
-            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
         }
 
         h1 {
@@ -77,47 +75,53 @@ body {
             height: 250px;
             position: relative;
         }
+
         /* 画像のスタイル */
-.placeholder-image {
-    width: 250px; /* 画像の幅 */
-    height: 250px; /* 画像の高さ */
-    object-fit: cover;
-    position: absolute; /* 他の要素の上に重ねます */
-    top: 0; /* 上端の位置（必要に応じて調整） */
-    left: 0; /* 左端の位置（必要に応じて調整） */
-    opacity: 1;
-    z-index: 1; /* 他の要素よりも前面に表示します */
-}
+        .centered-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute; /* 他の要素の上に重ねます */
+            top: 50%; /* 上端の位置をページ中央に設定 */
+            left: 50%; /* 左端の位置をページ中央に設定 */
+            transform: translate(-50%, -50%); /* 中央揃えにするための変換 */
+            opacity: 1;
+            z-index: 1; /* 他の要素よりも前面に表示します */
+        }
     </style>
 </head>
 
 <body>
-   <div class="container">
-
-        <ul class="chatroom-list">
-            <!-- ここに各チャットルームへのリンクをリストアップします -->
-            <li class="chatroom-item">
-                <table class="chatroom-table">
-                    <li class="chatroom-item">
-                     <script src="https://minnit.chat/js/embed.js" defer></script><minnit-chat data-chatname="https://organizations.minnit.chat/841046088185698/Main?embed&nickname=" data-style="width:250px;height:250px;"></minnit-chat></p>  
-                        <div class="placeholder-image-container">
-                            <img class="placeholder-image" src="https://maximum1st.github.io/250.png"
-                                alt="プレースホルダー画像">
-                        </div>
-                        
-                </table>
-            <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-客人</a></li>
-            <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st-2:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-雑談</a></li>
-            <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st-3:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-配予</a></li>
-            <!-- 以下、必要なだけリンクを追加 -->
-        </ul>
+    <div class="container">
+        <h1>とっくん研究ChatRoom</h1>
+        <div class="chatroom-table">
+            <ul class="chatroom-list">
+                <!-- ここに各チャットルームへのリンクをリストアップします -->
+                <li class="chatroom-item">
+                    <script src="https://minnit.chat/js/embed.js" defer></script>
+                    <div class="placeholder-image-container">
+                        <img class="placeholder-image" src="https://maximum1st.github.io/250.png"
+                            alt="プレースホルダー画像">
+                    </div>
+                    <minnit-chat
+                        data-chatname="https://organizations.minnit.chat/841046088185698/Main?embed&nickname="
+                        data-style="width:250px;height:250px;"></minnit-chat>
+                </li>
+                <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st:gitter.im"
+                        target="_blank" rel="noopener noreferrer">とっくん研究-客人</a></li>
+                <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st-2:gitter.im"
+                        target="_blank" rel="noopener noreferrer">とっくん研究-雑談</a></li>
+                <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st-3:gitter.im"
+                        target="_blank" rel="noopener noreferrer">とっくん研究-配予</a></li>
+                <!-- 以下、必要なだけリンクを追加 -->
+            </ul>
+        </div>
         <div class="powered-by">Powered by Gitter and GitHub™</div>
         <div class="divider"></div>
         <div>まず<a href="https://github.co.jp/" target="_blank" rel="noopener noreferrer">アカウント作成</a>それからチャットへ！</div>
     </div>
-</body>
-<script>
-        // 画像の読み込みが完了したら処理を実行
+    <!-- 画像の読み込みが完了したら処理を実行 -->
+    <script>
         window.addEventListener('load', function () {
             const placeholderImage = document.querySelector('.placeholder-image');
             const chatroomTable = document.querySelector('.chatroom-table');
@@ -135,6 +139,8 @@ body {
             }, 8000); // 8秒後に非表示化
         });
     </script>
+</body>
+
 </html>
 
 
