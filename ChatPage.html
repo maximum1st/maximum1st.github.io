@@ -125,26 +125,24 @@
     </div>
     <!-- 画像の読み込みが完了したら処理を実行 -->
     <script>
-        // ページの読み込みが完了したら処理を実行
-        window.addEventListener('load', function () {
+        // 画像の非表示を5秒遅延させる
+        setTimeout(function () {
             const placeholderImage = document.querySelector('.placeholder-image');
             const chatroomTable = document.querySelector('.chatroom-table');
             const chatroomContainer = document.querySelector('.chatroom-list');
 
-            // 画像のサイズを読み込みページに合わせて調整
-            const containerWidth = chatroomContainer.offsetWidth;
-            const containerHeight = chatroomTable.offsetHeight;
-            placeholderImage.style.width = containerWidth + 'px';
-            placeholderImage.style.height = containerHeight + 'px';
-
             // 画像を非表示にする
-            setTimeout(function () {
-                placeholderImage.style.opacity = '0';
+            placeholderImage.style.opacity = '0';
 
-                // 画像が非表示になったら、クリックイベントを有効にする
-                placeholderImage.style.pointerEvents = 'none';
-            }, 8000); // 8秒後に非表示化
-        });
+            // 画像が非表示になったら、クリックイベントを有効にする
+            placeholderImage.style.pointerEvents = 'none';
+        }, 5000); // 5秒後に非表示化
+
+        // 読み込みページの読み込みを1.5秒遅延させる
+        setTimeout(function () {
+            const chatroomTable = document.querySelector('.chatroom-table');
+            chatroomTable.style.visibility = 'visible';
+        }, 1500); // 1.5秒後に表示
     </script>
 </body>
 
