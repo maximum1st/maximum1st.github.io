@@ -130,13 +130,7 @@
             const placeholderImage = document.querySelector('.placeholder-image');
             const chatroomTable = document.querySelector('.chatroom-table');
             const chatroomContainer = document.querySelector('.chatroom-list');
-
-            // 画像を非表示にする
-            setTimeout(function () {
-                placeholderImage.style.opacity = '0';
-            }, 5000); // 5秒後に非表示化
-
-            // ページの読み込みを1.5秒遅らせる
+// ページの読み込みを1.5秒遅らせる
             setTimeout(function () {
                 // 画像のサイズを読み込みページに合わせて調整
                 const containerWidth = chatroomContainer.offsetWidth;
@@ -145,6 +139,12 @@
                 placeholderImage.style.height = containerHeight + 'px';
             }, 1500); // 1.5秒遅延して実行
         });
+            // 画像を非表示にする
+            setTimeout(function () {
+                placeholderImage.style.opacity = '0';
+            }, 5000); // 5秒後に非表示化
+
+            
     </script>
 </body>
 
