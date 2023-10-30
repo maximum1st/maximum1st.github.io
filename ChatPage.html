@@ -77,17 +77,17 @@ body {
             height: 250px;
             position: relative;
         }
-
-        .placeholder-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 1; /* 初期状態は表示 */
-            transition: opacity 0.5s; /* フェードイン用のトランジション */
-        }
+        /* 画像のスタイル */
+.placeholder-image {
+    width: 250px; /* 画像の幅 */
+    height: 250px; /* 画像の高さ */
+    object-fit: cover;
+    position: absolute; /* 他の要素の上に重ねます */
+    top: 0; /* 上端の位置（必要に応じて調整） */
+    left: 0; /* 左端の位置（必要に応じて調整） */
+    opacity: 1;
+    z-index: 1; /* 他の要素よりも前面に表示します */
+}
     </style>
 </head>
 
