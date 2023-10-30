@@ -73,14 +73,18 @@
         }
 
         .minnit-chat-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 250px;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 2;
-        }
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 250px;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+iframe {
+    overflow: hidden !important;
+}
         @keyframes fadeOut {
         to {
             opacity: 0;
