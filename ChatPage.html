@@ -62,29 +62,19 @@
         .chatroom-item .placeholder-image-container {
             width: 250px;
             height: 250px;
-            position: relative;
         }
 
         .chatroom-item .placeholder-image {
             width: 100%;
-            height: auto;
-            max-width: 250px;
-            max-height: 250px;
+            height: 100%;
             object-fit: cover;
-            position: absolute; /* 他の要素の上に重ねます */
-            transform: translate(-50%, -50%); /* 中央揃えにするための変換 */
-            opacity: 1;
-            z-index: 1; /* 他の要素よりも前面に表示します */
+            display: block; /* 画像を表示 */
         }
 
-        .chatroom-item .minnit-chat-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #121212; /* チャットが表示される前に背景を設定 */
-            z-index: 2; /* チャットを前面に表示 */
+        .minnit-chat-container {
+            width: 100%; /* コンテナ幅を100%に設定 */
+            max-width: 800px; /* 最大幅を設定 */
+            margin: 0 auto; /* コンテナを中央寄せ */
         }
     </style>
 </head>
@@ -100,21 +90,8 @@
                         <img class="placeholder-image" src="https://maximum1st.github.io/250.png" alt="プレースホルダー画像">
                     </div>
                     <div class="minnit-chat-container">
-                        <script>
-                            // ページの読み込みが完了したら処理を実行
-                            window.addEventListener('load', function () {
-                                // チャットを表示するコード
-                                var minnitChatContainer = document.createElement('minnit-chat');
-                                minnitChatContainer.setAttribute('data-chatname', 'https://organizations.minnit.chat/841046088185698/Main?embed&dark&nickname=');
-                                minnitChatContainer.setAttribute('data-style', 'width:90%;height:500px;max-height:90vh;');
-                                document.querySelector('.minnit-chat-container').appendChild(minnitChatContainer);
-
-                                // チャットが表示されたら画像を非表示にする
-                                minnitChatContainer.addEventListener('load', function () {
-                                    document.querySelector('.placeholder-image-container').style.display = 'none'; // 画像を非表示
-                                });
-                            });
-                        </script>
+                        <script src="https://minnit.chat/js/embed.js" defer></script>
+                        <minnit-chat data-chatname="https://organizations.minnit.chat/841046088185698/Main?embed&dark&nickname=" data-style="width:100%;max-height:90vh;"></minnit-chat>
                     </div>
                 </li>
                 <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st:gitter.im"
