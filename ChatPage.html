@@ -11,6 +11,28 @@
     <link rel="icon" type="image/png" sizes="32x32" href="https://maximum1st.github.io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://maximum1st.github.io/favicon-16x16.png">
     <title>とっくん研究ChatRoom！</title>
+     <script>
+        // ページの読み込みが完了したら処理を実行
+        window.addEventListener('load', function () {
+            const placeholderImage = document.querySelector('.placeholder-image');
+            const chatroomTable = document.querySelector('.chatroom-table');
+            const chatroomContainer = document.querySelector('.chatroom-list');
+// ページの読み込みを1.5秒遅らせる
+            setTimeout(function () {
+                // 画像のサイズを読み込みページに合わせて調整
+                const containerWidth = chatroomContainer.offsetWidth;
+                const containerHeight = chatroomTable.offsetHeight;
+                placeholderImage.style.width = containerWidth + 'px';
+                placeholderImage.style.height = containerHeight + 'px';
+            }, 1500); // 1.5秒遅延して実行
+        });
+            // 画像を非表示にする
+            setTimeout(function () {
+                placeholderImage.style.opacity = '0';
+            }, 5000); // 5秒後に非表示化
+
+            
+    </script>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -124,28 +146,7 @@
         <div>まず<a href="https://github.co.jp/" target="_blank" rel="noopener noreferrer">アカウント作成</a>それからチャットへ！</div>
     </div>
     <!-- 画像の読み込みが完了したら処理を実行 -->
-    <script>
-        // ページの読み込みが完了したら処理を実行
-        window.addEventListener('load', function () {
-            const placeholderImage = document.querySelector('.placeholder-image');
-            const chatroomTable = document.querySelector('.chatroom-table');
-            const chatroomContainer = document.querySelector('.chatroom-list');
-// ページの読み込みを1.5秒遅らせる
-            setTimeout(function () {
-                // 画像のサイズを読み込みページに合わせて調整
-                const containerWidth = chatroomContainer.offsetWidth;
-                const containerHeight = chatroomTable.offsetHeight;
-                placeholderImage.style.width = containerWidth + 'px';
-                placeholderImage.style.height = containerHeight + 'px';
-            }, 1500); // 1.5秒遅延して実行
-        });
-            // 画像を非表示にする
-            setTimeout(function () {
-                placeholderImage.style.opacity = '0';
-            }, 5000); // 5秒後に非表示化
-
-            
-    </script>
+   
 </body>
 
 </html>
