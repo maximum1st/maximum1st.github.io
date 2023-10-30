@@ -12,7 +12,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="https://maximum1st.github.io//favicon-16x16.png">
     <title>とっくん研究ChatRoom！</title>
     <style>
-         body {
+body {
             font-family: 'Arial', sans-serif;
             background-color: #121212; /* ダークテーマの背景色 */
             color: #ffffff; /* テキストの色 */
@@ -93,17 +93,20 @@
 
 <body>
    <div class="container">
-        
+
         <ul class="chatroom-list">
             <!-- ここに各チャットルームへのリンクをリストアップします -->
             <li class="chatroom-item">
                 <table class="chatroom-table">
                     <li class="chatroom-item">
-                        <script src="https://minnit.chat/js/embed.js" defer></script>
+                       
                         <div class="placeholder-image-container">
-                            <img class="placeholder-image" src="https://maximum1st.github.io/250.png" alt="プレースホルダー画像">
+                            <img class="placeholder-image" src="https://maximum1st.github.io/250.png"
+                                alt="プレースホルダー画像">
                         </div>
-                        < iframe src = "https://organizations.minnit.chat/841046088185698/c/メイン?embed&nickname = "スタイル="ボーダー:なし;幅:90%;高さ:500px;最大高さ:90vh; "allowTransparency =" true "> < / iframe >
+                        <iframe src="https://organizations.minnit.chat/841046088185698/c/メイン?embed&nickname="
+                            style="border: none; width: 90%; height: 500px; max-height: 90vh;"
+                            allowTransparency="true"></iframe>
                         <p class="powered-by-minnit"></li>
                 </table>
             <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-客人</a></li>
@@ -117,24 +120,24 @@
     </div>
 </body>
 <script>
-            // 画像の読み込みが完了したら処理を実行
-            window.addEventListener('load', function () {
-                const placeholderImage = document.querySelector('.placeholder-image');
-                const chatroomTable = document.querySelector('.chatroom-table');
-                const chatroomContainer = document.querySelector('.chatroom-list');
+        // 画像の読み込みが完了したら処理を実行
+        window.addEventListener('load', function () {
+            const placeholderImage = document.querySelector('.placeholder-image');
+            const chatroomTable = document.querySelector('.chatroom-table');
+            const chatroomContainer = document.querySelector('.chatroom-list');
 
-                // 画像のサイズを読み込みページに合わせて調整
-                const containerWidth = chatroomContainer.offsetWidth;
-                const containerHeight = chatroomTable.offsetHeight;
-                placeholderImage.style.width = containerWidth + 'px';
-                placeholderImage.style.height = containerHeight + 'px';
+            // 画像のサイズを読み込みページに合わせて調整
+            const containerWidth = chatroomContainer.offsetWidth;
+            const containerHeight = chatroomTable.offsetHeight;
+            placeholderImage.style.width = containerWidth + 'px';
+            placeholderImage.style.height = containerHeight + 'px';
 
-                // 画像を非表示にする
-                setTimeout(function () {
-                    placeholderImage.style.opacity = '0';
-                }, 8000); // 8秒後に非表示化
-            });
-        </script>
+            // 画像を非表示にする
+            setTimeout(function () {
+                placeholderImage.style.opacity = '0';
+            }, 8000); // 8秒後に非表示化
+        });
+    </script>
 </html>
 
 
