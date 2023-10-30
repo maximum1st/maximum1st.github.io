@@ -81,6 +81,17 @@
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 2;
         }
+        @keyframes fadeOut {
+        to {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+
+    .show-for-5s {
+        animation: fadeOut 1s forwards;
+        animation-delay: 5s;
+    }
     </style>
 </head>
 
@@ -113,6 +124,10 @@
         <div class="divider"></div>
         <div>まず<a href="https://github.co.jp/" target="_blank" rel="noopener noreferrer">アカウント作成</a>それからチャットへ！</div>
     </div>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector(".placeholder-image").classList.add("show-for-5s");
+    });
+  </script>
 </body>
-
 </html>
