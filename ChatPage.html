@@ -64,15 +64,15 @@ a:hover {
 
 .placeholder-image {
     width: 100%;
-    height: 100%;
+    height: calc(100% + 5px);  /* 画像の高さを5px増やす */
     object-fit: cover;
     display: block;
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 9999;
+    z-index: 9999;            /* 念のためこちらも保持 */
+    transform: translateY(-5px); /* 画像を上に5px移動 */
 }
-
 .minnit-chat-container {
             position: absolute;
             top: 0;
@@ -81,7 +81,6 @@ a:hover {
             height: 300px;
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 2;
-            margin-top: 5px; /* ここに追加 */
         }
 
 iframe {
