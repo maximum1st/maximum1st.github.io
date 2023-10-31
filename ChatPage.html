@@ -58,20 +58,19 @@ a:hover {
 
 .chatview-style {
     width: 851px;
-    height: 300px;
+    height: 310px;  /* こちらの高さを10px増やす */
     position: relative;
 }
 
 .placeholder-image {
     width: 100%;
-    height: calc(100% + 5px);  /* 画像の高さを5px増やす */
+    height: calc(100% + 10px);  /* 画像の高さを10px増やす */
     object-fit: cover;
     display: block;
     position: absolute;
-    top: 0;
+    top: -5px;  /* 画像を上に5px移動 */
     left: 0;
-    z-index: 9999;            /* 念のためこちらも保持 */
-    transform: translateY(-5px); /* 画像を上に5px移動 */
+    z-index: 9999;
 }
 .minnit-chat-container {
             position: absolute;
@@ -112,7 +111,7 @@ iframe {
 @media screen and (max-width: 768px) {
     .chatview-style, .placeholder-image, .minnit-chat-container {
         width: 400px;
-        height: 400px;
+        height: 410px;  /* この高さも10px増やす */
     }
 }
 
