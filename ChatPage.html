@@ -145,10 +145,14 @@ iframe {
         <div class="divider"></div>
         <div>まず<a href="https://github.co.jp/" target="_blank" rel="noopener noreferrer">アカウント作成</a>それからチャットへ！</div>
     </div>
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        document.querySelector(".placeholder-image").classList.add("show-for-5s");
-    });
-  </script>
+   <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const placeholderImage = document.getElementById("myImage");
+            placeholderImage.style.zIndex = "3";  // 他の要素よりも前面に表示
+            setTimeout(() => {
+                placeholderImage.classList.add("show-for-5s");
+            }, 1000);  // 1秒待ってからfadeOutアニメーションを開始
+        });
+    </script>
 </body>
 </html>
