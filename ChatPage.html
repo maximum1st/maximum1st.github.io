@@ -136,9 +136,30 @@ iframe {
 
 <body>
     <script>
-        window.onload = function() {
-            document.querySelector(".placeholder-image").classList.add("show-for-5s");
-        };
+       function adjustFrameSize() {
+    // チャットのエレメントを取得
+    var chatElement = document.querySelector('.minnit-chat-container');
+
+    // チャットの高さを取得
+    var chatHeight = chatElement.offsetHeight;
+
+    // フレームコンテナのエレメントを取得
+    var frameContainer = document.querySelector('.frame-container');
+
+    // フレームコンテナの高さをチャットの高さに合わせて調整
+    frameContainer.style.height = chatHeight + 'px';
+
+    // 必要に応じて他のスタイルも調整
+}
+
+// ページの読み込みが完了したら関数を実行
+window.onload = function() {
+    // 既存の処理
+    document.querySelector(".placeholder-image").classList.add("show-for-5s");
+    
+    // フレームのサイズ調整関数を呼び出す
+    adjustFrameSize();
+};
     </script>
 
     <div class="container">
