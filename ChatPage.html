@@ -114,6 +114,19 @@ iframe {
         height: 410px;  /* この高さも10px増やす */
     }
 }
+.frame-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 851px; /* ご希望の幅に合わせて調整してください */
+    height: 300px; /* ご希望の高さに合わせて調整してください */
+    z-index: 9998; /* チャットよりも前面に表示するための値 */
+}
+
+.frame-image {
+    width: 100%;
+    height: 100%;
+}
 
 
     </style>
@@ -137,6 +150,9 @@ iframe {
                                 <script src="https://minnit.chat/js/embed.js" defer></script>
                                 <minnit-chat data-chatname="https://organizations.minnit.chat/841046088185698/Main?embed&dark&nickname=" data-style="width:100%;height:100%;"></minnit-chat>
                             </div>
+                            <div class="frame-container">
+    <img src="https://maximum1st.github.io/2502.png" class="frame-image">
+</div>
                         </div>
                     </div>
                 </li>
