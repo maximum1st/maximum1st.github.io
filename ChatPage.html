@@ -205,6 +205,7 @@ document.addEventListener("DOMContentLoaded", function() {
             z-index: 10002;
             cursor: pointer;
             overflow: hidden;
+            display: none; /* 初期にボタンを非表示にする */
         }
         
         .customButton:hover {
@@ -223,7 +224,12 @@ document.addEventListener("DOMContentLoaded", function() {
     btn.href = 'https://maximum1st.github.io/7676.html';
 
     document.body.appendChild(btn);
+
+    setTimeout(function() {
+        btn.style.display = "block"; // 3秒後にボタンを表示
+    }, 3000);
 });
+
 
 
 
