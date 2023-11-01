@@ -149,6 +149,27 @@
         width: 150px;
     }
 }
+        .kakusi-btn {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 50px;
+    height: 25px;
+    line-height: 25px;
+    background-color: #121212;
+    color: #32CD32;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, bottom 0.3s ease 5s; /* 5s delay added to bottom */
+    z-index: 10002;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.kakusi-btn:hover {
+    transform: translateY(-25px);
+}
 
     </style>
 </head>
@@ -212,5 +233,6 @@
         <div class="powered-by">Powered by Gitter and GitHub™</div>
         <div>まず<a href="https://github.co.jp/" target="_blank" rel="noopener noreferrer">アカウント作成</a>それからチャットへ！</div>
     </div>
+    <a href="#" class="kakusi-btn">自分道義</a>
 </body>
 </html>
