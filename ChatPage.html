@@ -130,20 +130,23 @@ iframe {
     pointer-events: none;
 }
 .progress-container {
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 20px; /* 丸みを持たせる */
+    border: 1px solid #32CD32; /* 緑色の縁を付ける */
+    overflow: hidden;
     position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 20px;
-    background-color: rgba(255, 255, 255, 0.5); /* 背景の半透明白色 */
-    transform: translateY(-50%);
+    top: 10%;
+    left: 10%;
     z-index: 10000;
 }
 
 .progress-bar {
-    width: 0;
-    height: 100%;
-    background-color: #32CD32; /* グラフの色 */
+    height: 10px;
+    width: 0%;
+    background-color: #32CD32;
+    border-radius: 20px 0 0 20px; /* 左側の角だけ丸くする */
+    transition: width 5s linear; /* 5秒かけてwidthを変更する */
 }
 
 
@@ -152,42 +155,30 @@ iframe {
 
 <body>
     <script>
-    function adjustFrameSize() {
-    // チャットのエレメントを取得
-    var chatElement = document.querySelector('.minnit-chat-container');
+       function adjustFrameSize() {
+            var chatElement = document.querySelector('.minnit-chat-container');
+            var chatHeight = chatElement.offsetHeight;
+            var frameContainer = document.querySelector('.frame-container');
+            frameContainer.style.height = chatHeight + 'px';
+        }
 
-    // チャットの高さを取得
-    var chatHeight = chatElement.offsetHeight;
+        function animateProgressBar() {
+            var progressBar = document.querySelector('.progress-bar');
+            progressBar.style.width = '100%';
+        }
 
-    // フレームコンテナのエレメントを取得
-    var frameContainer = document.querySelector('.frame-container');
+        function hideProgressBar() {
+            var progressContainer = document.querySelector('.progress-container');
+            progressContainer.style.display = 'none';
+        }
 
-    // フレームコンテナの高さをチャットの高さに合わせて調整
-    frameContainer.style.height = chatHeight + 'px';
+        window.onload = function() {
+            document.querySelector(".placeholder-image").classList.add("show-for-5s");
+            adjustFrameSize();
+            animateProgressBar();
 
-    // 必要に応じて他のスタイルも調整
-}
-
-function animateProgressBar() {
-    // プログレスバーのエレメントを取得
-    var progressBar = document.querySelector('.progress-bar');
-
-    // プログレスバーのwidthを100%に設定
-    progressBar.style.width = '100%';
-}
-
-// ページの読み込みが完了したら関数を実行
-window.onload = function() {
-    // 既存の処理
-    document.querySelector(".placeholder-image").classList.add("show-for-5s");
-    
-    // フレームのサイズ調整関数を呼び出す
-    adjustFrameSize();
-
-    // プログレスバーのアニメーションを開始
-    animateProgressBar();
-};
-
+            setTimeout(hideProgressBar, 5000);
+        };
     </script>
 
     <div class="container">
