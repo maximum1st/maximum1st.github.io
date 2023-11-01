@@ -147,23 +147,28 @@
 
 <body>
     <script>
-        function updateProgressBar() {
-            const progressBar = document.querySelector(".progress-bar");
-            let width = 0;
-            const interval = setInterval(function () {
-                if (width >= 100) {
-                    clearInterval(interval);
-                    progressBar.parentElement.style.display = "none"; 
-                } else {
-                    width++;
-                    progressBar.style.width = width + "%";
-                }
-            }, 50); 
-        }
+       
 
-        window.onload = function() {
-            updateProgressBar();
-        };
+        function updateProgressBar() {
+    const progressBar = document.querySelector(".progress-bar");
+    const placeholderImage = document.querySelector(".placeholder-image");
+    let width = 0;
+    const interval = setInterval(function () {
+        if (width >= 100) {
+            clearInterval(interval);
+            progressBar.parentElement.style.display = "none"; 
+            placeholderImage.style.display = "none"; // この行を追加
+        } else {
+            width++;
+            progressBar.style.width = width + "%";
+        }
+    }, 50); 
+}
+
+window.onload = function() {
+    updateProgressBar();
+};
+
     </script>
 
     <div class="container">
