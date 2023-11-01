@@ -135,14 +135,16 @@
     .container {
         width: 100%;
         padding: 10px;
-    }
     .chatview-style, .minnit-chat-container, .frame-container {
-        width: calc(100% - 20px);
+        width: 100%;  /* paddingの分、100%に修正 */
         height: 400px;
+        left: 0;  /* 追加 */
     }
-    .placeholder-image {
-        width: calc(100% - 20px);
-        height: 100%; // ここを修正
+   .placeholder-image {
+        width: 100%; 
+        height: calc(400px - 20px);  /* 400px（高さ） - 20px（padding * 2） */
+        left: 0;  /* 追加 */
+        top: 0;  /* 修正 */
     }
 }
 
