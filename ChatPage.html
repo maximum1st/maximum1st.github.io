@@ -198,18 +198,24 @@ document.addEventListener("DOMContentLoaded", function() {
             height: 50px;
             line-height: 50px;
             background-color: #121212;
-            color: transparent; /* 初期にテキストを透明にする */
+            color: transparent;
             text-align: center;
             border-radius: 25px;
-            transition: color 0.3s ease; /* colorの変更もアニメーションとする */
+            transition: color 0.3s ease;
             z-index: 10002;
             cursor: pointer;
             overflow: hidden;
-            display: none; /* 初期にボタンを非表示にする */
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .customButton.show {
+            opacity: 1;
+            pointer-events: auto;
         }
         
         .customButton:hover {
-            color: #32CD32; /* ホバー時にテキストを表示 */
+            color: #32CD32;
         }
     `;
 
@@ -226,7 +232,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.body.appendChild(btn);
 
     setTimeout(function() {
-        btn.style.display = "block"; // 3秒後にボタンを表示
+        btn.classList.add("show");
     }, 3000);
 });
 
