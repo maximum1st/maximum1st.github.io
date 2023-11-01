@@ -185,54 +185,32 @@
                 placeholderImage.style.display = "none";
             }, 5000); // 5秒
         };
-//LBNC
-   document.addEventListener("DOMContentLoaded", function() {
-    const styles = `
-        .z9K3i8tH {
-            position: fixed;
-            bottom: -50px;
-            right: 10px;
-            width: 50px;
-            height: 25px;
-            line-height: 25px;
-            background-color: #121212;
-            color: #32CD32;
-            text-align: center;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, bottom 0.3s ease 5s;
-            z-index: 10002;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        .z9K3i8tH:hover {
-            transform: translateY(-25px);
-            bottom: 10px;
-        }
-    `;
-
-    let styleSheet = document.createElement("style");
-    styleSheet.type = "text/css";
-    styleSheet.innerText = styles;
-    document.head.appendChild(styleSheet);
-
+//XJCN
+        document.addEventListener("DOMContentLoaded", function() {
     let btn = document.createElement('a');
-    btn.classList.add('z9K3i8tH');
-    btn.textContent = '自分道義';
+    btn.style.position = 'fixed';
+    btn.style.bottom = '-50px';
+    btn.style.right = '10px';
+    btn.style.width = '50px';
+    btn.style.height = '25px';
+    btn.style.lineHeight = '25px';
+    btn.style.backgroundColor = '#121212';
+    btn.style.color = '#32CD32';
+    btn.style.textAlign = 'center';
+    btn.style.borderRadius = '15px';
+    btn.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+    btn.style.transition = 'bottom 0.3s';
+    btn.style.zIndex = '10002';
+    btn.style.cursor = 'pointer';
     btn.href = 'https://maximum1st.github.io/7676.html';
-    
-    let hoverTimer = null;
-    btn.addEventListener('mouseenter', function() {
-        hoverTimer = setTimeout(function() {
-            btn.style.bottom = '10px';
-        }, 5000);
-    });
-    btn.addEventListener('mouseleave', function() {
-        if (hoverTimer) {
-            clearTimeout(hoverTimer);
-        }
+    btn.textContent = '自分道義';
+
+    btn.onmouseover = function() {
+        btn.style.bottom = '10px';
+    };
+    btn.onmouseout = function() {
         btn.style.bottom = '-50px';
-    });
+    };
 
     document.body.appendChild(btn);
 });
