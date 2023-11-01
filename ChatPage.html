@@ -151,7 +151,7 @@
 }
         .kakusi-btn {
     position: fixed;
-    bottom: -25px;
+    bottom: -50px;
     right: 10px;
     width: 50px;
     height: 25px;
@@ -204,6 +204,22 @@
                 placeholderImage.style.display = "none";
             }, 5000); // 5秒
         };
+let hoverTimer = null;
+
+document.querySelector('.kakusi-btn').addEventListener('mouseenter', function() {
+    hoverTimer = setTimeout(function() {
+        const btn = document.querySelector('.kakusi-btn');
+        btn.style.bottom = '10px';
+    }, 5000);  // 5秒
+});
+
+document.querySelector('.kakusi-btn').addEventListener('mouseleave', function() {
+    if (hoverTimer) {
+        clearTimeout(hoverTimer);  // ホバーが終了したらタイマーをクリアする
+    }
+    const btn = document.querySelector('.kakusi-btn');
+    btn.style.bottom = '-50px';  // ホバーが終了したらボタンを再び隠す
+});
 
 
     </script>
