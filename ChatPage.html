@@ -188,9 +188,6 @@
 
 
 
-
-
-
 document.addEventListener("DOMContentLoaded", function() {
     const styles = `
         .customButton {
@@ -201,13 +198,17 @@ document.addEventListener("DOMContentLoaded", function() {
             height: 50px;
             line-height: 50px;
             background-color: #121212;
-            color: #32CD32;
+            color: transparent; /* 初期にテキストを透明にする */
             text-align: center;
             border-radius: 25px;
-            transition: transform 0.3s ease;
+            transition: color 0.3s ease; /* colorの変更もアニメーションとする */
             z-index: 10002;
             cursor: pointer;
             overflow: hidden;
+        }
+        
+        .customButton:hover {
+            color: #32CD32; /* ホバー時にテキストを表示 */
         }
     `;
 
@@ -224,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.body.appendChild(btn);
 });
 
-        
+
 
     </script>
 
