@@ -149,7 +149,15 @@ iframe {
             background-color: #32CD32;
             border-radius: 20px;
         }
-
+        .progress-bar-fill {
+    position: absolute;
+    background-color: #32CD32;
+    height: 100%;
+    width: 0%; /* 初期値を0%に設定 */
+    border-radius: 8px 0 0 8px; /* 角を丸くする */
+    transition: width 5s linear; /* 5秒で100%まで増加 */
+    left: 0; /* ここを変更 */
+}
 
 
     </style>
