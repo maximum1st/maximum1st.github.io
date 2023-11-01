@@ -67,6 +67,7 @@
             top: -5px;
             left: 0;
             z-index: 9999;
+            pointer-events: none;
         }
 
         .minnit-chat-container {
@@ -154,30 +155,32 @@
 <body>
     <script>
        
-function updateProgressBar() {
-    const progressBar = document.querySelector(".progress-bar");
-    const placeholderImage = document.querySelector(".placeholder-image");
-    let width = 0;
-    const interval = setInterval(function () {
-        if (width >= 100) {
-            clearInterval(interval);
-            progressBar.parentElement.style.display = "none"; 
-            placeholderImage.style.display = "none";
-        } else {
-            width++;
-            progressBar.style.width = width + "%";
+ function updateProgressBar() {
+            const progressBar = document.querySelector(".progress-bar");
+            const placeholderImage = document.querySelector(".placeholder-image");
+            let width = 0;
+            const interval = setInterval(function () {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    progressBar.parentElement.style.display = "none";
+                } else {
+                    width++;
+                    progressBar.style.width = width + "%";
+                }
+            }, 50); 
         }
-    }, 50); 
-}
 
-window.onload = function() {
-    updateProgressBar();
-    const frameImage = document.querySelector(".frame-image");
-    frameImage.style.display = "block";  // この行を追加
-};
+        window.onload = function() {
+            updateProgressBar();
+            const frameImage = document.querySelector(".frame-image");
+            frameImage.style.display = "block";
 
-    
-
+            // 5秒後にプレイスホルダー画像を非表示にする
+            setTimeout(function() {
+                const placeholderImage = document.querySelector(".placeholder-image");
+                placeholderImage.style.display = "none";
+            }, 5000); // 5秒
+        };
 
 
     </script>
