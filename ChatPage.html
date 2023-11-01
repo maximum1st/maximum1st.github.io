@@ -107,13 +107,17 @@ iframe {
     padding-bottom: 2px;
     margin-bottom: 3px;
 }
-
 @media screen and (max-width: 768px) {
-    .chatview-style, .placeholder-image, .minnit-chat-container {
+    .chatview-style, .placeholder-image, .minnit-chat-container, .frame-container {
         width: 400px;
-        height: 410px;  /* この高さも10px増やす */
+        height: 410px;
+    }
+    .frame-image {
+        width: 100%;
+        height: 100%;
     }
 }
+
 .frame-container {
     position: absolute;
     top: 0;
