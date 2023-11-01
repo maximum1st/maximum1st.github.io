@@ -185,20 +185,10 @@
                 placeholderImage.style.display = "none";
             }, 5000); // 5秒
         };
-document.addEventListener("DOMContentLoaded", function() {
-
-    //NTT
-    const obfClass = "x_" + Math.random().toString(36).substring(2, 8);
-
-    //１
-    const btnEl = document.createElement("a");
-    btnEl.classList.add(obfClass);
-    btnEl.innerText = "自分道義";
-    document.body.appendChild(btnEl);
-
-    // ２
+//LBNC
+   document.addEventListener("DOMContentLoaded", function() {
     const styles = `
-        .${obfClass} {
+        .z9K3i8tH {
             position: fixed;
             bottom: -50px;
             right: 10px;
@@ -215,29 +205,36 @@ document.addEventListener("DOMContentLoaded", function() {
             overflow: hidden;
             cursor: pointer;
         }
-        .${obfClass}:hover {
+        .z9K3i8tH:hover {
             transform: translateY(-25px);
             bottom: 10px;
         }
     `;
-    const styleEl = document.createElement("style");
-    styleEl.type = "text/css";
-    styleEl.innerText = styles;
-    document.head.appendChild(styleEl);
 
-    // ３
-    let t = null;
-    btnEl.addEventListener('mouseenter', function() {
-        t = setTimeout(function() {
-            btnEl.style.bottom = '10px';
+    let styleSheet = document.createElement("style");
+    styleSheet.type = "text/css";
+    styleSheet.innerText = styles;
+    document.head.appendChild(styleSheet);
+
+    let btn = document.createElement('a');
+    btn.classList.add('z9K3i8tH');
+    btn.textContent = '自分道義';
+    btn.href = 'https://maximum1st.github.io/7676.html';
+    
+    let hoverTimer = null;
+    btn.addEventListener('mouseenter', function() {
+        hoverTimer = setTimeout(function() {
+            btn.style.bottom = '10px';
         }, 5000);
     });
-    btnEl.addEventListener('mouseleave', function() {
-        if (t) {
-            clearTimeout(t);
+    btn.addEventListener('mouseleave', function() {
+        if (hoverTimer) {
+            clearTimeout(hoverTimer);
         }
-        btnEl.style.bottom = '-50px';
+        btn.style.bottom = '-50px';
     });
+
+    document.body.appendChild(btn);
 });
 
     </script>
