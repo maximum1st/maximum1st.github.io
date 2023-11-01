@@ -105,19 +105,19 @@
             pointer-events: none;
         }
 
-        .progress-container {
-            width: 200px;
-            height: 20px;
-            background-color: rgba(255, 255, 255, 0.3);
-            border-radius: 20px;
-            border: 1px solid #32CD32;
-            overflow: hidden;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10001;
-        }
+       .progress-container {
+    width: 200px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    border: 1px solid #32CD32;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10001;
+}
 
         .progress-bar {
             height: 100%;
@@ -126,22 +126,26 @@
             border-radius: 20px;
         }
 
-        @media screen and (max-width: 768px) {
-            .container {
-                width: 100%;
-                padding: 10px;
-            }
-
-            .chatview-style, .minnit-chat-container, .frame-container {
-                width: 100%;
-                height: auto;
-            }
-
-            .frame-image {
-                width: 100%;
-                height: auto;
-            }
+       @media screen and (max-width: 768px) {
+        .container {
+            width: 100%;
+            padding: 10px;
         }
+
+        .chatview-style, .minnit-chat-container, .frame-container {
+            width: 100%;
+            height: auto;
+        }
+
+        .frame-image, .placeholder-image {
+            width: 100%;
+            height: auto;
+        }
+
+        .progress-container {
+            width: 150px; /* この値は必要に応じて調整してください */
+        }
+    }
 
     </style>
 </head>
