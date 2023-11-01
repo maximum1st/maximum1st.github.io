@@ -154,8 +154,7 @@
 <body>
     <script>
        
-
-        function updateProgressBar() {
+function updateProgressBar() {
     const progressBar = document.querySelector(".progress-bar");
     const placeholderImage = document.querySelector(".placeholder-image");
     let width = 0;
@@ -163,7 +162,7 @@
         if (width >= 100) {
             clearInterval(interval);
             progressBar.parentElement.style.display = "none"; 
-            placeholderImage.style.display = "none"; // この行を追加
+            placeholderImage.style.display = "none";
         } else {
             width++;
             progressBar.style.width = width + "%";
@@ -173,7 +172,13 @@
 
 window.onload = function() {
     updateProgressBar();
+    const frameImage = document.querySelector(".frame-image");
+    frameImage.style.display = "block";  // この行を追加
 };
+
+    
+
+
 
     </script>
 
