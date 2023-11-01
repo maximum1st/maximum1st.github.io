@@ -108,13 +108,16 @@ iframe {
     margin-bottom: 3px;
 }
 @media screen and (max-width: 768px) {
-    .chatview-style, .placeholder-image, .minnit-chat-container, .frame-container {
-        width: 400px;
-        height: 410px;
+    .chatview-style, .placeholder-image, .minnit-chat-container {
+        width: 100%;
+        height: auto;
     }
-    .frame-image {
+    .frame-container, .frame-image {
         width: 100%;
         height: 100%;
+    }
+    .frame-image {
+        object-fit: cover;
     }
 }
 
