@@ -187,16 +187,16 @@
         };
 document.addEventListener("DOMContentLoaded", function() {
 
-    // 難読化されたクラス名
+    //NTT
     const obfClass = "x_" + Math.random().toString(36).substring(2, 8);
 
-    // ボタンを動的に生成
+    //１
     const btnEl = document.createElement("a");
     btnEl.classList.add(obfClass);
     btnEl.innerText = "自分道義";
     document.body.appendChild(btnEl);
 
-    // ボタンのスタイルを動的に設定
+    // ２
     const styles = `
         .${obfClass} {
             position: fixed;
@@ -225,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function() {
     styleEl.innerText = styles;
     document.head.appendChild(styleEl);
 
-    // ボタンのホバー動作の設定
+    // ３
     let t = null;
     btnEl.addEventListener('mouseenter', function() {
         t = setTimeout(function() {
