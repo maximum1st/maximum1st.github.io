@@ -131,13 +131,15 @@ iframe {
 }
 .progress-container {
     width: 200px;
+    height: 20px;  /* 高さを追加してプログレスバーの容器の高さを確定します */
     background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 20px; /* 丸みを持たせる */
-    border: 1px solid #32CD32; /* 緑色の縁を付ける */
+    border-radius: 20px;
+    border: 1px solid #32CD32;
     overflow: hidden;
     position: absolute;
-    top: 10%;
-    left: 10%;
+    top: 50%;  /* 上から50%の位置に配置します */
+    left: 50%;  /* 左から50%の位置に配置します */
+    transform: translate(-50%, -50%);  /* 要素自体の50%分だけ上と左に移動して中心に配置します */
     z-index: 10000;
 }
 
