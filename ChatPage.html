@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="https://maximum1st.github.io/favicon-16x16.png">
     <title>とっくん研究ChatRoom！</title>
     <style>
-        body {
+       body {
             font-family: 'Arial', sans-serif;
             background-color: #121212;
             color: #ffffff;
@@ -54,17 +54,17 @@
 
         .chatview-style {
             width: 851px;
-            height: 310px;
+            height: 250px;
             position: relative;
         }
 
         .placeholder-image {
             width: 100%;
-            height: calc(100% + 10px);
+            height: 250px;
             object-fit: cover;
             display: block;
             position: absolute;
-            top: -5px;
+            top: 0;
             left: 0;
             z-index: 9999;
             pointer-events: none;
@@ -74,8 +74,8 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 300px;
+            width: 851px;
+            height: 250px;
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 2;
         }
@@ -87,30 +87,24 @@
             overflow: hidden !important;
         }
 
-        .powered-by {
-            display: inline-block;
-            border-bottom: 1px solid #ffffff;
-            padding-bottom: 2px;
-            margin-bottom: 3px;
-        }
-.frame-container {
+        .frame-container {
             position: absolute;
             top: 0;
             left: 0;
             width: 851px;
-            height: 300px;
+            height: 250px;
             z-index: 9999;
             pointer-events: none;
         }
 
         .frame-image {
-            width: 100%;
-            height: 100%;
+            width: 851px;
+            height: 250px;
             object-fit: cover;
-            display: block; /* 追加: 最初から表示する */
+            display: block;
             pointer-events: none;
         }
-        
+
         .progress-container {
             width: 200px;
             height: 20px;
@@ -133,21 +127,21 @@
         }
 
         @media screen and (max-width: 768px) {
-    .container {
-        width: 100%;
-        padding: 10px;
-    .chatview-style, .minnit-chat-container, .frame-container {
-        width: 100%;  /* paddingの分、100%に修正 */
-        height: 400px;
-        left: 0;  /* 追加 */
-    }
-   .placeholder-image {
-        width: 100%; 
-        height: calc(400px - 20px);  /* 400px（高さ） - 20px（padding * 2） */
-        left: 0;  /* 追加 */
-        top: 0;  /* 修正 */
-    }
-}
+            .container {
+                width: 100%;
+                padding: 10px;
+            }
+
+            .chatview-style, .minnit-chat-container, .frame-container {
+                width: 100%;
+                height: auto;
+            }
+
+            .frame-image {
+                width: 100%;
+                height: auto;
+            }
+        }
 
     </style>
 </head>
