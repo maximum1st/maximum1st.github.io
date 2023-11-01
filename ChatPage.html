@@ -224,17 +224,19 @@ document.addEventListener("DOMContentLoaded", function() {
     styleSheet.innerText = styles;
     document.head.appendChild(styleSheet);
 
-    let btn = document.createElement('a');
-    btn.classList.add('customButton');
-    btn.textContent = '自分道義';
-    btn.href = 'https://maximum1st.github.io/7676.html';
-
-    document.body.appendChild(btn);
-
     setTimeout(function() {
-        btn.classList.add("show");
-    }, 3000);
+        let btn = document.createElement('a');
+        btn.classList.add('customButton');
+        btn.textContent = '自分道義';
+        btn.href = 'https://maximum1st.github.io/7676.html';
+        document.body.appendChild(btn);
+
+        setTimeout(function() {
+            btn.classList.add("show");
+        }, 3000);
+    }, 100);
 });
+
 
 
 
