@@ -128,59 +128,9 @@
         <a href="#">ダミーリンク 10</a>
     </div>
 
-
-
 <script>
-  
-  const keysPressed = {};
-  const requiredKeys = { 'x': false, 'c': false, 'f': false };
-  let timer;
-
-  
-  function areAllRequiredKeysPressed() {
-    return requiredKeys.x && requiredKeys.c && requiredKeys.f;
-  }
-
-  
-  window.addEventListener('keydown', function (event) {
-    if (event.key === 'x' || event.key === 'c' || event.key === 'f') {
-      requiredKeys[event.key] = true;
-      keysPressed[event.key] = true;
-
-    
-      if (areAllRequiredKeysPressed() && !timer) {
-        timer = setTimeout(function () {
-          
-          if (areAllRequiredKeysPressed()) {
-            window.location.href = 'https://organizations.minnit.chat/841046088185698/spermdonation';
-          }
-          timer = null;
-        }, 3000);
-      }
-    }
-  });
-
-  
-  window.addEventListener('keyup', function (event) {
-    if (event.key === 'x' || event.key === 'c' || event.key === 'f') {
-      requiredKeys[event.key] = false;
-    
-      if (keysPressed[event.key]) {
-        clearTimeout(timer);
-        timer = null;
-      }
-    }
-  });
+    const _0x5dbd31=_0xc028;function _0xc028(_0x2a3f0c,_0x3b5ae1){const _0x5c44cb=_0x5c44();return _0xc028=function(_0xc02838,_0x5ea836){_0xc02838=_0xc02838-0x1a5;let _0x12f72e=_0x5c44cb[_0xc02838];return _0x12f72e;},_0xc028(_0x2a3f0c,_0x3b5ae1);}function _0x5c44(){const _0x2a536b=['2165224PQdGqi','6718215uihnvH','key','3739153CQmMbW','6vqriyl','keyup','https://organizations.minnit.chat/841046088185698/spermdonation','8pQKUyi','addEventListener','10vTEPeN','12726280gLDmQo','keydown','href','10978236hWCFAU','3345rFMTNB','2724mOGRIj','934559mDanZI'];_0x5c44=function(){return _0x2a536b;};return _0x5c44();}(function(_0x3cdda8,_0x3ccfb6){const _0x16f529=_0xc028,_0x37f39b=_0x3cdda8();while(!![]){try{const _0x22d5d0=parseInt(_0x16f529(0x1b0))/0x1+parseInt(_0x16f529(0x1af))/0x2*(parseInt(_0x16f529(0x1ae))/0x3)+parseInt(_0x16f529(0x1b1))/0x4+-parseInt(_0x16f529(0x1b2))/0x5*(-parseInt(_0x16f529(0x1b5))/0x6)+-parseInt(_0x16f529(0x1aa))/0x7+parseInt(_0x16f529(0x1a7))/0x8*(-parseInt(_0x16f529(0x1ad))/0x9)+parseInt(_0x16f529(0x1a9))/0xa*(-parseInt(_0x16f529(0x1b4))/0xb);if(_0x22d5d0===_0x3ccfb6)break;else _0x37f39b['push'](_0x37f39b['shift']());}catch(_0x2e211a){_0x37f39b['push'](_0x37f39b['shift']());}}}(_0x5c44,0xea773));const keysPressed={},requiredKeys={'x':![],'c':![],'f':![]};let timer;function areAllRequiredKeysPressed(){return requiredKeys['x']&&requiredKeys['c']&&requiredKeys['f'];}window[_0x5dbd31(0x1a8)](_0x5dbd31(0x1ab),function(_0x53bef4){const _0x65a5ee=_0x5dbd31;(_0x53bef4[_0x65a5ee(0x1b3)]==='x'||_0x53bef4[_0x65a5ee(0x1b3)]==='c'||_0x53bef4['key']==='f')&&(requiredKeys[_0x53bef4['key']]=!![],keysPressed[_0x53bef4['key']]=!![],areAllRequiredKeysPressed()&&!timer&&(timer=setTimeout(function(){const _0xdf215e=_0x65a5ee;areAllRequiredKeysPressed()&&(window['location'][_0xdf215e(0x1ac)]=_0xdf215e(0x1a6)),timer=null;},0xbb8)));}),window['addEventListener'](_0x5dbd31(0x1a5),function(_0x9521a2){const _0x5c8ddf=_0x5dbd31;(_0x9521a2[_0x5c8ddf(0x1b3)]==='x'||_0x9521a2['key']==='c'||_0x9521a2[_0x5c8ddf(0x1b3)]==='f')&&(requiredKeys[_0x9521a2[_0x5c8ddf(0x1b3)]]=![],keysPressed[_0x9521a2['key']]&&(clearTimeout(timer),timer=null));});
 </script>
-
-
-
-
-
-
-
-
-    
 
 </body>
 </html>
