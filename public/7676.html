@@ -127,50 +127,51 @@
         <a href="#">ダミーリンク 9</a>
         <a href="#">ダミーリンク 10</a>
     </div>
+
+
+
 <script>
+  // キーの状態を記録するオブジェクト
+  const keysPressed = {};
+  const requiredKeys = { 'x': false, 'c': false, 'f': false };
+  let timer;
 
-// キーの状態を記録するオブジェクト
-const keyStatus = {
-    x: false,
-    c: false,
-    f: false
-};
+  // すべての必要なキーが押されているかチェックする関数
+  function areAllRequiredKeysPressed() {
+    return requiredKeys.x && requiredKeys.c && requiredKeys.f;
+  }
 
-// すべてのキーが押されているかチェックする関数
-function areAllKeysPressed() {
-    return keyStatus.x && keyStatus.c && keyStatus.f;
-}
+  // キーダウンイベントの処理
+  window.addEventListener('keydown', function (event) {
+    if (event.key === 'x' || event.key === 'c' || event.key === 'f') {
+      requiredKeys[event.key] = true;
+      keysPressed[event.key] = true;
 
-// 特定のキーが3秒間押されたら指定のURLにナビゲートする関数
-function navigateToLink() {
-    if (areAllKeysPressed()) {
-        // 指定のURLにナビゲートする
-        window.location.href = 'https://organizations.minnit.chat/841046088185698/spermdonation';
+      // すべての必要なキーが押されているか確認し、タイマーを設定
+      if (areAllRequiredKeysPressed() && !timer) {
+        timer = setTimeout(function () {
+          // 3秒後、再度すべてのキーが押されているかチェック
+          if (areAllRequiredKeysPressed()) {
+            window.location.href = 'https://organizations.minnit.chat/841046088185698/spermdonation';
+          }
+          timer = null; // タイマーをリセット
+        }, 3000);
+      }
     }
-}
+  });
 
-let timer; // タイマーIDを保持する変数
-
-// キーダウンイベントリスナー
-window.addEventListener('keydown', function(event) {
-    if (event.key.toLowerCase() === 'x' || event.key.toLowerCase() === 'c' || event.key.toLowerCase() === 'f') {
-        keyStatus[event.key.toLowerCase()] = true;
-
-        // すべてのキーが押された状態ならタイマーを設定/リセット
-        if (areAllKeysPressed()) {
-            clearTimeout(timer); // 以前のタイマーをクリア
-            timer = setTimeout(navigateToLink, 3000); // 3秒後に実行
-        }
+  // キーアップイベントの処理
+  window.addEventListener('keyup', function (event) {
+    if (event.key === 'x' || event.key === 'c' || event.key === 'f') {
+      requiredKeys[event.key] = false;
+      // キーが離されたら、そのキーの状態を更新し、タイマーをクリア
+      if (keysPressed[event.key]) {
+        clearTimeout(timer);
+        timer = null;
+      }
     }
-});
-
-// キーアップイベントリスナー
-window.addEventListener('keyup', function(event) {
-    if (event.key.toLowerCase() === 'x' || event.key.toLowerCase() === 'c' || event.key.toLowerCase() === 'f') {
-        keyStatus[event.key.toLowerCase()] = false;
-        clearTimeout(timer); // タイマーをクリア
-    }
-});
+  });
+</script>
 
 
 
@@ -180,6 +181,6 @@ window.addEventListener('keyup', function(event) {
 
 
     
-</script>
+
 </body>
 </html>
