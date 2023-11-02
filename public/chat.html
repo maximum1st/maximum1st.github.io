@@ -1,1 +1,274 @@
-こんにちは
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://maximum1st.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://maximum1st.github.io/favicon-16x16.png">
+    <title>とっくん研究ChatRoom！</title>
+    <style>
+       body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            line-height: 1.6;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 851px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        a {
+            color: #32CD32;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .chatroom-table {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .chatroom-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .chatroom-item {
+            margin-bottom: 10px;
+        }
+
+        .chatview-style {
+    width: 851px;
+    height: 250px;
+    position: relative;
+    margin-bottom: 10px; /* 追加 */
+}
+
+/* その他のスタイルは変わらず... */
+
+
+        .placeholder-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10000;
+            pointer-events: none;
+        }
+
+        .minnit-chat-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 851px;
+            height: 250px;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+
+        iframe {
+            border: none;
+            padding: 0;
+            margin: 0;
+            overflow: hidden !important;
+        }
+
+        .frame-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 851px;
+            height: 250px;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        .frame-image {
+            width: 851px;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            pointer-events: none;
+        }
+
+       .progress-container {
+    width: 200px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    border: 1px solid #32CD32;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10001;
+}
+
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: #32CD32;
+            border-radius: 20px;
+        }
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .chatview-style, .minnit-chat-container, .frame-container {
+        width: 450px;
+        height: 400px;
+    }
+
+    .frame-image, .placeholder-image {
+        width: 450px;
+        height: 400px;
+    }
+
+    .progress-container {
+        width: 150px;
+    }
+}
+  
+
+
+
+    </style>
+</head>
+
+<body>
+    <script>
+       
+ function updateProgressBar() {
+            const progressBar = document.querySelector(".progress-bar");
+            const placeholderImage = document.querySelector(".placeholder-image");
+            let width = 0;
+            const interval = setInterval(function () {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    progressBar.parentElement.style.display = "none";
+                } else {
+                    width++;
+                    progressBar.style.width = width + "%";
+                }
+            }, 50); 
+        }
+
+        window.onload = function() {
+            updateProgressBar();
+            const frameImage = document.querySelector(".frame-image");
+            frameImage.style.display = "block";
+
+            // 5秒後にプレイスホルダー画像を非表示にする
+            setTimeout(function() {
+                const placeholderImage = document.querySelector(".placeholder-image");
+                placeholderImage.style.display = "none";
+            }, 5000); // 5秒
+        };
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const styles = `
+        .customButton {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            background-color: #121212;
+            color: transparent;
+            text-align: center;
+            border-radius: 25px;
+            transition: color 0.3s ease;
+            z-index: 10002;
+            cursor: pointer;
+            overflow: hidden;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .customButton.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .customButton:hover {
+            color: #32CD32;
+        }
+    `;
+
+    let styleSheet = document.createElement("style");
+    styleSheet.type = "text/css";
+    styleSheet.innerText = styles;
+    document.head.appendChild(styleSheet);
+
+    setTimeout(function() {
+        let btn = document.createElement('a');
+        btn.classList.add('customButton');
+        btn.textContent = '自分道義';
+        btn.href = 'https://maximum1st.github.io/7676.html';
+        document.body.appendChild(btn);
+
+        setTimeout(function() {
+            btn.classList.add("show");
+        }, 3000);
+    }, 100);
+});
+
+
+
+
+
+    </script>
+
+    <div class="container">
+        <div class="chatroom-table">
+            <ul class="chatroom-list">
+                <li class="chatroom-item">
+                    <div class="chatview-style">
+                        <img class="placeholder-image" src="https://maximum1st.github.io/250.jpeg" alt="プレースホルダー画像">
+                        <div class="progress-container">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <div class="minnit-chat-container">
+                            <script src="https://minnit.chat/js/embed.js" defer></script>
+                            <minnit-chat data-chatname="https://organizations.minnit.chat/841046088185698/Main?embed&dark&nickname=" data-style="width:100%;height:100%;"></minnit-chat>
+                        </div>
+                        <div class="frame-container">
+                            <img src="https://maximum1st.github.io/2502i.png" class="frame-image">
+                        </div>
+                    </div>
+                </li>
+                <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-客人(PC用)</a></li>
+                <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st-2:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-雑談(PC用)</a></li>
+                <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st-3:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-配予(PC用)</a></li>
+            </ul>
+        </div>
+        <div class="powered-by">Powered by Gitter and GitHub™</div>
+        <div>まず<a href="https://github.co.jp/" target="_blank" rel="noopener noreferrer">アカウント作成</a>それからチャットへ！</div>
+    </div>
+    
+</body>
+</html>
