@@ -187,22 +187,34 @@
         };
 
 
-
 document.addEventListener("DOMContentLoaded", function() {
-    var timerId;
     var button = document.createElement('a');
     button.style.cssText = 'display:none;position:fixed;bottom:10px;right:10px;padding:10px 20px;background-color:#121212;color:white;text-align:center;border-radius:5px;z-index:10002;cursor:pointer;font-size:16px;transition:opacity 0.3s;';
     button.textContent = '自分道義';
     button.href = 'https://maximum1st.github.io/7676.html';
-    button.className = 'customButton';
     document.body.appendChild(button);
 
-    document.addEventListener('mousemove', function() {
-        if (!button.style.display || button.style.display === 'none') {
-            if (timerId) clearTimeout(timerId);
+    var timerId;
+    var cornerSize = 100;
+
+    document.addEventListener('mousemove', function(event) {
+        var x = event.clientX;
+        var y = event.clientY;
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+
+    
+        if (x >= width - cornerSize && y >= height - cornerSize) {
+            if (timerId) {
+                return;
+            }
             timerId = setTimeout(function() {
                 button.style.display = 'block';
             }, 3000);
+        } else {
+            
+            clearTimeout(timerId);
+            timerId = null;
         }
     });
 });
