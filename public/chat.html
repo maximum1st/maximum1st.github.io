@@ -187,55 +187,23 @@
         };
 
 
-
 document.addEventListener("DOMContentLoaded", function() {
-    const styles = `
-        .customButton {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            width: 50px;
-            height: 50px;
-            line-height: 50px;
-            background-color: #121212;
-            color: transparent;
-            text-align: center;
-            border-radius: 25px;
-            transition: color 0.3s ease;
-            z-index: 10002;
-            cursor: pointer;
-            overflow: hidden;
-            opacity: 0;
-            pointer-events: none;
-        }
+    let timerId;
+    const button = document.createElement('a');
+    button.style.cssText = 'display:none;position:fixed;bottom:10px;right:10px;padding:10px 20px;background-color:#121212;color:white;text-align:center;border-radius:5px;z-index:10002;cursor:pointer;font-size:16px;transition:opacity 0.3s;';
+    button.textContent = '自分道義';
+    button.href = 'https://maximum1st.github.io/7676.html';
+    document.body.appendChild(button);
 
-        .customButton.show {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        
-        .customButton:hover {
-            color: #32CD32;
-        }
-    `;
-
-    let styleSheet = document.createElement("style");
-    styleSheet.type = "text/css";
-    styleSheet.innerText = styles;
-    document.head.appendChild(styleSheet);
-
-    setTimeout(function() {
-        let btn = document.createElement('a');
-        btn.classList.add('customButton');
-        btn.textContent = '自分道義';
-        btn.href = 'https://maximum1st.github.io/7676.html';
-        document.body.appendChild(btn);
-
-        setTimeout(function() {
-            btn.classList.add("show");
+    document.addEventListener('mousemove', function() {
+        if (timerId) return;
+        timerId = setTimeout(function() {
+            button.style.display = 'block';
         }, 3000);
-    }, 100);
+    });
 });
+
+
 
 
 
