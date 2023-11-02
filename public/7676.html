@@ -8,8 +8,8 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #121212; /* ダークテーマの背景色 */
-            color: #ffffff; /* テキストの色 */
+            background-color: #121212;
+            color: #ffffff;
             margin: 0;
             padding: 20px;
             display: flex;
@@ -17,46 +17,30 @@
             align-items: center;
         }
 
-        .address-table {
+        .info-table {
             margin-top: 20px;
             border-collapse: collapse;
             width: 500px;
         }
 
-        .address-table td,
-        .address-table th {
+        .info-table td,
+        .info-table th {
             border: 1px solid #32CD32;
             padding: 8px;
             color: #ffffff;
         }
 
-        .address-table th {
+        .info-table th {
             background-color: #32CD32;
             color: #121212;
         }
 
-        input[type="text"] {
-            width: 100%;
-            padding: 5px;
-            margin-top: 5px;
-            border-radius: 5px;
-            border: 1px solid #32CD32;
+        .info-table .fixed-text {
             background-color: #121212;
             color: #ffffff;
-        }
-
-        input[type="submit"] {
-            background-color: #32CD32;
-            color: #121212;
-            padding: 10px 20px;
-            margin-top: 10px;
-            border: none;
+            padding: 5px;
             border-radius: 5px;
-            cursor: pointer;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #28a428;
+            border: 1px solid #32CD32;
         }
 
         .links {
@@ -65,10 +49,10 @@
         }
 
         a {
-            color: #32CD32; /* リンクの色 */
+            color: #32CD32;
             text-decoration: none;
-            display: block; /* リンクをブロック要素として表示 */
-            margin-bottom: 5px; /* リンクの下にマージンを設定 */
+            display: block;
+            margin-bottom: 5px;
         }
 
         a:hover {
@@ -78,31 +62,44 @@
 </head>
 <body>
 
-    <table class="address-table">
+    <table class="info-table">
         <tr>
             <th colspan="2">個人情報（住所借上げ）</th>
         </tr>
         <tr>
             <td>郵便番号</td>
-            <td><input type="text" name="postal_code" placeholder="153-0043"></td>
+            <td class="fixed-text">153-0043</td>
         </tr>
         <tr>
             <td>都道府県</td>
-            <td><input type="text" name="prefecture" placeholder="東京都"></td>
+            <td class="fixed-text">東京都</td>
         </tr>
         <tr>
             <td>市区町村</td>
-            <td><input type="text" name="city" placeholder="目黒区"></td>
+            <td class="fixed-text">目黒区</td>
         </tr>
         <tr>
             <td>町名・番地等</td>
-            <td><input type="text" name="address" placeholder="東山３－１－１９"></td>
+            <td class="fixed-text">東山３－１－１９</td>
         </tr>
         <tr>
             <td>建物名・部屋番号</td>
-            <td><input type="text" name="building" placeholder="M.I.O Bldg 806"></td>
+            <td class="fixed-text">M.I.O Bldg 806</td>
         </tr>
-        
+        <!-- 他の個人情報項目を追加 -->
+        <tr>
+            <td>名前</td>
+            <td class="fixed-text">山田太郎</td>
+        </tr>
+        <tr>
+            <td>電話番号</td>
+            <td class="fixed-text">03-1234-5678</td>
+        </tr>
+        <tr>
+            <td>メールアドレス</td>
+            <td class="fixed-text">taro.yamada@example.com</td>
+        </tr>
+        <!-- 他の項目も同様に追加 -->
     </table>
 
     <div class="links">
