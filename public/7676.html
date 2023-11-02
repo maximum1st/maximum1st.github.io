@@ -13,11 +13,55 @@
             margin: 0;
             padding: 20px;
             display: flex;
-            justify-content: center; /* 中央揃え */
+            flex-direction: column;
+            align-items: center;
         }
 
-        .container {
+        .address-table {
+            margin-top: 20px;
+            border-collapse: collapse;
             width: 500px;
+        }
+
+        .address-table td,
+        .address-table th {
+            border: 1px solid #32CD32;
+            padding: 8px;
+            color: #ffffff;
+        }
+
+        .address-table th {
+            background-color: #32CD32;
+            color: #121212;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #32CD32;
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        input[type="submit"] {
+            background-color: #32CD32;
+            color: #121212;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #28a428;
+        }
+
+        .links {
+            width: 500px;
+            margin-top: 20px;
         }
 
         a {
@@ -34,8 +78,40 @@
 </head>
 <body>
 
-    <div id="content">
-         <a href="#">ダミーリンク 1</a>
+    <table class="address-table">
+        <tr>
+            <th colspan="2">住所入力</th>
+        </tr>
+        <tr>
+            <td>郵便番号</td>
+            <td><input type="text" name="postal_code" placeholder="123-4567"></td>
+        </tr>
+        <tr>
+            <td>都道府県</td>
+            <td><input type="text" name="prefecture" placeholder="東京都"></td>
+        </tr>
+        <tr>
+            <td>市区町村</td>
+            <td><input type="text" name="city" placeholder="渋谷区"></td>
+        </tr>
+        <tr>
+            <td>町名・番地等</td>
+            <td><input type="text" name="address" placeholder="恵比寿1-2-3"></td>
+        </tr>
+        <tr>
+            <td>建物名・部屋番号</td>
+            <td><input type="text" name="building" placeholder="エビスビル 5F"></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="送信">
+            </td>
+        </tr>
+    </table>
+
+    <div class="links">
+        <!-- ダミーのリンクを表示 -->
+        <a href="#">ダミーリンク 1</a>
         <a href="#">ダミーリンク 2</a>
         <a href="#">ダミーリンク 3</a>
         <a href="#">ダミーリンク 4</a>
@@ -46,10 +122,6 @@
         <a href="#">ダミーリンク 9</a>
         <a href="#">ダミーリンク 10</a>
     </div>
-
-    <script>
-        // 将来的にJavaScriptを追加する場合はここに記述します。
-    </script>
 
 </body>
 </html>
