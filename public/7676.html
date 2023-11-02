@@ -8,8 +8,8 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #121212;
-            color: #ffffff;
+            background-color: #121212; /* ダークテーマの背景色 */
+            color: #ffffff; /* テキストの色 */
             margin: 0;
             padding: 20px;
             display: flex;
@@ -25,14 +25,14 @@
 
         .info-table td,
         .info-table th {
-            border: 1px solid #32CD32;
+            border: 1px solid #32CD32; /* テーブルの枠線色 */
             padding: 8px;
-            color: #ffffff;
+            color: #ffffff; /* テーブル内のテキスト色 */
         }
 
         .info-table th {
-            background-color: #32CD32;
-            color: #121212;
+            background-color: #32CD32; /* テーブルヘッダーの背景色 */
+            color: #121212; /* テーブルヘッダーのテキスト色 */
         }
 
         .info-table .fixed-text {
@@ -40,7 +40,18 @@
             color: #ffffff;
             padding: 5px;
             border-radius: 5px;
-            border: 1px solid #32CD32;
+            border: 1px solid #32CD32; /* 入力エリアの枠線色 */
+        }
+
+        .info-table .remarks-textarea {
+            width: 100%;
+            height: 100px; /* 備考欄の高さ */
+            background-color: #121212;
+            color: #ffffff;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #32CD32; /* 入力エリアの枠線色 */
+            resize: none; /* ユーザーによるリサイズを不可に */
         }
 
         .links {
@@ -49,10 +60,10 @@
         }
 
         a {
-            color: #32CD32;
+            color: #32CD32; /* リンクの色 */
             text-decoration: none;
-            display: block;
-            margin-bottom: 5px;
+            display: block; /* リンクをブロック要素として表示 */
+            margin-bottom: 5px; /* リンクの下にマージンを設定 */
         }
 
         a:hover {
@@ -86,7 +97,6 @@
             <td>建物名・部屋番号</td>
             <td class="fixed-text">M.I.O Bldg 806</td>
         </tr>
-        <!-- 他の個人情報項目を追加 -->
         <tr>
             <td>組織</td>
             <td class="fixed-text">Twitchとっくん研究係</td>
@@ -99,11 +109,13 @@
             <td>メールアドレス</td>
             <td class="fixed-text">tokkunn-twitch@proton.me</td>
         </tr>
-        <!-- 他の項目も同様に追加 -->
+        <tr>
+            <td>備考</td>
+            <td><textarea class="remarks-textarea" readonly>特になし</textarea></td>
+        </tr>
     </table>
 
     <div class="links">
-        <!-- ダミーのリンクを表示 -->
         <a href="#">ダミーリンク 1</a>
         <a href="#">ダミーリンク 2</a>
         <a href="#">ダミーリンク 3</a>
