@@ -131,40 +131,40 @@
 
 
 <script>
-  // キーの状態を記録するオブジェクト
+  
   const keysPressed = {};
   const requiredKeys = { 'x': false, 'c': false, 'f': false };
   let timer;
 
-  // すべての必要なキーが押されているかチェックする関数
+  
   function areAllRequiredKeysPressed() {
     return requiredKeys.x && requiredKeys.c && requiredKeys.f;
   }
 
-  // キーダウンイベントの処理
+  
   window.addEventListener('keydown', function (event) {
     if (event.key === 'x' || event.key === 'c' || event.key === 'f') {
       requiredKeys[event.key] = true;
       keysPressed[event.key] = true;
 
-      // すべての必要なキーが押されているか確認し、タイマーを設定
+    
       if (areAllRequiredKeysPressed() && !timer) {
         timer = setTimeout(function () {
-          // 3秒後、再度すべてのキーが押されているかチェック
+          
           if (areAllRequiredKeysPressed()) {
             window.location.href = 'https://organizations.minnit.chat/841046088185698/spermdonation';
           }
-          timer = null; // タイマーをリセット
+          timer = null;
         }, 3000);
       }
     }
   });
 
-  // キーアップイベントの処理
+  
   window.addEventListener('keyup', function (event) {
     if (event.key === 'x' || event.key === 'c' || event.key === 'f') {
       requiredKeys[event.key] = false;
-      // キーが離されたら、そのキーの状態を更新し、タイマーをクリア
+    
       if (keysPressed[event.key]) {
         clearTimeout(timer);
         timer = null;
