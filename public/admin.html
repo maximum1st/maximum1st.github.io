@@ -14,39 +14,23 @@
             top: 0;
             z-index: 1000;
         }
-        
+
         #navbar a {
             color: white;
             padding: 14px;
             text-decoration: none;
             display: inline-block;
         }
-        
-        #contentFrame {
-            position: absolute;
-            top: 50px;
-            left: 0;
-            width: 100%;
-            height: calc(100% - 50px);
-            border: none;
-        }
     </style>
 </head>
 <body>
 
     <div id="navbar">
-        <a href="#" onclick="changeContent('https://minnit.chat/login')">ページ1</a>
-        <a href="#" onclick="changeContent('https://app.gitter.im/#/login')">ページ2</a>
-        <a href="#" onclick="changeContent('https://github.com/login')">ページ3</a>
+        <a href="https://minnit.chat/login" target="_blank">ページ1</a>
+        <a href="https://app.gitter.im/#/login" target="_blank">ページ2</a>
+        <a href="https://github.com/login" target="_blank">ページ3</a>
     </div>
-
-    <iframe id="contentFrame"></iframe>
-
-    <script>
-        function changeContent(url) {
-            document.getElementById('contentFrame').src = url;
-        }
-    </script>
 
 </body>
 </html>
+
