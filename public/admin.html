@@ -24,7 +24,17 @@
         
         .content {
             display: none;
-            margin-top: 50px;
+            position: fixed;
+            top: 50px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
     </style>
 </head>
@@ -37,15 +47,15 @@
     </div>
 
     <div id="page1" class="content">
-        <iframe src="https://minnit.chat/login" width="100%" height="100%"></iframe>
+        <iframe src="https://minnit.chat/login"></iframe>
     </div>
     
     <div id="page2" class="content">
-        <iframe src="https://app.gitter.im/#/login" width="100%" height="100%"></iframe>
+        <iframe src="https://app.gitter.im/#/login"></iframe>
     </div>
     
     <div id="page3" class="content">
-        <iframe src="https://github.com/login" width="100%" height="100%"></iframe>
+        <iframe src="https://github.com/login"></iframe>
     </div>
 
     <script>
