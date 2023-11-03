@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>切り替えページ</title>
+    <style>
+        .content {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <button onclick="showContent('https://minnit.chat/login')">Minnit</button>
+    <button onclick="showContent('https://app.gitter.im/#/login')">gitter</button>
+    <button onclick="showContent('https://github.com/login')">Github</button>
+
+    <div id="page1" class="content">
+        <h2>ページ1の内容</h2>
+        <p>ここにページ1の内容が表示されます。</p>
+    </div>
+
+    <div id="page2" class="content">
+        <h2>ページ2の内容</h2>
+        <p>ここにページ2の内容が表示されます。</p>
+    </div>
+
+    <div id="page3" class="content">
+        <h2>ページ3の内容</h2>
+        <p>ここにページ3の内容が表示されます。</p>
+    </div>
+
+    <script>
+        function showContent(pageId) {
+            const contents = document.getElementsByClassName('content');
+            for (let content of contents) {
+                content.style.display = 'none';
+            }
+            document.getElementById(pageId).style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
