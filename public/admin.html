@@ -2,32 +2,50 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>切り替えページ</title>
+    <title>ナビゲーション付きページ</title>
     <style>
+        #navbar {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        #navbar a {
+            color: white;
+            padding: 14px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
         .content {
             display: none;
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
 
-    <button onclick="showContent('https://minnit.chat/login')">Minnit</button>
-    <button onclick="showContent('https://app.gitter.im/#/login')">gitter</button>
-    <button onclick="showContent('https://github.com/login')">Github</button>
+    <div id="navbar">
+        <a href="#" onclick="showContent('page1')">ページ1</a>
+        <a href="#" onclick="showContent('page2')">ページ2</a>
+        <a href="#" onclick="showContent('page3')">ページ3</a>
+    </div>
 
     <div id="page1" class="content">
-        <h2>ページ1の内容</h2>
-        <p>ここにページ1の内容が表示されます。</p>
+        <iframe src="https://minnit.chat/login" width="100%" height="100%"></iframe>
     </div>
-
+    
     <div id="page2" class="content">
-        <h2>ページ2の内容</h2>
-        <p>ここにページ2の内容が表示されます。</p>
+        <iframe src="https://app.gitter.im/#/login" width="100%" height="100%"></iframe>
     </div>
-
+    
     <div id="page3" class="content">
-        <h2>ページ3の内容</h2>
-        <p>ここにページ3の内容が表示されます。</p>
+        <iframe src="https://github.com/login" width="100%" height="100%"></iframe>
     </div>
 
     <script>
@@ -37,7 +55,14 @@
                 content.style.display = 'none';
             }
             document.getElementById(pageId).style.display = 'block';
+            document.getElementById('navbar').style.display = 'none';
         }
+
+        document.body.addEventListener('mousemove', function(event) {
+            if (event.clientY < 50) {
+                document.getElementById('navbar').style.display = 'block';
+            }
+        });
     </script>
 
 </body>
