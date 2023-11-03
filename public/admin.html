@@ -4,79 +4,63 @@
     <meta charset="UTF-8">
     <title>ナビゲーション付きページ</title>
     <style>
-        #navbar {
+        .navbar {
             background-color: #333;
-            color: white;
-            padding: 15px;
-            text-align: center;
+            overflow: hidden;
             position: fixed;
             width: 100%;
             top: 0;
-            z-index: 1000;
         }
-        
-        #navbar a {
+
+        .navbar a {
+            float: left;
+            display: block;
             color: white;
-            padding: 14px;
+            text-align: center;
+            padding: 14px 16px;
             text-decoration: none;
-            display: inline-block;
         }
-        
+
         .content {
             display: none;
-            position: absolute;
-            top: 50px;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            padding-top: 50px; /* Adjusted space for the navbar */
         }
 
         iframe {
             width: 100%;
-            height: 100%;
-            border: none;
+            height: 500px; /* Adjust height as needed */
         }
     </style>
 </head>
 <body>
 
-    <div id="navbar">
-        <a href="#" onclick="showContent('page1')">ページ1</a>
-        <a href="#" onclick="showContent('page2')">ページ2</a>
-        <a href="#" onclick="showContent('page3')">ページ3</a>
-    </div>
+<div class="navbar">
+    <a href="#" onclick="showContent('page1')">ページ1</a>
+    <a href="#" onclick="showContent('page2')">ページ2</a>
+    <a href="#" onclick="showContent('page3')">ページ3</a>
+</div>
 
-    <div id="page1" class="content">
-        <iframe src="https://minnit.chat/login"></iframe>
-    </div>
-    
-    <div id="page2" class="content">
-        <iframe src="https://app.gitter.im/"></iframe>
-    </div>
-    
-    <div id="page3" class="content">
-        <iframe src="https://github.com/"></iframe>
-    </div>
+<div id="page1" class="content" style="display: block;">
+    <iframe src="https://minnit.chat/login"></iframe>
+</div>
 
-    <script>
-        function showContent(pageId) {
-            const contents = document.getElementsByClassName('content');
-            for (let content of contents) {
-                content.style.display = 'none';
-            }
-            document.getElementById(pageId).style.display = 'block';
+<div id="page2" class="content">
+    <iframe src="https://app.gitter.im/#/login"></iframe>
+</div>
+
+<div id="page3" class="content">
+    <iframe src="https://github.com/login"></iframe>
+</div>
+
+<script>
+    function showContent(id) {
+        var contents = document.getElementsByClassName('content');
+        for (var i = 0; i < contents.length; i++) {
+            contents[i].style.display = 'none';
         }
-
-        document.body.addEventListener('mousemove', function(event) {
-            if (event.clientY < 50) {
-                document.getElementById('navbar').style.display = 'block';
-            }
-        });
-
-        document.body.addEventListener('mouseleave', function(event) {
-            document.getElementById('navbar').style.display = 'none';
-        });
-    </script>
+        document.getElementById(id).style.display = 'block';
+    }
+</script>
 
 </body>
 </html>
