@@ -4,63 +4,49 @@
     <meta charset="UTF-8">
     <title>ナビゲーション付きページ</title>
     <style>
-        .navbar {
+        #navbar {
             background-color: #333;
-            overflow: hidden;
+            color: white;
+            padding: 15px;
+            text-align: center;
             position: fixed;
             width: 100%;
             top: 0;
+            z-index: 1000;
         }
-
-        .navbar a {
-            float: left;
-            display: block;
+        
+        #navbar a {
             color: white;
-            text-align: center;
-            padding: 14px 16px;
+            padding: 14px;
             text-decoration: none;
+            display: inline-block;
         }
-
-        .content {
-            display: none;
-            padding-top: 50px; /* Adjusted space for the navbar */
-        }
-
-        iframe {
+        
+        #contentFrame {
+            position: absolute;
+            top: 50px;
+            left: 0;
             width: 100%;
-            height: 500px; /* Adjust height as needed */
+            height: calc(100% - 50px);
+            border: none;
         }
     </style>
 </head>
 <body>
 
-<div class="navbar">
-    <a href="#" onclick="showContent('page1')">ページ1</a>
-    <a href="#" onclick="showContent('page2')">ページ2</a>
-    <a href="#" onclick="showContent('page3')">ページ3</a>
-</div>
+    <div id="navbar">
+        <a href="#" onclick="changeContent('https://minnit.chat/login')">ページ1</a>
+        <a href="#" onclick="changeContent('https://app.gitter.im/#/login')">ページ2</a>
+        <a href="#" onclick="changeContent('https://github.com/login')">ページ3</a>
+    </div>
 
-<div id="page1" class="content" style="display: block;">
-    <iframe src="https://minnit.chat/login"></iframe>
-</div>
+    <iframe id="contentFrame"></iframe>
 
-<div id="page2" class="content">
-    <iframe src="https://app.gitter.im/#/login"></iframe>
-</div>
-
-<div id="page3" class="content">
-    <iframe src="https://github.com/login"></iframe>
-</div>
-
-<script>
-    function showContent(id) {
-        var contents = document.getElementsByClassName('content');
-        for (var i = 0; i < contents.length; i++) {
-            contents[i].style.display = 'none';
+    <script>
+        function changeContent(url) {
+            document.getElementById('contentFrame').src = url;
         }
-        document.getElementById(id).style.display = 'block';
-    }
-</script>
+    </script>
 
 </body>
 </html>
