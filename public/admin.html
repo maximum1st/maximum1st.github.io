@@ -14,27 +14,23 @@
             top: 0;
             z-index: 1000;
         }
-        
+
         #navbar a {
             color: white;
             padding: 14px;
             text-decoration: none;
             display: inline-block;
         }
-        
+
         .content {
             display: none;
-            position: fixed;
+            position: absolute;
             top: 50px;
             bottom: 0;
             left: 0;
             right: 0;
         }
-        
-        #page1 {
-            display: block; /* ページ1をデフォルトで表示する */
-        }
-        
+
         iframe {
             width: 100%;
             height: 100%;
@@ -44,7 +40,7 @@
 </head>
 <body>
 
-    <div id="navbar">
+    <div id="navbar" onmouseover="hideNavbar()" style="display: block;">
         <a href="#" onclick="showContent('page1')">ページ1</a>
         <a href="#" onclick="showContent('page2')">ページ2</a>
         <a href="#" onclick="showContent('page3')">ページ3</a>
@@ -53,11 +49,11 @@
     <div id="page1" class="content">
         <iframe src="https://minnit.chat/login"></iframe>
     </div>
-    
+
     <div id="page2" class="content">
         <iframe src="https://app.gitter.im/#/login"></iframe>
     </div>
-    
+
     <div id="page3" class="content">
         <iframe src="https://github.com/login"></iframe>
     </div>
@@ -71,7 +67,11 @@
             document.getElementById(pageId).style.display = 'block';
         }
 
-        document.body.addEventListener('mousemove', function(event) {
+        function hideNavbar() {
+            document.getElementById('navbar').style.display = 'none';
+        }
+
+        document.body.addEventListener('mousemove', function (event) {
             if (event.clientY < 50) {
                 document.getElementById('navbar').style.display = 'block';
             }
