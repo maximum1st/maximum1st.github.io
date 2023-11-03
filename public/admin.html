@@ -13,7 +13,6 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            display: none; /* 初期状態では非表示にする */
         }
         
         #navbar a {
@@ -30,6 +29,10 @@
             bottom: 0;
             left: 0;
             right: 0;
+        }
+        
+        #page1 {
+            display: block; /* ページ1をデフォルトで表示する */
         }
         
         iframe {
@@ -66,7 +69,6 @@
                 content.style.display = 'none';
             }
             document.getElementById(pageId).style.display = 'block';
-            document.getElementById('navbar').style.display = 'none';
         }
 
         document.body.addEventListener('mousemove', function(event) {
