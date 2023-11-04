@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="https://maximum1st.github.io/favicon-16x16.png">
     <title>とっくん研究ChatRoom！</title>
     <style>
-       body {
+        body {
             font-family: 'Arial', sans-serif;
             background-color: #121212;
             color: #ffffff;
@@ -17,16 +17,16 @@
             margin: 0;
             display: flex;
             justify-content: center;
-            align-items: center; /* flex-startからcenterに変更 */
-            min-height: 100vh; /* heightからmin-heightに変更 */
+            align-items: center;
+            min-height: 100vh;
             overflow-x: hidden;
         }
 
         .container {
-            width: 500px; /* 最大幅を固定幅に変更 */
+            width: 500px;
             padding: 20px;
             text-align: center;
-            margin: 0 auto; /* 上下のマージンは0、左右はautoでセンタリング */
+            margin: 0 auto;
         }
 
         a {
@@ -41,15 +41,29 @@
         .chatroom-list {
             list-style: none;
             padding: 0;
+            text-align: left;
+            width: 100%;
         }
 
         .chatroom-item {
             margin-bottom: 10px;
         }
 
+        .powered-by {
+            border-bottom: 1px solid #ffffff; /* 下線を追加 */
+            padding-bottom: 3px; /* 下線との間隔 */
+            margin-bottom: 5px; /* 次の要素との間隔 */
+            display: inline-block; /* インラインブロック要素として表示 */
+            width: 100%; /* 幅を100%に設定 */
+        }
+
+        .account-creation {
+            margin-top: 5px; /* 上側の間隔 */
+        }
+
         @media screen and (max-width: 768px) {
             .container {
-                width: 100%; /* モバイルデバイスの場合は幅を100%に */
+                width: 100%;
                 padding: 10px;
             }
         }
@@ -57,20 +71,15 @@
 </head>
 
 <body>
-
     <div class="container">
-        <!-- チャットリンクのリスト -->
         <ul class="chatroom-list">
-            <li class="chatroom-item"><a href="https://organizations.minnit.chat/841046088185698/Main?embed&amp;embed&amp;dark&amp;nickname=&amp;nec=6041430" target="_blank">ゲストチャット-自由</a></li>
-            <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-客人(PC用)</a></li>
-            <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st-2:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-雑談(PC用)</a></li>
-            <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st-3:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-配予(PC用)</a></li>
+            <li class="chatroom-item">1. <a href="https://organizations.minnit.chat/841046088185698/Main?embed&amp;embed&amp;dark&amp;nickname=&amp;nec=6041430" target="_blank">ゲストチャット-自由</a></li>
+            <li class="chatroom-item">2. <a href="https://app.gitter.im/#/room/#maximum1st:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-客人(PC用)</a></li>
+            <li class="chatroom-item">3. <a href="https://app.gitter.im/#/room/#maximum1st-2:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-雑談(PC用)</a></li>
+            <li class="chatroom-item">4. <a href="https://app.gitter.im/#/room/#maximum1st-3:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-配予(PC用)</a></li>
         </ul>
-        <!-- パワードバイテキスト -->
         <div class="powered-by">Powered by Gitter and GitHub™</div>
-        <!-- アカウント作成リンク -->
-        <div>まず<a href="https://github.co.jp/" target="_blank" rel="noopener noreferrer">アカウント作成</a>それからチャットへ！</div>
+        <div class="account-creation">まず<a href="https://github.co.jp/" target="_blank" rel="noopener noreferrer">アカウント作成</a>それからチャットへ！</div>
     </div>
-    
 </body>
 </html>
