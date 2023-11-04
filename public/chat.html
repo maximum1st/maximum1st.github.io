@@ -3,30 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <link rel="icon" type="image/png" sizes="32x32" href="https://maximum1st.github.io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://maximum1st.github.io/favicon-16x16.png">
     <title>とっくん研究ChatRoom！</title>
     <style>
-        body {
+       body {
             font-family: 'Arial', sans-serif;
             background-color: #121212;
-            color: white;
+            color: #ffffff;
             line-height: 1.6;
             margin: 0;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            align-items: flex-start;
+            height: 100vh;
             overflow-x: hidden;
         }
 
         .container {
-            width: 500px;
+            max-width: 851px;
             padding: 20px;
-            margin: 0 auto;
             text-align: center;
+            margin: 0 auto;
         }
 
         a {
@@ -38,28 +38,24 @@
             text-decoration: underline;
         }
 
-        .powered-by {
-            border-bottom: 1px solid #ffffff; /* Add underline */
-            padding-bottom: 3px; /* Space between the text and the underline */
-            margin-bottom: 5px; /* Space after the element */
-            width: 100%;
-        }
-
-        .account-creation {
-            margin-top: 5px;
-        }
-
         table {
-            border-collapse: collapse;
+            width: auto; /* テーブルの幅を内容に合わせる */
             margin-top: 3px; /* 上側の間隔 */
             margin-bottom: 5px; /* 下側の間隔 */
             margin-left: auto; /* 中央揃えのため */
             margin-right: auto; /* 中央揃えのため */
-            width: auto; /* 幅を内容に合わせる */
         }
 
         td {
             padding: 5px 10px;
+            text-align: left; /* セル内のテキストは左寄せ */
+        }
+
+        .powered-by {
+            border-bottom: 1px solid #ffffff;
+            padding-bottom: 3px;
+            margin-bottom: 5px;
+            display: block;
         }
     </style>
 </head>
@@ -68,14 +64,18 @@
     <div class="container">
         <table>
             <tr>
-                <p>1. <a href="https://organizations.minnit.chat/841046088185698/Main?embed&amp;embed&amp;dark&amp;nickname=&amp;nec=6041430" target="_blank">ゲストチャット-自由</a></p>
-                <p>2. <a href="https://app.gitter.im/#/room/#maximum1st:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-客人(PC用)</a></p>
-                <p>3. <a href="https://app.gitter.im/#/room/#maximum1st-2:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-雑談(PC用)</a></p>
-                <p>4. <a href="https://app.gitter.im/#/room/#maximum1st-3:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-配予(PC用)</a></p>
+                <td>1.</td>
+                <td><a href="https://organizations.minnit.chat/841046088185698/Main?embed&amp;embed&amp;dark&amp;nickname=&amp;nec=6041430" target="_blank">ゲストチャット</a></td>
+                <td>2.</td>
+                <td><a href="https://app.gitter.im/#/room/#maximum1st:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-客人(PC用)</a></td>
+                <td>3.</td>
+                <td><a href="https://app.gitter.im/#/room/#maximum1st-2:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-雑談(PC用)</a></td>
+                <td>4.</td>
+                <td><a href="https://app.gitter.im/#/room/#maximum1st-3:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-配予(PC用)</a></td>
             </tr>
         </table>
         <div class="powered-by">Powered by Gitter and GitHub™</div>
-        <div class="account-creation">まず<a href="https://github.co.jp/" target="_blank" rel="noopener noreferrer">アカウント作成</a>それからチャットへ！</div>
+        <div>まず<a href="https://github.co.jp/" target="_blank" rel="noopener noreferrer">アカウント作成</a>それからチャットへ！</div>
     </div>
 </body>
 </html>
