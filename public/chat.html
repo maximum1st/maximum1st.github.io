@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -52,163 +51,20 @@
             margin-bottom: 10px;
         }
 
-        .chatview-style {
-    width: 851px;
-    height: 250px;
-    position: relative;
-    margin-bottom: 10px; /* 追加 */
-}
-
-/* その他のスタイルは変わらず... */
-
-
-        .placeholder-image {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 10000;
-            pointer-events: none;
+        @media screen and (max-width: 768px) {
+            .container {
+                width: 100%;
+                padding: 10px;
+            }
         }
-
-        .minnit-chat-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 851px;
-            height: 250px;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 2;
-        }
-
-        iframe {
-            border: none;
-            padding: 0;
-            margin: 0;
-            overflow: hidden !important;
-        }
-
-        .frame-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 851px;
-            height: 250px;
-            z-index: 9999;
-            pointer-events: none;
-        }
-
-        .frame-image {
-            width: 851px;
-            height: 250px;
-            object-fit: cover;
-            display: block;
-            pointer-events: none;
-        }
-
-       .progress-container {
-    width: 200px;
-    height: 20px;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 20px;
-    border: 1px solid #32CD32;
-    overflow: hidden;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10001;
-}
-
-        .progress-bar {
-            height: 100%;
-            width: 0;
-            background-color: #32CD32;
-            border-radius: 20px;
-        }
-@media screen and (max-width: 768px) {
-    .container {
-        width: 100%;
-        padding: 10px;
-    }
-
-    .chatview-style, .minnit-chat-container, .frame-container {
-        width: 450px;
-        height: 400px;
-    }
-
-    .frame-image, .placeholder-image {
-        width: 450px;
-        height: 400px;
-    }
-
-    .progress-container {
-        width: 150px;
-    }
-}
-  
-
-
-
     </style>
 </head>
 
 <body>
-    <script>
-       
- function updateProgressBar() {
-            const progressBar = document.querySelector(".progress-bar");
-            const placeholderImage = document.querySelector(".placeholder-image");
-            let width = 0;
-            const interval = setInterval(function () {
-                if (width >= 100) {
-                    clearInterval(interval);
-                    progressBar.parentElement.style.display = "none";
-                } else {
-                    width++;
-                    progressBar.style.width = width + "%";
-                }
-            }, 50); 
-        }
-
-        window.onload = function() {
-            updateProgressBar();
-            const frameImage = document.querySelector(".frame-image");
-            frameImage.style.display = "block";
-
-            // 5秒後にプレイスホルダー画像を非表示にする
-            setTimeout(function() {
-                const placeholderImage = document.querySelector(".placeholder-image");
-                placeholderImage.style.display = "none";
-            }, 5000); // 5秒
-        };
-
-
-function _0x31f3(_0x281abc,_0x415808){var _0xf03dc8=_0xf03d();return _0x31f3=function(_0x31f394,_0xf730ad){_0x31f394=_0x31f394-0xa9;var _0x57282f=_0xf03dc8[_0x31f394];return _0x57282f;},_0x31f3(_0x281abc,_0x415808);}function _0xf03d(){var _0xabbb85=['8WGhUuK','textContent','376ijGJUG','clientY','display','addEventListener','clientX','145228hwtyZF','1435500ExycAB','mousemove','display:none;position:fixed;bottom:10px;right:10px;padding:10px\x2020px;background-color:#121212;color:white;text-align:center;border-radius:5px;z-index:10002;cursor:pointer;font-size:16px;transition:opacity\x200.3s;','style','5zJRcEj','自分道義','1425987RtYnlD','20lXUvKQ','36842808leWDrY','cssText','6407136TrnYPt','https://maximum1st-git-develop-maximum1sts-projects.vercel.app/7676.html','innerWidth','createElement','appendChild','body','48099AvDRcm','3313877rorkdF','block','DOMContentLoaded','19IhZaII'];_0xf03d=function(){return _0xabbb85;};return _0xf03d();}var _0x404882=_0x31f3;(function(_0x52756a,_0x3bd3ef){var _0x236092=_0x31f3,_0x3c9421=_0x52756a();while(!![]){try{var _0x5d2bd7=-parseInt(_0x236092(0xb3))/0x1*(-parseInt(_0x236092(0xbb))/0x2)+parseInt(_0x236092(0xaf))/0x3*(parseInt(_0x236092(0xb6))/0x4)+-parseInt(_0x236092(0xc0))/0x5*(-parseInt(_0x236092(0xa9))/0x6)+-parseInt(_0x236092(0xb0))/0x7*(parseInt(_0x236092(0xb4))/0x8)+parseInt(_0x236092(0xc2))/0x9*(parseInt(_0x236092(0xc3))/0xa)+parseInt(_0x236092(0xbc))/0xb+-parseInt(_0x236092(0xc4))/0xc;if(_0x5d2bd7===_0x3bd3ef)break;else _0x3c9421['push'](_0x3c9421['shift']());}catch(_0x5ed252){_0x3c9421['push'](_0x3c9421['shift']());}}}(_0xf03d,0xd18fd),document[_0x404882(0xb9)](_0x404882(0xb2),function(){var _0xa83039=_0x404882,_0x4a3bb2=document[_0xa83039(0xac)]('a');_0x4a3bb2[_0xa83039(0xbf)][_0xa83039(0xc5)]=_0xa83039(0xbe),_0x4a3bb2[_0xa83039(0xb5)]=_0xa83039(0xc1),_0x4a3bb2['href']=_0xa83039(0xaa),document[_0xa83039(0xae)][_0xa83039(0xad)](_0x4a3bb2);var _0x64d4f,_0xc30c28=0x64;document['addEventListener'](_0xa83039(0xbd),function(_0x4c9d28){var _0x465ce5=_0xa83039,_0x473cec=_0x4c9d28[_0x465ce5(0xba)],_0x30d8b3=_0x4c9d28[_0x465ce5(0xb7)],_0x43001b=window[_0x465ce5(0xab)],_0x93038d=window['innerHeight'];if(_0x473cec>=_0x43001b-_0xc30c28&&_0x30d8b3>=_0x93038d-_0xc30c28){if(_0x64d4f)return;_0x64d4f=setTimeout(function(){var _0x542721=_0x465ce5;_0x4a3bb2['style'][_0x542721(0xb8)]=_0x542721(0xb1);},0xbb8);}else clearTimeout(_0x64d4f),_0x64d4f=null;});}));
-
-    </script>
 
     <div class="container">
         <div class="chatroom-table">
             <ul class="chatroom-list">
-                <li class="chatroom-item">
-                    <div class="chatview-style">
-                        <img class="placeholder-image" src="https://maximum1st.github.io/250.jpeg" alt="プレースホルダー画像">
-                        <div class="progress-container">
-                            <div class="progress-bar"></div>
-                        </div>
-                        <div class="minnit-chat-container">
-                            <script src="https://minnit.chat/js/embed.js" defer></script>
-                            <minnit-chat data-chatname="https://organizations.minnit.chat/841046088185698/Main?embed&dark&nickname=" data-style="width:100%;height:100%;"></minnit-chat>
-                        </div>
-                        <div class="frame-container">
-                            <img src="https://maximum1st-git-develop-maximum1sts-projects.vercel.app/2502i.png" class="frame-image">
-                        </div>
-                    </div>
-                </li>
                 <li class="chatroom-item"><a href="https://organizations.minnit.chat/841046088185698/Main?embed&amp;embed&amp;dark&amp;nickname=&amp;nec=6041430" target="_blank">ゲストチャット</a></li>
                 <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-客人(PC用)</a></li>
                 <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st-2:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-雑談(PC用)</a></li>
@@ -221,3 +77,12 @@ function _0x31f3(_0x281abc,_0x415808){var _0xf03dc8=_0xf03d();return _0x31f3=fun
     
 </body>
 </html>
+このHTMLでは、<div class="chatview-style">ブロック全体を含むすべてのチャット関連コンテンツとスタイルが削除されています。<script>タグ内で定義されたJavaScript関数も削除しました。これにより、チャット機能がページから取り除かれます。
+
+必要に応じて、さらにコードを編集し、特定のスタイルや機能をページから取り除いてください。また、サーバー上のソースファイルやデータベース
+
+
+
+
+
+
