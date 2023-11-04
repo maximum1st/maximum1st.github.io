@@ -17,15 +17,16 @@
             margin: 0;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
-            height: 100vh;
+            align-items: center; /* flex-startからcenterに変更 */
+            min-height: 100vh; /* heightからmin-heightに変更 */
             overflow-x: hidden;
         }
 
         .container {
-            max-width: 851px;
+            width: 500px; /* 最大幅を固定幅に変更 */
             padding: 20px;
             text-align: center;
+            margin: 0 auto; /* 上下のマージンは0、左右はautoでセンタリング */
         }
 
         a {
@@ -36,8 +37,6 @@
         a:hover {
             text-decoration: underline;
         }
-
-        
 
         .chatroom-list {
             list-style: none;
@@ -50,7 +49,7 @@
 
         @media screen and (max-width: 768px) {
             .container {
-                width: 100%;
+                width: 100%; /* モバイルデバイスの場合は幅を100%に */
                 padding: 10px;
             }
         }
@@ -60,22 +59,18 @@
 <body>
 
     <div class="container">
-        
-            <ul class="chatroom-list">
-                <li class="chatroom-item"><a href="https://organizations.minnit.chat/841046088185698/Main?embed&amp;embed&amp;dark&amp;nickname=&amp;nec=6041430" target="_blank">ゲストチャット</a></li>
-                <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-客人(PC用)</a></li>
-                <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st-2:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-雑談(PC用)</a></li>
-                <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st-3:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-配予(PC用)</a></li>
-            </ul>
-        </div>
+        <!-- チャットリンクのリスト -->
+        <ul class="chatroom-list">
+            <li class="chatroom-item"><a href="https://organizations.minnit.chat/841046088185698/Main?embed&amp;embed&amp;dark&amp;nickname=&amp;nec=6041430" target="_blank">ゲストチャット</a></li>
+            <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-客人(PC用)</a></li>
+            <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st-2:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-雑談(PC用)</a></li>
+            <li class="chatroom-item"><a href="https://app.gitter.im/#/room/#maximum1st-3:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-配予(PC用)</a></li>
+        </ul>
+        <!-- パワードバイテキスト -->
         <div class="powered-by">Powered by Gitter and GitHub™</div>
+        <!-- アカウント作成リンク -->
         <div>まず<a href="https://github.co.jp/" target="_blank" rel="noopener noreferrer">アカウント作成</a>それからチャットへ！</div>
     </div>
     
 </body>
 </html>
-
-
-
-
-
