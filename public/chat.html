@@ -23,10 +23,10 @@
         }
 
         .container {
-            width: 500px;
+            max-width: 851px;
             padding: 20px;
-            margin: 0 auto;
             text-align: center;
+            margin: 0 auto;
         }
 
         a {
@@ -38,37 +38,43 @@
             text-decoration: underline;
         }
 
-        .number {
-            display: inline-block;
-            width: 20px; /* すべての番号に同じ幅を指定 */
-            text-align: right; /* 番号は右揃えに */
+        .links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px; /* Add a gap between the links */
         }
 
-        .link-text {
-            display: inline; /* リンクテキストはインライン要素として表示 */
-        }
-
-        .chatroom-item {
-            text-align: left; /* 左揃え */
-            margin-bottom: 10px; /* 下部のマージン */
+        .link-item {
+            margin-bottom: 10px; /* Space between the links */
         }
 
         .powered-by {
-            margin-top: 5px; /* 上のマージンを設定 */
-            border-bottom: 1px solid #ffffff; /* 下線を追加 */
+            margin-top: 20px;
+            border-bottom: 1px solid #ffffff;
             padding-bottom: 3px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                width: 100%;
+                padding: 10px;
+            }
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <p class="chatroom-item"><span class="number">1.</span> <span class="link-text"><a href="https://organizations.minnit.chat/841046088185698/Main?embed&amp;embed&amp;dark&amp;nickname=&amp;nec=6041430" target="_blank">ゲストチャット</a></span></p>
-        <p class="chatroom-item"><span class="number">2.</span> <span class="link-text"><a href="https://app.gitter.im/#/room/#maximum1st:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-客人(PC用)</a></span></p>
-        <p class="chatroom-item"><span class="number">3.</span> <span class="link-text"><a href="https://app.gitter.im/#/room/#maximum1st-2:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-雑談(PC用)</a></span></p>
-        <p class="chatroom-item"><span class="number">4.</span> <span class="link-text"><a href="https://app.gitter.im/#/room/#maximum1st-3:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-配予(PC用)</a></span></p>
+        <div class="links">
+            <div class="link-item">1. <a href="https://organizations.minnit.chat/841046088185698/Main?embed&amp;embed&amp;dark&amp;nickname=&amp;nec=6041430" target="_blank">ゲストチャット</a></div>
+            <div class="link-item">2. <a href="https://app.gitter.im/#/room/#maximum1st:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-客人(PC用)</a></div>
+            <div class="link-item">3. <a href="https://app.gitter.im/#/room/#maximum1st-2:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-雑談(PC用)</a></div>
+            <div class="link-item">4. <a href="https://app.gitter.im/#/room/#maximum1st-3:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-配予(PC用)</a></div>
+        </div>
         <div class="powered-by">Powered by Gitter and GitHub™</div>
-        <div>まず<a href="https://github.co.jp/" target="_blank" rel="noopener noreferrer">アカウント作成</a>それからチャットへ！</div>
     </div>
 </body>
 </html>
+
