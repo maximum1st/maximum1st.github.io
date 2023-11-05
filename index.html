@@ -177,15 +177,17 @@
     margin-left: auto; /* 左のマージンを自動にして中央寄せに見せます */
     margin-right: auto; /* 右のマージンを自動にして中央寄せに見せます */
 }
-        @keyframes blink-question {
+       @keyframes blink-question-yellow {
   0%, 100% { opacity: 0; }
   50% { opacity: 1; }
 }
-        .blink-question::after {
+.blink-question-yellow::after {
   content: '？';
-  animation: blink-question 1s infinite;
+  color: yellow; /* テキストの色を黄色にします */
+  animation: blink-question-yellow 1s infinite;
   margin-left: 5px;
 }
+      
 
     </style>
 </head>
@@ -241,7 +243,7 @@
         <li><a href="https://twitter.com/maximum4rd" target="_blank">X My</a></li>
         <li><a href="https://www.facebook.com/maximum1st" target="_blank">Facebook My</a></li>
         <li><a href="https://www.instagram.com/maximum1st.tokkun/" target="_blank">Instagram My</a></li>
-        <li><a href="https://maximum1st-git-develop-maximum1sts-projects.vercel.app/chat.html" target="_blank" class="blink-question">GitterChat My</a></li>
+        <li><a href="https://maximum1st-git-develop-maximum1sts-projects.vercel.app/chat.html" target="_blank" class="blink-question-yellow">GitterChat My</a></li>
     </ul>
     <ul class="link-list">
         <li><a href="https://maximum1st.github.io/barizougon.html" target="_blank">罵詈雑言呪の言葉</a></li>
