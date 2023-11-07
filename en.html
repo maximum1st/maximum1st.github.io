@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="wot-verification" content="1eb6dd3f52b95113ab5f"/>
+    <meta name="robots" content="noimageindex">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="Gran Turismo 7, GT7, Twitch, PS5, gaming, broadcasting, livestream, racing simulator, Choshi">
-    <meta name="description" content="Tokkun Kenkyu (Tokkun Research) conducts live broadcasts and game setting research for Gran Turismo 7 (GT7). Streaming on Twitch using a PS5, I value interaction with viewers.">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://maximum1st.github.io//favicon-32x32.png">
+    <meta name="keywords" content="とっくん,とっくん研究,Gran Turismo 7, GT7, Twitch, PS5, gaming, broadcasting, livestream, レーシングシュミレータ, 銚子,九州">
+    <meta name="description" content="とっくん Study is dedicated to broadcasting and researching game settings for Gran Turismo 7 (GT7). Using a PS5, they stream on Twitch and value interaction with their viewers.">
+    
+<link rel="icon" type="image/png" sizes="32x32" href="https://maximum1st.github.io//favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="https://maximum1st.github.io//favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"></script>
-
     <title>とっくん研究 - Broadcasting and Game Setting Research for Gran Turismo 7</title>
     <style>
         body {
@@ -17,24 +23,24 @@
             font-family: Arial, sans-serif;
             max-width: 800px;
             margin: 0 auto;
-            min-height: 100%;
             padding: 2rem;
             text-align: center;
             color: white;
         }
-        
+
         .image-wrapper {
             position: relative;
             display: inline-block;
+           
         }
-        
+
         .image-wrapper img {
             max-width: 200px;
             height: auto;
             border-radius: 50%;
             margin-bottom: 0.5rem;
         }
-        
+
         .image-wrapper .overlay {
             position: absolute;
             top: 0;
@@ -44,33 +50,33 @@
             z-index: 10;
             border-radius: 50%;
         }
-        
+
         h1 {
             font-size: 2rem;
-            margin-bottom: 1rem;
+            margin-top: -5px;
         }
-        
+
         h2 {
             color: #00C300;
             font-size: 1.5rem;
             margin-top: 3rem;
             margin-bottom: 1rem;
         }
-        
+
         p {
             font-size: 1.2rem;
         }
-        
+
         ul {
             list-style-type: none;
             padding: 0;
         }
-        
+
         li {
             display: inline;
             margin: 0 1rem;
         }
-        
+
         a {
             text-decoration: none;
             color: inherit;
@@ -79,29 +85,11 @@
             text-overflow: ellipsis;
             line-height: 1.5;
         }
-        
-        #backToTopBtn, #scrollToBottomBtn {
-            position: fixed;
-            background-color: #181919;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 1.2rem;
-            border-radius: 5px;
-        }
-        
-        #backToTopBtn {
-            bottom: 20px;
-            right: 20px;
-        }
-        
-        #scrollToBottomBtn {
-            top: 0px;
-            right: 0px;
-        }
-        
-    #openTwitchWebBtn, #openTwitchAppBtn {
+
+        #backToTopBtn,
+        #scrollToBottomBtn,
+        #openTwitchAppPC,
+        #openTwitchAppMobile {
     background-color: orange;
     color: white;
     border: none;
@@ -117,51 +105,42 @@
     transition: background-color 0.3s ease;
     border-radius: 15px;
         }
-
-        #openTwitchWebBtn:hover, #openTwitchAppBtn:hover {
+        
+        #openTwitchAppPC:hover,
+        #openTwitchAppMobile:hover {
             background-color: darkorange;
         }
-        
-        @keyframes blink {
-        0% { color: white; }
-        50% { color: red; }
-        100% { color: white; }
-    }
 
-    @keyframes blink-blue-white {
-        0% { color: blue; }
-        50% { color: white; }
-        100% { color: blue; }
-    }
+        #backToTopBtn {
+            bottom: 20px;
+            right: 20px;
+        }
 
-    .blink {
-        animation: blink 1.5s linear infinite;
-    }
+        #scrollToBottomBtn {
+            top: 0;
+            right: 20px;
+        }
 
-    .blink-blue-white {
-        animation: blink-blue-white 1.5s linear infinite;
-    }
+        .language-switcher {
+            position: fixed;
+            top: 35px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+        }
 
-    .language-switcher {
-        position: fixed;
-        top: 35px;
-        right: 20px;
-        background-color: rgba(0, 0, 0, 0.5);
-        padding: 10px;
-        border-radius: 5px;
-        z-index: 1000;
-    }
+        .language-switcher a {
+            color: #00C300;
+            margin-right: 10px;
+            text-decoration: none;
+        }
 
-    .language-switcher a {
-        color: #00C300;
-        margin-right: 10px;
-        text-decoration: none;
-    }
+        .language-switcher a:hover {
+            color: #008200;
+        }
 
-    .language-switcher a:hover {
-        color: #008200;
-    }
-        
         .clock {
             position: fixed;
             top: 0;
@@ -173,112 +152,181 @@
             font-size: 1rem;
             z-index: 1000;
         }
-         .link-list {
-            list-style-type: none;
-            padding: 0;
-            line-height: 50px;  /* 行間を50pxに設定 */
+
+        ul.link-list {
+            line-height: 50px;
+        }
+
+        .blink {
+            animation: blink 1.5s linear infinite;
+        }
+        .blink-blue-white {
+            animation: blink-blue-white 1.5s linear infinite;
+        }
+
+        @keyframes blink {
+            0% { color: white; }
+            50% { color: red; }
+            100% { color: white; }
+        }
+        @keyframes blink-blue-white {
+            0% { color: blue; }
+            50% { color: white; }
+            100% { color: blue; }
+        }
+        .left-aligned {
+    text-align: left; /* 文章を左寄せにします */
+    max-width: 600px; /* 適切な最大幅を設定します */
+    margin-left: auto; /* 左のマージンを自動にして中央寄せに見せます */
+    margin-right: auto; /* 右のマージンを自動にして中央寄せに見せます */
+}
+       @keyframes blink-question-yellow {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+.blink-question-yellow::after {
+  content: '？';
+  color: yellow; /* テキストの色を黄色にします */
+  animation: blink-question-yellow 1s infinite;
+  margin-left: 5px;
+}
+        .justify {
+            text-align: justify;
+            text-justify: inter-word;
         }
     </style>
 </head>
 <body>
+    <noscript>
+        <div style="background-color: #ffdddd; border-left: 6px solid #f44336; margin-bottom: 15px; padding: 20px;">
+            <p>This website uses JavaScript. All functions depend on JavaScript. To display correctly, please enable JavaScript from your browser settings.</p>
+        </div>
+    </noscript>
     <div id="clock" class="clock"></div>
 
     <div class="language-switcher">
-        <a href="https://maximum1st.github.io/">日本語</a>
-        <a href="en.html">English</a>
-        <a href="ko.html">한국어</a>
-        <a href="zh.html">中文</a>
-        <a href="ru.html">Русский</a>
-    </div>
+    <a href="en.html">English</a>
+    <a href="https://maximum1st.github.io/">日本語</a>
+    <a href="zh.html">中文</a>
+    <a href="ko.html">한국어</a>
+    <a href="ru.html">Русский</a>
+</div>
 
     <div class="image-wrapper">
-        <img src="r9T4y7U1I3O6P1A7S4D6F8G7H2J1K6L9M1N6B7V5C9X3.jpg" alt="Profile image">
+        <img src="r9T4y7U1I3O6P1A7S4D6F8G7H2J1K6L9M1N6B7V5C9X2.jpg" alt="Profile image">
         <img src="https://maximum1st.github.io/toumei.png" class="overlay" alt="Profile image overlay">
     </div>
     
     <h1>とっくん研究</h1>
-    <p>I'm live-streaming the racing game 'Gran Turismo 7 (GT7)' on Twitch using my PS5. In addition to sharing my gameplay, I also delve into the intricacies of the game's settings, so I'd love for you to tune in. I'm often described as a bit timid and playful, but also known for my kind heart. It would be wonderful to establish a friendly rapport with you, my viewers. From time to time, I host streams where we discuss the broadcast or just have casual conversations. I don't stream every day, but when I do, it's usually before 10 PM. Be warned though, it can get a little tiring!</p>
+    <p class="left-aligned justify">I'm streaming the racing game 'Gran Turismo 7' (GT7) on Twitch with my PS5. I don't just share my gameplay; I also research and discuss the game's settings, so please drop by to watch. I may come across as timid and a bit of a clown, but I'm often told I have a kind heart. I would love to make friends during my broadcasts. I occasionally talk about random topics or just chat. I don't stream every day, but I do so randomly. Feeling a bit sleepy though...</p>
     
-    <p>Racing games can be a bit repetitive, which often leads to fewer viewers. That's why I truly appreciate you tuning in. However, as I'm not proficient in English, I would be grateful if you could leave comments in my native language.</p>
+    <p class="left-aligned justify">Racing games can be somewhat monotonous, leading to fewer viewers, so I cherish every follow and comment. Currently, I'm in the process of getting back together with my partner. I'm keeping a clean-cut buzz head for simplicity's sake. Right now, I'm holding off on exercising until I move to Kyushu, but I plan to get back into it once I've moved.</p>
 
-    <button id="openTwitchWebBtn" style="display: none" onclick="openTwitchWeb()">My Twitch Web</button>
-    <button id="openTwitchAppBtn" style="display: none" onclick="openTwitchApp()">Twitch APP iOS</button>
+    <p class="left-aligned justify">My main goal with the PS5, particularly on the PlayStation Network, is to make friends!</p>
+
+    <p class="left-aligned justify">My PlayStation ID is 'maximum1st'. Your support would mean the world to me!</p>
+
+<button id="backToTopBtn" style="display:none;" onclick="backToTop()">戻る↑</button>
+    <button id="scrollToBottomBtn" style="display:none;" onclick="scrollToBottom()">Link↓</button>
+    <button id="openTwitchAppPC" style="display:none;" onclick="openTwitchApp('PC')">My Twitch Web</button>
+    <button id="openTwitchAppMobile" style="display:none;" onclick="openTwitchApp('Mobile')">Twitch APP Mobile</button>
+
+
+
+
+
+
+    
  <h2>LINK`s</h2>
-    <ul class="link-list">
-        <li><a href="https://www.twitch.tv/toshishige_maximum1st/about" target="_blank">Twich My</a></li>
-        <li><a href="https://twitter.com/maximum4rd" target="_blank">Twitter My</a></li>
+<ul class="link-list">
+        <li><a href="https://www.twitch.tv/toshishige_maximum1st/about" target="_blank">Twitch My</a></li>
+        <li><a href="https://twitter.com/maximum4rd" target="_blank">X My</a></li>
         <li><a href="https://www.facebook.com/maximum1st" target="_blank">Facebook My</a></li>
         <li><a href="https://www.instagram.com/maximum1st.tokkun/" target="_blank">Instagram My</a></li>
-        <li><a href="http://www.cometeo.com/room/pXCdwCYz/" target="_blank">CHAT PAGE</a></li>
+        <li><a href="https://maximum1st-git-develop-maximum1sts-projects.vercel.app/chat.html" target="_blank" class="blink-question-yellow">GitterChat My</a></li>
     </ul>
     <ul class="link-list">
-        <li><a href="https://maximum1st.github.io/barizougonen.html" target="_blank">Criticism</a></li>
-        <li><a class="blink" href="https://maximum1st-github-io.translate.goog/jyoukyou.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp" target="_blank">StreamerStatus!</a></li>
-        <li><a href="https://calendar-google-com.translate.goog/calendar/u/0/embed?src=4dfce5e0adadb668659312dcd34b5d90de28c3d2bfd3a0e2b1d331f3fd41974c@group.calendar.google.com&ctz=Asia/Tokyo&_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp" target="_blank">StreamingSchedule</a></li>
-        <li><a href="https://maximum1st-github-io.translate.goog/completesetup.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp" class="blink-blue-white" target="_blank">completesetup</a></li>
-        <li><a href="#" target="_blank">動画制約(未設定)</a></li>
+        <li><a href="https://maximum1st.github.io/barizougon.html" target="_blank">Criticism</a></li>
+        <li><a class="blink" href="https://maximum1st.github.io/jyoukyou.html" target="_blank">StreamerStatus!</a></li>
+        <li><a href="https://calendar.google.com/calendar/embed?src=4dfce5e0adadb668659312dcd34b5d90de28c3d2bfd3a0e2b1d331f3fd41974c%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank">StreamingSchedule</a></li>
+        <li><a href="https://maximum1st.github.io/completesetup.html" class="blink-blue-white" target="_blank">completesetup</a></li>
+        <li><a href="https://maximum1st.github.io/seiyaku.html" target="_blank">動画制約</a></li>
     </ul>
+
+
+
+
+
+
+
+    
      
     <script type="text/javascript">
-    function openTwitchWeb() {
-        window.open('https://www.twitch.tv/toshishige_maximum1st/about', '_blank');
-    }
-
-    function openTwitchApp() {
-        var timeout;
-        try {
-            document.location = 'twitch://open'; 
-            timeout = setTimeout(function() {
-                window.open('https://www.twitch.tv/toshishige_maximum1st/about', '_blank');
-            }, 500);
-        } catch (e) {
-            window.open('https://www.twitch.tv/toshishige_maximum1st/about', '_blank');
-        }
-
-        window.onblur = function() {
-            clearTimeout(timeout);
+     function openTwitchApp(event, deviceType) {
+        event.preventDefault();
+        if (deviceType === 'PC') {
+            window.open("https://www.twitch.tv/toshishige_maximum1st/about", "_blank");
+        } else {
+            var now = new Date().valueOf();
+            setTimeout(function () {
+                if (new Date().valueOf() - now > 100) return;
+                window.location.href = "twitch://open";
+            }, 25);
         }
     }
-    function goBack() {
-      if (window.history.length > 1) {
-        window.history.back();
-      } else {
-        openTwitchApp();
-      }
-    }
 
-    function updateClock() {
-      var now = moment().tz("America/New_York");
 
-      var year = now.year();
-      var month = now.month() + 1;
-      var date = now.date();
-      var hours = now.hours();
-      var minutes = now.minutes();
-      var seconds = now.seconds();
+        function backToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
 
-      month = month < 10 ? '0' + month : month;
-      date = date < 10 ? '0' + date : date;
-      hours = hours < 10 ? '0' + hours : hours;
-      minutes = minutes < 10 ? '0' + minutes : minutes;
-      seconds = seconds < 10 ? '0' + seconds : seconds;
+        function scrollToBottom() {
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth'
+            });
+        }
 
-      var time = year + '/' + month + '/' + date + ' ' + hours + ':' + minutes + ':' + seconds + " Washington DC";
+        // ...その他のスクリプト...
 
-      document.getElementById('clock').innerText = time;
+        // クロックを更新する関数
+        function updateClock() {
+    var now = moment().tz("America/New_York");
+    var time = now.format('YYYY/MM/DD HH:mm:ss');
 
-      setTimeout(updateClock, 1000);
-    }
+    document.getElementById('clock').innerText = time + " Washington D.C.";
 
-    window.onload = function() {
-      updateClock();
+    setTimeout(updateClock, 1000);
+}
 
-      var ua = navigator.userAgent.toLowerCase();
-      if (ua.indexOf('iphone') > -1 || ua.indexOf('ipad') > -1) {
-        document.getElementById('openTwitchAppBtn').style.display = 'inline-block';
-      } else {
-        document.getElementById('openTwitchWebBtn').style.display = 'inline-block';
-      }
+        // ページの読み込み時にクロックを開始
+        window.onload = function() {
+            updateClock();
+            checkDeviceType();
+        }
+
+        // デバイスタイプをチェックしてTwitchアプリボタンを表示する関数
+        function checkDeviceType() {
+        var deviceType = navigator.userAgent;
+        var openTwitchAppPC = document.getElementById("openTwitchAppPC");
+        var openTwitchAppMobile = document.getElementById("openTwitchAppMobile");
+
+        if (deviceType.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {
+            openTwitchAppMobile.style.display = "inline-block";
+            openTwitchAppMobile.addEventListener("click", function(event){
+                event.preventDefault();  // Add this line to prevent default link behavior
+                window.location = "twitch://open";
+            });
+        } else {
+            openTwitchAppPC.style.display = "inline-block";
+            openTwitchAppPC.addEventListener("click", function(event){
+                event.preventDefault();  // Add this line to prevent default link behavior
+                window.open("https://www.twitch.tv/toshishige_maximum1st/about", "_blank");
+            });
+        }
     }
     </script>
 </body>
