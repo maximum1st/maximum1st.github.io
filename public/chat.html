@@ -9,26 +9,35 @@
     <link rel="icon" type="image/png" sizes="16x16" href="https://maximum1st.github.io/favicon-16x16.png">
     <title>とっくん研究ChatRoom！</title>
     <style>
-      body {
+       body {
             font-family: 'Arial', sans-serif;
             background-color: #121212;
             color: #ffffff;
             line-height: 1.6;
             margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            padding: 0;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* コンテンツをページの上部から始める */
+            min-height: 100vh;
+        }
+
+        .twitch-embed {
+            margin-top: 20px; /* 上部の余白 */
+            width: 80%; /* 動画の幅をビューポートの80%に設定 */
+            max-width: 1280px; /* 最大幅を設定 */
+            aspect-ratio: 16 / 9; /* 16:9のアスペクト比を維持 */
+            margin-bottom: 20px; /* 下部の余白 */
         }
 
         .container {
-            max-width: 851px;
-            padding: 20px;
-            text-align: center;
-            margin: 0 auto;
+            width: 90%;
+            max-width: 1280px;
         }
 
+        /* 以下のスタイルはオプションで、リンクやその他の要素のスタイリングに使用できます */
         a {
             color: #32CD32;
             text-decoration: none;
@@ -38,23 +47,13 @@
             text-decoration: underline;
         }
 
-        table {
-            margin: auto; /* Center table */
-        }
-
-        td {
-            text-align: left; /* Align text to the left */
-            padding: 5px 0; /* Padding for each link */
-        }
-
         .powered-by {
-            border-bottom: 1px solid #ffffff; /* 下に白い線を引く */
-            padding-bottom: 3px; /* 下線とテキストの間のパディング */
+            border-bottom: 1px solid #ffffff;
+            padding-bottom: 3px;
         }
 
         .account-creation {
-            margin-top: 5px; /* 上のテキストと下線の間のマージン */
-            text-align: center;
+            margin-top: 5px;
         }
     </style>
 </head>
@@ -62,16 +61,17 @@
     
 
 <body>
-
 <!-- Twitch Embed Code -->
-<div id="twitch-embed"></div>
+<div id="twitch-embed" class="twitch-embed"></div>
 <script src="https://player.twitch.tv/js/embed/v1.js"></script>
 <script type="text/javascript">
   new Twitch.Player("twitch-embed", {
     video: "1970914893",
-    parent: ["maximum1st-git-develop-maximum1sts-projects.vercel.app"] // ここを自分のウェブサイトのドメインに置き換えてください。
+    parent: ["yourwebsite.com"], // ここを自分のウェブサイトのドメインに置き換えてください。
+    autoplay: false // 自動再生を無効にする
   });
 </script>
+
 
 
     
