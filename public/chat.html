@@ -20,16 +20,16 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start; /* コンテンツをページの上部から始める */
+            justify-content: flex-start;
             min-height: 100vh;
         }
 
         .twitch-embed {
-            width: 80vw; /* 動画の幅をビューポート幅の80%に設定 */
-            height: 45vw; /* アスペクト比16:9に基づく高さ */
-            max-width: 1280px; /* 最大幅を制限 */
-            max-height: 720px; /* 最大高さを制限 */
-            margin: 20px auto; /* 上下の余白と自動マージンで中央揃え */
+            width: 80vw;
+            height: 45vw;
+            max-width: 1280px;
+            max-height: 720px;
+            margin: 20px auto;
         }
 
         #twitch-embed iframe {
@@ -40,22 +40,25 @@
         .container {
             width: 100%;
             max-width: 1280px;
-            margin-bottom: 20px; /* コンテナの下部余白 */
+            margin-bottom: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        table {
-            margin: 20px 0; /* テーブルの上下の余白 */
+        .links {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
         }
 
-        td {
-            padding: 5px 10px; /* テキストのパディング */
+        .links li {
+            margin: 10px 0; /* Adjust the space between links */
         }
 
-        .powered-by, .account-creation, td {
-            text-align: center; /* 中央揃え */
+        .powered-by, .account-creation {
+            text-align: center;
+            margin: 10px 0;
         }
 
         a {
@@ -68,7 +71,6 @@
         }
     </style>
 </head>
-   
 <body>
     <!-- Twitch Embed Code -->
     <div id="twitch-embed" class="twitch-embed"></div>
@@ -77,20 +79,18 @@
         new Twitch.Player("twitch-embed", {
             video: "1970914893",
             parent: ["maximum1st-git-develop-maximum1sts-projects.vercel.app"],
-            autoplay: false // 自動再生を無効にする
+            autoplay: false
         });
     </script>
 
     <!-- その他のコンテンツ -->
     <div class="container">
-        <table>
-            <tbody>
-                <tr><td>1. <a href="https://organizations.minnit.chat/841046088185698/Main?embed&amp;embed&amp;dark&amp;nickname=&amp;nec=6041430" target="_blank">ゲストチャット</a></td></tr>
-                <tr><td>2. <a href="https://app.gitter.im/#/room/#maximum1st:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-客人(PC用)</a></td></tr>
-                <tr><td>3. <a href="https://app.gitter.im/#/room/#maximum1st-2:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-雑談(PC用)</a></td></tr>
-                <tr><td>4. <a href="https://app.gitter.im/#/room/#maximum1st-3:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-配予(PC用)</a></td></tr>
-            </tbody>
-        </table>
+        <ul class="links">
+            <li>1. <a href="https://organizations.minnit.chat/841046088185698/Main?embed&amp;embed&amp;dark&amp;nickname=&amp;nec=6041430" target="_blank">ゲストチャット</a></li>
+            <li>2. <a href="https://app.gitter.im/#/room/#maximum1st:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-客人(PC用)</a></li>
+            <li>3. <a href="https://app.gitter.im/#/room/#maximum1st-2:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-雑談(PC用)</a></li>
+            <li>4. <a href="https://app.gitter.im/#/room/#maximum1st-3:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-配予(PC用)</a></li>
+        </ul>
         <div class="powered-by">Powered by Gitter and GitHub™</div>
         <div class="account-creation">まず<a href="https://github.co.jp/" target="_blank" rel="noopener noreferrer">アカウント作成</a>それからチャットへ！</div>
     </div>
