@@ -29,8 +29,7 @@
             height: 45vw; /* アスペクト比16:9に基づく高さ */
             max-width: 1280px; /* 最大幅を制限 */
             max-height: 720px; /* 最大高さを制限 */
-            margin-top: 20px; /* 上の余白 */
-            margin-bottom: 20px; /* 下の余白 */
+            margin: 20px auto; /* 上下の余白と自動マージンで中央揃え */
         }
 
         #twitch-embed iframe {
@@ -39,24 +38,24 @@
         }
 
         .container {
-            width: 90%;
+            width: 100%;
             max-width: 1280px;
             margin-bottom: 20px; /* コンテナの下部余白 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         table {
-            width: 100%; /* テーブルの幅をコンテナに合わせる */
             margin: 20px 0; /* テーブルの上下の余白 */
         }
 
         td {
-            text-align: left; /* テキストを左揃えにする */
             padding: 5px 10px; /* テキストのパディング */
         }
 
-        .powered-by, .account-creation {
+        .powered-by, .account-creation, td {
             text-align: center; /* 中央揃え */
-            margin: 10px 0; /* 上下の余白 */
         }
 
         a {
@@ -69,6 +68,7 @@
         }
     </style>
 </head>
+   
 <body>
     <!-- Twitch Embed Code -->
     <div id="twitch-embed" class="twitch-embed"></div>
@@ -96,5 +96,6 @@
     </div>
 </body>
 </html>
+
 
 
