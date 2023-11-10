@@ -74,14 +74,35 @@
 <body>
     <!-- Twitch Embed Code -->
     <div id="twitch-embed" class="twitch-embed"></div>
-    <script src="https://player.twitch.tv/js/embed/v1.js"></script>
-    <script type="text/javascript">
-        new Twitch.Player("twitch-embed", {
-            video: "1970914893",
-            parent: ["maximum1st-git-develop-maximum1sts-projects.vercel.app"],
-            autoplay: false
-        });
-    </script>
+    <div id="videos"></div>
+
+<script>
+// クライアント側のJavaScript
+
+// ビデオを取得して表示する関数
+async function loadVideos() {
+  try {
+    // APIエンドポイントからビデオデータを取得
+    const response = await fetch('/api/videos');
+    const videos = await response.json();
+
+    // 取得したビデオデータをページに埋め込む
+    const videosContainer = document.getElementById('videos');
+    videos.forEach(video => {
+      const videoFrame = document.createElement('iframe');
+      videoFrame.src = `https://player.twitch.tv/?video=${video.id}&parent=maximum1st-git-develop-maximum1sts-projects.vercel.app`;
+      videoFrame.height = '480'; // 高さを指定
+      videoFrame.width = '100%'; // 幅を指定（レスポンシブ対応）
+      videosContainer.appendChild(videoFrame);
+    });
+  } catch (error) {
+    console.error('Failed to load videos:', error);
+  }
+}
+
+// ページが読み込まれたときにビデオをロードする
+document.addEventListener('DOMContentLoaded', loadVideos);
+</script>
 
     <!-- その他のコンテンツ -->
     <div class="container">
