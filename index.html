@@ -205,6 +205,32 @@
             <p>このウェブサイトはJavaScriptを使用しています。すべての機能はJavascriptに依存しています。正しく表示するには、ブラウザの設定からJavaScriptを有効にしてください。</p>
         </div>
     </noscript>
+        <script type="text/javascript">
+    function checkDeviceType() {
+        var deviceType = navigator.userAgent;
+        var openTwitchAppPC = document.getElementById("openTwitchAppPC");
+        var openTwitchAppMobile = document.getElementById("openTwitchAppMobile");
+        var mobileOnlyContent = document.getElementById("mobileOnlyContent");
+
+        if (deviceType.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {
+            // モバイルデバイスの場合、モバイル版ボタンを表示し、モバイル専用コンテンツを表示
+            openTwitchAppMobile.style.display = "inline-block";
+            mobileOnlyContent.style.display = "block";
+            openTwitchAppPC.style.display = "none";
+        } else {
+            // PCの場合、PC版ボタンを表示し、モバイル専用コンテンツを非表示
+            openTwitchAppPC.style.display = "inline-block";
+            openTwitchAppMobile.style.display = "none";
+            mobileOnlyContent.style.display = "none";
+        }
+    }
+
+    // ページの読み込み時に関数を実行
+    window.onload = function() {
+        updateClock();
+        checkDeviceType();
+    };
+</script>
     <div id="clock" class="clock"></div>
 
     <div class="language-switcher">
@@ -274,36 +300,5 @@
         <li><a href="https://maximum1st.github.io/seiyaku.html" target="_blank">動画制約</a></li>
     </ul>
 
-    <script type="text/javascript">
-    <script type="text/javascript">
-    function checkDeviceType() {
-        var deviceType = navigator.userAgent;
-        var openTwitchAppPC = document.getElementById("openTwitchAppPC");
-        var openTwitchAppMobile = document.getElementById("openTwitchAppMobile");
-        var mobileOnlyContent = document.getElementById("mobileOnlyContent");
-
-        if (deviceType.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {
-            // モバイルデバイスの場合、モバイル版ボタンを表示し、モバイル専用コンテンツを表示
-            openTwitchAppMobile.style.display = "inline-block";
-            mobileOnlyContent.style.display = "block";
-            openTwitchAppPC.style.display = "none";
-        } else {
-            // PCの場合、PC版ボタンを表示し、モバイル専用コンテンツを非表示
-            openTwitchAppPC.style.display = "inline-block";
-            openTwitchAppMobile.style.display = "none";
-            mobileOnlyContent.style.display = "none";
-        }
-    }
-
-    // ページの読み込み時に関数を実行
-    window.onload = function() {
-        updateClock();
-        checkDeviceType();
-    };
-</script>
-
-
-
-    </script>
 </body>
 </html>
