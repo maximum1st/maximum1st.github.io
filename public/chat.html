@@ -25,12 +25,8 @@
     }
 
     #twitch-video {
-        width: 50vw; /* ウィンドウの幅の50% */
-        height: 28.125vw; /* 16:9のアスペクト比 */
-        max-width: 640px;
-        max-height: 360px;
-        margin-top: 20px; /* 上部の余白 */
-        margin-bottom: 20px; /* 下部の余白 */
+        margin-top: 20px; /* 動画の上部余白 */
+        margin-bottom: 20px; /* 動画の下部余白 */
     }
 
     iframe {
@@ -77,9 +73,7 @@
     <!-- Twitch Embed Code -->
    <div id="twitch-video"></div>
     <script>
-    // Twitch動画を取得し、ページに埋め込むためのスクリプト
-
-    // クライアントIDとアクセストークンを設定
+    
     const clientId = '4oqdslgbp4efuim24x8kdftf2idtm6';
     const accessToken = 'ax75nx9uru5de4d1xr3t11lr18ml9m';
     const userId = '904314848'; // 数値のユーザID
@@ -87,8 +81,10 @@
     // 動画のサイズをウィンドウサイズに基づいて調整する関数
     function adjustVideoSize() {
         const videoElement = document.getElementById('twitch-video');
-        const width = window.innerWidth * 0.5; // ウィンドウの幅の半分
-        const height = width * (9 / 16); // 16:9 のアスペクト比
+        // ウィンドウの幅の75%を計算
+        const width = window.innerWidth * 0.75;
+        // 16:9のアスペクト比に基づいて高さを計算
+        const height = width * (9 / 16);
 
         videoElement.style.width = `${width}px`;
         videoElement.style.height = `${height}px`;
@@ -121,9 +117,13 @@
     // ウィンドウサイズが変更されたときに動画のサイズを調整
     window.addEventListener('resize', adjustVideoSize);
 
+    // ページ読み込み時にも動画のサイズを調整
+    document.addEventListener('DOMContentLoaded', adjustVideoSize);
+
     // 動画を取得して埋め込む関数を呼び出す
     fetchTwitchVideo();
 </script>
+
     <!-- その他のコンテンツ -->
     <div class="container">
         <ul class="links">
