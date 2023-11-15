@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="https://maximum1st.github.io/favicon-16x16.png">
     <title>とっくん研究ChatRoom！</title>
     <style>
-        body {
+     body {
             font-family: 'Arial', sans-serif;
             background-color: #121212;
             color: #ffffff;
@@ -78,8 +78,20 @@
     </style>
 </head>
 <body>
+    <button id="link-button">リンク</button>
     <div id="twitch-video"></div>
-     <script>
+    <div id="links-overlay" class="container" style="display: none;">
+        <ul class="links">
+            <li><a href="https://organizations.minnit.chat/841046088185698/Main?embed&amp;embed&amp;dark&amp;nickname=&amp;nec=6041430" target="_blank">ゲストチャット</a></li>
+            <li><a href="https://app.gitter.im/#/room/#maximum1st:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-客人(PC用)</a></li>
+            <li><a href="https://app.gitter.im/#/room/#maximum1st-2:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-雑談(PC用)</a></li>
+            <li><a href="https://app.gitter.im/#/room/#maximum1st-3:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-配予(PC用)</a></li>
+        </ul>
+        <div class="powered-by">Powered by Gitter and GitHub™</div>
+        <div class="account-creation">まず<a href="https://github.co.jp/" target="_blank" rel="noopener noreferrer">アカウント作成</a>それからチャットへ！</div>
+    </div>
+
+    <script>
         const clientId = '4oqdslgbp4efuim24x8kdftf2idtm6';
         const accessToken = 'ax75nx9uru5de4d1xr3t11lr18ml9m';
         const userId = '904314848';
@@ -91,175 +103,22 @@
             };
 
             try {
-                const response = await fetch(`https://api.twitch.tv/helix/videos?user_id=${userId}&first=1`, { headers });
+                const response = await fetch(`https://api.twitch.tv/helix/videos?user_id=${userId}&first=1&type=archive`, { headers });
                 const data = await response.json();
                 const videoId = data.data[0].id;
-                const videoEmbedUrl = `https://player.twitch.tv/?video=${videoId}&parent=maximum1st-git-develop-maximum1sts-projects.vercel.app&autoplay=false&muted=false`;
+                const videoEmbedUrl = `https://player.twitch.tv/?video=${videoId}&parent=yourwebsite.com&autoplay=false&muted=false`; // Replace 'yourwebsite.com' with your actual domain
                 document.getElementById('twitch-video').innerHTML = `<iframe src="${videoEmbedUrl}" frameborder="0" allowfullscreen></iframe>`;
             } catch (error) {
                 console.error('Error fetching Twitch video:', error);
             }
         }
 
-        document.getElementById('link-button').onclick = function() {
-            const overlay = document.getElementById('links-overlay');
-            if (overlay.style.display === 'none') {
-                overlay.style.display = 'block';
-            } else {
-                overlay.style.display = 'none';
-            }
-        };
+        document.getElementById('link-button').addEventListener('click', function() {
+            var overlay = document.getElementById('links-overlay');
+            overlay.style.display = (overlay.style.display === 'block') ? 'none' : 'block';
+        });
 
         fetchTwitchVideo();
     </script>
-
-
-    <div class="container">
-        <ul class="links">
-            <li><a href="https://organizations.minnit.chat/841046088185698/Main?embed&amp;embed&amp;dark&amp;nickname=&amp;nec=6041430" target="_blank">ゲストチャット</a></li>
-            <li><a href="https://app.gitter.im/#/room/#maximum1st:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-客人(PC用)</a></li>
-            <li><a href="https://app.gitter.im/#/room/#maximum1st-2:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-雑談(PC用)</a></li>
-            <li><a href="https://app.gitter.im/#/room/#maximum1st-3:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-配予(PC用)</a></li>
-        </ul>
-        <div class="powered-by">Powered by Gitter and GitHub™</div>
-        <div class="account-creation">まず<a href="https://github.co.jp/" target="_blank" rel="noopener noreferrer">アカウント作成</a>それからチャットへ！</div>
-    </div>
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="robots" content="noindex, nofollow">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://maximum1st.github.io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://maximum1st.github.io/favicon-16x16.png">
-    <title>とっくん研究ChatRoom！</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #121212;
-            color: #ffffff;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-        }
-
-        #twitch-video {
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-
-        iframe {
-            width: 100%;
-            height: 100%;
-        }
-
-        .container {
-            width: 80%;
-            max-width: 1280px;
-            margin: 20px auto;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .links {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .links li {
-            margin: 10px 0;
-            display: flex;
-            justify-content: center;
-            width: 100%;
-        }
-
-        .powered-by, .account-creation {
-            text-align: center;
-            margin: 10px 0;
-        }
-
-        a {
-            color: #32CD32;
-            text-decoration: none;
-            margin: 0 10px; /* Add spacing between links */
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-    <div id="twitch-video"></div>
-     <script>
-        const clientId = '4oqdslgbp4efuim24x8kdftf2idtm6';
-        const accessToken = 'ax75nx9uru5de4d1xr3t11lr18ml9m';
-        const userId = '904314848';
-
-        async function fetchTwitchVideo() {
-            const headers = {
-                'Authorization': `Bearer ${accessToken}`,
-                'Client-Id': clientId
-            };
-
-            try {
-                const response = await fetch(`https://api.twitch.tv/helix/videos?user_id=${userId}&first=1`, { headers });
-                const data = await response.json();
-                const videoId = data.data[0].id;
-                const videoEmbedUrl = `https://player.twitch.tv/?video=${videoId}&parent=maximum1st-git-develop-maximum1sts-projects.vercel.app&autoplay=false&muted=false`;
-                document.getElementById('twitch-video').innerHTML = `<iframe src="${videoEmbedUrl}" frameborder="0" allowfullscreen></iframe>`;
-            } catch (error) {
-                console.error('Error fetching Twitch video:', error);
-            }
-        }
-
-        document.getElementById('link-button').onclick = function() {
-            const overlay = document.getElementById('links-overlay');
-            if (overlay.style.display === 'none') {
-                overlay.style.display = 'block';
-            } else {
-                overlay.style.display = 'none';
-            }
-        };
-
-        fetchTwitchVideo();
-    </script>
-
-    <div class="container">
-        <ul class="links">
-            <li><a href="https://organizations.minnit.chat/841046088185698/Main?embed&amp;embed&amp;dark&amp;nickname=&amp;nec=6041430" target="_blank">ゲストチャット</a></li>
-            <li><a href="https://app.gitter.im/#/room/#maximum1st:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-客人(PC用)</a></li>
-            <li><a href="https://app.gitter.im/#/room/#maximum1st-2:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-雑談(PC用)</a></li>
-            <li><a href="https://app.gitter.im/#/room/#maximum1st-3:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-配予(PC用)</a></li>
-        </ul>
-        <div class="powered-by">Powered by Gitter and GitHub™</div>
-        <div class="account-creation">まず<a href="https://github.co.jp/" target="_blank" rel="noopener noreferrer">アカウント作成</a>それからチャットへ！</div>
-    </div>
 </body>
 </html>
