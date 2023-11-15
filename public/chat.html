@@ -9,125 +9,103 @@
     <link rel="icon" type="image/png" sizes="16x16" href="https://maximum1st.github.io/favicon-16x16.png">
     <title>とっくん研究ChatRoom！</title>
     <style>
- body {
-        font-family: 'Arial', sans-serif;
-        background-color: #121212;
-        color: #ffffff;
-        line-height: 1.6;
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        min-height: 100vh;
-    }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
 
-    #twitch-video {
-        margin-top: 20px; /* 動画の上部余白 */
-        margin-bottom: 20px; /* 動画の下部余白 */
-    }
+        #twitch-video {
+            width: 75vw;
+            height: calc(75vw * (9 / 16));
+            max-width: 1280px;
+            max-height: calc(1280px * (9 / 16));
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
 
-    iframe {
-        width: 100%;
-        height: 100%;
-    }
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
 
-    .container {
-        width: 80%;
-        max-width: 1280px;
-        margin: 20px auto;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+        #links-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(18, 18, 18, 0.9);
+            z-index: 2;
+            overflow: auto;
+            padding-top: 50px;
+        }
 
-    .links {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-    }
+        #link-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #32CD32;
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 3;
+        }
 
-    .links li {
-        margin: 10px 0; /* リンク間のスペース */
-    }
+        .container {
+            width: 80%;
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+        }
 
-    .powered-by, .account-creation {
-        text-align: center;
-        margin: 10px 0;
-    }
+        .links {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
 
-    a {
-        color: #32CD32;
-        text-decoration: none;
-    }
+        .links li {
+            margin: 10px 0;
+        }
 
-    a:hover {
-        text-decoration: underline;
-    }
+        .powered-by, .account-creation {
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        a {
+            color: #32CD32;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <!-- Twitch Embed Code -->
-   <div id="twitch-video"></div>
-    <script>
-    
-    const clientId = '4oqdslgbp4efuim24x8kdftf2idtm6';
-    const accessToken = 'ax75nx9uru5de4d1xr3t11lr18ml9m';
-    const userId = '904314848'; // 数値のユーザID
-
-    // 動画のサイズをウィンドウサイズに基づいて調整する関数
-    function adjustVideoSize() {
-        const videoElement = document.getElementById('twitch-video');
-        // ウィンドウの幅の75%を計算
-        const width = window.innerWidth * 0.75;
-        // 16:9のアスペクト比に基づいて高さを計算
-        const height = width * (9 / 16);
-
-        videoElement.style.width = `${width}px`;
-        videoElement.style.height = `${height}px`;
-    }
-
-    async function fetchTwitchVideo() {
-        const headers = {
-            'Authorization': `Bearer ${accessToken}`,
-            'Client-Id': clientId
-        };
-
-        try {
-            const response = await fetch(`https://api.twitch.tv/helix/videos?user_id=${userId}&first=1`, { headers });
-            const data = await response.json();
-            const videoId = data.data[0].id; // 最新の動画IDを取得
-
-            // 動画埋め込みURLを生成
-            const videoEmbedUrl = `https://player.twitch.tv/?video=${videoId}&parent=maximum1st-git-develop-maximum1sts-projects.vercel.app&autoplay=false&muted=false`;
-
-            // 動画をページに埋め込む
-            document.getElementById('twitch-video').innerHTML = `<iframe src="${videoEmbedUrl}" frameborder="0" allowfullscreen></iframe>`;
-
-            // 動画のサイズを調整
-            adjustVideoSize();
-        } catch (error) {
-            console.error('Error fetching Twitch video:', error);
-        }
-    }
-
-    // ウィンドウサイズが変更されたときに動画のサイズを調整
-    window.addEventListener('resize', adjustVideoSize);
-
-    // ページ読み込み時にも動画のサイズを調整
-    document.addEventListener('DOMContentLoaded', adjustVideoSize);
-
-    // 動画を取得して埋め込む関数を呼び出す
-    fetchTwitchVideo();
-</script>
-
-    <!-- その他のコンテンツ -->
-    <div class="container">
+    <div id="twitch-video"></div>
+    <button id="link-button">リンク</button>
+    <div id="links-overlay" class="container">
         <ul class="links">
-            <li>1. <a href="https://organizations.minnit.chat/841046088185698/Main?embed&amp;embed&amp;dark&amp;nickname=&amp;nec=6041430" target="_blank">ゲストチャット</a></li>
+            <!-- ここにリンクを挿入します。 -->
+         <li>1. <a href="https://organizations.minnit.chat/841046088185698/Main?embed&amp;embed&amp;dark&amp;nickname=&amp;nec=6041430" target="_blank">ゲストチャット</a></li>
             <li>2. <a href="https://app.gitter.im/#/room/#maximum1st:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-客人(PC用)</a></li>
             <li>3. <a href="https://app.gitter.im/#/room/#maximum1st-2:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-雑談(PC用)</a></li>
             <li>4. <a href="https://app.gitter.im/#/room/#maximum1st-3:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-配予(PC用)</a></li>
@@ -135,8 +113,39 @@
         <div class="powered-by">Powered by Gitter and GitHub™</div>
         <div class="account-creation">まず<a href="https://github.co.jp/" target="_blank" rel="noopener noreferrer">アカウント作成</a>それからチャットへ！</div>
     </div>
+    
+    <script>
+        const clientId = '4oqdslgbp4efuim24x8kdftf2idtm6';
+        const accessToken = 'ax75nx9uru5de4d1xr3t11lr18ml9m';
+        const userId = '904314848';
+
+        async function fetchTwitchVideo() {
+            const headers = {
+                'Authorization': `Bearer ${accessToken}`,
+                'Client-Id': clientId
+            };
+
+            try {
+                const response = await fetch(`https://api.twitch.tv/helix/videos?user_id=${userId}&first=1`, { headers });
+                const data = await response.json();
+                const videoId = data.data[0].id;
+                const videoEmbedUrl = `https://player.twitch.tv/?video=${videoId}&parent=maximum1st-git-develop-maximum1sts-projects.vercel.app&autoplay=false&muted=false`;
+                document.getElementById('twitch-video').innerHTML = `<iframe src="${videoEmbedUrl}" frameborder="0" allowfullscreen></iframe>`;
+            } catch (error) {
+                console.error('Error fetching Twitch video:', error);
+            }
+        }
+
+        document.getElementById('link-button').onclick = function() {
+            const overlay = document.getElementById('links-overlay');
+            if (overlay.style.display === 'none') {
+                overlay.style.display = 'block';
+            } else {
+                overlay.style.display = 'none';
+            }
+        };
+
+        fetchTwitchVideo();
+    </script>
 </body>
 </html>
-
-
-
