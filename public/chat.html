@@ -106,7 +106,7 @@
                 const response = await fetch(`https://api.twitch.tv/helix/videos?user_id=${userId}&first=1&type=archive`, { headers });
                 const data = await response.json();
                 const videoId = data.data[0].id;
-                const videoEmbedUrl = `https://player.twitch.tv/?video=${videoId}&parent=yourwebsite.com&autoplay=false&muted=false`; // Replace 'yourwebsite.com' with your actual domain
+                const videoEmbedUrl = `https://player.twitch.tv/?video=${videoId}&parent=maximum1st-git-develop-maximum1sts-projects.vercel.app&autoplay=false&muted=false`; // Replace 'yourwebsite.com' with your actual domain
                 document.getElementById('twitch-video').innerHTML = `<iframe src="${videoEmbedUrl}" frameborder="0" allowfullscreen></iframe>`;
             } catch (error) {
                 console.error('Error fetching Twitch video:', error);
