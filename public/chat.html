@@ -20,18 +20,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             min-height: 100vh;
         }
 
         #twitch-video {
-            width: 75vw;
-            height: calc(75vw * (9 / 16));
-            max-width: 1280px;
-            max-height: calc(1280px * (9 / 16));
             margin-top: 20px;
-            position: relative;
-            z-index: 1;
+            margin-bottom: 20px;
         }
 
         iframe {
@@ -39,49 +34,30 @@
             height: 100%;
         }
 
-        #links-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(18, 18, 18, 0.9);
-            z-index: 2;
-            overflow: auto;
-            padding-top: 50px;
-        }
-
-        #link-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 10px 20px;
-            background-color: #32CD32;
-            color: white;
-            border: none;
-            cursor: pointer;
-            z-index: 3;
-        }
-
         .container {
             width: 80%;
             max-width: 1280px;
-            margin: 0 auto;
+            margin: 20px auto;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            z-index: 2;
         }
 
         .links {
             list-style-type: none;
             padding: 0;
             margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .links li {
             margin: 10px 0;
+            display: flex;
+            justify-content: center;
+            width: 100%;
         }
 
         .powered-by, .account-creation {
@@ -92,6 +68,7 @@
         a {
             color: #32CD32;
             text-decoration: none;
+            margin: 0 10px; /* Add spacing between links */
         }
 
         a:hover {
@@ -101,20 +78,7 @@
 </head>
 <body>
     <div id="twitch-video"></div>
-    <button id="link-button">リンク</button>
-    <div id="links-overlay" class="container">
-        <ul class="links">
-            <!-- ここにリンクを挿入します。 -->
-         <li>1. <a href="https://organizations.minnit.chat/841046088185698/Main?embed&amp;embed&amp;dark&amp;nickname=&amp;nec=6041430" target="_blank">ゲストチャット</a></li>
-            <li>2. <a href="https://app.gitter.im/#/room/#maximum1st:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-客人(PC用)</a></li>
-            <li>3. <a href="https://app.gitter.im/#/room/#maximum1st-2:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-雑談(PC用)</a></li>
-            <li>4. <a href="https://app.gitter.im/#/room/#maximum1st-3:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-配予(PC用)</a></li>
-        </ul>
-        <div class="powered-by">Powered by Gitter and GitHub™</div>
-        <div class="account-creation">まず<a href="https://github.co.jp/" target="_blank" rel="noopener noreferrer">アカウント作成</a>それからチャットへ！</div>
-    </div>
-    
-    <script>
+     <script>
         const clientId = '4oqdslgbp4efuim24x8kdftf2idtm6';
         const accessToken = 'ax75nx9uru5de4d1xr3t11lr18ml9m';
         const userId = '904314848';
@@ -147,5 +111,16 @@
 
         fetchTwitchVideo();
     </script>
+
+    <div class="container">
+        <ul class="links">
+            <li><a href="https://organizations.minnit.chat/841046088185698/Main?embed&amp;embed&amp;dark&amp;nickname=&amp;nec=6041430" target="_blank">ゲストチャット</a></li>
+            <li><a href="https://app.gitter.im/#/room/#maximum1st:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-客人(PC用)</a></li>
+            <li><a href="https://app.gitter.im/#/room/#maximum1st-2:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-雑談(PC用)</a></li>
+            <li><a href="https://app.gitter.im/#/room/#maximum1st-3:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-配予(PC用)</a></li>
+        </ul>
+        <div class="powered-by">Powered by Gitter and GitHub™</div>
+        <div class="account-creation">まず<a href="https://github.co.jp/" target="_blank" rel="noopener noreferrer">アカウント作成</a>それからチャットへ！</div>
+    </div>
 </body>
 </html>
