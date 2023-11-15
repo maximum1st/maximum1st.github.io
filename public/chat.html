@@ -86,37 +86,53 @@
     <!-- Twitch Embed Code -->
    <div id="twitch-video"></div>
     <script>
-        // Twitch APIを使用して最新の動画を取得し、ページに埋め込むためのスクリプト
+    // Twitch動画を取得し、ページに埋め込むためのスクリプト
 
-        // クライアントIDとアクセストークンを設定
-        const clientId = '4oqdslgbp4efuim24x8kdftf2idtm6';
-        const accessToken = 'ax75nx9uru5de4d1xr3t11lr18ml9m';
-        const userId = '904314848'; // 数値のユーザID
+    // クライアントIDとアクセストークンを設定
+    const clientId = '4oqdslgbp4efuim24x8kdftf2idtm6';
+    const accessToken = 'ax75nx9uru5de4d1xr3t11lr18ml9m';
+    const userId = '904314848'; // 数値のユーザID
 
-        async function fetchTwitchVideo() {
-            const headers = {
-                'Authorization': `Bearer ${accessToken}`,
-                'Client-Id': clientId
-            };
+    // 動画のサイズをウィンドウサイズに基づいて調整する関数
+    function adjustVideoSize() {
+        const videoElement = document.getElementById('twitch-video');
+        const width = window.innerWidth * 0.5; // ウィンドウの幅の半分
+        const height = width * (9 / 16); // 16:9 のアスペクト比
 
-            try {
-                const response = await fetch(`https://api.twitch.tv/helix/videos?user_id=${userId}&first=1`, { headers });
-                const data = await response.json();
-                const videoId = data.data[0].id; // 最新の動画IDを取得
+        videoElement.style.width = `${width}px`;
+        videoElement.style.height = `${height}px`;
+    }
 
-                // 動画埋め込みURLを生成。'parent' パラメーターは実際のウェブサイトのドメイン名に置き換えてください
-                const videoEmbedUrl = `https://player.twitch.tv/?video=${videoId}&parent=maximum1st-git-develop-maximum1sts-projects.vercel.app&autoplay=false&muted=false`;
+    async function fetchTwitchVideo() {
+        const headers = {
+            'Authorization': `Bearer ${accessToken}`,
+            'Client-Id': clientId
+        };
 
-                // 動画をページに埋め込む
-                document.getElementById('twitch-video').innerHTML = `<iframe src="${videoEmbedUrl}" frameborder="0" allowfullscreen></iframe>`;
-            } catch (error) {
-                console.error('Error fetching Twitch video:', error);
-            }
+        try {
+            const response = await fetch(`https://api.twitch.tv/helix/videos?user_id=${userId}&first=1`, { headers });
+            const data = await response.json();
+            const videoId = data.data[0].id; // 最新の動画IDを取得
+
+            // 動画埋め込みURLを生成
+            const videoEmbedUrl = `https://player.twitch.tv/?video=${videoId}&parent=maximum1st-git-develop-maximum1sts-projects.vercel.app&autoplay=false&muted=false`;
+
+            // 動画をページに埋め込む
+            document.getElementById('twitch-video').innerHTML = `<iframe src="${videoEmbedUrl}" frameborder="0" allowfullscreen></iframe>`;
+
+            // 動画のサイズを調整
+            adjustVideoSize();
+        } catch (error) {
+            console.error('Error fetching Twitch video:', error);
         }
+    }
 
-        // 動画を取得して埋め込む関数を呼び出す
-        fetchTwitchVideo();
-    </script>
+    // ウィンドウサイズが変更されたときに動画のサイズを調整
+    window.addEventListener('resize', adjustVideoSize);
+
+    // 動画を取得して埋め込む関数を呼び出す
+    fetchTwitchVideo();
+</script>
     <!-- その他のコンテンツ -->
     <div class="container">
         <ul class="links">
