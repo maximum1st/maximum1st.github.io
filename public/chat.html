@@ -84,41 +84,55 @@
 </head>
 <body>
     <!-- Twitch Embed Code -->
-    <div id="twitch-video"></div>
-     <script>
-        // Twitch APIを使用して最新の動画を取得し、ページに埋め込むためのスクリプト
+    <script src="https://player.twitch.tv/js/embed/v1.js"></script>
+<script>
+    // Twitch APIを使用して最新の動画を取得し、ページに埋め込むためのスクリプト
 
-        // クライアントIDとアクセストークンを設定
-        const clientId = '4oqdslgbp4efuim24x8kdftf2idtm6';
-        const accessToken = 'ax75nx9uru5de4d1xr3t11lr18ml9m';
-        const userId = '904314848'; // 数値のユーザID
+    // クライアントIDとアクセストークンを設定
+    const clientId = '4oqdslgbp4efuim24x8kdftf2idtm6';
+    const accessToken = 'ax75nx9uru5de4d1xr3t11lr18ml9m';
+    const userId = '904314848'; // 数値のユーザID
 
-        async function fetchTwitchVideo() {
-            const headers = {
-                'Authorization': `Bearer ${accessToken}`,
-                'Client-Id': clientId
-            };
+    async function fetchTwitchVideo() {
+        const headers = {
+            'Authorization': `Bearer ${accessToken}`,
+            'Client-Id': clientId
+        };
 
-            try {
-                const response = await fetch(`https://api.twitch.tv/helix/videos?user_id=${userId}&first=1`, { headers });
-                const data = await response.json();
-                const videoId = data.data[0].id; // 最新の動画IDを取得
+        try {
+            const response = await fetch(`https://api.twitch.tv/helix/videos?user_id=${userId}&first=1&type=archive`, { headers });
+            const data = await response.json();
+            const videoId = data.data[0].id; // 最新の動画IDを取得
 
-                // 動画埋め込みURLを生成。ここでの 'parent' パラメーターはメインドメインを指定
-                // 実際のウェブサイトのドメイン名に置き換えてください（例: 'parent=example.com'）
-                const videoEmbedUrl = `https://player.twitch.tv/?video=${videoId}&parent=maximum1st-git-develop-maximum1sts-projects.vercel.app`;
+            // 動画埋め込みURLを生成
+            const videoEmbedUrl = `https://player.twitch.tv/?video=${videoId}&parent=maximum1st-git-develop-maximum1sts-projects.vercel.app&autoplay=true&muted=false`;
 
-                // 動画をページに埋め込む
-                document.getElementById('twitch-video').innerHTML = `<iframe src="${videoEmbedUrl}" frameborder="0" allowfullscreen></iframe>`;
-            } catch (error) {
-                console.error('Error fetching Twitch video:', error);
-            }
+            // 動画をページに埋め込む
+            document.getElementById('twitch-video').innerHTML = `<div id="twitch-embed"></div>`;
+
+            // Twitch Embed Playerを初期化
+            new Twitch.Embed("twitch-embed", {
+                width: 854,
+                height: 480,
+                video: videoId,
+                autoplay: true,
+                muted: false
+            });
+
+            // 動画終了時に再生を再開するイベントリスナーを追加
+            var embed = new Twitch.Player("twitch-embed");
+            embed.addEventListener(Twitch.Player.ENDED, function() {
+                embed.play();
+            });
+
+        } catch (error) {
+            console.error('Error fetching Twitch video:', error);
         }
+    }
 
-        // 動画を取得して埋め込む関数を呼び出す
-        fetchTwitchVideo();
-    </script>
-
+    // 動画を取得して埋め込む関数を呼び出す
+    fetchTwitchVideo();
+</script>
     <!-- その他のコンテンツ -->
     <div class="container">
         <ul class="links">
