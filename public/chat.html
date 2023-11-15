@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="https://maximum1st.github.io/favicon-16x16.png">
     <title>とっくん研究ChatRoom！</title>
     <style>
-     body {
+        body {
             font-family: 'Arial', sans-serif;
             background-color: #121212;
             color: #ffffff;
@@ -25,6 +25,10 @@
         }
 
         #twitch-video {
+            width: 75%;
+            height: calc(75% * (9 / 16)); /* 16:9 aspect ratio */
+            max-width: 1280px;
+            max-height: calc(1280px * (9 / 16));
             margin-top: 20px;
             margin-bottom: 20px;
         }
@@ -34,10 +38,36 @@
             height: 100%;
         }
 
+        #link-button {
+            position: fixed; /* Fixed at the top-right corner */
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #32CD32; /* Green background */
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 1000; /* High z-index to ensure it's above other elements */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        #links-overlay {
+            display: none; /* Initially hidden */
+            position: fixed; /* Full-screen overlay */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(18, 18, 18, 0.9); /* Semi-transparent background */
+            z-index: 2; /* Above the video, but below the button */
+            overflow-y: auto; /* Enable vertical scrolling */
+            padding-top: 50px;
+        }
+
         .container {
-            width: 80%;
+            width: 100%;
             max-width: 1280px;
-            margin: 20px auto;
+            margin: 0 auto;
             padding: 20px;
             display: flex;
             flex-direction: column;
@@ -50,26 +80,26 @@
             margin: 0;
             display: flex;
             flex-direction: column;
-            align-items: flex-start; /* Left align the links */
-            width: 100%; /* Use the full width of the container */
+            align-items: center;
+            width: 100%; /* Full width of the container */
         }
 
         .links li {
             margin: 10px 0;
-            display: flex;
-            justify-content: center;
-            width: 100%;
+            width: 100%; /* Full width of the list item */
+            text-align: center; /* Center the text */
         }
 
         .powered-by, .account-creation {
             text-align: center;
-            margin: 10px 0;
+            margin-top: 20px;
         }
 
         a {
             color: #32CD32;
             text-decoration: none;
-            margin: 0 10px; /* Add spacing between links */
+            margin: 0 auto; /* Center the link inside the list item */
+            display: block; /* Make the link fill the list item for better clickability */
         }
 
         a:hover {
@@ -106,7 +136,7 @@
                 const response = await fetch(`https://api.twitch.tv/helix/videos?user_id=${userId}&first=1&type=archive`, { headers });
                 const data = await response.json();
                 const videoId = data.data[0].id;
-                const videoEmbedUrl = `https://player.twitch.tv/?video=${videoId}&parent=maximum1st-git-develop-maximum1sts-projects.vercel.app&autoplay=false&muted=false`; // Replace 'yourwebsite.com' with your actual domain
+                const videoEmbedUrl = `https://player.twitch.tv/?video=${videoId}&parent=maximum1st-git-develop-maximum1sts-projects.vercel.app&autoplay=false&muted=false`;
                 document.getElementById('twitch-video').innerHTML = `<iframe src="${videoEmbedUrl}" frameborder="0" allowfullscreen></iframe>`;
             } catch (error) {
                 console.error('Error fetching Twitch video:', error);
