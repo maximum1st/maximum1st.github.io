@@ -25,12 +25,11 @@
         }
 
         #twitch-video {
-            width: 75%;
-            height: calc(75% * (9 / 16)); /* 16:9 aspect ratio */
-            max-width: 1280px;
-            max-height: calc(1280px * (9 / 16));
+            width: 75vw;
+            height: calc(75vw * 9 / 16);
             margin-top: 20px;
             margin-bottom: 20px;
+            z-index: 1;
         }
 
         iframe {
@@ -39,28 +38,28 @@
         }
 
         #link-button {
-            position: fixed; /* Fixed at the top-right corner */
+            position: fixed;
             top: 20px;
             right: 20px;
             padding: 10px 20px;
-            background-color: #32CD32; /* Green background */
+            background-color: #32CD32;
             color: white;
             border: none;
             cursor: pointer;
-            z-index: 1000; /* High z-index to ensure it's above other elements */
-            border-radius: 5px; /* Rounded corners */
+            z-index: 1000;
+            border-radius: 5px;
         }
 
         #links-overlay {
-            display: none; /* Initially hidden */
-            position: fixed; /* Full-screen overlay */
+            display: none;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(18, 18, 18, 0.9); /* Semi-transparent background */
-            z-index: 2; /* Above the video, but below the button */
-            overflow-y: auto; /* Enable vertical scrolling */
+            background-color: rgba(18, 18, 18, 0.9);
+            z-index: 2;
+            overflow-y: auto;
             padding-top: 50px;
         }
 
@@ -78,16 +77,12 @@
             list-style-type: none;
             padding: 0;
             margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%; /* Full width of the container */
+            width: 100%;
+            text-align: center;
         }
 
         .links li {
             margin: 10px 0;
-            width: 100%; /* Full width of the list item */
-            text-align: center; /* Center the text */
         }
 
         .powered-by, .account-creation {
@@ -98,8 +93,8 @@
         a {
             color: #32CD32;
             text-decoration: none;
-            margin: 0 auto; /* Center the link inside the list item */
-            display: block; /* Make the link fill the list item for better clickability */
+            display: block;
+            margin: 0 auto;
         }
 
         a:hover {
