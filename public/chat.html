@@ -102,13 +102,18 @@
             text-decoration: underline;
         }
       @media screen and (max-width: 600px) {
-    body {
-        background-color: #121212 !important; /* 強制的に背景色を設定 */
+    body, #twitch-video, #links-overlay {
+        background-color: #121212 !important; /* すべての主要な要素に対して背景色を指定 */
     }
     #twitch-video {
-        
+        width: 100vw; /* モバイルデバイスでの幅を100%に設定 */
+        height: calc(100vw * 9 / 16); /* 高さをアスペクト比16:9に維持 */
     }
 }
+    iframe {
+    background-color: #121212; /* iframeにも背景色を設定 */
+}
+
 
     </style>
 </head>
