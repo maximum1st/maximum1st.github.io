@@ -355,25 +355,27 @@ ul.link-list {
         <li><a href="https://maximum1st.github.io/seiyaku.html" target="_blank">動画制約</a></li>
     </ul>
     <script>
-// 一番目の画像リンクにクリックイベントリスナーを設定
-var firstImageLink = document.getElementById('firstImageLink');
-if (firstImageLink) {
-    firstImageLink.addEventListener('click', function(event) {
-        event.preventDefault(); // デフォルトの動作を停止
-        window.open('https://apps.apple.com/jp/app/twitch/id460177396', '_blank');
-    });
-}
+// ドキュメントが完全に読み込まれた後に実行
+document.addEventListener('DOMContentLoaded', function() {
+    // 一番目の画像リンクにクリックイベントリスナーを設定
+    var firstImageLink = document.getElementById('firstImageLink');
+    if (firstImageLink) {
+        firstImageLink.onclick = function(event) {
+            event.preventDefault(); // デフォルトの動作を停止
+            window.open('https://apps.apple.com/jp/app/twitch/id460177396', '_blank');
+        };
+    }
 
-// 二番目の画像リンクにクリックイベントリスナーを設定
-var secondImageLink = document.getElementById('secondImageLink');
-if (secondImageLink) {
-    secondImageLink.addEventListener('click', function(event) {
-        event.preventDefault(); // デフォルトの動作を停止
-        window.open('https://play.google.com/store/apps/details?id=tv.twitch.android.app&hl=ja&gl=US', '_blank');
-    });
-}
-</script>
-
+    // 二番目の画像リンクにクリックイベントリスナーを設定
+    var secondImageLink = document.getElementById('secondImageLink');
+    if (secondImageLink) {
+        secondImageLink.onclick = function(event) {
+            event.preventDefault(); // デフォルトの動作を停止
+            window.open('https://play.google.com/store/apps/details?id=tv.twitch.android.app&hl=ja&gl=US', '_blank');
+        };
+    }
+});
+    </script>
 
 </body>
 </html>
