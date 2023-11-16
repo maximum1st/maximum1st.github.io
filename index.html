@@ -210,6 +210,9 @@ ul.link-list {
         position: relative;
         z-index: 9999; /* 画像を前面に表示 */
     }
+    #downloadText {
+    margin-bottom: 5px; /* 画像との間に5pxのスペースを設定 */
+}
 /* PCデバイスでのみ表示 */
 @media screen and (min-width: 769px) {
     #openTwitchAppMobile {
@@ -325,8 +328,8 @@ ul.link-list {
 
 
         <div id="mobileOnlyContent">
-            <br>
-            <p>↓こちらからダウンロード</p>
+            
+            <p id="downloadText">↓こちらからダウンロード</p>
     <img id="firstImageLink" src="https://maximum1st-git-develop-maximum1sts-projects.vercel.app/APPSTORE1.png" alt="iOS App Store">
     <img id="secondImageLink" src="https://maximum1st-git-develop-maximum1sts-projects.vercel.app/APPSTORE2.png" alt="Google Play Store">
 </div>
