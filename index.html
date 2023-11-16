@@ -349,6 +349,19 @@ ul.link-list {
         <li><a href="https://maximum1st.github.io/completesetup.html" class="blink-blue-white" target="_blank">完成設定</a></li>
         <li><a href="https://maximum1st.github.io/seiyaku.html" target="_blank">動画制約</a></li>
     </ul>
+<script>
+    // ドキュメントが読み込まれたら実行する関数を設定
+    document.addEventListener('DOMContentLoaded', function() {
+        // モバイル用画像要素を選択
+        var mobileImages = document.querySelectorAll('#mobileOnlyContent img');
+
+        // 各画像要素に対してマージンを設定
+        mobileImages.forEach(function(image) {
+            image.style.marginTop = '10px';  // 上のマージンを設定
+            image.style.marginBottom = '10px';  // 下のマージンを設定
+        });
+    });
+</script>
 
 </body>
 </html>
