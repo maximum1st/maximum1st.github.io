@@ -32,7 +32,6 @@
         .image-wrapper {
             position: relative;
             display: inline-block;
-           
         }
 
         .image-wrapper img {
@@ -87,28 +86,24 @@
             line-height: 1.5;
         }
 
-        #backToTopBtn,
-        #scrollToBottomBtn,
-        #openTwitchAppPC,
-        #openTwitchAppMobile {
-    background-color: orange;
-    color: white;
-    border: none;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: flex; /* ボタン内のテキストを中央揃えにするために flex を用います。 */
-    justify-content: center; /* テキストを水平方向に中央揃えにします。 */
-    align-items: center; /* テキストを垂直方向に中央揃えにします。 */
-    font-size: 16px;
-    margin: 10px;
-    height: 3em;
-    transition: background-color 0.3s ease;
-    border-radius: 15px;
+        #backToTopBtn, #scrollToBottomBtn, #openTwitchAppPC, #openTwitchAppMobile {
+            background-color: orange;
+            color: white;
+            border: none;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            margin: 10px;
+            height: 3em;
+            transition: background-color 0.3s ease;
+            border-radius: 15px;
         }
-        
-        #openTwitchAppPC:hover,
-        #openTwitchAppMobile:hover {
+
+        #openTwitchAppPC:hover, #openTwitchAppMobile:hover {
             background-color: darkorange;
         }
 
@@ -176,26 +171,47 @@
             100% { color: blue; }
         }
         .left-aligned {
-    text-align: left; /* 文章を左寄せにします */
-    max-width: 600px; /* 適切な最大幅を設定します */
-    margin-left: auto; /* 左のマージンを自動にして中央寄せに見せます */
-    margin-right: auto; /* 右のマージンを自動にして中央寄せに見せます */
-}
-       @keyframes blink-question-yellow {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 1; }
-}
-.blink-question-yellow::after {
-  content: '？';
-  color: yellow; /* テキストの色を黄色にします */
-  animation: blink-question-yellow 1s infinite;
-  margin-left: 5px;
-}
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @keyframes blink-question-yellow {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+        .blink-question-yellow::after {
+            content: '？';
+            color: yellow;
+            animation: blink-question-yellow 1s infinite;
+            margin-left: 5px;
+        }
         .justify {
             text-align: justify;
             text-justify: inter-word;
         }
-      
+
+        /* モバイル専用コンテンツのスタイル */
+        #mobileOnlyContent {
+            display: none; /* デフォルトでは非表示 */
+        }
+
+        /* モバイルデバイスでのみ表示 */
+        @media screen and (max-width: 768px) {
+            #mobileOnlyContent {
+                display: block;
+            }
+            #openTwitchAppPC {
+                display: none; /* PC用ボタンは非表示 */
+            }
+        }
+
+        /* PCデバイスでのみ表示 */
+        @media screen and (min-width: 769px) {
+            #openTwitchAppMobile {
+                display: none; /* モバイル用ボタンは非表示 */
+            }
+        }
 
     </style>
 </head>
