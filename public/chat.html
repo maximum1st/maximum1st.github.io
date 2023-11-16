@@ -160,21 +160,27 @@
 
         fetchTwitchVideo();
 
-        function adjustVideoSize() {
+       function adjustVideoSize() {
     const screenWidth = window.innerWidth;
     const videoElement = document.getElementById('twitch-video');
     
-    if (screenWidth <= 600) { // 600px以下の場合、モバイルビューとみなす
+    if (screenWidth <= 600) {
         videoElement.style.width = '100vw';
         videoElement.style.height = 'calc(100vw * 9 / 16)';
-    } else { // それ以外の場合、デフォルトのサイズに戻す
+    } else {
         videoElement.style.width = '75vw';
         videoElement.style.height = 'calc(75vw * 9 / 16)';
     }
 }
 
-// イベントリスナーをウィンドウのロードとリサイズイベントに追加
-window.addEventListener('load', adjustVideoSize);
+// ロード時に一度だけ実行
+if (document.readyState === 'complete') {
+    adjustVideoSize();
+} else {
+    window.addEventListener('load', adjustVideoSize);
+}
+
+// リサイズイベントに登録
 window.addEventListener('resize', adjustVideoSize);
 
     </script>
