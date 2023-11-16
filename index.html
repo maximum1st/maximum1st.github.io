@@ -354,12 +354,14 @@ ul.link-list {
         <li><a href="https://maximum1st.github.io/completesetup.html" class="blink-blue-white" target="_blank">完成設定</a></li>
         <li><a href="https://maximum1st.github.io/seiyaku.html" target="_blank">動画制約</a></li>
     </ul>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // 一番目の画像リンクにクリックイベントリスナーを設定
         var firstImageLink = document.getElementById('firstImageLink');
         if (firstImageLink) {
-            firstImageLink.addEventListener('click', function() {
+            firstImageLink.addEventListener('click', function(event) {
+                event.preventDefault(); // デフォルトの動作を停止
                 window.open('https://apps.apple.com/jp/app/twitch/id460177396', '_blank');
             });
         }
@@ -367,13 +369,13 @@ ul.link-list {
         // 二番目の画像リンクにクリックイベントリスナーを設定
         var secondImageLink = document.getElementById('secondImageLink');
         if (secondImageLink) {
-            secondImageLink.addEventListener('click', function() {
+            secondImageLink.addEventListener('click', function(event) {
+                event.preventDefault(); // デフォルトの動作を停止
                 window.open('https://play.google.com/store/apps/details?id=tv.twitch.android.app&hl=ja&gl=US', '_blank');
             });
         }
     });
 </script>
-
 
 </body>
 </html>
