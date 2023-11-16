@@ -37,17 +37,20 @@
         }
 
         #link-button {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 10px 20px;
-            background-color: #32CD32;
-            color: white;
-            border: none;
-            cursor: pointer;
-            z-index: 1001; /* オーバーレイより上に表示 */
-            border-radius: 5px;
-        }
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 20px 10px; /* 縦長のデザインに調整 */
+    background-color: #32CD32;
+    color: white;
+    border: none;
+    cursor: pointer;
+    z-index: 1001; /* オーバーレイより上に表示 */
+    border-radius: 5; /* 角を丸くしない */
+    writing-mode: vertical-rl; /* テキストを縦書きに */
+    transform: rotate(180deg); /* テキストが上から下に流れるように */
+}
+
 
         #links-overlay {
             display: none;
