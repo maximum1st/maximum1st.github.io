@@ -101,19 +101,18 @@
         a:hover {
             text-decoration: underline;
         }
-      @media screen and (max-width: 600px) {
-    body, #twitch-video, #links-overlay {
-        background-color: #121212 !important; /* すべての主要な要素に対して背景色を指定 */
-    }
+     
+@media screen and (max-width: 600px) {
     #twitch-video {
-        width: 100vw; /* モバイルデバイスでの幅を100%に設定 */
-        height: calc(100vw * 9 / 16); /* 高さをアスペクト比16:9に維持 */
+        width: 100%; /* 横幅を100%に設定 */
+        height: auto; /* 高さを自動調整に変更 */
+        margin-top: 0; /* 余白をなくす */
+        margin-bottom: 0; /* 余白をなくす */
+    }
+    iframe {
+        background-color: #121212; /* iframeの背景色を設定 */
     }
 }
-    iframe {
-    background-color: #121212; /* iframeにも背景色を設定 */
-}
-
 
     </style>
 </head>
@@ -160,29 +159,22 @@
 
         fetchTwitchVideo();
 
-       function adjustVideoSize() {
+        
+function adjustVideoSize() {
     const screenWidth = window.innerWidth;
     const videoElement = document.getElementById('twitch-video');
     
+    // 画面幅が600px以下の場合にのみサイズを調整
     if (screenWidth <= 600) {
-        videoElement.style.width = '100vw';
-        videoElement.style.height = 'calc(100vw * 9 / 16)';
-    } else {
-        videoElement.style.width = '75vw';
-        videoElement.style.height = 'calc(75vw * 9 / 16)';
+        videoElement.style.width = '100%';
+        videoElement.style.height = 'auto'; // 高さはアスペクト比に応じて自動で調整されるように
     }
 }
 
-// ロード時に一度だけ実行
-if (document.readyState === 'complete') {
-    adjustVideoSize();
-} else {
-    window.addEventListener('load', adjustVideoSize);
-}
-
-// リサイズイベントに登録
+// イベントリスナーを追加
+window.addEventListener('load', adjustVideoSize);
 window.addEventListener('resize', adjustVideoSize);
-
+      
     </script>
 </body>
 </html>
