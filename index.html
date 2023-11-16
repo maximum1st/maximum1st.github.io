@@ -222,30 +222,45 @@
         </div>
     </noscript>
         <script type="text/javascript">
-    function checkDeviceType() {
-        var deviceType = navigator.userAgent;
-        var openTwitchAppPC = document.getElementById("openTwitchAppPC");
-        var openTwitchAppMobile = document.getElementById("openTwitchAppMobile");
-        var mobileOnlyContent = document.getElementById("mobileOnlyContent");
+    // クロックを更新する関数
+        function updateClock() {
+            var now = moment().tz("Asia/Tokyo");
+            var time = now.format('YYYY/MM/DD HH:mm:ss');
 
-        if (deviceType.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {
-            // モバイルデバイスの場合、モバイル版ボタンを表示し、モバイル専用コンテンツを表示
-            openTwitchAppMobile.style.display = "inline-block";
-            mobileOnlyContent.style.display = "block";
-            openTwitchAppPC.style.display = "none";
-        } else {
-            // PCの場合、PC版ボタンを表示し、モバイル専用コンテンツを非表示
-            openTwitchAppPC.style.display = "inline-block";
-            openTwitchAppMobile.style.display = "none";
-            mobileOnlyContent.style.display = "none";
+            document.getElementById('clock').innerText = time + " Japan/Tokyo";
+
+            setTimeout(updateClock, 1000);
         }
-    }
 
-    // ページの読み込み時に関数を実行
-    window.onload = function() {
-        updateClock();
-        checkDeviceType();
-    };
+        // ページの読み込み時にクロックを開始
+        window.onload = function() {
+            updateClock();
+            checkDeviceType();
+        }
+            
+      // デバイスタイプをチェックする関数
+  function checkDeviceType() {
+    var deviceType = navigator.userAgent;
+    var openTwitchAppPC = document.getElementById("openTwitchAppPC");
+    var openTwitchAppMobile = document.getElementById("openTwitchAppMobile");
+    var mobileOnlyContent = document.getElementById("mobileOnlyContent");
+
+    if (deviceType.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {
+      openTwitchAppMobile.style.display = "block"; // インラインブロックではなく、ボタンが縦に並ばないようにする場合は "block" を使います
+      mobileOnlyContent.style.display = "block";
+      openTwitchAppPC.style.display = "none";
+    } else {
+      openTwitchAppPC.style.display = "block";
+      openTwitchAppMobile.style.display = "none";
+      mobileOnlyContent.style.display = "none";
+    }
+  }
+
+  // ページの読み込み時に関数を実行
+  window.onload = function() {
+    updateClock();
+    checkDeviceType();
+  };
 </script>
     <div id="clock" class="clock"></div>
 
