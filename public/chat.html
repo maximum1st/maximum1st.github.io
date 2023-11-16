@@ -35,8 +35,7 @@
             width: 100%;
             height: 100%;
         }
-
-      #link-button {
+#link-button {
     position: fixed;
     top: 0;
     right: 0;
@@ -48,9 +47,10 @@
     z-index: 1001; /* オーバーレイより上に表示 */
     border-radius: 0; /* 角を丸くしない */
     writing-mode: vertical-rl; /* テキストを縦書きに */
-    transform: rotate(180deg) rotateY(180deg); /* テキストが下から上に流れるように */
+    transform: rotateY(180deg); /* テキストが下から上に流れるように */
 }
 
+   
 
         #links-overlay {
             display: none;
