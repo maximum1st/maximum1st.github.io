@@ -226,40 +226,40 @@
         </div>
     </noscript>
         <script type="text/javascript">
-     // クロックを更新する関数
-        function updateClock() {
-            var now = moment().tz("Asia/Tokyo");
-            var time = now.format('YYYY/MM/DD HH:mm:ss');
-            document.getElementById('clock').innerText = time + " Japan/Tokyo";
-            setTimeout(updateClock, 1000);
+        // クロックを更新する関数
+    function updateClock() {
+        var now = moment().tz("Asia/Tokyo");
+        var time = now.format('YYYY/MM/DD HH:mm:ss');
+        document.getElementById('clock').innerText = time + " Japan/Tokyo";
+        setTimeout(updateClock, 1000);
+    }
+
+    // デバイスタイプをチェックしてTwitchアプリボタンを表示する関数
+    function checkDeviceType() {
+        var deviceType = navigator.userAgent;
+        var openTwitchAppPC = document.getElementById("openTwitchAppPC");
+        var openTwitchAppMobile = document.getElementById("openTwitchAppMobile");
+
+        if (deviceType.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {
+            openTwitchAppMobile.style.display = "block";
+            openTwitchAppMobile.onclick = function(event) {
+                event.preventDefault();
+                window.location.href = "twitch://stream/toshishige_maximum1st";
+            };
+        } else {
+            openTwitchAppPC.style.display = "block";
+            openTwitchAppPC.onclick = function(event) {
+                event.preventDefault();
+                window.open("https://www.twitch.tv/toshishige_maximum1st/about", "_blank");
+            };
         }
+    }
 
-        // デバイスタイプをチェックしてTwitchアプリボタンを表示する関数
-        function checkDeviceType() {
-            var deviceType = navigator.userAgent;
-            var openTwitchAppPC = document.getElementById("openTwitchAppPC");
-            var openTwitchAppMobile = document.getElementById("openTwitchAppMobile");
-
-            if (deviceType.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {
-                openTwitchAppMobile.style.display = "block";
-                openTwitchAppMobile.addEventListener("click", function(event) {
-                    event.preventDefault();
-                    window.location.href = "twitch://stream/toshishige_maximum1st";
-                });
-            } else {
-                openTwitchAppPC.style.display = "block";
-                openTwitchAppPC.addEventListener("click", function(event) {
-                    event.preventDefault();
-                    window.open("https://www.twitch.tv/toshishige_maximum1st/about", "_blank");
-                });
-            }
-        }
-
-        // ページの読み込み時に関数を実行
-        window.onload = function() {
-            updateClock();
-            checkDeviceType();
-        };
+    // ページの読み込み時に関数を実行
+    window.onload = function() {
+        updateClock();
+        checkDeviceType();
+    };
 </script>
     <div id="clock" class="clock"></div>
 
