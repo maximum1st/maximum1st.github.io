@@ -206,7 +206,10 @@ ul.link-list {
         display: none; /* PC用ボタンは非表示 */
     }
 }
-
+.image-link {
+        position: relative;
+        z-index: 9999; /* 画像を前面に表示 */
+    }
 /* PCデバイスでのみ表示 */
 @media screen and (min-width: 769px) {
     #openTwitchAppMobile {
@@ -217,10 +220,7 @@ ul.link-list {
     display: none; /* デフォルトでは非表示にしておき、JavaScriptで制御 */
     margin: 0 auto; /* 左右のマージンを自動で調整してセンタリング */
 }
-.image-link {
-        position: relative;
-        z-index: 9999; /* 画像を前面に表示 */
-    }
+
 
     </style>
 </head>
