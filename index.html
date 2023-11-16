@@ -238,29 +238,30 @@
             checkDeviceType();
         }
             
-      // デバイスタイプをチェックする関数
+  <!-- デバイスタイプをチェックしてTwitchアプリボタンを表示する関数 -->
+<script type="text/javascript">
   function checkDeviceType() {
     var deviceType = navigator.userAgent;
     var openTwitchAppPC = document.getElementById("openTwitchAppPC");
     var openTwitchAppMobile = document.getElementById("openTwitchAppMobile");
-    var mobileOnlyContent = document.getElementById("mobileOnlyContent");
 
     if (deviceType.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {
-      openTwitchAppMobile.style.display = "block"; // インラインブロックではなく、ボタンが縦に並ばないようにする場合は "block" を使います
-      mobileOnlyContent.style.display = "block";
-      openTwitchAppPC.style.display = "none";
+      openTwitchAppMobile.style.display = "inline-block";
+      openTwitchAppMobile.onclick = function(event) {
+        event.preventDefault();
+        window.location.href = "twitch://stream/toshishige_maximum1st";
+      };
     } else {
-      openTwitchAppPC.style.display = "block";
-      openTwitchAppMobile.style.display = "none";
-      mobileOnlyContent.style.display = "none";
+      openTwitchAppPC.style.display = "inline-block";
+      openTwitchAppPC.onclick = function(event) {
+        event.preventDefault();
+        window.open("https://www.twitch.tv/toshishige_maximum1st/about", "_blank");
+      };
     }
   }
 
   // ページの読み込み時に関数を実行
   window.onload = function() {
-    updateClock();
-    checkDeviceType();
-  };
 </script>
     <div id="clock" class="clock"></div>
 
