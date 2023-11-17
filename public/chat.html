@@ -102,9 +102,9 @@
         a:hover {
             text-decoration: underline;
         }
-        #closeButton {
+  #closeButton {
     position: fixed;
-    top: 50px; /* 必要に応じて位置を調整 */
+    top: 80px; /* この値を適切に調整して、'チャットリスト' ボタンと重ならないようにします */
     right: 0;
     padding: 20px 10px;
     background-color: #FF6347; /* 視認性のためのトマト色 */
@@ -116,6 +116,7 @@
     writing-mode: vertical-rl;
     transform: rotateY(180deg);
 }
+
     </style>
 </head>
 <body>
@@ -166,6 +167,8 @@
 
         document.getElementById('closeButton').addEventListener('click', function() {
     window.close();
+});
+
     </script>
 </body>
 </html>
