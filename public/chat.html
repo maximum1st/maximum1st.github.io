@@ -39,18 +39,30 @@
     position: fixed;
     top: 0;
     right: 0;
-    padding: 20px 10px; /* 縦長のデザインに調整 */
+    padding: 20px 10px;
     background-color: #32CD32;
     color: white;
     border: none;
     cursor: pointer;
-    z-index: 1001; /* オーバーレイより上に表示 */
-    border-radius: 0; /* 角を丸くしない */
-    writing-mode: vertical-rl; /* テキストを縦書きに */
-    transform: rotateY(180deg); /* テキストが下から上に流れるように */
+    z-index: 1001;
+    border-radius: 0;
+    writing-mode: vertical-rl;
+    transform: rotateY(180deg);
 }
-
-   
+   #closeButton {
+    position: fixed;
+    top: 60px; /* 'チャットリスト' ボタンの下に来るように調整します */
+    right: 0;
+    padding: 20px 10px;
+    background-color: #FF6347;
+    color: white;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    border-radius: 0;
+    writing-mode: vertical-rl;
+    transform: rotateY(180deg);
+}
 
         #links-overlay {
             display: none;
@@ -102,20 +114,7 @@
         a:hover {
             text-decoration: underline;
         }
-  #closeButton {
-    position: fixed;
-    top: 80px; /* この値を適切に調整して、'チャットリスト' ボタンと重ならないようにします */
-    right: 0;
-    padding: 20px 10px;
-    background-color: #FF6347; /* 視認性のためのトマト色 */
-    color: white;
-    border: none;
-    cursor: pointer;
-    z-index: 1001;
-    border-radius: 0;
-    writing-mode: vertical-rl;
-    transform: rotateY(180deg);
-}
+  
 
     </style>
 </head>
