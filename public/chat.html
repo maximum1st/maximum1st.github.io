@@ -35,7 +35,8 @@
             width: 100%;
             height: 100%;
         }
-#link-button {
+
+     #link-button {
     position: fixed;
     top: 0;
     right: 0;
@@ -47,11 +48,12 @@
     z-index: 1001;
     border-radius: 0;
     writing-mode: vertical-rl;
-    transform: rotateY(180deg);
+    /* transform: rotateY(180deg); この行を削除 */
 }
-   #closeButton {
+
+#closeButton {
     position: fixed;
-    top: 150px; /* 'チャットリスト' ボタンの下に来るように調整します */
+    top: 150px; /* 'チャットリスト' ボタンの下に来るように調整 */
     right: 0;
     padding: 20px 10px;
     background-color: #FF6347;
@@ -61,9 +63,10 @@
     z-index: 1001;
     border-radius: 0;
     writing-mode: vertical-rl;
-    transform: rotateY(180deg);
+    /* transform: rotateY(180deg); この行を削除 */
 }
-
+   
+        
         #links-overlay {
             display: none;
             position: fixed;
