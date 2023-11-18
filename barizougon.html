@@ -110,7 +110,7 @@
 </div>
 
 <div class="top-right">
-  <button id="closeTabAlertButton">終了するには？</button>
+  <button id="closeButton">閉じる</button>
 </div>
 
 <div id="section1">
@@ -192,6 +192,11 @@ function scrollToSection(sectionId) {
 document.getElementById('closeTabAlertButton').addEventListener('click', function() {
   alert('終了する場合自身で閉じてください。他のタブは残っています。ブックマークなど直接来た方は閉じるとこのページには戻れません。最近ではサイトからページを閉じるのはセキュリティ面でのリスクがあり実装出来なくなりました。');
 });
+</script>
+  <script>
+  document.getElementById('closeButton').addEventListener('click', function() {
+    window.close();
+  });
 </script>
 </body>
 </html>
