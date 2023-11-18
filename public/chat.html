@@ -185,17 +185,18 @@ html, body {
 });
 
     </script>
-    <script>
-    // オーバーレイの高さをウィンドウの高さに設定する関数
-    function setOverlayHeight() {
+   <script>
+    function adjustOverlayHeight() {
         const overlay = document.getElementById('links-overlay');
-        const windowHeight = window.innerHeight;
-        overlay.style.height = `${windowHeight}px`;
+        // ビューポートの高さに基づいてオーバーレイの高さを設定
+        overlay.style.height = window.innerHeight + 'px';
     }
 
-    // ページ読み込み時とウィンドウサイズ変更時に高さを設定
-    window.addEventListener('load', setOverlayHeight);
-    window.addEventListener('resize', setOverlayHeight);
+    // ページの読み込みが完了したら高さを調整
+    window.addEventListener('DOMContentLoaded', adjustOverlayHeight);
+
+    // ウィンドウのサイズが変わったら高さを再調整
+    window.addEventListener('resize', adjustOverlayHeight);
 </script>
 </body>
 </html>
