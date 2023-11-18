@@ -119,7 +119,12 @@ iframe {
 .account-creation a {
     color: #32CD32; /* アカウント作成のリンク色を変更 */
 }
-  
+  /* モバイルデバイスで最大化ボタンを非表示にする */
+@media (max-width: 767px) {
+    #maximizeButton {
+        display: none;
+    }
+}
 
     </style>
 </head>
