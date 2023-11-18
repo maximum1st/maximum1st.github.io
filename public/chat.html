@@ -185,18 +185,21 @@ html, body {
 });
 
     </script>
-   <script>
-    function adjustOverlayHeight() {
-        const overlay = document.getElementById('links-overlay');
-        // ビューポートの高さに基づいてオーバーレイの高さを設定
-        overlay.style.height = window.innerHeight + 'px';
+  <script>
+    // iframeの読み込み完了を検知してオーバーレイのサイズを調整する関数
+    function adjustOverlayAfterVideoLoad() {
+        const videoIframe = document.querySelector('#twitch-video iframe');
+        if (videoIframe) {
+            videoIframe.addEventListener('load', function() {
+                const overlay = document.getElementById('links-overlay');
+                overlay.style.height = videoIframe.clientHeight + 'px';
+            });
+        }
     }
 
-    // ページの読み込みが完了したら高さを調整
-    window.addEventListener('DOMContentLoaded', adjustOverlayHeight);
-
-    // ウィンドウのサイズが変わったら高さを再調整
-    window.addEventListener('resize', adjustOverlayHeight);
+    // ページの読み込み時に関数を実行
+    window.addEventListener('DOMContentLoaded', adjustOverlayAfterVideoLoad);
 </script>
+
 </body>
 </html>
