@@ -199,54 +199,28 @@ iframe {
     // 最大化ボタンにイベントリスナーを追加
     document.getElementById('maximizeButton').addEventListener('click', maximizeVideo);
 </script>
-    <script>
+   <script>
   function positionButtons() {
-    // ボタン間のスペース
-    var spaceBetweenButtons = 10; // 10pxのスペースを設定
-    var currentTop = 10; // 最初のボタンの位置
+    var currentTop = 37; // 最初のボタンのトップ位置を37pxに設定
 
-    // ボタンのIDのリスト
-    var buttonIds = ['link-button', 'closeButton', 'maximizeButton'];
-
-    buttonIds.forEach(function(buttonId) {
-      var button = document.getElementById(buttonId);
-      if (button) {
-        // ボタンの位置を設定
-        button.style.top = currentTop + 'px';
-
-        // 次のボタンの位置を計算
-        currentTop += button.offsetHeight + spaceBetweenButtons;
-      }
-    });
-  }
-
-  // ページの読み込みが完了したらボタンの位置を調整
-  window.addEventListener('DOMContentLoaded', positionButtons);
-</script>
-
-<script>
-  function positionButtons() {
-    var currentTop = 37; // The first button's top position is set to 37px
-
-    // Button IDs in the order they should appear
+    // ボタンのIDの配列
     var buttonIds = ['link-button', 'closeButton', 'maximizeButton'];
 
     buttonIds.forEach(function(buttonId, index) {
       var button = document.getElementById(buttonId);
       if (button) {
-        // Set the top position for the first button
+        // ボタンの位置を設定
         button.style.top = currentTop + 'px';
 
-        // For subsequent buttons, set the top position right after the previous one
-        if (index > 0) {
-          var previousButton = document.getElementById(buttonIds[index - 1]);
-          currentTop += previousButton.offsetHeight; // Stack the next button with no gap
+        // 次のボタンの位置を更新（あれば）
+        if (index < buttonIds.length - 1) {
+          currentTop += button.offsetHeight; // 現在のトップ位置にボタンの高さを加算
         }
       }
     });
   }
 
-  // Adjust the button positions after the DOM has fully loaded
+  // DOMが完全にロードされた後に関数を実行
   window.addEventListener('DOMContentLoaded', positionButtons);
 </script>
 
