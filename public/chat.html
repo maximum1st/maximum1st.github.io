@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="https://maximum1st.github.io/favicon-16x16.png">
     <title>とっくん研究ChatRoom！</title>
     <style>
-        * {
+    * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -18,118 +18,105 @@
 html, body {
     width: 100%;
     height: 100%;
-    overflow: hidden; /* スクロールバーを隠す場合 */
+    overflow: hidden;
 }
 
-        
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #121212;
-            color: #ffffff;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-        }
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    line-height: 1.6;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+}
 
-        #twitch-video {
-            width: 100%;
-            height: 100vh; /* ビデオの高さをビューポートの100%に設定 */
-            margin-top: 0; /* ページのトップにぴったりつける */
-            background: #000; /* 背景色を黒に設定 */
-        }
+#twitch-video {
+    width: 100%;
+    height: 100vh;
+    background: #000;
+}
 
-        iframe {
-            width: 100%;
-            height: 100%;
-        }
+iframe {
+    width: 100%;
+    height: 100%;
+}
 
-     #link-button {
+#link-button, #closeButton {
     position: fixed;
-    top: 0;
     right: 0;
     padding: 20px 10px;
-    background-color: #32CD32;
     color: white;
     border: none;
     cursor: pointer;
     z-index: 1001;
     border-radius: 0;
     writing-mode: vertical-rl;
-    /* transform: rotateY(180deg); この行を削除 */
+}
+
+#link-button {
+    top: 0;
+    background-color: #32CD32;
 }
 
 #closeButton {
-    position: fixed;
-    top: 150px; /* 'チャットリスト' ボタンの下に来るように調整 */
-    right: 0;
-    padding: 20px 10px;
+    top: 150px; /* Adjust this value as needed */
     background-color: #FF6347;
-    color: white;
-    border: none;
-    cursor: pointer;
-    z-index: 1001;
-    border-radius: 0;
-    writing-mode: vertical-rl;
-    /* transform: rotateY(180deg); この行を削除 */
 }
-   
-        #links-overlay {
+
+#links-overlay {
     display: none;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw; /* 100%の代わりに100vwを使用 */
-    height: 100%;
+    width: 100vw;
+    height: 100vh; /* Changed from 100% to 100vh */
     background-color: rgba(18, 18, 18, 0.9);
-    z-index: 1000; /* オーバーレイのz-indexを設定 */
+    z-index: 1000;
     overflow-y: auto;
     padding-top: 50px;
 }
-       
 
-        .container {
-            width: 100%;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+.container {
+    width: 100%;
+    max-width: 1280px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-        .links {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            width: 100%;
-            text-align: center;
-        }
+.links {
+    list-style-type: none;
+    width: 100%;
+    text-align: center;
+}
 
-        .links li {
-            margin: 10px 0;
-        }
+.links li {
+    margin: 10px 0;
+}
 
-        .powered-by, .account-creation {
-            text-align: center;
-            margin-top: 20px;
-        }
+.links a {
+    color: #32CD32;
+    text-decoration: none;
+    display: inline; /* Changed from block to inline */
+    margin: 0;
+    padding: 0;
+}
 
-        a {
-            color: #32CD32;
-            text-decoration: none;
-            display: block;
-            margin: 0 auto;
-        }
+.links a:hover {
+    text-decoration: underline; /* Underline on hover */
+    cursor: pointer; /* Only show pointer cursor on hover */
+}
 
-        a:hover {
-            text-decoration: underline;
-        }
+.powered-by, .account-creation {
+    text-align: center;
+    margin-top: 20px;
+}
+
   
 
     </style>
