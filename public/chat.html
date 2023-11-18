@@ -199,6 +199,30 @@ iframe {
     // 最大化ボタンにイベントリスナーを追加
     document.getElementById('maximizeButton').addEventListener('click', maximizeVideo);
 </script>
+<script>
+  function positionButtons() {
+    // ボタン間のスペース
+    var spaceBetweenButtons = 10; // 10pxのスペースを設定
+    var currentTop = 10; // 最初のボタンの位置
+
+    // ボタンのIDのリスト
+    var buttonIds = ['link-button', 'closeButton', 'maximizeButton'];
+
+    buttonIds.forEach(function(buttonId) {
+      var button = document.getElementById(buttonId);
+      if (button) {
+        // ボタンの位置を設定
+        button.style.top = currentTop + 'px';
+
+        // 次のボタンの位置を計算
+        currentTop += button.offsetHeight + spaceBetweenButtons;
+      }
+    });
+  }
+
+  // ページの読み込みが完了したらボタンの位置を調整
+  window.addEventListener('DOMContentLoaded', positionButtons);
+</script>
 
 
 </body>
