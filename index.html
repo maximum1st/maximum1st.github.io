@@ -376,6 +376,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
     </script>
-
+<script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var jsOnlyText = document.createElement('div');
+        jsOnlyText.textContent = 'Javascript専用';
+        jsOnlyText.style.color = 'orange';
+        jsOnlyText.style.textAlign = 'center';
+        jsOnlyText.style.marginTop = '20px';
+        document.body.appendChild(jsOnlyText);
+      });
+    </script>
 </body>
 </html>
