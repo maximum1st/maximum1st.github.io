@@ -142,6 +142,8 @@
   </script>
 </head>
   <body oncontextmenu="return false;">
+     <button id="closeButton" style="position: fixed; top: 10px; right: 10px; background-color: #333; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; z-index: 10;">閉じる</button>
+
   <div class="timestamp-bg"></div>
   <div class="timestamp-container">
   <input type="text" id="timestamp-input" placeholder="Last2023/11/2 20:00">
@@ -159,5 +161,11 @@
     </div>
   </div>
   <div class="footer">タブを閉じると終了します。全ページPCでの動作を想定。</div>
+    <script>
+    // 閉じるボタンの機能を追加
+    document.getElementById('closeButton').addEventListener('click', function() {
+      window.close();
+    });
+  </script>
 </body>
 </html>
