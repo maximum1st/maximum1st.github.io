@@ -201,26 +201,27 @@ iframe {
 </script>
 <script>
   function positionButtons() {
-    // ボタン間のスペース
-    var spaceBetweenButtons = 10; // 10pxのスペースを設定
-    var currentTop = 10; // 最初のボタンの位置
+    var currentTop = 37; // The first button's top position is set to 37px
 
-    // ボタンのIDのリスト
+    // Button IDs in the order they should appear
     var buttonIds = ['link-button', 'closeButton', 'maximizeButton'];
 
-    buttonIds.forEach(function(buttonId) {
+    buttonIds.forEach(function(buttonId, index) {
       var button = document.getElementById(buttonId);
       if (button) {
-        // ボタンの位置を設定
+        // Set the top position for the first button
         button.style.top = currentTop + 'px';
 
-        // 次のボタンの位置を計算
-        currentTop += button.offsetHeight + spaceBetweenButtons;
+        // For subsequent buttons, set the top position right after the previous one
+        if (index > 0) {
+          var previousButton = document.getElementById(buttonIds[index - 1]);
+          currentTop += previousButton.offsetHeight; // Stack the next button with no gap
+        }
       }
     });
   }
 
-  // ページの読み込みが完了したらボタンの位置を調整
+  // Adjust the button positions after the DOM has fully loaded
   window.addEventListener('DOMContentLoaded', positionButtons);
 </script>
 
