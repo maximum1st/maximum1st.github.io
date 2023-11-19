@@ -218,28 +218,29 @@ iframe {
     // 最大化ボタンにイベントリスナーを追加
     document.getElementById('maximizeButton').addEventListener('click', maximizeVideo);
 </script>
-<script> 
+    <script>
 function positionButtons() {
-    var buttons = [
-        {id: 'link-button', offset: -5},  // 20pxの間隔を設定
-        {id: 'closeButton', offset: -5},  // 40pxの間隔を設定
-        {id: 'maximizeButton', offset: 60}  // 60pxの間隔を設定
-    ];
-    
-    var topPosition = 100; // ボタンを配置する初期のトップ位置
+    // ボタンごとの設定
+    var settings = {
+        'link-button': { top: 60, right: -5 },
+        'closeButton': { top: 200, right: -5 },
+        'maximizeButton': { top: 300, right: -10 }
+    };
 
-    buttons.forEach(function(buttonInfo) {
-        var button = document.getElementById(buttonInfo.id);
+    // 各ボタンの位置を設定
+    for (var id in settings) {
+        var button = document.getElementById(id);
         if (button) {
-            button.style.top = topPosition + 'px'; // topPositionを基に位置を設定
-            topPosition += button.offsetHeight + buttonInfo.offset; // 次のボタンの位置を計算
+            var buttonSettings = settings[id];
+            button.style.top = buttonSettings.top + 'px';
+            button.style.right = buttonSettings.right + 'px';
         }
-    });
+    }
 }
 
 // ウィンドウのロード時にボタンの位置を調整
-window.onload = positionButtons;
-</script>
+window.addEventListener('load', positionButtons);
+    </script>
     
 
 </body>
