@@ -128,7 +128,8 @@ iframe {
         
  #link-button, #closeButton, #maximizeButton {
         /* その他のスタイル設定 */
-        width: 50%; /* 横幅を半分にする */
+        padding-right: 50%; /* 右側のパディングを現在のボタンの横幅の50%にする */
+        box-sizing: border-box; /* paddingを含めた幅がボタンの全体幅になるように設定 */
     }
     </style>
 </head>
