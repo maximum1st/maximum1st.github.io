@@ -207,31 +207,36 @@ iframe {
     // 最大化ボタンにイベントリスナーを追加
     document.getElementById('maximizeButton').addEventListener('click', maximizeVideo);
 </script>
-   <script>
-  function positionButtons() {
-    var currentTop = 37; // 最初のボタンのトップ位置を37pxに設定
+   
+<script>
+function positionButtons() {
+    // ボタンの初期位置
+    var topOffset = 20;
+    var rightOffset = 20;
 
-    // ボタンのIDの配列
-    var buttonIds = ['link-button', 'closeButton', 'maximizeButton'];
+    // ボタンの配列
+    var buttons = [
+        document.getElementById('link-button'),
+        document.getElementById('closeButton'),
+        document.getElementById('maximizeButton')
+    ];
 
-    buttonIds.forEach(function(buttonId, index) {
-      var button = document.getElementById(buttonId);
-      if (button) {
-        // ボタンの位置を設定
-        button.style.top = currentTop + 'px';
-
-        // 次のボタンの位置を更新（あれば）
-        if (index < buttonIds.length - 1) {
-          currentTop += button.offsetHeight; // 現在のトップ位置にボタンの高さを加算
+    // 各ボタンの位置を設定
+    buttons.forEach(function(button) {
+        if (button) {
+            button.style.top = topOffset + 'px';
+            button.style.right = rightOffset + 'px';
+            // 次のボタンのためにオフセットを更新
+            topOffset += button.offsetHeight + 10; // ボタンの高さ + 望ましい間隔
         }
-      }
     });
-  }
+}
 
-  // DOMが完全にロードされた後に関数を実行
-  window.addEventListener('DOMContentLoaded', positionButtons);
+// ウィンドウのロード時とリサイズ時にボタンの位置を調整
+window.onload = positionButtons;
+window.onresize = positionButtons;
 </script>
-
+    
 
 </body>
 </html>
