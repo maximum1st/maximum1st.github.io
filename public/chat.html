@@ -126,11 +126,10 @@ iframe {
     }
 }
         
- #link-button, #closeButton, #maximizeButton {
-        /* その他のスタイル設定 */
-        padding-right: 50%; /* 右側のパディングを現在のボタンの横幅の50%にする */
-        box-sizing: border-box; /* paddingを含めた幅がボタンの全体幅になるように設定 */
-    }
+#link-button, #closeButton, #maximizeButton {
+    width: 50%; /* ここで横幅をボタンの親要素に対して50%に設定 */
+    /* 他のスタイルはそのまま */
+}
     </style>
 </head>
 <body>
