@@ -236,7 +236,30 @@ iframe {
     // 最大化ボタンにイベントリスナーを追加
     document.getElementById('maximizeButton').addEventListener('click', maximizeVideo);
 </script>
-  
+  <script>
+    function positionVerticalButtons() {
+        // ボタンのIDを配列で定義
+        var buttonIds = ['link-button', 'closeButton', 'maximizeButton'];
+        var topPosition = 0; // 初期のトップ位置
+
+        buttonIds.forEach(function(id, index) {
+            var button = document.getElementById(id);
+            if (button) {
+                // ボタンの高さを取得し、トップ位置を計算
+                topPosition = (index === 0) ? button.offsetTop : topPosition + button.offsetHeight;
+                button.style.top = topPosition + 'px';
+
+                // 次のボタンの位置のためにトップ位置を更新
+                topPosition += 10; // 10pxはボタン間の間隔
+            }
+        });
+    }
+
+    // ページロード時とウィンドウサイズ変更時に実行
+    window.onload = positionVerticalButtons;
+    window.onresize = positionVerticalButtons;
+</script>
+
 
 </body>
 </html>
