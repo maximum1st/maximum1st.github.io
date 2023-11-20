@@ -236,39 +236,16 @@ iframe {
     // 最大化ボタンにイベントリスナーを追加
     document.getElementById('maximizeButton').addEventListener('click', maximizeVideo);
 </script>
-    <script>
-function positionButtons() {
-    // ボタンごとの設定
-    var settings = {
-        'link-button': { top: 60, right: -5 },
-        'closeButton': { top: 113, right: -5 },
-        'maximizeButton': { top: 136, right: -9 }
-    };
-
-    // 各ボタンの位置を設定
-    for (var id in settings) {
-        var button = document.getElementById(id);
-        if (button) {
-            var buttonSettings = settings[id];
-            button.style.top = buttonSettings.top + 'px';
-            button.style.right = buttonSettings.right + 'px';
-        }
-    }
-}
-
-// ウィンドウのロード時にボタンの位置を調整
-window.addEventListener('load', positionButtons);
-    </script>
-    <script>
+  <script>
     function adjustButtonOrientation() {
-        // タブレット判定のための条件
-        var isTablet = (navigator.userAgent.match(/(iPad)|(android)|(webOS)/i));
+        // タブレットまたはモバイルデバイス判定
+        var isMobileOrTablet = (navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i));
 
         // ボタンのリスト
         var buttons = [document.getElementById('link-button'), document.getElementById('closeButton'), document.getElementById('maximizeButton')];
 
-        // タブレットであれば縦書きに設定
-        if (isTablet) {
+        // タブレットまたはモバイルデバイスであれば縦書きに設定
+        if (isMobileOrTablet) {
             buttons.forEach(function(button) {
                 if (button) {
                     button.style.writingMode = 'vertical-rl';
