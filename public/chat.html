@@ -122,12 +122,15 @@
         }
 
        /* タブレットデバイス（iPadなど）の場合のスタイル */
+/* タブレットデバイス（iPadなど）の場合のスタイル */
 @media (max-width: 768px) {
     #link-button, #closeButton, #maximizeButton {
         -webkit-writing-mode: vertical-rl;
         writing-mode: vertical-rl;
         padding: 10px 20px; /* パディングの調整 */
     }
+}
+
 
     /* ボタン内テキストを縦書きにするためのスタイル */
     #link-button span, #closeButton span, #maximizeButton span {
@@ -139,13 +142,13 @@
 </head>
 <body>
    <button id="link-button" style="position: fixed; top: 0; right: 0; padding: 20px 10px; background-color: #32CD32; color: white; border: none; cursor: pointer; z-index: 1001; writing-mode: vertical-rl;">
-    <span>チ</span><span>ャ</span><span>ッ</span><span>ト</span>
-</button>
+    チ<br>ャ<br>ッ<br>ト
+</but1ton>
 <button id="closeButton" style="position: fixed; top: 150px; right: 0; padding: 20px 10px; background-color: #FF6347; color: white; border: none; cursor: pointer; z-index: 1002; writing-mode: vertical-rl;">
-    <span>閉</span><span>じ</span><span>る</span>
+    閉<br>じ<br>る
 </button>
 <button id="maximizeButton" style="position: fixed; top: 220px; right: 0; padding: 20px 10px; background-color: #4CAF50; color: white; border: none; cursor: pointer; z-index: 1001; writing-mode: vertical-rl;">
-    <span>最</span><span>大</span><span>化</span>
+    最<br>大<br>化
 </button>
     <div id="twitch-video"></div>
     <div id="links-overlay" class="container" style="display: none;">
