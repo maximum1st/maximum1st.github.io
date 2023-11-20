@@ -48,13 +48,11 @@
          #link-button, #closeButton, #maximizeButton {
             position: fixed;
             right: 0;
-            padding: 20px 10px;
             color: white;
             border: none;
             cursor: pointer;
             z-index: 1001;
             border-radius: 0;
-            writing-mode: vertical-rl; /* すべてのボタンに縦書きを適用 */
         }
 
         #link-button {
@@ -63,8 +61,19 @@
         }
 
         #closeButton {
-            top: 150px;
+            top: 50px; /* ボタンの位置を調整 */
             background-color: #FF6347;
+        }
+
+        #maximizeButton {
+            top: 100px; /* ボタンの位置を調整 */
+            background-color: #4CAF50;
+        }
+
+        /* ボタンのサイズとスタイルを統一 */
+        #link-button, #closeButton, #maximizeButton {
+            padding: 20px 10px;
+            writing-mode: horizontal-tb;
         }
 
         #links-overlay {
@@ -139,10 +148,9 @@
     </style>
 </head>
 <body>
-    <button id="link-button"><span>チャ</span><span>ッ</span><span>ト</span></button>
-    <button id="closeButton"><span>閉</span><span>じ</span><span>る</span></button>
-    <button id="maximizeButton"><span>最</span><span>大</span><span>化</span></button>
-
+    <button id="link-button">チャット</button>
+    <button id="closeButton">閉じる</button>
+    <button id="maximizeButton">最大化</button>
     <div id="twitch-video"></div>
     <div id="links-overlay" class="container" style="display: none;">
         <ul class="links">
@@ -233,25 +241,6 @@
     window.addEventListener('resize', positionButtons);
 </script>
 
- <script>
-        // デバイスによってボタンのスタイルを調整する関数
-        function adjustButtonStyles() {
-            var isMobileOrTablet = window.matchMedia("(max-width: 768px)").matches;
-            var buttons = [document.getElementById('link-button'), document.getElementById('closeButton'), document.getElementById('maximizeButton')];
-
-            buttons.forEach(function(button) {
-                if (isMobileOrTablet) {
-                    button.style.writingMode = 'vertical-rl';
-                } else {
-                    button.style.writingMode = 'horizontal-tb';
-                }
-            });
-        }
-
-        // ページロード時とウィンドウサイズ変更時に実行
-        window.addEventListener('load', adjustButtonStyles);
-        window.addEventListener('resize', adjustButtonStyles);
-    </script>
 
 
     
