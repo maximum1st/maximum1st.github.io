@@ -236,30 +236,7 @@ iframe {
     // 最大化ボタンにイベントリスナーを追加
     document.getElementById('maximizeButton').addEventListener('click', maximizeVideo);
 </script>
-  <script>
-    function adjustButtonOrientation() {
-        // タブレットまたはモバイルデバイス判定
-        var isMobileOrTablet = (navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i));
-
-        // ボタンのリスト
-        var buttons = [document.getElementById('link-button'), document.getElementById('closeButton'), document.getElementById('maximizeButton')];
-
-        // タブレットまたはモバイルデバイスであれば縦書きに設定
-        if (isMobileOrTablet) {
-            buttons.forEach(function(button) {
-                if (button) {
-                    button.style.writingMode = 'vertical-rl';
-                }
-            });
-        }
-    }
-
-    // ページロード時に実行
-    window.onload = function() {
-        adjustButtonOrientation();
-    };
-</script>
-
+  
 
 </body>
 </html>
