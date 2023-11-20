@@ -237,57 +237,32 @@ iframe {
     document.getElementById('maximizeButton').addEventListener('click', maximizeVideo);
 </script>
     <script>
-function positionButtons() {
-    // ボタンのIDを配列で定義
-    var buttonIds = ['link-button', 'closeButton', 'maximizeButton'];
-    var topOffset = 90; // 初期のトップ位置を90pxに設定
+ function positionButtons() {
+    // ボタンのIDとそれぞれのトップ位置をマッピング
+    var buttonPositions = {
+        'link-button': 90, // 最初のボタンの位置
+        'closeButton': 90, // 2番目のボタンの位置
+        'maximizeButton': 90 // 3番目のボタンの位置
+    };
 
-    // 最初のボタンのトップ位置を設定
-    var firstButton = document.getElementById(buttonIds[0]);
-    firstButton.style.top = topOffset + 'px';
-
-    // 以降のボタンを配置
-    for (var i = 1; i < buttonIds.length; i++) {
-        var prevButton = document.getElementById(buttonIds[i - 1]);
-        var button = document.getElementById(buttonIds[i]);
+    // 各ボタンを指定された位置に配置
+    for (var id in buttonPositions) {
+        var button = document.getElementById(id);
         if (button) {
-            // 前のボタンの下端の位置を取得し、次のボタンのトップ位置に設定
-            var prevBottom = prevButton.offsetTop + prevButton.offsetHeight;
-            button.style.top = prevBottom + 'px'; // ボタン間の間隔は0に設定
+            button.style.top = buttonPositions[id] + 'px';
+            // 次のボタンのために位置を更新（ボタンの高さ + 任意の間隔）
+            buttonPositions[id] += button.offsetHeight + spacing;
         }
     }
 }
 
-// ページロード時とウィンドウサイズ変更時に実行
-window.addEventListener('load', positionButtons);
-window.addEventListener('resize', positionButtons);
-    </script>
-    <script>
-function positionButtons() {
-    var buttonIds = ['link-button', 'closeButton', 'maximizeButton']; // ボタンのID
-    var topPosition = 90; // 最初のボタンのトップ位置
-    var spacing = 10; // ボタン間の間隔
-
-    // 最初のボタンの位置を設定
-    var firstButton = document.getElementById(buttonIds[0]);
-    firstButton.style.top = topPosition + 'px';
-
-    // 残りのボタンを配置
-    for (var i = 1; i < buttonIds.length; i++) {
-        var prevButton = document.getElementById(buttonIds[i - 1]);
-        var button = document.getElementById(buttonIds[i]);
-        if (button) {
-            // 前のボタンの下端の位置 + 間隔を次のボタンのトップ位置に設定
-            var prevBottom = prevButton.offsetTop + prevButton.offsetHeight;
-            button.style.top = (prevBottom + spacing) + 'px';
-        }
-    }
-}
+// ボタン間の間隔はここで調整
+var spacing = 0;
 
 // ページロード時とウィンドウサイズ変更時に実行
 window.addEventListener('load', positionButtons);
 window.addEventListener('resize', positionButtons);
-    </script>
+</script>
 
 
 
