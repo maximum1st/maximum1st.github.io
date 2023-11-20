@@ -10,153 +10,123 @@
     <title>とっくん研究ChatRoom！</title>
     <style>
     * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-html, body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
 
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #121212;
-    color: #ffffff;
-    line-height: 1.6;
-    overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    min-height: 100vh;
-}
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+        }
 
-#twitch-video {
-    width: 100%;
-    height: 100vh;
-    background: #000;
-}
+        #twitch-video {
+            width: 100%;
+            height: 100vh;
+            background: #000;
+        }
 
-iframe {
-    width: 100%;
-    height: 100%;
-}
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
 
-#link-button, #closeButton {
-    position: fixed;
-    right: 0;
-    padding: 20px 10px;
-    color: white;
-    border: none;
-    cursor: pointer;
-    z-index: 1001;
-    border-radius: 0;
-    writing-mode: vertical-rl;
-}
-
-#link-button {
-    top: 0;
-    background-color: #32CD32;
-}
-
-#closeButton {
-    top: 150px; /* Adjust this value as needed */
-    background-color: #FF6347;
-}
-
-#links-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh; /* Changed from 100% to 100vh */
-    background-color: rgba(18, 18, 18, 0.9);
-    z-index: 1000;
-    overflow-y: auto;
-    padding-top: 50px;
-}
-
-.container {
-    width: 100%;
-    max-width: 1280px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.links {
-    list-style-type: none;
-    width: 100%;
-    text-align: center;
-}
-
-.links li {
-    margin: 10px 0;
-}
-
-.links a {
-    color: #32CD32;
-    text-decoration: none;
-    display: inline; /* Changed from block to inline */
-    margin: 0;
-    padding: 0;
-}
-
-.links a:hover {
-    text-decoration: underline; /* Underline on hover */
-    cursor: pointer; /* Only show pointer cursor on hover */
-}
-
-.powered-by, .account-creation {
-    text-align: center;
-    margin-top: 20px;
-}
-.account-creation a {
-    color: #32CD32; /* アカウント作成のリンク色を変更 */
-}
-  /* モバイルデバイスで最大化ボタンを非表示にする */
-/* タブレットデバイス（iPadなど）の場合のスタイル */
-@media (max-width: 768px) {
-    #link-button, #closeButton, #maximizeButton {
-        -webkit-writing-mode: vertical-rl;
-        writing-mode: vertical-rl;
-    }
-}
-#link-button, #closeButton, #maximizeButton {
-    display: inline-block; /* ボタンの幅をテキストの幅に合わせる */
-    padding: 2px 5px; /* ボタンの内側の余白を調整 */
-    margin: 0 2px; /* ボタンの外側の余白を設定 */
-    background-clip: content-box; /* 背景の描画範囲をコンテンツのボックスに限定 */
-    border: 1px solid transparent; /* ボタンの境界線を透明に設定 */
-    /* その他のスタイル設定をここに追加 */
-}
-
-#link-button:hover, #maximizeButton:hover {
-    background-color: #90EE90; /* 明るい緑色 */
-    color: white; /* テキスト色を黒に変更 */
-}
-
-#closeButton:hover {
-    background-color: #FA8072; /* 明るい赤色 */
-    color: white; /* テキスト色を黒に変更 */
-}
+        #link-button, #closeButton, #maximizeButton {
+            position: fixed;
+            right: 0;
+            padding: 20px 10px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+            border-radius: 0;
+        }
 
         #link-button {
-    z-index: 1003; /* 最前面 */
-}
+            top: 0;
+            background-color: #32CD32;
+        }
 
-#closeButton {
-    z-index: 1002; /* 中間 */
-}
+        #closeButton {
+            top: 150px;
+            background-color: #FF6347;
+        }
 
-#maximizeButton {
-    z-index: 1001; /* 最背面 */
-}
+        #links-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(18, 18, 18, 0.9);
+            z-index: 1000;
+            overflow-y: auto;
+            padding-top: 50px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .links {
+            list-style-type: none;
+            width: 100%;
+            text-align: center;
+        }
+
+        .links li {
+            margin: 10px 0;
+        }
+
+        .links a {
+            color: #32CD32;
+            text-decoration: none;
+            display: inline;
+            margin: 0;
+            padding: 0;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .powered-by, .account-creation {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .account-creation a {
+            color: #32CD32;
+        }
+
+        /* モバイルデバイス用スタイル */
+        @media (max-width: 768px) {
+            #link-button, #closeButton, #maximizeButton {
+                -webkit-writing-mode: vertical-rl;
+                writing-mode: vertical-rl;
+            }
+        }
   
     </style>
 </head>
