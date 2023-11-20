@@ -156,6 +156,13 @@ iframe {
 #maximizeButton {
     z-index: 1001; /* 最背面 */
 }
+        @media (max-width: 768px) {
+    #link-button, #closeButton, #maximizeButton {
+        writing-mode: vertical-rl; /* ボタンのテキストを縦書きにする */
+        padding: 10px 20px; /* パディングを調整 */
+    }
+}
+
     </style>
 </head>
 <body>
@@ -252,15 +259,7 @@ function positionButtons() {
 // ウィンドウのロード時にボタンの位置を調整
 window.addEventListener('load', positionButtons);
     </script>
-    <script>
-    /* iPadや他のモバイルデバイス向けのスタイル */
-@media (max-width: 768px) {
-    #link-button, #closeButton, #maximizeButton {
-        writing-mode: horizontal-tb; /* モバイルデバイスでは横書きに変更 */
-        padding: 10px 20px; /* パディングの調整 */
-    }
-}
-    </script>
+    
 
 </body>
 </html>
