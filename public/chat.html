@@ -121,17 +121,17 @@
             color: #32CD32;
         }
 
-@media (max-width: 768px) {
-    #link-button, #closeButton, #maximizeButton {
-        -webkit-writing-mode: vertical-rl;
-        writing-mode: vertical-rl;
-        padding: 10px 20px; /* パディングの調整 */
-    }
+ @media (max-width: 768px) {
+            #link-button, #closeButton, #maximizeButton {
+                -webkit-writing-mode: vertical-rl;
+                writing-mode: vertical-rl;
+                padding: 10px 20px; /* パディングの調整 */
+            }
 
-    #link-button span, #closeButton span, #maximizeButton span {
-        display: block; /* spanをブロック要素として扱う */
-    }
-}
+            #link-button span, #closeButton span, #maximizeButton span {
+                display: block; /* spanをブロック要素として扱う */
+            }
+        }
 
 
    
@@ -233,28 +233,26 @@
     window.addEventListener('resize', positionButtons);
 </script>
 
-<script>
-    // iPadでのボタンスタイル調整
-    function adjustButtonStylesForiPad() {
-        var isiPad = window.matchMedia("(max-width: 768px)").matches;
-        var linkButton = document.getElementById('link-button');
-        var closeButton = document.getElementById('closeButton');
-        var maximizeButton = document.getElementById('maximizeButton');
+ <script>
+        // デバイスによってボタンのスタイルを調整する関数
+        function adjustButtonStyles() {
+            var isMobileOrTablet = window.matchMedia("(max-width: 768px)").matches;
+            var buttons = [document.getElementById('link-button'), document.getElementById('closeButton'), document.getElementById('maximizeButton')];
 
-        if (isiPad) {
-            linkButton.style.writingMode = 'vertical-rl';
-            closeButton.style.writingMode = 'vertical-rl';
-            maximizeButton.style.writingMode = 'vertical-rl';
-        } else {
-            linkButton.style.writingMode = 'horizontal-tb';
-            closeButton.style.writingMode = 'horizontal-tb';
-            maximizeButton.style.writingMode = 'horizontal-tb';
+            buttons.forEach(function(button) {
+                if (isMobileOrTablet) {
+                    button.style.writingMode = 'vertical-rl';
+                } else {
+                    button.style.writingMode = 'horizontal-tb';
+                }
+            });
         }
-    }
 
-    window.addEventListener('load', adjustButtonStylesForiPad);
-    window.addEventListener('resize', adjustButtonStylesForiPad);
-</script>
+        // ページロード時とウィンドウサイズ変更時に実行
+        window.addEventListener('load', adjustButtonStyles);
+        window.addEventListener('resize', adjustButtonStyles);
+    </script>
+
 
     
 </body>
