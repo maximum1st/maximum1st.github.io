@@ -45,7 +45,7 @@
             height: 100%;
         }
 
-        #link-button, #closeButton, #maximizeButton {
+         #link-button, #closeButton, #maximizeButton {
             position: fixed;
             right: 0;
             padding: 20px 10px;
@@ -54,6 +54,7 @@
             cursor: pointer;
             z-index: 1001;
             border-radius: 0;
+            writing-mode: vertical-rl; /* すべてのボタンに縦書きを適用 */
         }
 
         #link-button {
@@ -120,7 +121,7 @@
             color: #32CD32;
         }
 
-        /* モバイルデバイス用スタイル */
+       /* モバイルデバイス用スタイル */
         @media (max-width: 768px) {
             #link-button, #closeButton, #maximizeButton {
                 -webkit-writing-mode: vertical-rl;
