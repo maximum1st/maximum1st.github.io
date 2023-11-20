@@ -121,13 +121,19 @@
             color: #32CD32;
         }
 
-       /* モバイルデバイス用スタイル */
-        @media (max-width: 768px) {
-            #link-button, #closeButton, #maximizeButton {
-                -webkit-writing-mode: vertical-rl;
-                writing-mode: vertical-rl;
-            }
-        }
+       /* タブレットデバイス（iPadなど）の場合のスタイル */
+@media (max-width: 768px) {
+    #link-button, #closeButton, #maximizeButton {
+        -webkit-writing-mode: vertical-rl;
+        writing-mode: vertical-rl;
+        padding: 10px 20px; /* パディングの調整 */
+    }
+
+    /* ボタン内テキストを縦書きにするためのスタイル */
+    #link-button span, #closeButton span, #maximizeButton span {
+        display: block; /* 各文字を縦に配置 */
+    }
+}
   
     </style>
 </head>
