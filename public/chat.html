@@ -236,7 +236,32 @@ var spacing = 0;
 window.addEventListener('load', positionButtons);
 window.addEventListener('resize', positionButtons);
 </script>
+    function adjustButtonStylesForiPad() {
+    var isiPad = window.matchMedia("(max-width: 768px)").matches;
+    var linkButton = document.getElementById('link-button');
+    var closeButton = document.getElementById('closeButton');
+    var maximizeButton = document.getElementById('maximizeButton');
 
+    if (isiPad) {
+        // iPad用のスタイルを適用
+        linkButton.style.writingMode = 'vertical-rl';
+        closeButton.style.writingMode = 'vertical-rl';
+        maximizeButton.style.writingMode = 'vertical-rl';
+    } else {
+        // それ以外のデバイス用のスタイルを適用
+        linkButton.style.writingMode = 'horizontal-tb';
+        closeButton.style.writingMode = 'horizontal-tb';
+        maximizeButton.style.writingMode = 'horizontal-tb';
+    }
+}
+
+// ページロード時とウィンドウサイズ変更時に実行
+window.addEventListener('load', adjustButtonStylesForiPad);
+window.addEventListener('resize', adjustButtonStylesForiPad);
+
+<script>
+    
+</script>
 
 
     
