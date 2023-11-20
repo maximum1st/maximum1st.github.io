@@ -259,7 +259,30 @@ function positionButtons() {
 // ウィンドウのロード時にボタンの位置を調整
 window.addEventListener('load', positionButtons);
     </script>
-    
+    <script>
+    function adjustButtonOrientation() {
+        // タブレット判定のための条件
+        var isTablet = (navigator.userAgent.match(/(iPad)|(android)|(webOS)/i));
+
+        // ボタンのリスト
+        var buttons = [document.getElementById('link-button'), document.getElementById('closeButton'), document.getElementById('maximizeButton')];
+
+        // タブレットであれば縦書きに設定
+        if (isTablet) {
+            buttons.forEach(function(button) {
+                if (button) {
+                    button.style.writingMode = 'vertical-rl';
+                }
+            });
+        }
+    }
+
+    // ページロード時に実行
+    window.onload = function() {
+        adjustButtonOrientation();
+    };
+</script>
+
 
 </body>
 </html>
