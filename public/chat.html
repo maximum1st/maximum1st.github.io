@@ -45,7 +45,8 @@
             height: 100%;
         }
 
-         #link-button, #closeButton, #maximizeButton {
+        
+#link-button, #closeButton, #maximizeButton {
             position: fixed;
             right: 0;
             color: white;
@@ -53,6 +54,9 @@
             cursor: pointer;
             z-index: 1001;
             border-radius: 0;
+            padding: 20px 15px; /* パディングを調整して幅を統一 */
+            width: auto; /* 幅を自動調整 */
+            max-width: 120px; /* 最大幅を設定 */
         }
 
         #link-button {
@@ -61,21 +65,15 @@
         }
 
         #closeButton {
-            top: 50px; /* ボタンの位置を調整 */
+            top: 70px; /* ボタンの位置を調整 */
             background-color: #FF6347;
         }
 
         #maximizeButton {
-            top: 100px; /* ボタンの位置を調整 */
+            top: 140px; /* ボタンの位置を調整 */
             background-color: #4CAF50;
         }
-
-        /* ボタンのサイズとスタイルを統一 */
-        #link-button, #closeButton, #maximizeButton {
-            padding: 20px 10px;
-            writing-mode: horizontal-tb;
-        }
-
+       
         #links-overlay {
             display: none;
             position: fixed;
