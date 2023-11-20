@@ -55,7 +55,7 @@
             border-radius: 0;
             padding: 20px 15px; /* パディングを調整して幅を統一 */
             width: auto; /* 幅を自動調整 */
-            max-width: 120px; /* 最大幅を設定 */
+            max-width: none; /* 最大幅の制限を解除 */
         }
 
         #link-button {
@@ -239,7 +239,29 @@
     window.addEventListener('resize', positionButtons);
 </script>
 
+<script>
+    // ボタンの幅を揃える関数
+    function equalizeButtonWidths() {
+        var buttons = [document.getElementById('link-button'), document.getElementById('closeButton'), document.getElementById('maximizeButton')];
+        var maxWidth = 0;
 
+        // 最大幅を取得
+        buttons.forEach(function(button) {
+            if (button.offsetWidth > maxWidth) {
+                maxWidth = button.offsetWidth;
+            }
+        });
+
+        // すべてのボタンに最大幅を適用
+        buttons.forEach(function(button) {
+            button.style.width = maxWidth + 'px';
+        });
+    }
+
+    // ページロード時とウィンドウサイズ変更時に実行
+    window.addEventListener('load', equalizeButtonWidths);
+    window.addEventListener('resize', equalizeButtonWidths);
+</script>
 
     
 </body>
