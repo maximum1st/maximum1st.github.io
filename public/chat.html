@@ -120,9 +120,13 @@ iframe {
     color: #32CD32; /* アカウント作成のリンク色を変更 */
 }
   /* モバイルデバイスで最大化ボタンを非表示にする */
-@media (max-width: 767px) {
-    #maximizeButton {
-        display: none;
+/* タブレットデバイス（iPadなど）の場合のスタイル */
+@media screen and (max-width: 768px) {
+    #link-button, #closeButton, #maximizeButton {
+        writing-mode: vertical-rl; /* ボタンのテキストを縦書きにする */
+        padding: 10px 20px; /* パディングを調整 */
+    }
+}
     }
 }
         
@@ -156,13 +160,7 @@ iframe {
 #maximizeButton {
     z-index: 1001; /* 最背面 */
 }
-        @media (max-width: 768px) {
-    #link-button, #closeButton, #maximizeButton {
-        writing-mode: vertical-rl; /* ボタンのテキストを縦書きにする */
-        padding: 10px 20px; /* パディングを調整 */
-    }
-}
-
+  
     </style>
 </head>
 <body>
