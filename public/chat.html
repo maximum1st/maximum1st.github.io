@@ -262,7 +262,32 @@ function positionButtons() {
 window.addEventListener('load', positionButtons);
 window.addEventListener('resize', positionButtons);
     </script>
+    <script>
+function positionButtons() {
+    var buttonIds = ['link-button', 'closeButton', 'maximizeButton']; // ボタンのID
+    var topPosition = 90; // 最初のボタンのトップ位置
+    var spacing = 10; // ボタン間の間隔
 
+    // 最初のボタンの位置を設定
+    var firstButton = document.getElementById(buttonIds[0]);
+    firstButton.style.top = topPosition + 'px';
+
+    // 残りのボタンを配置
+    for (var i = 1; i < buttonIds.length; i++) {
+        var prevButton = document.getElementById(buttonIds[i - 1]);
+        var button = document.getElementById(buttonIds[i]);
+        if (button) {
+            // 前のボタンの下端の位置 + 間隔を次のボタンのトップ位置に設定
+            var prevBottom = prevButton.offsetTop + prevButton.offsetHeight;
+            button.style.top = (prevBottom + spacing) + 'px';
+        }
+    }
+}
+
+// ページロード時とウィンドウサイズ変更時に実行
+window.addEventListener('load', positionButtons);
+window.addEventListener('resize', positionButtons);
+    </script>
 
 
 
