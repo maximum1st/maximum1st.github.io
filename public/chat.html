@@ -121,15 +121,12 @@ iframe {
 }
   /* モバイルデバイスで最大化ボタンを非表示にする */
 /* タブレットデバイス（iPadなど）の場合のスタイル */
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
     #link-button, #closeButton, #maximizeButton {
-        writing-mode: vertical-rl; /* ボタンのテキストを縦書きにする */
-        padding: 10px 20px; /* パディングを調整 */
+        -webkit-writing-mode: vertical-rl;
+        writing-mode: vertical-rl;
     }
 }
-    }
-}
-        
 #link-button, #closeButton, #maximizeButton {
     display: inline-block; /* ボタンの幅をテキストの幅に合わせる */
     padding: 2px 5px; /* ボタンの内側の余白を調整 */
