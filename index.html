@@ -244,9 +244,21 @@ ul.link-list {
             -1px 1px 0 #777,
             1px 1px 0 #777; /* グレーの影を追加 */
     }
+        .second-background {
+      /* 二枚目の背景画像を実寸大で配置 */
+      position: absolute; /* 必要に応じて位置を動かすために絶対位置指定 */
+      top: 100px; /* 開始位置のトップからの距離 */
+      left: 100px; /* 開始位置の左からの距離 */
+      width: 600px; /* 画像の実際の幅 */
+      height: 400px; /* 画像の実際の高さ */
+      background-image: url('https://maximum1st.github.io/GT.png');
+      background-repeat: no-repeat;
+      background-size: contain; /* 画像がdiv要素に収まるように */
+    }
     </style>
 </head>
 <body>
+    <div class="second-background"></div> <!-- 二枚目の背景画像用のdiv -->
     <noscript>
         <div style="background-color: #ffdddd; border-left: 6px solid #f44336; margin-bottom: 15px; padding: 20px;">
             <p>このウェブサイトはJavaScriptを使用しています。すべての機能はJavascriptに依存しています。正しく表示するには、ブラウザの設定からJavaScriptを有効にしてください。</p>
