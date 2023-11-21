@@ -21,7 +21,12 @@
       line-height: 2.5;
       text-align: justify;
     }
-
+.text-background {
+      background-color: rgba(0, 0, 0, 0.7); /* 黒色の半透明背景 */
+      padding: 10px; /* 余白 */
+      margin-bottom: 20px; /* 下のマージン */
+      border-radius: 5px; /* 角を丸く */
+    }
     .bottom-right {
       position: fixed;
       bottom: 20px;
@@ -107,6 +112,10 @@
     -1px 1px 0 #000,
      1px 1px 0 #000;
 }
+    .bottom-right, .top-right, h1, .title-detail, h2, p, button {}
+     p, h1, h2, h3, h4, h5, h6, li, a {
+      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    }
   </style>
 </head>
 <body>
