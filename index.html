@@ -244,18 +244,19 @@ ul.link-list {
             -1px 1px 0 #777,
             1px 1px 0 #777; /* グレーの影を追加 */
     }
-      .second-background {
-  position: fixed; /* 画像をビューポートに対して固定 */
+      
+.second-background {
+  position: fixed; /* 画面に固定 */
   bottom: 0; /* 下部に配置 */
-  left: 50%; /* 水平方向中央に配置するために左から50%の位置に設定 */
-  transform: translateX(-50%); /* 画像の中央がビューポートの中央になるように調整 */
-  width: 600px; /* 画像の実際の幅 */
-  height: 400px; /* 画像の実際の高さ */
-  background-image: url('https://maximum1st.github.io/GT.png');
+  left: 50%; /* 左から50%の位置に設定 */
+  transform: translateX(-50%); /* 左方向に自身の幅の50%だけ移動し、センタリング */
+  width: 600px; /* 画像の幅 */
+  height: 400px; /* 画像の高さ */
+  background-image: url('https://maximum1st.github.io/GT.png'); /* 画像のパス */
   background-repeat: no-repeat;
-  background-size: contain; /* 画像がdiv要素に収まるように */
+  background-size: contain; /* 画像のサイズ調整 */
+  z-index: -1; /* 他の要素の背後に配置 */
 }
-
     </style>
 </head>
 <body>
