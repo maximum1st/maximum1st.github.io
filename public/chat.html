@@ -52,7 +52,8 @@
             border: none;
             cursor: pointer;
             z-index: 1001;
-            border-radius: 0;
+            border-top-left-radius: 10px; /* 左上の角を丸くする */
+            border-bottom-left-radius: 10px; /* 左下の角を丸くする */
             padding: 3px 3px; /* パディングを調整して幅を統一 */
             width: auto; /* 幅を自動調整 */
             max-width: none; /* 最大幅の制限を解除 */
@@ -67,8 +68,7 @@
             top: 0;
             background-color: #32CD32;
             white-space: nowrap; /* テキストの折り返しを防ぐ */
-            border-top-left-radius: 10px; /* 左上の角を丸くする */
-}
+            
         }
 
         #closeButton {
@@ -155,11 +155,28 @@
             cursor: pointer;
             z-index: 1001;
             border-top-left-radius: 10px; /* 左上の角を丸くする */
+            border-bottom-left-radius: 10px; /* 左下の角を丸くする */
 }
             padding: 3px 3px; /* パディングを調整して幅を統一 */
             width: auto; /* 幅を自動調整 */
             max-width: none; /* 最大幅の制限を解除 */
         }
+#link-button {
+            top: 0;
+            background-color: #32CD32;
+            white-space: nowrap; /* テキストの折り返しを防ぐ */
+            
+        }
+
+        #closeButton {
+            top: 40px; /* ボタンの位置を調整 */
+            background-color: #FF6347;
+        }
+
+        #maximizeButton {
+            top: 140px; /* ボタンの位置を調整 */
+            background-color: #4CAF50;
+        }    
 
    
   
