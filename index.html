@@ -439,16 +439,17 @@ document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener('DOMContentLoaded', function() {
     // 'とっくん研究' の要素を取得
     var titleElement = document.querySelector('h1');
-    
     // 'Javascript専用' のテキストを含む新しい要素を作成
-    var jsOnlyText = document.createElement('p');
-    jsOnlyText.textContent = 'Javascript専用サイト';
-    jsOnlyText.style.color = 'orange';
-    jsOnlyText.style.textAlign = 'center';
-    jsOnlyText.style.margin = '20px 0'; // 上下に20pxのマージンを設定
+var jsOnlyText = document.createElement('p');
+jsOnlyText.textContent = 'Javascript専用サイト';
+jsOnlyText.style.color = 'orange';
+jsOnlyText.style.textAlign = 'center';
+jsOnlyText.style.margin = '20px 0';
+jsOnlyText.className = 'js-only-text'; // クラス名を追加
 
-    // 'とっくん研究' の要素の直後に新しい要素を挿入
-    titleElement.parentNode.insertBefore(jsOnlyText, titleElement.nextSibling);
+// 'とっくん研究' の要素の直後に新しい要素を挿入
+titleElement.parentNode.insertBefore(jsOnlyText, titleElement.nextSibling);
+   
   });
 </script>
 </body>
