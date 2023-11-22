@@ -252,29 +252,6 @@
     document.getElementById('maximizeButton').addEventListener('click', maximizeVideo);
 </script>
 
-<script>
-    // ボタンの位置を設定する関数
-    function positionButtons() {
-        var buttonPositions = {
-            'link-button': 59, // 最初のボタンの位置
-            'closeButton': 119, // 2番目のボタンの位置
-            'maximizeButton': 166 // 3番目のボタンの位置
-        };
-
-        for (var id in buttonPositions) {
-            var button = document.getElementById(id);
-            if (button) {
-                button.style.top = buttonPositions[id] + 'px';
-                buttonPositions[id] += button.offsetHeight + spacing;
-            }
-        }
-    }
-
-    var spacing = 0;
-
-    window.addEventListener('load', positionButtons);
-    window.addEventListener('resize', positionButtons);
-</script>
 
 <script>
     // ボタンの幅を揃える関数
@@ -307,6 +284,33 @@ window.addEventListener('DOMContentLoaded', (event) => {
     maximizeButton.style.color = '#FFFFFF'; // テキスト色を変更
 });
     </script>
-    
+    <script>
+    // ボタンの位置を設定する関数
+function positionButtons() {
+    const buttonIds = ['link-button', 'closeButton', 'maximizeButton'];
+    let lastButtonBottom = 0; // 最後のボタンの下端の位置
+
+    buttonIds.forEach((id, index) => {
+        const button = document.getElementById(id);
+        if (button) {
+            // 最初のボタンの場合は、独自の位置に設定
+            if (index === 0) {
+                button.style.top = '59px';
+                lastButtonBottom = button.offsetTop + button.offsetHeight;
+            } else {
+                // それ以外のボタンは、前のボタンの下端から一定の間隔をあけて配置
+                button.style.top = `${lastButtonBottom + 10}px`; // 10pxはボタン間の間隔です
+                lastButtonBottom = button.offsetTop + button.offsetHeight;
+            }
+        }
+    });
+}
+
+// ウィンドウのサイズが変わるたびにボタンの位置を調整
+window.addEventListener('resize', positionButtons);
+
+// 初回読み込み時にも実行
+window.addEventListener('load', positionButtons);
+</script>
 </body>
 </html>
