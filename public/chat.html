@@ -299,7 +299,14 @@
     window.addEventListener('load', equalizeButtonWidths);
     window.addEventListener('resize', equalizeButtonWidths);
 </script>
-
+    <script>
+// ページが読み込まれた後にスタイルを変更
+window.addEventListener('DOMContentLoaded', (event) => {
+    const maximizeButton = document.getElementById('maximizeButton');
+    maximizeButton.style.backgroundColor = '#4CAF50'; // 背景色を変更
+    maximizeButton.style.color = '#FFFFFF'; // テキスト色を変更
+});
+    </script>
     
 </body>
 </html>
