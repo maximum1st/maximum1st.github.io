@@ -312,5 +312,33 @@ window.addEventListener('resize', positionButtons);
 // 初回読み込み時にも実行
 window.addEventListener('load', positionButtons);
 </script>
+    <script>
+        function adjustButtonPadding() {
+    // ボタンのIDを配列に格納
+    const buttonIds = ['link-button', 'closeButton', 'maximizeButton'];
+    // モバイルデバイスの最大幅を定義（例えば768px）
+    const mobileWidthThreshold = 768;
+
+    buttonIds.forEach((id) => {
+        const button = document.getElementById(id);
+        if (button) {
+            if (window.innerWidth <= mobileWidthThreshold) {
+                // モバイルデバイスの場合のパディング
+                button.style.padding = '5px 5px'; // ボタンの高さを1行のテキストに合わせて調整
+            } else {
+                // PCの場合のパディング
+                button.style.padding = '3px 3px'; // 元のパディングに戻す
+            }
+        }
+    });
+}
+
+// ウィンドウのサイズが変更されるたびにパディングを調整
+window.addEventListener('resize', adjustButtonPadding);
+
+// 初回読み込み時にも実行
+window.addEventListener('DOMContentLoaded', adjustButtonPadding);
+
+    </script>
 </body>
 </html>
