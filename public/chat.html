@@ -351,7 +351,24 @@ window.addEventListener('DOMContentLoaded', adjustButtonPadding);
     }
   }
 });
-
     </script>
+    <script>
+    // Check if the user agent is for iPad with iOS 17.x
+    function checkUserAgentAndHideButton() {
+        var userAgent = navigator.userAgent;
+        var isIpadOS17 = userAgent.includes('iPad') && userAgent.includes('CPU OS 17');
+
+        if (isIpadOS17) {
+            // Hide the maximize button
+            var maximizeButton = document.getElementById('maximizeButton');
+            if (maximizeButton) {
+                maximizeButton.style.display = 'none';
+            }
+        }
+    }
+
+    // Run the function when the page loads
+    window.addEventListener('DOMContentLoaded', checkUserAgentAndHideButton);
+</script>
 </body>
 </html>
