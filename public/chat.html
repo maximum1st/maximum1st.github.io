@@ -313,46 +313,18 @@ window.addEventListener('resize', positionButtons);
 window.addEventListener('load', positionButtons);
 </script>
     <script>
-        function adjustButtonPadding() {
-    // ボタンのIDを配列に格納
-    const buttonIds = ['link-button', 'closeButton', 'maximizeButton'];
-    // モバイルデバイスの最大幅を定義（例えば768px）
-    const mobileWidthThreshold = 768;
-
-    buttonIds.forEach((id) => {
-        const button = document.getElementById(id);
-        if (button) {
-            if (window.innerWidth <= mobileWidthThreshold) {
-                // モバイルデバイスの場合のパディング
-                button.style.padding = '5px 5px'; // ボタンの高さを1行のテキストに合わせて調整
-            } else {
-                // PCの場合のパディング
-                button.style.padding = '3px 3px'; // 元のパディングに戻す
-            }
-        }
-    });
-}
-
-// ウィンドウのサイズが変更されるたびにパディングを調整
-window.addEventListener('resize', adjustButtonPadding);
-
-// 初回読み込み時にも実行
-window.addEventListener('DOMContentLoaded', adjustButtonPadding);
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
+       document.addEventListener('DOMContentLoaded', function() {
   var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-  // iPadの最新モデルの解像度を基にした条件をチェック
-  if (/iPad|Macintosh/i.test(userAgent) && 'ontouchend' in document) {
-    // 解像度が2732x2048以上であるかのチェックを追加（オプション）
-    if (window.screen.width >= 2732 && window.screen.height >= 2048) {
-      var maximizeButton = document.getElementById('maximizeButton');
-      if (maximizeButton) {
-        maximizeButton.style.display = 'none'; // 最大化ボタンを非表示にする
-      }
+  
+  // iPadのユーザーエージェントをチェック
+  if (/iPad/i.test(userAgent)) {
+    var maximizeButton = document.getElementById('maximizeButton');
+    if (maximizeButton) {
+      maximizeButton.style.display = 'none'; // 最大化ボタンを非表示にする
     }
   }
 });
+
     </script>
 </body>
 </html>
