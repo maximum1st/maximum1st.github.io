@@ -338,7 +338,30 @@ window.addEventListener('resize', adjustButtonPadding);
 
 // 初回読み込み時にも実行
 window.addEventListener('DOMContentLoaded', adjustButtonPadding);
+    </script>
+    <script>
+        function toggleMaximizeButton() {
+    // モバイルデバイスの最大幅を定義（例えば768px）
+    const mobileWidthThreshold = 768;
+    // 最大化ボタンを取得
+    const maximizeButton = document.getElementById('maximizeButton');
 
+    if (maximizeButton) {
+        // ウィンドウの幅がモバイルデバイスの最大幅以下の場合、ボタンを非表示にする
+        if (window.innerWidth <= mobileWidthThreshold) {
+            maximizeButton.style.display = 'none';
+        } else {
+            // それ以外の場合はボタンを表示する
+            maximizeButton.style.display = 'block';
+        }
+    }
+}
+
+// ウィンドウのサイズが変更されるたびに最大化ボタンの表示を切り替える
+window.addEventListener('resize', toggleMaximizeButton);
+
+// 初回読み込み時にも最大化ボタンの表示を切り替える
+window.addEventListener('DOMContentLoaded', toggleMaximizeButton);
     </script>
 </body>
 </html>
