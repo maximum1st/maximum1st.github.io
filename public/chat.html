@@ -363,5 +363,30 @@ window.addEventListener('resize', toggleMaximizeButton);
 // 初回読み込み時にも最大化ボタンの表示を切り替える
 window.addEventListener('DOMContentLoaded', toggleMaximizeButton);
     </script>
+    <script>
+        function handleMaximizeButtonVisibility() {
+    // タブレットの画面幅の最小値と最大値を定義
+    const tabletWidthMin = 768;
+    const tabletWidthMax = 1024;
+    // 最大化ボタンを取得
+    const maximizeButton = document.getElementById('maximizeButton');
+
+    if (maximizeButton) {
+        // ウィンドウの幅がタブレットの画面幅の範囲内の場合、ボタンを非表示にする
+        if (window.innerWidth >= tabletWidthMin && window.innerWidth <= tabletWidthMax) {
+            maximizeButton.style.display = 'none';
+        } else {
+            // それ以外の場合はボタンを表示する
+            maximizeButton.style.display = 'block';
+        }
+    }
+}
+
+// ウィンドウのサイズが変更されるたびに最大化ボタンの表示を切り替えるイベントリスナーを追加
+window.addEventListener('resize', handleMaximizeButtonVisibility);
+
+// ページが読み込まれたときにも最大化ボタンの表示を切り替える
+document.addEventListener('DOMContentLoaded', handleMaximizeButtonVisibility);
+    </script>
 </body>
 </html>
