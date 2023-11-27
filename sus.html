@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ベース設定探索</title>
+    <style>
+   body, html {
+            font-family: Arial, sans-serif;
+            background-color: #121212; /* 全体の背景色をダークグレーに設定 */
+            color: #fff; /* 全体のテキスト色を白に設定 */
+            margin: 0; /* 余白をなくす */
+            padding: 0; /* パディングをなくす */
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #121212; /* コンテナの背景色をダークグレーに設定 */
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title {
+            text-align: center;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #121212; /* テーブルの背景色をダークグレーに設定 */
+        }
+
+        td {
+            padding: 10px;
+            text-align: center;
+            background-color: #121212; /* セルの背景色をダークグレーに設定 */
+        }
+
+        .form-group, .results div {
+            background-color: #121212; /* フォームと結果の背景色を少し明るいグレーに設定 */
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            width: 100%;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="number"], select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #fff; /* 入力フィールドの境界線を白に設定 */
+            background-color: #121212; /* 入力フィールドの背景色をダークグレーに設定 */
+            border-radius: 4px;
+            color: #fff; /* 入力フィールドのテキスト色を白に設定 */
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border-radius: 4px;
+            border: none;
+            background-color: #39ff14; /* ボタンの背景色を蛍光緑に設定 */
+            color: #121212; /* ボタンのテキスト色をダークグレーに設定 */
+            cursor: pointer;
+        }
+
+        .results {
+            width: 100%;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #121212; /* 結果セクションの背景色をダークグレーに設定 */
+        }
+
+        .results table {
+            margin: auto;
+            width: auto; /* 計算結果テーブルの幅を自動に設定 */
+        }
+
+        .results td {
+            padding: 0; /* セル内の余白を削除 */
+        }
+
+        .results td:first-child {
+            padding-right: 0; /* 左側のセルの右側に余白を追加 */
+        }
+
+        .results td:last-child {
+            padding-left: 0; /* 右側のセルの左側に余白を追加 */
+        }
+
+        @media (max-width: 768px) {
+            table, td {
+                width: 100%;
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <h2>ベース設定計算機</h2>
+        </div>
+
+        <form>
+            <table>
+                <!-- Row 1 -->
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="carType">車種:</label>
+                            <select id="carType">
+                                <option value="sports">スポーツカー</option>
+                                <option value="lowDownforce">低ダウンフォースレースカー</option>
+                                <option value="highDownforce">高ダウンフォースレースカー</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="totalWeight">総重量 (kg):</label>
+                            <input type="number" id="totalWeight">
+                        </div>
+                    </td>
+                </tr>
+                <!-- Row 2 -->
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="frontDistribution">前重量配分 (%):</label>
+                            <input type="number" id="frontDistribution">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="rearDistribution">後重量配分 (%):</label>
+                            <input type="number" id="rearDistribution">
+                        </div>
+                    </td>
+                </tr>
+                <!-- Row 3 -->
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="frontSpringRate">F.SPレート (Hz):</label>
+                            <input type="number" id="frontSpringRate">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="rearSpringRate">R.SPレート (Hz):</label>
+                            <input type="number" id="rearSpringRate">
+                        </div>
+                    </td>
+                </tr>
+                <!-- Row 4 -->
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="frontDownforce">F.ダウンフォース (kg):</label>
+                            <input type="number" id="frontDownforce">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="rearDownforce">R.ダウンフォース (kg):</label>
+                            <input type="number" id="rearDownforce">
+                        </div>
+                    </td>
+                </tr>
+                <!-- Row 5 -->
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="frontMaxHeight">F.最高車高 (mm):</label>
+                            <input type="number" id="frontMaxHeight">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="rearMaxHeight">R.最高車高 (mm):</label>
+                            <input type="number" id="rearMaxHeight">
+                        </div>
+                    </td>
+                </tr>
+                <!-- Row 6 -->
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="frontMinHeight">F.最低車高 (mm):</label>
+                            <input type="number" id="frontMinHeight">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="rearMinHeight">R.最低車高 (mm):</label>
+                            <input type="number" id="rearMinHeight">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div class="button-container">
+                <button type="button" onclick="calculate()">Calculate</button>
+            </div>
+        </form>
+
+        <div class="results">
+            <table>
+                <tr>
+                    <td>
+                        <div>
+                            <h3>フロントの結果:</h3>
+                            <p id="frontSpringForceResult">F.重量＆フォースレート: 未計算</p>
+                            <p id="frontRecommendedHeightResult">F.Dforce無車高: 未計算</p>
+                            <p id="adjustedFrontRunningHeightResult">F.走行時車高: 未計算</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <h3>リアの結果:</h3>
+                            <p id="rearSpringForceResult">R.重量＆フォースレート: 未計算</p>
+                            <p id="rearRecommendedHeightResult">R.Dforce無車高: 未計算</p>
+                            <p id="adjustedRearRunningHeightResult">R.走行時車高: 未計算</p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+ function calculate() {
+    // 入力値を取得
+    var totalWeight = parseFloat(document.getElementById('totalWeight').value);
+    var frontDistribution = parseFloat(document.getElementById('frontDistribution').value) / 100;
+    var rearDistribution = parseFloat(document.getElementById('rearDistribution').value) / 100;
+    var frontSpringRateHz = parseFloat(document.getElementById('frontSpringRate').value);
+    var rearSpringRateHz = parseFloat(document.getElementById('rearSpringRate').value);
+    var frontDownforce = parseFloat(document.getElementById('frontDownforce').value);
+    var rearDownforce = parseFloat(document.getElementById('rearDownforce').value);
+
+    // 前車重量と後車重量を計算
+    var frontWeightWithDownforce = totalWeight * frontDistribution + frontDownforce;
+    var rearWeightWithDownforce = totalWeight * rearDistribution + rearDownforce;
+
+    // フォースレートを計算
+    var frontSpringForce = frontSpringRateHz * frontWeightWithDownforce;
+    var rearSpringForce = rearSpringRateHz * rearWeightWithDownforce;
+
+    // 計算結果を表示
+    document.getElementById('frontSpringForceResult').textContent = 'F.重量＆フォースレート: ' + frontSpringForce.toFixed(2) + ' kgf';
+    document.getElementById('rearSpringForceResult').textContent = 'R.重量＆フォースレート: ' + rearSpringForce.toFixed(2) + ' kgf';
+
+    // 車高を計算（ダウンフォースを考慮しない）
+    var resultsWithoutDownforce = calculateRideHeightWithoutDownforce(totalWeight, frontDistribution * 100, rearDistribution * 100);
+    
+    // 最大・最低車高を考慮して車高を調整
+    var frontMaxHeight = parseFloat(document.getElementById('frontMaxHeight').value);
+    var rearMaxHeight = parseFloat(document.getElementById('rearMaxHeight').value);
+    var frontMinHeight = parseFloat(document.getElementById('frontMinHeight').value);
+    var rearMinHeight = parseFloat(document.getElementById('rearMinHeight').value);
+
+    var limitedFrontRideHeight = limitHeightRange(resultsWithoutDownforce.frontRideHeight, frontMinHeight, frontMaxHeight);
+    var limitedRearRideHeight = limitHeightRange(resultsWithoutDownforce.rearRideHeight, rearMinHeight, rearMaxHeight);
+
+    // 最終的な車高を表示
+    document.getElementById('frontRecommendedHeightResult').textContent = 'F.Dforce無車高: ' + limitedFrontRideHeight.toFixed(2) + ' mm';
+    document.getElementById('rearRecommendedHeightResult').textContent = 'R.Dforce無車高: ' + limitedRearRideHeight.toFixed(2) + ' mm';
+
+    // ダウンフォースを考慮した走行時の車高を計算
+    var frontRunningHeightWithDownforce = calculateRideHeightWithDownforce(frontWeightWithDownforce) / 2;
+    var rearRunningHeightWithDownforce = calculateRideHeightWithDownforce(rearWeightWithDownforce) / 2;
+
+    // 車高を調整して表示
+    var adjustedFrontRunningHeight = limitHeightRange(frontRunningHeightWithDownforce, frontMinHeight, frontMaxHeight);
+    var adjustedRearRunningHeight = limitHeightRange(rearRunningHeightWithDownforce, rearMinHeight, rearMaxHeight);
+
+    // 走行時の車高を表示
+    document.getElementById('adjustedFrontRunningHeightResult').textContent = 'F.走行時車高: ' + adjustedFrontRunningHeight.toFixed(2) + ' mm';
+    document.getElementById('adjustedRearRunningHeightResult').textContent = 'R.走行時車高: ' + adjustedRearRunningHeight.toFixed(2) + ' mm';
+}
+
+// 前重量配分の自動更新
+function updateFrontDistribution() {
+    var rearDistribution = parseFloat(document.getElementById('rearDistribution').value);
+    if (!isNaN(rearDistribution)) {
+        document.getElementById('frontDistribution').value = 100 - rearDistribution;
+    }
+}
+
+// 後重量配分の自動更新
+function updateRearDistribution() {
+    var frontDistribution = parseFloat(document.getElementById('frontDistribution').value);
+    if (!isNaN(frontDistribution)) {
+        document.getElementById('rearDistribution').value = 100 - frontDistribution;
+    }
+}
+
+// 車高の範囲を制限
+function limitHeightRange(height, minHeight, maxHeight) {
+    if (height < minHeight) {
+        return minHeight;
+    } else if (height > maxHeight) {
+        return maxHeight;
+    } else {
+        return height;
+    }
+}
+
+// ダウンフォースを考慮しない車高計算
+function calculateRideHeightWithoutDownforce(totalWeight, frontDistribution, rearDistribution) {
+    var frontWeight = totalWeight * (frontDistribution / 100);
+    var rearWeight = totalWeight * (rearDistribution / 100);
+
+    var frontRideHeight = calculateHeightFromWeight(frontWeight) / 2;
+    var rearRideHeight = calculateHeightFromWeight(rearWeight) / 2;
+
+    return {
+        frontRideHeight: frontRideHeight,
+        rearRideHeight: rearRideHeight
+    };
+}
+
+// 重量から車高を計算
+function calculateHeightFromWeight(weight) {
+    return 300 - weight / 10;
+}
+
+// ダウンフォースを考慮した車高計算
+function calculateRideHeightWithDownforce(weightWithDownforce) {
+    return 300 - (weightWithDownforce / 10);
+}
+</script>
+
+</body>
+</html>
