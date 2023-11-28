@@ -5,14 +5,13 @@
     <title>ベース設定探索</title>
     <style>
    body, html {
-            font-family: Arial, sans-serif;
-            background-image: url('https://maximum1st.github.io/sus.png'); /* 背景画像 */
+            background-image: url('https://maximum1st.github.io/sus.png'); /* 画像のパスを指定 */
             background-size: cover; /* 画像がコンテナをカバーするようにサイズ調整 */
             background-repeat: no-repeat; /* 画像が繰り返し表示されないように設定 */
-            background-position: center center; /* 画像を中央に配置 */
+            background-position: center center; /* 画像をコンテナの中央に配置 */
+            font-family: Arial, sans-serif;
             margin: 0; /* 余白をなくす */
             padding: 0; /* パディングをなくす */
-            color: #fff; /* テキスト色を白に設定 */
         }
 
         .container {
@@ -29,6 +28,7 @@
             text-align: center;
             width: 100%;
             margin-bottom: 30px;
+            color: #fff; /* タイトルの色を白に設定 */
         }
 
         table {
@@ -52,15 +52,16 @@
         label {
             display: block;
             margin-bottom: 5px;
+            color: #fff; /* ラベルの色を白に設定 */
         }
 
         input[type="number"], select {
             width: 100%;
             padding: 8px;
-            border: 1px solid #fff;
-            background-color: rgba(255, 255, 255, 0.5); /* 入力フィールドの背景色を半透明に設定 */
+            border: 1px solid #fff; /* 入力フィールドの境界線を白に設定 */
+            background-color: rgba(18, 18, 18, 0.5); /* 入力フィールドの背景色を半透明のダークグレーに設定 */
             border-radius: 4px;
-            color: #fff;
+            color: #fff; /* 入力フィールドのテキスト色を白に設定 */
         }
 
         .button-container {
@@ -74,8 +75,8 @@
             padding: 10px 20px;
             border-radius: 4px;
             border: none;
-            background-color: #39ff14;
-            color: #121212;
+            background-color: #39ff14; /* ボタンの背景色を蛍光緑に設定 */
+            color: #121212; /* ボタンのテキスト色をダークグレーに設定 */
             cursor: pointer;
         }
 
@@ -89,19 +90,19 @@
 
         .results table {
             margin: auto;
-            width: auto;
+            width: auto; /* 計算結果テーブルの幅を自動に設定 */
         }
 
         .results td {
-            padding: 0;
+            padding: 0; /* セル内の余白を削除 */
         }
 
         .results td:first-child {
-            padding-right: 0;
+            padding-right: 0; /* 左側のセルの右側に余白を追加 */
         }
 
         .results td:last-child {
-            padding-left: 0;
+            padding-left: 0; /* 右側のセルの左側に余白を追加 */
         }
 
         @media (max-width: 768px) {
