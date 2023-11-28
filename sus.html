@@ -109,6 +109,31 @@
         .results div {
             color: #fff;
         }
+         /* 右上に閉じるボタンを配置するためのスタイル */
+    .close-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: red;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+
+    /* 左上に説明ボタンを配置するためのスタイル */
+    .info-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background-color: blue;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        text-decoration: none; /* リンクの下線を消す */
+    }
 
         @media (max-width: 768px) {
             table, td {
@@ -249,6 +274,11 @@
             </table>
         </div>
     </div>
+  <!-- 閉じるボタン -->
+    <button class="close-button" onclick="window.close();">閉じる</button>
+
+    <!-- 説明ボタン -->
+    <a href="#" class="info-button">説明</a>
 
     <script>
  function calculate() {
