@@ -306,8 +306,8 @@
         var rearSpringForce = rearSpringRateHz * rearWeightWithDownforce;
 
         // 計算結果を表示
-        document.getElementById('frontSpringForceResult').innerHTML = 'F.重量＆フォースレート: ' + frontSpringForce.toFixed(2) + ' kgf<br>(' + convertKgfToNm(frontSpringForce).toFixed(2) + ' Nm)';
-    document.getElementById('rearSpringForceResult').innerHTML = 'R.重量＆フォースレート: ' + rearSpringForce.toFixed(2) + ' kgf<br>(' + convertKgfToNm(rearSpringForce).toFixed(2) + ' Nm)';
+        document.getElementById('frontSpringForceResult').innerHTML = 'F.重量＆Forceレート: ' + frontSpringForce.toFixed(2) + ' kgf<br>(' + convertKgfToNm(frontSpringForce).toFixed(2) + ' Nm)';
+    document.getElementById('rearSpringForceResult').innerHTML = 'R.重量＆Forceレート: ' + rearSpringForce.toFixed(2) + ' kgf<br>(' + convertKgfToNm(rearSpringForce).toFixed(2) + ' Nm)';
         // ダウンフォースを考慮しない車高計算
         var resultsWithoutDownforce = calculateRideHeightWithoutDownforce(totalWeight, frontDistribution, rearDistribution);
 
@@ -333,8 +333,8 @@
         var adjustedRearRunningHeight = limitHeightRange(rearRunningHeightWithDownforce, rearMinHeight, rearMaxHeight);
 
         // 走行時の車高を表示
-        document.getElementById('adjustedFrontRunningHeightResult').textContent = 'F.走行時車高: ' + adjustedFrontRunningHeight.toFixed(2) + ' mm';
-        document.getElementById('adjustedRearRunningHeightResult').textContent = 'R.走行時車高: ' + adjustedRearRunningHeight.toFixed(2) + ' mm';
+        document.getElementById('adjustedFrontRunningHeightResult').textContent = 'F.Dforce有車高: ' + adjustedFrontRunningHeight.toFixed(2) + ' mm';
+        document.getElementById('adjustedRearRunningHeightResult').textContent = 'R.Dforce有車高: ' + adjustedRearRunningHeight.toFixed(2) + ' mm';
     }
 
     // 前重量配分の自動更新
