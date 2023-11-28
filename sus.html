@@ -300,21 +300,13 @@ function calculate() {
     var rearSpringForce = rearSpringRateHz * rearWeightWithDownforce;
 
     // 計算結果を表示
-    displayResults(frontSpringForce, rearSpringForce);
+    document.getElementById('frontSpringForceResult').textContent = 'F.重量＆フォースレート: ' + frontSpringForce.toFixed(2) + ' kgf (' + convertKgfToNm(frontSpringForce).toFixed(2) + ' Nm)';
+    document.getElementById('rearSpringForceResult').textContent = 'R.重量＆フォースレート: ' + rearSpringForce.toFixed(2) + ' kgf (' + convertKgfToNm(rearSpringForce).toFixed(2) + ' Nm)';
 }
 
 // kgfをNmに変換する関数
 function convertKgfToNm(kgf) {
     return kgf * 9.80665;
-}
-
-// 計算結果の表示を更新する関数
-function displayResults(frontSpringForce, rearSpringForce) {
-    var frontSpringForceNm = convertKgfToNm(frontSpringForce);
-    var rearSpringForceNm = convertKgfToNm(rearSpringForce);
-
-    document.getElementById('frontSpringForceResult').textContent = 'F.重量＆フォースレート: ' + frontSpringForce.toFixed(2) + ' kgf (' + frontSpringForceNm.toFixed(2) + ' Nm)';
-    document.getElementById('rearSpringForceResult').textContent = 'R.重量＆フォースレート: ' + rearSpringForce.toFixed(2) + ' kgf (' + rearSpringForceNm.toFixed(2) + ' Nm)';
 }
 
 // 前重量配分の自動更新
