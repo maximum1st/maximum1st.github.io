@@ -348,6 +348,20 @@ function calculateRideHeightWithDownforce(weightWithDownforce) {
     return 300 - (weightWithDownforce / 10);
 }
 </script>
+<script>function updateRearDistribution() {
+            var frontDistribution = parseFloat(document.getElementById('frontDistribution').value);
+            if (!isNaN(frontDistribution)) {
+                document.getElementById('rearDistribution').value = 100 - frontDistribution;
+            }
+        }
 
+        // 後重量配分を変更したときに前重量配分を自動更新する関数
+        function updateFrontDistribution() {
+            var rearDistribution = parseFloat(document.getElementById('rearDistribution').value);
+            if (!isNaN(rearDistribution)) {
+                document.getElementById('frontDistribution').value = 100 - rearDistribution;
+            }
+        }
+</script>
 </body>
 </html>
