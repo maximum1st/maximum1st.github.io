@@ -306,8 +306,8 @@
         var rearSpringForce = rearSpringRateHz * rearWeightWithDownforce;
 
         // 計算結果を表示
-        document.getElementById('frontSpringForceResult').textContent = 'F.重量＆フォースレート: ' + frontSpringForce.toFixed(2) + ' kgf (' + convertKgfToNm(frontSpringForce).toFixed(2) + ' Nm)';
-        document.getElementById('rearSpringForceResult').textContent = 'R.重量＆フォースレート: ' + rearSpringForce.toFixed(2) + ' kgf (' + convertKgfToNm(rearSpringForce).toFixed(2) + ' Nm)';
+        document.getElementById('frontSpringForceResult').textContent = 'F.重量＆フォースレート: ' + frontSpringForce.toFixed(2) + ' kgf<br>(' + convertKgfToNm(frontSpringForce).toFixed(2) + ' Nm)';
+        document.getElementById('rearSpringForceResult').textContent = 'R.重量＆フォースレート: ' + rearSpringForce.toFixed(2) + ' kgf<br>(' + convertKgfToNm(rearSpringForce).toFixed(2) + ' Nm)';
 
         // ダウンフォースを考慮しない車高計算
         var resultsWithoutDownforce = calculateRideHeightWithoutDownforce(totalWeight, frontDistribution, rearDistribution);
