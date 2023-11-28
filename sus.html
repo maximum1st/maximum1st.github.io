@@ -282,91 +282,95 @@
 
     <script>
 <script>
-function calculate() {
-    // 入力値を取得
-    var totalWeight = parseFloat(document.getElementById('totalWeight').value);
-    var frontDistribution = parseFloat(document.getElementById('frontDistribution').value) / 100;
-    var rearDistribution = parseFloat(document.getElementById('rearDistribution').value) / 100;
-    var frontSpringRateHz = parseFloat(document.getElementById('frontSpringRate').value);
-    var rearSpringRateHz = parseFloat(document.getElementById('rearSpringRate').value);
-    var frontDownforce = parseFloat(document.getElementById('frontDownforce').value);
-    var rearDownforce = parseFloat(document.getElementById('rearDownforce').value);
+    // 入力値に基づいて計算を行う関数
+    function calculate() {
+        // 入力値を取得
+        var totalWeight = parseFloat(document.getElementById('totalWeight').value);
+        var frontDistribution = parseFloat(document.getElementById('frontDistribution').value) / 100;
+        var rearDistribution = parseFloat(document.getElementById('rearDistribution').value) / 100;
+        var frontSpringRateHz = parseFloat(document.getElementById('frontSpringRate').value);
+        var rearSpringRateHz = parseFloat(document.getElementById('rearSpringRate').value);
+        var frontDownforce = parseFloat(document.getElementById('frontDownforce').value);
+        var rearDownforce = parseFloat(document.getElementById('rearDownforce').value);
 
-    // 前車重量と後車重量を計算
-    var frontWeightWithDownforce = totalWeight * frontDistribution + frontDownforce;
-    var rearWeightWithDownforce = totalWeight * rearDistribution + rearDownforce;
+        // 前車重量と後車重量を計算
+        var frontWeightWithDownforce = totalWeight * frontDistribution + frontDownforce;
+        var rearWeightWithDownforce = totalWeight * rearDistribution + rearDownforce;
 
-    // フォースレートを計算
-    var frontSpringForce = frontSpringRateHz * frontWeightWithDownforce;
-    var rearSpringForce = rearSpringRateHz * rearWeightWithDownforce;
+        // フォースレートを計算
+        var frontSpringForce = frontSpringRateHz * frontWeightWithDownforce;
+        var rearSpringForce = rearSpringRateHz * rearWeightWithDownforce;
 
-    // 計算結果を表示
-    document.getElementById('frontSpringForceResult').textContent = 'F.重量＆フォースレート: ' + frontSpringForce.toFixed(2) + ' kgf (' + convertKgfToNm(frontSpringForce).toFixed(2) + ' Nm)';
-    document.getElementById('rearSpringForceResult').textContent = 'R.重量＆フォースレート: ' + rearSpringForce.toFixed(2) + ' kgf (' + convertKgfToNm(rearSpringForce).toFixed(2) + ' Nm)';
-
-    // 以下の機能は元のロジックを維持
-    // ... (残りの計算ロジック)
-}
-
-// kgfをNmに変換する関数
-function convertKgfToNm(kgf) {
-    return kgf * 9.80665;
-}
-
-// 前重量配分の自動更新
-function updateFrontDistribution() {
-    var rearDistribution = parseFloat(document.getElementById('rearDistribution').value);
-    if (!isNaN(rearDistribution)) {
-        document.getElementById('frontDistribution').value = 100 - rearDistribution;
+        // 計算結果を表示
+        displayResults(frontSpringForce, rearSpringForce);
     }
-}
 
-// 後重量配分の自動更新
-function updateRearDistribution() {
-    var frontDistribution = parseFloat(document.getElementById('frontDistribution').value);
-    if (!isNaN(frontDistribution)) {
-        document.getElementById('rearDistribution').value = 100 - frontDistribution;
+    // kgfをNmに変換する関数
+    function convertKgfToNm(kgf) {
+        return kgf * 9.80665;
     }
-}
 
-// 車高の範囲を制限
-function limitHeightRange(height, minHeight, maxHeight) {
-    if (height < minHeight) {
-        return minHeight;
-    } else if (height > maxHeight) {
-        return maxHeight;
-    } else {
-        return height;
+    // 計算結果の表示を更新する関数
+    function displayResults(frontSpringForce, rearSpringForce) {
+        var frontSpringForceNm = convertKgfToNm(frontSpringForce);
+        var rearSpringForceNm = convertKgfToNm(rearSpringForce);
+
+        document.getElementById('frontSpringForceResult').textContent = 'F.重量＆フォースレート: ' + frontSpringForce.toFixed(2) + ' kgf (' + frontSpringForceNm.toFixed(2) + ' Nm)';
+        document.getElementById('rearSpringForceResult').textContent = 'R.重量＆フォースレート: ' + rearSpringForce.toFixed(2) + ' kgf (' + rearSpringForceNm.toFixed(2) + ' Nm)';
     }
-}
 
-// ダウンフォースを考慮しない車高計算
-function calculateRideHeightWithoutDownforce(totalWeight, frontDistribution, rearDistribution) {
-    var frontWeight = totalWeight * (frontDistribution / 100);
-    var rearWeight = totalWeight * (rearDistribution / 100);
+    // 前重量配分の自動更新を行う関数
+    function updateFrontDistribution() {
+        var rearDistribution = parseFloat(document.getElementById('rearDistribution').value);
+        if (!isNaN(rearDistribution)) {
+            document.getElementById('frontDistribution').value = 100 - rearDistribution;
+        }
+    }
 
-    var frontRideHeight = calculateHeightFromWeight(frontWeight) / 2;
-    var rearRideHeight = calculateHeightFromWeight(rearWeight) / 2;
+    // 後重量配分の自動更新を行う関数
+    function updateRearDistribution() {
+        var frontDistribution = parseFloat(document.getElementById('frontDistribution').value);
+        if (!isNaN(frontDistribution)) {
+            document.getElementById('rearDistribution').value = 100 - frontDistribution;
+        }
+    }
 
-    return {
-        frontRideHeight: frontRideHeight,
-        rearRideHeight: rearRideHeight
-    };
-}
+    // 車高の範囲を制限する関数
+    function limitHeightRange(height, minHeight, maxHeight) {
+        if (height < minHeight) {
+            return minHeight;
+        } else if (height > maxHeight) {
+            return maxHeight;
+        } else {
+            return height;
+        }
+    }
 
-// 重量から車高を計算
-function calculateHeightFromWeight(weight) {
-    return 300 - weight / 10;
-}
+    // ダウンフォースを考慮しない車高計算を行う関数
+    function calculateRideHeightWithoutDownforce(totalWeight, frontDistribution, rearDistribution) {
+        var frontWeight = totalWeight * (frontDistribution / 100);
+        var rearWeight = totalWeight * (rearDistribution / 100);
 
-// ダウンフォースを考慮した車高計算
-function calculateRideHeightWithDownforce(weightWithDownforce) {
-    return 300 - (weightWithDownforce / 10);
-}
+        var frontRideHeight = calculateHeightFromWeight(frontWeight) / 2;
+        var rearRideHeight = calculateHeightFromWeight(rearWeight) / 2;
+
+        return {
+            frontRideHeight: frontRideHeight,
+            rearRideHeight: rearRideHeight
+        };
+    }
+
+    // 重量から車高を計算する関数
+    function calculateHeightFromWeight(weight) {
+        return 300 - weight / 10;
+    }
+
+    // ダウンフォースを考慮した車高計算を行う関数
+    function calculateRideHeightWithDownforce(weightWithDownforce) {
+        return 300 - (weightWithDownforce / 10);
+    }
 </script>
 
-
-</script>
 <script>function updateRearDistribution() {
             var frontDistribution = parseFloat(document.getElementById('frontDistribution').value);
             if (!isNaN(frontDistribution)) {
