@@ -281,6 +281,7 @@
     <a href="#" class="info-button">説明</a>
 
     <script>
+<script>
 function calculate() {
     // 入力値を取得
     var totalWeight = parseFloat(document.getElementById('totalWeight').value);
@@ -302,6 +303,9 @@ function calculate() {
     // 計算結果を表示
     document.getElementById('frontSpringForceResult').textContent = 'F.重量＆フォースレート: ' + frontSpringForce.toFixed(2) + ' kgf (' + convertKgfToNm(frontSpringForce).toFixed(2) + ' Nm)';
     document.getElementById('rearSpringForceResult').textContent = 'R.重量＆フォースレート: ' + rearSpringForce.toFixed(2) + ' kgf (' + convertKgfToNm(rearSpringForce).toFixed(2) + ' Nm)';
+
+    // 以下の機能は元のロジックを維持
+    // ... (残りの計算ロジック)
 }
 
 // kgfをNmに変換する関数
@@ -359,6 +363,8 @@ function calculateHeightFromWeight(weight) {
 function calculateRideHeightWithDownforce(weightWithDownforce) {
     return 300 - (weightWithDownforce / 10);
 }
+</script>
+
 
 </script>
 <script>function updateRearDistribution() {
