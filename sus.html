@@ -259,7 +259,7 @@
                             <h3>フロントの結果:</h3>
                             <p id="frontSpringForceResult">F.重量＆Dforceレート: 未計算</p>
                             <p id="frontRecommendedHeightResult">F.Dforce無車高: 未計算</p>
-                            <p id="adjustedFrontRunningHeightResult">F.走行時車高: 未計算</p>
+                            <p id="adjustedFrontRunningHeightResult">F.Dforce有車高: 未計算</p>
                         </div>
                     </td>
                     <td>
@@ -267,7 +267,7 @@
                             <h3>リアの結果:</h3>
                             <p id="rearSpringForceResult">R.重量＆Dforceレート: 未計算</p>
                             <p id="rearRecommendedHeightResult">R.Dforce無車高: 未計算</p>
-                            <p id="adjustedRearRunningHeightResult">R.走行時車高: 未計算</p>
+                            <p id="adjustedRearRunningHeightResult">R.Dforce有車高: 未計算</p>
                         </div>
                     </td>
                 </tr>
@@ -328,8 +328,8 @@
     var adjustedRearRunningHeight = limitHeightRange(rearRunningHeightWithDownforce, rearMinHeight, rearMaxHeight);
 
     // 走行時の車高を表示
-    document.getElementById('adjustedFrontRunningHeightResult').textContent = 'F.走行時車高: ' + adjustedFrontRunningHeight.toFixed(2) + ' mm';
-    document.getElementById('adjustedRearRunningHeightResult').textContent = 'R.走行時車高: ' + adjustedRearRunningHeight.toFixed(2) + ' mm';
+    document.getElementById('adjustedFrontRunningHeightResult').textContent = 'F.Dforce有車高: ' + adjustedFrontRunningHeight.toFixed(2) + ' mm';
+    document.getElementById('adjustedRearRunningHeightResult').textContent = 'R.Dforce有車高: ' + adjustedRearRunningHeight.toFixed(2) + ' mm';
 }
 
 // 前重量配分の自動更新
