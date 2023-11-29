@@ -465,80 +465,66 @@ document.addEventListener('DOMContentLoaded', function() {
 });
     </script>
 <script>
-  // Firebaseの設定情報
-  var firebaseConfig = {
-    apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
-    authDomain: "counterimagedatabase.firebaseapp.com",
-    databaseURL: "https://counterimagedatabase-default-rtdb.firebaseio.com",
-    projectId: "counterimagedatabase",
-    storageBucket: "counterimagedatabase.appspot.com",
-    messagingSenderId: "341673352860",
-    appId: "1:341673352860:web:3caabbb16c1c7120c6d759"
-  };
+      // Firebaseの設定情報
+      var firebaseConfig = {
+        apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
+        authDomain: "counterimagedatabase.firebaseapp.com",
+        databaseURL: "https://counterimagedatabase-default-rtdb.firebaseio.com",
+        projectId: "counterimagedatabase",
+        storageBucket: "counterimagedatabase.appspot.com",
+        messagingSenderId: "341673352860",
+        appId: "1:341673352860:web:3caabbb16c1c7120c6d759"
+      };
 
-  // Firebaseの初期化
-  firebase.initializeApp(firebaseConfig);
+      // Firebaseの初期化
+      firebase.initializeApp(firebaseConfig);
 
-  // データベース参照を取得
-  var database = firebase.database();
-  var visitsRef = database.ref('visits');
+      // デバイスタイプをチェックしてTwitchアプリボタンを表示する関数
+      function checkDeviceType() {
+        var deviceType = navigator.userAgent;
+        var openTwitchAppPC = document.getElementById("openTwitchAppPC");
+        var openTwitchAppMobile = document.getElementById("openTwitchAppMobile");
 
-  // カウンターを表示する関数
-  function displayCounter(count) {
-    var formattedCount = String(count).padStart(8, '0').split('');
-    formattedCount.forEach(function(digit, index) {
-      var imgElement = document.getElementById('digit' + (index + 1));
-      imgElement.src = 'https://maximum1st.github.io/images/' + digit + '.png';
-    });
-  }
-
-  // デバイスタイプをチェックしてTwitchアプリボタンを表示する関数
-  function checkDeviceType() {
-    var deviceType = navigator.userAgent;
-    var openTwitchAppPC = document.getElementById("openTwitchAppPC");
-    var openTwitchAppMobile = document.getElementById("openTwitchAppMobile");
-
-    if (deviceType.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {
-      openTwitchAppMobile.style.display = "block";
-    } else {
-      openTwitchAppPC.style.display = "block";
-    }
-  }
-
-  // ページ読み込み時の処理
-  window.onload = function() {
-    checkDeviceType();
-
-    // 各桁に透明画像を設定
-    for (var i = 1; i <= 8; i++) {
-      var imgElement = document.getElementById('digit' + i);
-      imgElement.src = 'https://maximum1st.github.io/images/start.png'; // 透明画像のパス
-    }
-
-    // 訪問者数をインクリメントして表示
-    visitsRef.transaction(function(currentVisits) {
-      return (currentVisits || 0) + 1;
-    }).then(function(transactionResult) {
-      if (transactionResult.committed) {
-        // Firebaseからデータが返ってきた後に2秒間の遅延を設ける
-        setTimeout(function() {
-          displayCounter(transactionResult.snapshot.val());
-        }, 2000); // 2秒の遅延
+        if (deviceType.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {
+          openTwitchAppMobile.style.display = "block";
+        } else {
+          openTwitchAppPC.style.display = "block";
+        }
       }
-    });
 
-    // データベースから訪問者数の変更をリアルタイムで受け取る
-    visitsRef.on('value', function(snapshot) {
-      setTimeout(function() {
-        displayCounter(snapshot.val());
-      }, 2000); // 2秒の遅延
-    });
+      // ページ読み込み時の処理
+      window.onload = function() {
+        checkDeviceType();
 
-    // 更新ボタンのクリックイベントを設定
-    document.getElementById('reloadButton').addEventListener('click', function() {
-      location.reload(); // ページを再読み込み
-    });
-  };
-</script>
+        // 各桁に透明画像を設定
+        var imgElement = document.getElementById('counterImage');
+        imgElement.src = 'https://maximum1st.github.io/images/start.png'; // 透明画像のパス
+
+        // 訪問者数をインクリメントして表示
+        var visitsRef = firebase.database().ref('visits');
+        visitsRef.transaction(function(currentVisits) {
+          return (currentVisits || 0) + 1;
+        }).then(function(transactionResult) {
+          if (transactionResult.committed) {
+            // Firebaseからデータが返ってきた後に2秒間の遅延を設ける
+            setTimeout(function() {
+              displayCounter(transactionResult.snapshot.val());
+            }, 2000); // 2秒の遅延
+          }
+        });
+
+        // 更新ボタンのクリックイベントを設定
+        document.getElementById('reloadButton').addEventListener('click', function() {
+          location.reload(); // ページを再読み込み
+        });
+      };
+
+      // カウンターを表示する関数
+      function displayCounter(count) {
+        var formattedCount = String(count).padStart(8, '0').split('');
+        var counterImage = 'https://maximum1st.github.io/images/' + formattedCount.join('') + '.png';
+        document.getElementById('counterImage').src = counterImage;
+      }
+    </script>
 </body>
 </html>
