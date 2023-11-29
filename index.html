@@ -296,6 +296,8 @@ ul.link-list {
   text-shadow: 2px 2px 2px #000000; /* 最も濃い黒色の影 */
 }
     </style>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
 </head>
 <body>
     <div class="second-background"></div> <!-- 二枚目の背景画像用のdiv -->
@@ -460,51 +462,55 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
     </script>
-<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
 <script>
-  // 'DOMContentLoaded' イベントの後でFirebaseの初期化と関数実行を行います
-  document.addEventListener('DOMContentLoaded', function() {
-    // Firebaseの設定情報
-    var firebaseConfig = {
-      apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
+      // Firebaseの設定情報
+      var firebaseConfig = {
+    apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
       authDomain: "counterimagedatabase.firebaseapp.com",
       databaseURL: "https://counterimagedatabase-default-rtdb.firebaseio.com",
       projectId: "counterimagedatabase",
       storageBucket: "counterimagedatabase.appspot.com",
       messagingSenderId: "341673352860",
       appId: "1:341673352860:web:3caabbb16c1c7120c6d759"
-    };
+      };
 
-    // Firebaseの初期化
-    firebase.initializeApp(firebaseConfig);
-    var database = firebase.database();
+      // Firebaseの初期化
+      firebase.initializeApp(firebaseConfig);
 
-    // カウンターを表示する関数
-    function displayCounter(count) {
-      var formattedCount = String(count).padStart(8, '0').split('');
-      formattedCount.forEach(function(digit, index) {
-        var imgElement = document.getElementById('digit' + (index + 1));
-        if (imgElement) {
+      // データベース参照を取得
+      var database = firebase.database();
+      var visitsRef = database.ref('visits');
+
+      // カウンターを表示する関数
+      function displayCounter(count) {
+        var formattedCount = String(count).padStart(8, '0').split('');
+        formattedCount.forEach(function(digit, index) {
+          var imgElement = document.getElementById('digit' + (index + 1));
           imgElement.src = 'https://maximum1st.github.io/images/' + digit + '.png'; // 画像のパスを更新
+        });
+      }
+
+      // 訪問者数をインクリメントして表示する
+      visitsRef.transaction(function(currentVisits) {
+        return (currentVisits || 0) + 1;
+      }).then(function(transactionResult) {
+        if (transactionResult.committed) {
+          displayCounter(transactionResult.snapshot.val());
         }
       });
-    }
 
-    // 訪問者数をインクリメントして表示する
-    var visitsRef = database.ref('visits');
-    visitsRef.transaction(function(currentVisits) {
-      return (currentVisits || 0) + 1;
-    }).then(function(transactionResult) {
-      if (transactionResult.committed) {
-        displayCounter(transactionResult.snapshot.val());
-      }
-    });
-
-    // データベースから訪問者数の変更をリアルタイムで受け取る
-    visitsRef.on('value', function(snapshot) {
-      displayCounter(snapshot.val());
-    });
-  });
-</script>
+      // データベースから訪問者数の変更をリアルタイムで受け取る
+      visitsRef.on('value', function(snapshot) {
+        displayCounter(snapshot.val());
+      });
+    </script>
 </body>
+</html>
+
+    
+    
+    
+    
+    
+    
+    
