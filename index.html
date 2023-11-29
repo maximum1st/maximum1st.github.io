@@ -382,8 +382,7 @@ ul.link-list {
 <IMG SRC="cgi-bin/tclite.cgi?count1&1&7" ALT="">
     <button id="backToTopBtn" style="display:none;" onclick="backToTop()">戻る↑</button>
     <button id="scrollToBottomBtn" style="display:none;" onclick="scrollToBottom()">リンク↓</button>
-    <iframe src="https://maximum1st-go58mfovw-maximum1sts-projects.vercel.app/counter" width="300" height="300" frameborder="0"></iframe>
-
+   <img id="counterImage" src="" alt="Counter Image">
     <button id="openTwitchAppPC" style="display:none;" onclick="openTwitchApp('PC')">My Twitch Web</button>
     <button id="openTwitchAppMobile" style="display:none;" onclick="openTwitchApp('Mobile')">Twitch APP Mobile</button>
 
@@ -455,5 +454,27 @@ titleElement.parentNode.insertBefore(jsOnlyText, titleElement.nextSibling);
    
   });
 </script>
+    <script>
+        
+    document.addEventListener('DOMContentLoaded', () => {
+        const counterKey = 'visitorCount';
+        const imagePath = 'https://maximum1st.github.io/images/'; // 画像が保存されているパス
+        const imageExtension = '.png'; // 画像の拡張子
+
+        // ローカルストレージから訪問者数を取得
+        let count = parseInt(localStorage.getItem(counterKey)) || 0;
+
+        // 訪問者数をインクリメント
+        count += 1;
+
+        // 新しいカウントをローカルストレージに保存
+        localStorage.setItem(counterKey, count.toString());
+
+        // 画像のパスを更新
+        const imageSrc = imagePath + (count % 10) + imageExtension;
+        document.getElementById('counterImage').src = imageSrc;
+    });
+
+    </script>
 </body>
 </html>
