@@ -479,31 +479,43 @@ titleElement.parentNode.insertBefore(jsOnlyText, titleElement.nextSibling);
    
   });
 </script>
-   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const counterKey = 'visitorCount';
-        const imagePath = 'https://maximum1st.github.io/images/'; // 画像が保存されているパス
-        const imageExtension = '.png'; // 画像の拡張子
+  
 
-        // ローカルストレージから訪問者数を取得
-        let count = parseInt(localStorage.getItem(counterKey)) || 0;
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
 
-        // 訪問者数をインクリメント
-        count += 1;
+<script>
+// Firebaseプロジェクトの設定
+var firebaseConfig = {
+    apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
+            authDomain: "counterimagedatabase.firebaseapp.com",
+            databaseURL: "https://counterimagedatabase-default-rtdb.firebaseio.com",
+            projectId: "counterimagedatabase",
+            storageBucket: "counterimagedatabase.appspot.com",
+            messagingSenderId: "341673352860",
+            appId: "1:341673352860:web:3caabbb16c1c7120c6d759"
+};
 
-        // 新しいカウントをローカルストレージに保存
-        localStorage.setItem(counterKey, count.toString());
+// Firebaseの初期化
+firebase.initializeApp(firebaseConfig);
 
-        // カウンターの値を8桁に整形
-        const formattedCount = count.toString().padStart(8, '0');
+// 訪問者数をインクリメントする
+var visitsRef = firebase.database().ref('visits');
+visitsRef.transaction(function(currentVisits) {
+    return (currentVisits || 0) + 1;
+});
 
-        // 各桁に対応する画像を更新
-        for (let i = 0; i < 8; i++) {
-            const digit = formattedCount[i];
-            document.getElementById('digit' + (i + 1)).src = imagePath + digit + imageExtension;
+// カウンターを表示する
+visitsRef.on('value', function(snapshot) {
+    var count = snapshot.val();
+    var formattedCount = count.toString().padStart(8, '0').split('');
+    formattedCount.forEach(function(digit, index) {
+        var img = document.getElementById('digit' + (index + 1));
+        if (img) {
+            img.src = 'https://maximum1st.github.io/images/' + digit + '.png'; // 画像ファイルへのパスを設定
         }
     });
+});
 </script>
-
 </body>
 </html>
