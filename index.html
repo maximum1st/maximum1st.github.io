@@ -199,15 +199,20 @@ ul.link-list {
 #mobileOnlyContent {
     display: none; /* デフォルトでは非表示 */
 }
- #counter {
+
+    #counter {
         display: flex;
+        justify-content: center; /* 水平方向の中央揃え */
+        margin: 0 auto; /* 水平方向の中央に配置 */
     }
     .digit {
         margin: 0;
         padding: 0;
         width: 16px;  /* 画像の幅 */
         height: 21px; /* 画像の高さ */
+        display: inline-block; /* 画像をインラインブロック要素として表示 */
     }
+
 /* モバイルデバイスでのみ表示 */
 @media screen and (max-width: 768px) {
     #mobileOnlyContent {
