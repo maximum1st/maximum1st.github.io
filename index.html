@@ -454,12 +454,12 @@ titleElement.parentNode.insertBefore(jsOnlyText, titleElement.nextSibling);
    
   });
 </script>
-    <script>
-        
+   <script>
     document.addEventListener('DOMContentLoaded', () => {
         const counterKey = 'visitorCount';
         const imagePath = 'https://maximum1st.github.io/images/'; // 画像が保存されているパス
         const imageExtension = '.png'; // 画像の拡張子
+        const maxDigits = 8; // 最大桁数
 
         // ローカルストレージから訪問者数を取得
         let count = parseInt(localStorage.getItem(counterKey)) || 0;
@@ -470,11 +470,17 @@ titleElement.parentNode.insertBefore(jsOnlyText, titleElement.nextSibling);
         // 新しいカウントをローカルストレージに保存
         localStorage.setItem(counterKey, count.toString());
 
+        // カウンターの値を8桁に整形
+        const formattedCount = count.toString().padStart(maxDigits, '0');
+
+        // 画像の番号を決定（ここでは簡単のため、カウントの下一桁を使用）
+        const imageNumber = formattedCount[formattedCount.length - 1];
+
         // 画像のパスを更新
-        const imageSrc = imagePath + (count % 10) + imageExtension;
+        const imageSrc = imagePath + imageNumber + imageExtension;
         document.getElementById('counterImage').src = imageSrc;
     });
+</script>
 
-    </script>
 </body>
 </html>
