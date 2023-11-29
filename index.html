@@ -478,10 +478,9 @@ titleElement.parentNode.insertBefore(jsOnlyText, titleElement.nextSibling);
    
   });
 </script>
-
 <script>
-  // Firebase設定
-  var firebaseConfig = {
+      // Firebase設定
+      const firebaseConfig = {
             apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
             authDomain: "counterimagedatabase.firebaseapp.com",
             databaseURL: "https://counterimagedatabase-default-rtdb.firebaseio.com",
@@ -489,39 +488,38 @@ titleElement.parentNode.insertBefore(jsOnlyText, titleElement.nextSibling);
             storageBucket: "counterimagedatabase.appspot.com",
             messagingSenderId: "341673352860",
             appId: "1:341673352860:web:3caabbb16c1c7120c6d759"
-  };
+      };
 
-  // Firebaseの初期化
-  firebase.initializeApp(firebaseConfig);
+      // Firebaseの初期化
+      firebase.initializeApp(firebaseConfig);
 
-  // データベース参照を取得
-  var visitsRef = firebase.database().ref('visits');
+      // データベース参照を取得
+      const visitsRef = firebase.database().ref('visits');
 
-  // カウンターを表示する関数
-  function displayCounter(count) {
-    var formattedCount = count.toString().padStart(8, '0').split('');
-    formattedCount.forEach(function(digit, index) {
-      var img = document.getElementById('digit' + (index + 1));
-      if (img) {
-        img.src = 'https://maximum1st.github.io/images/' + digit + '.png'; // 実際の数字に応じた画像ファイルへのパスを設定
+      // カウンターを表示する関数
+      function displayCounter(count) {
+        const formattedCount = String(count).padStart(8, '0').split('');
+        formattedCount.forEach((digit, index) => {
+          const imgElement = document.getElementById(`digit${index + 1}`);
+          if (imgElement) {
+            imgElement.src = `https://maximum1st.github.io/images/${digit}.png`;
+          }
+        });
       }
-    });
-  }
 
-  // 訪問者数をインクリメントして表示する
-  visitsRef.transaction(function(currentVisits) {
-    return (currentVisits || 0) + 1;
-  });
+      // 訪問者数をインクリメントして表示する
+      visitsRef.transaction((currentVisits) => {
+        return (currentVisits || 0) + 1;
+      }).then((transactionResult) => {
+        if (transactionResult.committed) {
+          displayCounter(transactionResult.snapshot.val());
+        }
+      });
 
-  // Firebaseからの初回読み込み時にカウンターを表示する
-  visitsRef.once('value').then(function(snapshot) {
-    displayCounter(snapshot.val());
-  });
-
-  // その後のデータ更新によるカウンターの更新を監視する
-  visitsRef.on('value', function(snapshot) {
-    displayCounter(snapshot.val());
-  });
-</script>
+      // データベースから訪問者数の変更をリアルタイムで受け取る
+      visitsRef.on('value', (snapshot) => {
+        displayCounter(snapshot.val());
+      });
+    </script>
 </body>
 </html>
