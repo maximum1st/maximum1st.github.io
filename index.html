@@ -11,7 +11,6 @@
     
 <link rel="icon" type="image/png" sizes="32x32" href="https://maximum1st.github.io//favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="https://maximum1st.github.io//favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
@@ -461,64 +460,51 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
     </script>
+<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
 <script>
+  // 'DOMContentLoaded' イベントの後でFirebaseの初期化と関数実行を行います
   document.addEventListener('DOMContentLoaded', function() {
-    // 'とっくん研究' の要素を取得
-    var titleElement = document.querySelector('h1');
-    // 'Javascript専用' のテキストを含む新しい要素を作成
-var jsOnlyText = document.createElement('p');
-jsOnlyText.textContent = 'Javascript専用サイト(作成中)';
-jsOnlyText.style.color = 'orange';
-jsOnlyText.style.textAlign = 'center';
-jsOnlyText.style.margin = '20px 0';
-jsOnlyText.className = 'js-only-text'; // クラス名を追加
+    // Firebaseの設定情報
+    var firebaseConfig = {
+      apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
+      authDomain: "counterimagedatabase.firebaseapp.com",
+      databaseURL: "https://counterimagedatabase-default-rtdb.firebaseio.com",
+      projectId: "counterimagedatabase",
+      storageBucket: "counterimagedatabase.appspot.com",
+      messagingSenderId: "341673352860",
+      appId: "1:341673352860:web:3caabbb16c1c7120c6d759"
+    };
 
-// 'とっくん研究' の要素の直後に新しい要素を挿入
-titleElement.parentNode.insertBefore(jsOnlyText, titleElement.nextSibling);
-   
-  });
-    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+    // Firebaseの初期化
+    firebase.initializeApp(firebaseConfig);
+    var database = firebase.database();
 
-    <script>
-      // Firebaseの設定情報
-      var firebaseConfig = {
-            apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
-            authDomain: "counterimagedatabase.firebaseapp.com",
-            databaseURL: "https://counterimagedatabase-default-rtdb.firebaseio.com",
-            projectId: "counterimagedatabase",
-            storageBucket: "counterimagedatabase.appspot.com",
-            messagingSenderId: "341673352860",
-            appId: "1:341673352860:web:3caabbb16c1c7120c6d759"
-      };
-
-      // Firebaseの初期化
-      firebase.initializeApp(firebaseConfig);
-      var database = firebase.database();
-
-      // カウンターを表示する関数
-      function displayCounter(count) {
-        var formattedCount = String(count).padStart(8, '0').split('');
-        formattedCount.forEach(function(digit, index) {
-          var imgElement = document.getElementById('digit' + (index + 1));
+    // カウンターを表示する関数
+    function displayCounter(count) {
+      var formattedCount = String(count).padStart(8, '0').split('');
+      formattedCount.forEach(function(digit, index) {
+        var imgElement = document.getElementById('digit' + (index + 1));
+        if (imgElement) {
           imgElement.src = 'https://maximum1st.github.io/images/' + digit + '.png'; // 画像のパスを更新
-        });
-      }
-
-      // 訪問者数をインクリメントして表示する
-      var visitsRef = database.ref('visits');
-      visitsRef.transaction(function(currentVisits) {
-        return (currentVisits || 0) + 1;
-      }).then(function(transactionResult) {
-        if (transactionResult.committed) {
-          displayCounter(transactionResult.snapshot.val());
         }
       });
+    }
 
-      // データベースから訪問者数の変更をリアルタイムで受け取る
-      visitsRef.on('value', function(snapshot) {
-        displayCounter(snapshot.val());
-      });
-    </script>
+    // 訪問者数をインクリメントして表示する
+    var visitsRef = database.ref('visits');
+    visitsRef.transaction(function(currentVisits) {
+      return (currentVisits || 0) + 1;
+    }).then(function(transactionResult) {
+      if (transactionResult.committed) {
+        displayCounter(transactionResult.snapshot.val());
+      }
+    });
+
+    // データベースから訪問者数の変更をリアルタイムで受け取る
+    visitsRef.on('value', function(snapshot) {
+      displayCounter(snapshot.val());
+    });
+  });
+</script>
 </body>
-</html>
