@@ -477,12 +477,12 @@ jsOnlyText.className = 'js-only-text'; // クラス名を追加
 titleElement.parentNode.insertBefore(jsOnlyText, titleElement.nextSibling);
    
   });
-</script>
-     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
-<script>
-      // Firebase設定
-      const firebaseConfig = {
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+
+    <script>
+      // Firebaseの設定情報
+      var firebaseConfig = {
             apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
             authDomain: "counterimagedatabase.firebaseapp.com",
             databaseURL: "https://counterimagedatabase-default-rtdb.firebaseio.com",
@@ -494,32 +494,29 @@ titleElement.parentNode.insertBefore(jsOnlyText, titleElement.nextSibling);
 
       // Firebaseの初期化
       firebase.initializeApp(firebaseConfig);
-
-      // データベース参照を取得
-      const visitsRef = firebase.database().ref('visits');
+      var database = firebase.database();
 
       // カウンターを表示する関数
       function displayCounter(count) {
-        const formattedCount = String(count).padStart(8, '0').split('');
-        formattedCount.forEach((digit, index) => {
-          const imgElement = document.getElementById(`digit${index + 1}`);
-          if (imgElement) {
-            imgElement.src = `https://maximum1st.github.io/images/${digit}.png`;
-          }
+        var formattedCount = String(count).padStart(8, '0').split('');
+        formattedCount.forEach(function(digit, index) {
+          var imgElement = document.getElementById('digit' + (index + 1));
+          imgElement.src = 'https://maximum1st.github.io/images/' + digit + '.png'; // 画像のパスを更新
         });
       }
 
       // 訪問者数をインクリメントして表示する
-      visitsRef.transaction((currentVisits) => {
+      var visitsRef = database.ref('visits');
+      visitsRef.transaction(function(currentVisits) {
         return (currentVisits || 0) + 1;
-      }).then((transactionResult) => {
+      }).then(function(transactionResult) {
         if (transactionResult.committed) {
           displayCounter(transactionResult.snapshot.val());
         }
       });
 
       // データベースから訪問者数の変更をリアルタイムで受け取る
-      visitsRef.on('value', (snapshot) => {
+      visitsRef.on('value', function(snapshot) {
         displayCounter(snapshot.val());
       });
     </script>
