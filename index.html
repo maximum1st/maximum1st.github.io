@@ -382,7 +382,18 @@ ul.link-list {
 <IMG SRC="cgi-bin/tclite.cgi?count1&1&7" ALT="">
     <button id="backToTopBtn" style="display:none;" onclick="backToTop()">戻る↑</button>
     <button id="scrollToBottomBtn" style="display:none;" onclick="scrollToBottom()">リンク↓</button>
-   <img id="counterImage" src="" alt="Counter Image">
+<div id="counter">
+    <img id="digit1" src="" alt="" style="width: 16px; height: 21px;">
+    <img id="digit2" src="" alt="" style="width: 16px; height: 21px;">
+    <img id="digit3" src="" alt="" style="width: 16px; height: 21px;">
+    <img id="digit4" src="" alt="" style="width: 16px; height: 21px;">
+    <img id="digit5" src="" alt="" style="width: 16px; height: 21px;">
+    <img id="digit6" src="" alt="" style="width: 16px; height: 21px;">
+    <img id="digit7" src="" alt="" style="width: 16px; height: 21px;">
+    <img id="digit8" src="" alt="" style="width: 16px; height: 21px;">
+    <!-- 以下同様に、digit4からdigit8までのimgタグを追加 -->
+</div>
+
     <button id="openTwitchAppPC" style="display:none;" onclick="openTwitchApp('PC')">My Twitch Web</button>
     <button id="openTwitchAppMobile" style="display:none;" onclick="openTwitchApp('Mobile')">Twitch APP Mobile</button>
 
@@ -459,7 +470,6 @@ titleElement.parentNode.insertBefore(jsOnlyText, titleElement.nextSibling);
         const counterKey = 'visitorCount';
         const imagePath = 'https://maximum1st.github.io/images/'; // 画像が保存されているパス
         const imageExtension = '.png'; // 画像の拡張子
-        const maxDigits = 8; // 最大桁数
 
         // ローカルストレージから訪問者数を取得
         let count = parseInt(localStorage.getItem(counterKey)) || 0;
@@ -471,14 +481,13 @@ titleElement.parentNode.insertBefore(jsOnlyText, titleElement.nextSibling);
         localStorage.setItem(counterKey, count.toString());
 
         // カウンターの値を8桁に整形
-        const formattedCount = count.toString().padStart(maxDigits, '0');
+        const formattedCount = count.toString().padStart(8, '0');
 
-        // 画像の番号を決定（ここでは簡単のため、カウントの下一桁を使用）
-        const imageNumber = formattedCount[formattedCount.length - 1];
-
-        // 画像のパスを更新
-        const imageSrc = imagePath + imageNumber + imageExtension;
-        document.getElementById('counterImage').src = imageSrc;
+        // 各桁に対応する画像を更新
+        for (let i = 0; i < 8; i++) {
+            const digit = formattedCount[i];
+            document.getElementById('digit' + (i + 1)).src = imagePath + digit + imageExtension;
+        }
     });
 </script>
 
