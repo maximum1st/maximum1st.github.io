@@ -467,13 +467,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <script>
       // Firebaseの設定情報
       var firebaseConfig = {
-        apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
-        authDomain: "counterimagedatabase.firebaseapp.com",
-        databaseURL: "https://counterimagedatabase-default-rtdb.firebaseio.com",
-        projectId: "counterimagedatabase",
-        storageBucket: "counterimagedatabase.appspot.com",
-        messagingSenderId: "341673352860",
-        appId: "1:341673352860:web:3caabbb16c1c7120c6d759"
+        // Your firebase configuration
       };
 
       // Firebaseの初期化
@@ -496,9 +490,7 @@ document.addEventListener('DOMContentLoaded', function() {
       window.onload = function() {
         checkDeviceType();
 
-        // 各桁に透明画像を設定
         var imgElement = document.getElementById('counterImage');
-        imgElement.src = 'https://maximum1st.github.io/images/start.png'; // 透明画像のパス
 
         // 訪問者数をインクリメントして表示
         var visitsRef = firebase.database().ref('visits');
@@ -506,9 +498,9 @@ document.addEventListener('DOMContentLoaded', function() {
           return (currentVisits || 0) + 1;
         }).then(function(transactionResult) {
           if (transactionResult.committed) {
-            // Firebaseからデータが返ってきた後に2秒間の遅延を設ける
             setTimeout(function() {
               displayCounter(transactionResult.snapshot.val());
+              imgElement.style.visibility = 'hidden'; // 透明画像を非表示にする
             }, 2000); // 2秒の遅延
           }
         });
@@ -526,5 +518,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('counterImage').src = counterImage;
       }
     </script>
+
 </body>
 </html>
