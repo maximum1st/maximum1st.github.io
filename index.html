@@ -468,12 +468,12 @@ document.addEventListener('DOMContentLoaded', function() {
   // Firebaseの設定情報
   var firebaseConfig = {
     apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
-      authDomain: "counterimagedatabase.firebaseapp.com",
-      databaseURL: "https://counterimagedatabase-default-rtdb.firebaseio.com",
-      projectId: "counterimagedatabase",
-      storageBucket: "counterimagedatabase.appspot.com",
-      messagingSenderId: "341673352860",
-      appId: "1:341673352860:web:3caabbb16c1c7120c6d759"
+    authDomain: "counterimagedatabase.firebaseapp.com",
+    databaseURL: "https://counterimagedatabase-default-rtdb.firebaseio.com",
+    projectId: "counterimagedatabase",
+    storageBucket: "counterimagedatabase.appspot.com",
+    messagingSenderId: "341673352860",
+    appId: "1:341673352860:web:3caabbb16c1c7120c6d759"
   };
 
   // Firebaseの初期化
@@ -492,8 +492,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // ページ読み込み時にデフォルト画像を設定
+  // ページ読み込み時の処理
   window.onload = function() {
+    // デバイスタイプに基づいたTwitchアプリボタンの表示
+    checkDeviceType();
+
     // 各桁にデフォルト画像（0または透明）を設定
     displayCounter(0);
 
@@ -513,12 +516,33 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }, 2000); // 2秒の延滞時間
   };
+
+  // 更新ボタンのクリックイベントを設定
+  document.getElementById('reloadButton').addEventListener('click', function() {
+    location.reload(); // ページを再読み込み
+  });
+
+  // デバイスタイプをチェックしてTwitchアプリボタンを表示する関数
+  function checkDeviceType() {
+    var deviceType = navigator.userAgent;
+    var openTwitchAppPC = document.getElementById("openTwitchAppPC");
+    var openTwitchAppMobile = document.getElementById("openTwitchAppMobile");
+
+    if (deviceType.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {
+      openTwitchAppMobile.style.display = "block";
+      openTwitchAppMobile.onclick = function(event) {
+        event.preventDefault();
+        window.location.href = "twitch://stream/toshishige_maximum1st";
+      };
+    } else {
+      openTwitchAppPC.style.display = "block";
+      openTwitchAppPC.onclick = function(event) {
+        event.preventDefault();
+        window.open("https://www.twitch.tv/toshishige_maximum1st/about", "_blank");
+      };
+    }
+  }
 </script>
-    <script>
-        // 更新ボタンのクリックイベントを設定
-        document.getElementById('reloadButton').addEventListener('click', function() {
-            location.reload(); // ページを再読み込み
-        });
-    </script>
+
 </body>
 </html>
