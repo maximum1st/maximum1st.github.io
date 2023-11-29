@@ -199,7 +199,15 @@ ul.link-list {
 #mobileOnlyContent {
     display: none; /* デフォルトでは非表示 */
 }
-
+ #counter {
+        display: flex;
+    }
+    .digit {
+        margin: 0;
+        padding: 0;
+        width: 16px;  /* 画像の幅 */
+        height: 21px; /* 画像の高さ */
+    }
 /* モバイルデバイスでのみ表示 */
 @media screen and (max-width: 768px) {
     #mobileOnlyContent {
@@ -383,14 +391,14 @@ ul.link-list {
     <button id="backToTopBtn" style="display:none;" onclick="backToTop()">戻る↑</button>
     <button id="scrollToBottomBtn" style="display:none;" onclick="scrollToBottom()">リンク↓</button>
 <div id="counter">
-    <img id="digit1" src="" alt="" style="width: 16px; height: 21px;">
-    <img id="digit2" src="" alt="" style="width: 16px; height: 21px;">
-    <img id="digit3" src="" alt="" style="width: 16px; height: 21px;">
-    <img id="digit4" src="" alt="" style="width: 16px; height: 21px;">
-    <img id="digit5" src="" alt="" style="width: 16px; height: 21px;">
-    <img id="digit6" src="" alt="" style="width: 16px; height: 21px;">
-    <img id="digit7" src="" alt="" style="width: 16px; height: 21px;">
-    <img id="digit8" src="" alt="" style="width: 16px; height: 21px;">
+    <img class="digit" id="digit1" src="" alt="" style="width: 16px; height: 21px;">
+    <img class="digit" id="digit2" src="" alt="" style="width: 16px; height: 21px;">
+    <img class="digit" id="digit3" src="" alt="" style="width: 16px; height: 21px;">
+    <img class="digit" id="digit4" src="" alt="" style="width: 16px; height: 21px;">
+    <img class="digit" id="digit5" src="" alt="" style="width: 16px; height: 21px;">
+    <img class="digit" id="digit6" src="" alt="" style="width: 16px; height: 21px;">
+    <img class="digit" id="digit7" src="" alt="" style="width: 16px; height: 21px;">
+    <img class="digit" id="digit8" src="" alt="" style="width: 16px; height: 21px;">
     <!-- 以下同様に、digit4からdigit8までのimgタグを追加 -->
 </div>
 
