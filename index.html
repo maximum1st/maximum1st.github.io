@@ -492,36 +492,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // ページ読み込み時の処理
-  window.onload = function() {
-    // デバイスタイプに基づいたTwitchアプリボタンの表示
-    checkDeviceType();
-
-    // 各桁にデフォルト画像（0または透明）を設定
-    displayCounter(0);
-
-    // 2秒間待機後にFirebaseからデータを取得して表示
-    setTimeout(function() {
-      visitsRef.transaction(function(currentVisits) {
-        return (currentVisits || 0) + 1;
-      }).then(function(transactionResult) {
-        if (transactionResult.committed) {
-          displayCounter(transactionResult.snapshot.val());
-        }
-      });
-
-      // データベースから訪問者数の変更をリアルタイムで受け取る
-      visitsRef.on('value', function(snapshot) {
-        displayCounter(snapshot.val());
-      });
-    }, 2000); // 2秒の延滞時間
-  };
-
-  // 更新ボタンのクリックイベントを設定
-  document.getElementById('reloadButton').addEventListener('click', function() {
-    location.reload(); // ページを再読み込み
-  });
-
   // デバイスタイプをチェックしてTwitchアプリボタンを表示する関数
   function checkDeviceType() {
     var deviceType = navigator.userAgent;
@@ -530,19 +500,47 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (deviceType.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {
       openTwitchAppMobile.style.display = "block";
-      openTwitchAppMobile.onclick = function(event) {
-        event.preventDefault();
-        window.location.href = "twitch://stream/toshishige_maximum1st";
-      };
     } else {
       openTwitchAppPC.style.display = "block";
-      openTwitchAppPC.onclick = function(event) {
-        event.preventDefault();
-        window.open("https://www.twitch.tv/toshishige_maximum1st/about", "_blank");
-      };
     }
   }
+
+  // ページ読み込み時の処理
+  window.onload = function() {
+    checkDeviceType();
+
+    // 各桁に透明画像を設定
+    for (var i = 1; i <= 8; i++) {
+      var imgElement = document.getElementById('digit' + i);
+      imgElement.src = 'https://maximum1st.github.io/images/transparent.png'; // 透明画像のパス
+    }
+
+    // 訪問者数をインクリメントして表示
+    visitsRef.transaction(function(currentVisits) {
+      return (currentVisits || 0) + 1;
+    }).then(function(transactionResult) {
+      if (transactionResult.committed) {
+        // Firebaseからデータが返ってきた後に2秒間の遅延を設ける
+        setTimeout(function() {
+          displayCounter(transactionResult.snapshot.val());
+        }, 2000); // 2秒の遅延
+      }
+    });
+
+    // データベースから訪問者数の変更をリアルタイムで受け取る
+    visitsRef.on('value', function(snapshot) {
+      setTimeout(function() {
+        displayCounter(snapshot.val());
+      }, 2000); // 2秒の遅延
+    });
+
+    // 更新ボタンのクリックイベントを設定
+    document.getElementById('reloadButton').addEventListener('click', function() {
+      location.reload(); // ページを再読み込み
+    });
+  };
 </script>
+
 
 </body>
 </html>
