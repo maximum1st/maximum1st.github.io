@@ -397,14 +397,14 @@ ul.link-list {
     <button id="backToTopBtn" style="display:none;" onclick="backToTop()">戻る↑</button>
     <button id="scrollToBottomBtn" style="display:none;" onclick="scrollToBottom()">リンク↓</button>
 <div id="counter">
-    <img class="digit" id="digit1" src="" alt="" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit2" src="" alt="" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit3" src="" alt="" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit4" src="" alt="" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit5" src="" alt="" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit6" src="" alt="" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit7" src="" alt="" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit8" src="" alt="" style="width: 16px; height: 21px;">
+    <img class="digit" id="digit1" src="https://maximum1st.github.io/images/0.png" alt="0" style="width: 16px; height: 21px;">
+    <img class="digit" id="digit2" src="https://maximum1st.github.io/images/0.png" alt="0" style="width: 16px; height: 21px;">
+    <img class="digit" id="digit3" src="https://maximum1st.github.io/images/0.png" alt="0" style="width: 16px; height: 21px;">
+    <img class="digit" id="digit4" src="https://maximum1st.github.io/images/0.png" alt="0" style="width: 16px; height: 21px;">
+    <img class="digit" id="digit5" src="https://maximum1st.github.io/images/0.png" alt="0" style="width: 16px; height: 21px;">
+    <img class="digit" id="digit6" src="https://maximum1st.github.io/images/0.png" alt="0" style="width: 16px; height: 21px;">
+    <img class="digit" id="digit7" src="https://maximum1st.github.io/images/0.png" alt="0" style="width: 16px; height: 21px;">
+    <img class="digit" id="digit8" src="https://maximum1st.github.io/images/0.png" alt="0" style="width: 16px; height: 21px;">
     <!-- 以下同様に、digit4からdigit8までのimgタグを追加 -->
 </div>
 
@@ -463,47 +463,28 @@ document.addEventListener('DOMContentLoaded', function() {
 });
     </script>
 <script>
-  // Firebaseの設定情報
-  var firebaseConfig = {
-    apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
-    authDomain: "counterimagedatabase.firebaseapp.com",
-    databaseURL: "https://counterimagedatabase-default-rtdb.firebaseio.com",
-    projectId: "counterimagedatabase",
-    storageBucket: "counterimagedatabase.appspot.com",
-    messagingSenderId: "341673352860",
-    appId: "1:341673352860:web:3caabbb16c1c7120c6d759"
-  };
+        var firebaseConfig = {
+            // Firebaseの設定情報
+        };
+        firebase.initializeApp(firebaseConfig);
+        var database = firebase.database();
+        var visitsRef = database.ref('visits');
 
-  // Firebaseの初期化
-  firebase.initializeApp(firebaseConfig);
+        function displayCounter(count) {
+            var formattedCount = String(count).padStart(8, '0').split('');
+            formattedCount.forEach(function(digit, index) {
+                var imgElement = document.getElementById('digit' + (index + 1));
+                imgElement.src = 'https://maximum1st.github.io/images/' + digit + '.png';
+            });
+        }
 
-  // データベース参照を取得
-  var database = firebase.database();
-  var visitsRef = database.ref('visits');
+        visitsRef.transaction(function(currentVisits) {
+            return (currentVisits || 0) + 1;
+        });
 
-  // カウンターを表示する関数
-  function displayCounter(count) {
-    var formattedCount = String(count).padStart(8, '0').split('');
-    formattedCount.forEach(function(digit, index) {
-      var imgElement = document.getElementById('digit' + (index + 1));
-      imgElement.src = 'https://maximum1st.github.io/images/' + digit + '.png'; // 画像のパスを更新
-    });
-  }
-
-  // ページロード時にカウンターを0で初期化
-  displayCounter(0);
-
-  // 訪問者数をインクリメントして表示する
-  visitsRef.transaction(function(currentVisits) {
-    return (currentVisits || 0) + 1;
-  }).then(function(transactionResult) {
-    if (transactionResult.committed) {
-      displayCounter(transactionResult.snapshot.val());
-    }
-  });
-
-  // データベースから訪問者数の変更をリアルタイムで受け取る
-  visitsRef.on('value', function(snapshot) {
-    displayCounter(snapshot.val());
-  });
-</script>
+        visitsRef.on('value', function(snapshot) {
+            displayCounter(snapshot.val());
+        });
+    </script>
+</body>
+</html>
