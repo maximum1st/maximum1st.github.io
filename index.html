@@ -462,9 +462,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
     </script>
-<script>
-      // Firebaseの設定情報
-      var firebaseConfig = {
+    <script>
+// Firebaseの設定
+var firebaseConfig = {
     apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
       authDomain: "counterimagedatabase.firebaseapp.com",
       databaseURL: "https://counterimagedatabase-default-rtdb.firebaseio.com",
@@ -472,35 +472,42 @@ document.addEventListener('DOMContentLoaded', function() {
       storageBucket: "counterimagedatabase.appspot.com",
       messagingSenderId: "341673352860",
       appId: "1:341673352860:web:3caabbb16c1c7120c6d759"
-      };
+};
 
-      // Firebaseの初期化
-      firebase.initializeApp(firebaseConfig);
+// Firebaseの初期化
+firebase.initializeApp(firebaseConfig);
 
-      // データベース参照を取得
-      var database = firebase.database();
-      var visitsRef = database.ref('visits');
+// データベース参照を取得
+var database = firebase.database();
+var visitsRef = database.ref('visits');
 
-      // カウンターを表示する関数
-      function displayCounter(count) {
-        var formattedCount = String(count).padStart(8, '0').split('');
-        formattedCount.forEach(function(digit, index) {
-          var imgElement = document.getElementById('digit' + (index + 1));
-          imgElement.src = 'https://maximum1st.github.io/images/' + digit + '.png'; // 画像のパスを更新
-        });
-      }
+// デフォルト画像を表示する関数
+function displayDefaultImage() {
+  for (var i = 1; i <= 8; i++) {
+    var imgElement = document.getElementById('digit' + i);
+    imgElement.src = 'https://maximum1st.github.io/images/0.png'; // デフォルト画像のパス
+  }
+}
 
-      // 訪問者数をインクリメントして表示する
-      visitsRef.transaction(function(currentVisits) {
-        return (currentVisits || 0) + 1;
-      }).then(function(transactionResult) {
-        if (transactionResult.committed) {
-          displayCounter(transactionResult.snapshot.val());
-        }
-      });
+// 実際のカウンター値を表示する関数
+function displayCounter(count) {
+  var formattedCount = String(count).padStart(8, '0').split('');
+  formattedCount.forEach(function(digit, index) {
+    var imgElement = document.getElementById('digit' + (index + 1));
+    imgElement.src = 'https://maximum1st.github.io/images/' + digit + '.png';
+  });
+}
 
-      // データベースから訪問者数の変更をリアルタイムで受け取る
-      visitsRef.on('value', function(snapshot) {
-        displayCounter(snapshot.val());
-      });
+// ページ読み込み時にデフォルト画像を表示
+window.onload = displayDefaultImage;
+
+// 訪問者数をインクリメント
+visitsRef.transaction(function(currentVisits) {
+  return (currentVisits || 0) + 1;
+});
+
+// Firebaseからカウンターの値を取得して表示
+visitsRef.on('value', function(snapshot) {
+  displayCounter(snapshot.val());
+});
     </script>
