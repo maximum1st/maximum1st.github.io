@@ -478,9 +478,6 @@ titleElement.parentNode.insertBefore(jsOnlyText, titleElement.nextSibling);
    
   });
 </script>
- <!-- Firebaseのスクリプトをバージョン8系に変更します -->
-  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
 
 <script>
   // Firebase設定
@@ -498,30 +495,10 @@ titleElement.parentNode.insertBefore(jsOnlyText, titleElement.nextSibling);
   firebase.initializeApp(firebaseConfig);
 
   // データベース参照を取得
-  var database = firebase.database();
+  var visitsRef = firebase.database().ref('visits');
 
-  // カウンターの初期表示を0に設定する関数
-  function initializeCounter() {
-    for (var i = 1; i <= 8; i++) {
-      var img = document.getElementById('digit' + i);
-      img.src = 'https://maximum1st.github.io/images/0.png';
-    }
-  }
-
-  // ページ読み込み時にカウンターを初期化
-  window.onload = function() {
-    initializeCounter();
-  };
-
-  // 訪問者数をインクリメントして表示する
-  var visitsRef = database.ref('visits');
-  visitsRef.transaction(function(currentVisits) {
-    return (currentVisits || 0) + 1;
-  });
-
-  // カウンターを表示する
-  visitsRef.on('value', function(snapshot) {
-    var count = snapshot.val();
+  // カウンターを表示する関数
+  function displayCounter(count) {
     var formattedCount = count.toString().padStart(8, '0').split('');
     formattedCount.forEach(function(digit, index) {
       var img = document.getElementById('digit' + (index + 1));
@@ -529,57 +506,22 @@ titleElement.parentNode.insertBefore(jsOnlyText, titleElement.nextSibling);
         img.src = 'https://maximum1st.github.io/images/' + digit + '.png'; // 実際の数字に応じた画像ファイルへのパスを設定
       }
     });
+  }
+
+  // 訪問者数をインクリメントして表示する
+  visitsRef.transaction(function(currentVisits) {
+    return (currentVisits || 0) + 1;
+  });
+
+  // Firebaseからの初回読み込み時にカウンターを表示する
+  visitsRef.once('value').then(function(snapshot) {
+    displayCounter(snapshot.val());
+  });
+
+  // その後のデータ更新によるカウンターの更新を監視する
+  visitsRef.on('value', function(snapshot) {
+    displayCounter(snapshot.val());
   });
 </script>
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-    
-  <script>
-    // あなたのFirebase設定
-    var firebaseConfig = {
-            apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
-            authDomain: "counterimagedatabase.firebaseapp.com",
-            databaseURL: "https://counterimagedatabase-default-rtdb.firebaseio.com",
-            projectId: "counterimagedatabase",
-            storageBucket: "counterimagedatabase.appspot.com",
-            messagingSenderId: "341673352860",
-            appId: "1:341673352860:web:3caabbb16c1c7120c6d759"
-    };
-    
-    // Firebaseの初期化
-    firebase.initializeApp(firebaseConfig);
-    
-    // データベース参照を取得
-    var database = firebase.database();
-    
-    // 訪問者数をインクリメントする
-    var visitsRef = database.ref('visits');
-    visitsRef.transaction(function(currentVisits) {
-      return (currentVisits || 0) + 1;
-    });
-
-    // カウンターを表示する
-    visitsRef.on('value', function(snapshot) {
-      var count = snapshot.val();
-      var formattedCount = count.toString().padStart(8, '0').split('');
-      formattedCount.forEach(function(digit, index) {
-        var img = document.getElementById('digit' + (index + 1));
-        if (img) {
-          img.src = 'https://maximum1st.github.io/images/' + digit + '.png'; // 画像ファイルへのパスを設定
-        }
-      });
-    });
-  </script>
 </body>
 </html>
