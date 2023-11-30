@@ -464,7 +464,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <script>
         // Firebaseの設定情報
         var firebaseConfig = {
-    apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
+        apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
       authDomain: "counterimagedatabase.firebaseapp.com",
       databaseURL: "https://counterimagedatabase-default-rtdb.firebaseio.com",
       projectId: "counterimagedatabase",
@@ -521,14 +521,10 @@ document.addEventListener('DOMContentLoaded', function() {
             checkDeviceType();
 
             var visitsRef = firebase.database().ref('visits');
-            visitsRef.transaction(function(currentVisits) {
-                return (currentVisits || 0) + 1;
-            }).then(function(transactionResult) {
-                if (transactionResult.committed) {
-                    setTimeout(function() {
-                        displayCounter(transactionResult.snapshot.val());
-                    }, 2000); // 2秒後にカウンターを表示し、ローディング画像を隠す
-                }
+
+            // 訪問者数のリアルタイム更新を監視
+            visitsRef.on('value', function(snapshot) {
+                displayCounter(snapshot.val());
             });
 
             // 更新ボタンのイベントリスナー
