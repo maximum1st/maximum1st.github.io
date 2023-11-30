@@ -471,9 +471,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
     </script>
-  <script>
-        // Firebaseの設定
-        var firebaseConfig = {
+<script>
+    // Firebaseの設定
+    var firebaseConfig = {
             apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
             authDomain: "counterimagedatabase.firebaseapp.com",
             databaseURL: "https://counterimagedatabase-default-rtdb.firebaseio.com",
@@ -481,29 +481,40 @@ document.addEventListener('DOMContentLoaded', function() {
             storageBucket: "counterimagedatabase.appspot.com",
             messagingSenderId: "341673352860",
             appId: "1:341673352860:web:3caabbb16c1c7120c6d759"
-        };
-        firebase.initializeApp(firebaseConfig);
+    };
+    firebase.initializeApp(firebaseConfig);
 
-        // カウンターを表示する関数
-        function displayCounter(count) {
-            var formattedCount = String(count).padStart(8, '0');
-            for (var i = 0; i < 8; i++) {
-                var imgElement = document.getElementById('digit' + (i + 1));
-                imgElement.src = 'https://maximum1st.github.io/images/' + formattedCount[i] + '.png';
-            }
-            document.getElementById('loadingImage').style.display = 'none';
+    // カウンターを表示する関数
+    function displayCounter(count) {
+        var formattedCount = String(count).padStart(8, '0');
+        var counterElement = document.getElementById('counter');
+        counterElement.innerHTML = ''; // カウンターの中身をクリア
+
+        for (var i = 0; i < 8; i++) {
+            var img = document.createElement('img');
+            img.src = 'https://maximum1st.github.io/images/' + formattedCount[i] + '.png';
+            img.style.width = '16px';
+            img.style.height = '21px';
+            counterElement.appendChild(img);
         }
 
-        // Firebaseの訪問者数を取得してカウンターを更新
-        var visitsRef = firebase.database().ref('visits');
-        visitsRef.on('value', function(snapshot) {
-            displayCounter(snapshot.val());
-        });
+        document.getElementById('loadingImage').style.display = 'none';
+    }
 
-        // ページが読み込まれたらローディング画像を非表示にする
-        window.onload = function() {
-            document.getElementById('loadingImage').style.display = 'none';
-        };
-    </script>
+    // Firebaseの訪問者数をリアルタイムで取得してカウンターを更新
+    var visitsRef = firebase.database().ref('visits');
+    visitsRef.on('value', function(snapshot) {
+        displayCounter(snapshot.val());
+    });
+</script>
 </body>
 </html>
+
+
+
+
+
+
+
+    
+ 
