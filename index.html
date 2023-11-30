@@ -198,24 +198,30 @@ ul.link-list {
 #mobileOnlyContent {
     display: none; /* デフォルトでは非表示 */
 }
+/* カウンターコンテナのスタイル */
 #counterContainer {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center; /* センタリングのために追加 */
-    flex-direction: column; /* 縦のスタックにする */
-    margin-bottom: 3px; /* ボタンとの距離を3pxに設定 */
+  position: relative;
+  display: flex;
+  justify-content: center; /* 中央揃え */
+  align-items: center; /* アイテムを垂直方向に中央揃え */
+  flex-direction: row; /* アイテムを水平方向に並べる */
+  margin-bottom: 3px; /* 下部のマージンを設定 */
 }
 
+/* カウンターのスタイル */
 #counter {
-    visibility: visible; /* カウンターが見えるように設定 */
-    /* 必要に応じて他のスタイルを調整 */
+  visibility: visible; /* カウンターを表示 */
 }
+
+/* 各数字の画像スタイル */
 .digit {
   width: 16px; /* 数字の画像の幅 */
   height: 21px; /* 数字の画像の高さ */
-  margin: 0; /* 画像間のマージンを取り除く */
+  margin: 0; /* 画像間のマージンをなくす */
+  display: inline-block; /* 画像をインラインブロック要素として表示 */
+  vertical-align: middle; /* 画像を垂直方向の中央に揃える */
 }
+
 /* モバイルデバイスでのみ表示 */
 @media screen and (max-width: 768px) {
     #mobileOnlyContent {
