@@ -462,8 +462,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
     </script>
 <script>
-        // Firebaseの設定情報
-        var firebaseConfig = {
+    // Firebaseの設定情報
+    var firebaseConfig = {
         apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
       authDomain: "counterimagedatabase.firebaseapp.com",
       databaseURL: "https://counterimagedatabase-default-rtdb.firebaseio.com",
@@ -471,68 +471,54 @@ document.addEventListener('DOMContentLoaded', function() {
       storageBucket: "counterimagedatabase.appspot.com",
       messagingSenderId: "341673352860",
       appId: "1:341673352860:web:3caabbb16c1c7120c6d759"
-        };
-        firebase.initializeApp(firebaseConfig);
+    };
+    firebase.initializeApp(firebaseConfig);
 
-        // デバイスタイプをチェックしてTwitchアプリボタンを表示する関数
-        function checkDeviceType() {
-            var deviceType = navigator.userAgent;
-            var openTwitchAppPC = document.getElementById("openTwitchAppPC");
-            var openTwitchAppMobile = document.getElementById("openTwitchAppMobile");
+    // デバイスタイプをチェックしてTwitchアプリボタンを表示する関数
+    function checkDeviceType() {
+        var deviceType = navigator.userAgent;
+        var openTwitchAppPC = document.getElementById("openTwitchAppPC");
+        var openTwitchAppMobile = document.getElementById("openTwitchAppMobile");
 
-            if (deviceType.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {
-                openTwitchAppMobile.style.display = "block";
-            } else {
-                openTwitchAppPC.style.display = "block";
-            }
+        if (deviceType.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {
+            openTwitchAppMobile.style.display = "block";
+        } else {
+            openTwitchAppPC.style.display = "block";
         }
+    }
 
-        // カウンターを表示する関数
-        function displayCounter(count) {
-            // カウンター値を8桁の文字列に変換
-            var formattedCount = String(count).padStart(8, '0').split('');
-            // 各桁ごとの画像URLを構築
-            var counterImages = formattedCount.map(function(digit) {
-                return 'https://maximum1st.github.io/images/' + digit + '.png';
-            });
+    // カウンターを表示する関数
+    function displayCounter(count) {
+        var formattedCount = String(count).padStart(8, '0').split('');
+        var counterElement = document.getElementById('counter');
+        counterElement.innerHTML = ''; // 既存のカウンターをクリア
 
-            // 既存のカウンター画像を削除
-            var counterElement = document.getElementById('counter');
-            while (counterElement.firstChild) {
-                counterElement.removeChild(counterElement.firstChild);
-            }
+        // 新しいカウンター画像を追加
+        formattedCount.forEach(function(digit) {
+            var img = document.createElement('img');
+            img.src = 'https://maximum1st.github.io/images/' + digit + '.png';
+            img.className = 'digit';
+            img.style.width = '16px';
+            img.style.height = '21px';
+            counterElement.appendChild(img);
+        });
 
-            // 新しいカウンター画像を追加
-            counterImages.forEach(function(imgSrc) {
-                var img = document.createElement('img');
-                img.src = imgSrc;
-                img.className = 'digit';
-                img.style.width = '16px';
-                img.style.height = '21px';
-                counterElement.appendChild(img);
-            });
+        // ローディング画像を非表示にする
+        document.getElementById('loadingImage').style.display = 'none';
+    }
 
-            // ローディング画像を非表示にする
-            document.getElementById('loadingImage').style.display = 'none';
-        }
+    // ページ読み込み時の処理
+    window.onload = function() {
+        checkDeviceType();
 
-        // ページ読み込み時の処理
-        window.onload = function() {
-            checkDeviceType();
+        var visitsRef = firebase.database().ref('visits');
+        visitsRef.on('value', function(snapshot) {
+            displayCounter(snapshot.val());
+        });
 
-            var visitsRef = firebase.database().ref('visits');
-
-            // 訪問者数のリアルタイム更新を監視
-            visitsRef.on('value', function(snapshot) {
-                displayCounter(snapshot.val());
-            });
-
-            // 更新ボタンのイベントリスナー
-            document.getElementById('reloadButton').addEventListener('click', function() {
-                location.reload();
-            });
-        };
-    </script>
-</body>
-</html>
-      
+        // 更新ボタンのイベントリスナー
+        document.getElementById('reloadButton').addEventListener('click', function() {
+            location.reload();
+        });
+    };
+</script>
