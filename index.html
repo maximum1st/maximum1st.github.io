@@ -497,6 +497,13 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('loadingImage').style.display = 'none'; // 透明画像を非表示にする
         }
 
+    // 透明画像を非表示にする
+    var loadingImage = document.getElementById('loadingImage');
+    if (loadingImage) {
+        loadingImage.style.display = 'none';
+    }
+}
+
         // ページ読み込み時の処理
         window.onload = function() {
             checkDeviceType();
