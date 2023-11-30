@@ -471,7 +471,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
     </script>
  <script>
-        // Firebaseの設定情報
+        // Firebaseの設定
         var firebaseConfig = {
             apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
       authDomain: "counterimagedatabase.firebaseapp.com",
@@ -482,19 +482,6 @@ document.addEventListener('DOMContentLoaded', function() {
       appId: "1:341673352860:web:3caabbb16c1c7120c6d759"
         };
         firebase.initializeApp(firebaseConfig);
-
-        // デバイスタイプをチェックしてTwitchアプリボタンを表示する関数
-        function checkDeviceType() {
-            var deviceType = navigator.userAgent;
-            var openTwitchAppPC = document.getElementById("openTwitchAppPC");
-            var openTwitchAppMobile = document.getElementById("openTwitchAppMobile");
-
-            if (deviceType.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {
-                openTwitchAppMobile.style.display = "block";
-            } else {
-                openTwitchAppPC.style.display = "block";
-            }
-        }
 
         // カウンターを表示する関数
         function displayCounter(count) {
@@ -509,16 +496,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // ページ読み込み時の処理
         window.onload = function() {
-            checkDeviceType();
-
             var visitsRef = firebase.database().ref('visits');
             visitsRef.on('value', function(snapshot) {
                 displayCounter(snapshot.val());
-            });
-
-            // 更新ボタンのイベントリスナー
-            document.getElementById('reloadButton').addEventListener('click', function() {
-                location.reload();
             });
         };
     </script>
