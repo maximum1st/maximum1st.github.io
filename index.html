@@ -471,16 +471,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
     </script>
-   <script>
+  <script>
         // Firebaseの設定
         var firebaseConfig = {
-           apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
-      authDomain: "counterimagedatabase.firebaseapp.com",
-      databaseURL: "https://counterimagedatabase-default-rtdb.firebaseio.com",
-      projectId: "counterimagedatabase",
-      storageBucket: "counterimagedatabase.appspot.com",
-      messagingSenderId: "341673352860",
-      appId: "1:341673352860:web:3caabbb16c1c7120c6d759"
+            apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
+            authDomain: "counterimagedatabase.firebaseapp.com",
+            databaseURL: "https://counterimagedatabase-default-rtdb.firebaseio.com",
+            projectId: "counterimagedatabase",
+            storageBucket: "counterimagedatabase.appspot.com",
+            messagingSenderId: "341673352860",
+            appId: "1:341673352860:web:3caabbb16c1c7120c6d759"
         };
         firebase.initializeApp(firebaseConfig);
 
@@ -492,7 +492,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 imgElement.src = 'https://maximum1st.github.io/images/' + formattedCount[i] + '.png';
             }
             document.getElementById('loadingImage').style.display = 'none';
-            document.getElementById('counter').style.visibility = 'visible';
         }
 
         // Firebaseの訪問者数を取得してカウンターを更新
@@ -500,6 +499,11 @@ document.addEventListener('DOMContentLoaded', function() {
         visitsRef.on('value', function(snapshot) {
             displayCounter(snapshot.val());
         });
+
+        // ページが読み込まれたらローディング画像を非表示にする
+        window.onload = function() {
+            document.getElementById('loadingImage').style.display = 'none';
+        };
     </script>
 </body>
 </html>
