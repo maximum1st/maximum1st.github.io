@@ -399,14 +399,14 @@ ul.link-list {
     <button id="backToTopBtn" style="display:none;" onclick="backToTop()">戻る↑</button>
     <button id="scrollToBottomBtn" style="display:none;" onclick="scrollToBottom()">リンク↓</button>
 <div id="counter">
-    <img class="digit" id="digit1" src="https://maximum1st.github.io/images/0.png" alt="0" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit2" src="https://maximum1st.github.io/images/0.png" alt="0" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit3" src="https://maximum1st.github.io/images/0.png" alt="0" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit4" src="https://maximum1st.github.io/images/0.png" alt="0" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit5" src="https://maximum1st.github.io/images/0.png" alt="0" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit6" src="https://maximum1st.github.io/images/0.png" alt="0" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit7" src="https://maximum1st.github.io/images/0.png" alt="0" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit8" src="https://maximum1st.github.io/images/0.png" alt="0" style="width: 16px; height: 21px;">
+    <img class="digit" id="digit1" src="https://maximum1st.github.io/images/start.png" alt="0" style="width: 16px; height: 21px;">
+    <img class="digit" id="digit2" src="https://maximum1st.github.io/images/start.png" alt="0" style="width: 16px; height: 21px;">
+    <img class="digit" id="digit3" src="https://maximum1st.github.io/images/start.png" alt="0" style="width: 16px; height: 21px;">
+    <img class="digit" id="digit4" src="https://maximum1st.github.io/images/start.png" alt="0" style="width: 16px; height: 21px;">
+    <img class="digit" id="digit5" src="https://maximum1st.github.io/images/start.png" alt="0" style="width: 16px; height: 21px;">
+    <img class="digit" id="digit6" src="https://maximum1st.github.io/images/start.png" alt="0" style="width: 16px; height: 21px;">
+    <img class="digit" id="digit7" src="https://maximum1st.github.io/images/start.png" alt="0" style="width: 16px; height: 21px;">
+    <img class="digit" id="digit8" src="https://maximum1st.github.io/images/start.png" alt="0" style="width: 16px; height: 21px;">
     <!-- 以下同様に、digit4からdigit8までのimgタグを追加 -->
 </div>
 
@@ -465,20 +465,17 @@ document.addEventListener('DOMContentLoaded', function() {
 });
     </script>
 <script>
-      // Firebaseの設定情報
       var firebaseConfig = {
-        // Your firebase configuration
+        apiKey: "YOUR_API_KEY",
+        authDomain: "YOUR_AUTH_DOMAIN",
+        // その他のFirebase設定...
       };
-
-      // Firebaseの初期化
       firebase.initializeApp(firebaseConfig);
 
-      // デバイスタイプをチェックしてTwitchアプリボタンを表示する関数
       function checkDeviceType() {
         var deviceType = navigator.userAgent;
         var openTwitchAppPC = document.getElementById("openTwitchAppPC");
         var openTwitchAppMobile = document.getElementById("openTwitchAppMobile");
-
         if (deviceType.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {
           openTwitchAppMobile.style.display = "block";
         } else {
@@ -486,13 +483,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
 
-      // ページ読み込み時の処理
+      function displayCounter(count) {
+        var formattedCount = String(count).padStart(8, '0').split('');
+        var counterImage = 'https://maximum1st.github.io/images/' + formattedCount.join('') + '.png';
+        var imgElement = document.getElementById('counterImage');
+        imgElement.src = counterImage;
+        imgElement.style.display = 'block';
+      }
+
       window.onload = function() {
         checkDeviceType();
-
-        var imgElement = document.getElementById('counterImage');
-
-        // 訪問者数をインクリメントして表示
         var visitsRef = firebase.database().ref('visits');
         visitsRef.transaction(function(currentVisits) {
           return (currentVisits || 0) + 1;
@@ -500,24 +500,14 @@ document.addEventListener('DOMContentLoaded', function() {
           if (transactionResult.committed) {
             setTimeout(function() {
               displayCounter(transactionResult.snapshot.val());
-              imgElement.style.visibility = 'hidden'; // 透明画像を非表示にする
-            }, 2000); // 2秒の遅延
+            }, 2000);
           }
         });
 
-        // 更新ボタンのクリックイベントを設定
         document.getElementById('reloadButton').addEventListener('click', function() {
-          location.reload(); // ページを再読み込み
+          location.reload();
         });
       };
-
-      // カウンターを表示する関数
-      function displayCounter(count) {
-        var formattedCount = String(count).padStart(8, '0').split('');
-        var counterImage = 'https://maximum1st.github.io/images/' + formattedCount.join('') + '.png';
-        document.getElementById('counterImage').src = counterImage;
-      }
     </script>
-
 </body>
 </html>
