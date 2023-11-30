@@ -199,23 +199,29 @@ ul.link-list {
     display: none; /* デフォルトでは非表示 */
 }
 
-   #counter {
-        display: flex;
-        justify-content: center; /* 水平方向の中央揃え */
-        margin: 0 auto; /* 水平方向の中央に配置 */
-        margin-bottom: 3px; /* 下の要素との間隔 */
-    }
-    .digit {
-        margin: 0;
-        padding: 0;
-        width: 16px;  /* 画像の幅 */
-        height: 21px; /* 画像の高さ */
-        display: inline-block; /* 画像をインラインブロック要素として表示 */
-    }
-         #loadingImage {
-           width: 128px;
-           height: 21px;
-       }
+ #counterContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+#loadingImage {
+    width: 128px;
+    height: 21px;
+}
+
+#counter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    visibility: hidden; /* 初期状態ではカウンターを非表示にする */
+}
+
+.digit {
+    width: 16px;
+    height: 21px;
+}
 
 /* モバイルデバイスでのみ表示 */
 @media screen and (max-width: 768px) {
@@ -403,17 +409,12 @@ ul.link-list {
     <button id="backToTopBtn" style="display:none;" onclick="backToTop()">戻る↑</button>
     <button id="scrollToBottomBtn" style="display:none;" onclick="scrollToBottom()">リンク↓</button>
 
-    <img id="loadingImage" src="https://maximum1st.github.io/images/start.png" alt="Loading" style="width: 128px; height: 21px;">
-   <div id="counter">
-    <img class="digit" id="digit1" src="" alt="0" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit2" src="" alt="0" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit3" src="" alt="0" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit4" src="" alt="0" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit5" src="" alt="0" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit6" src="" alt="0" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit7" src="" alt="0" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit8" src="" alt="0" style="width: 16px; height: 21px;">
-</div></div>
+    <div id="counterContainer">
+        <img id="loadingImage" src="https://maximum1st.github.io/images/start.png" alt="Loading" style="width: 128px; height: 21px;">
+        <div id="counter">
+
+        </div>
+    </div>
 
 
     <button id="openTwitchAppPC" style="display:none;" onclick="openTwitchApp('PC')">My Twitch Web</button>
@@ -470,10 +471,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
     </script>
- <script>
+   <script>
         // Firebaseの設定
         var firebaseConfig = {
-            apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
+           apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
       authDomain: "counterimagedatabase.firebaseapp.com",
       databaseURL: "https://counterimagedatabase-default-rtdb.firebaseio.com",
       projectId: "counterimagedatabase",
@@ -490,17 +491,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 var imgElement = document.getElementById('digit' + (i + 1));
                 imgElement.src = 'https://maximum1st.github.io/images/' + formattedCount[i] + '.png';
             }
-            // ローディング画像を非表示にする
             document.getElementById('loadingImage').style.display = 'none';
+            document.getElementById('counter').style.visibility = 'visible';
         }
 
-        // ページ読み込み時の処理
-        window.onload = function() {
-            var visitsRef = firebase.database().ref('visits');
-            visitsRef.on('value', function(snapshot) {
-                displayCounter(snapshot.val());
-            });
-        };
+        // Firebaseの訪問者数を取得してカウンターを更新
+        var visitsRef = firebase.database().ref('visits');
+        visitsRef.on('value', function(snapshot) {
+            displayCounter(snapshot.val());
+        });
     </script>
 </body>
 </html>
