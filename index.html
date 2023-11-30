@@ -461,17 +461,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
     </script>
-<script>
-      <script>
+
+       <script>
         // Firebaseの設定情報
         var firebaseConfig = {
-            apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
-            authDomain: "counterimagedatabase.firebaseapp.com",
-            databaseURL: "https://counterimagedatabase-default-rtdb.firebaseio.com",
-            projectId: "counterimagedatabase",
-            storageBucket: "counterimagedatabase.appspot.com",
-            messagingSenderId: "341673352860",
-            appId: "1:341673352860:web:3caabbb16c1c7120c6d759"
+        apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
+      authDomain: "counterimagedatabase.firebaseapp.com",
+      databaseURL: "https://counterimagedatabase-default-rtdb.firebaseio.com",
+      projectId: "counterimagedatabase",
+      storageBucket: "counterimagedatabase.appspot.com",
+      messagingSenderId: "341673352860",
+      appId: "1:341673352860:web:3caabbb16c1c7120c6d759"
         };
         firebase.initializeApp(firebaseConfig);
 
@@ -480,6 +480,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var deviceType = navigator.userAgent;
             var openTwitchAppPC = document.getElementById("openTwitchAppPC");
             var openTwitchAppMobile = document.getElementById("openTwitchAppMobile");
+
             if (deviceType.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {
                 openTwitchAppMobile.style.display = "block";
             } else {
@@ -487,26 +488,22 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        // カウンター表示関数
+        // カウンターを表示する関数
         function displayCounter(count) {
             var formattedCount = String(count).padStart(8, '0').split('');
             var counterImage = 'https://maximum1st.github.io/images/' + formattedCount.join('') + '.png';
             var imgElement = document.getElementById('counterImage');
             imgElement.src = counterImage;
             imgElement.style.display = 'block';
-            document.getElementById('loadingImage').style.display = 'none'; // 透明画像を非表示にする
-        }
 
-    // 透明画像を非表示にする
-    var loadingImage = document.getElementById('loadingImage');
-    if (loadingImage) {
-        loadingImage.style.display = 'none';
-    }
-}
+            // ローディング画像を非表示にする
+            document.getElementById('loadingImage').style.display = 'none';
+        }
 
         // ページ読み込み時の処理
         window.onload = function() {
             checkDeviceType();
+
             var visitsRef = firebase.database().ref('visits');
             visitsRef.transaction(function(currentVisits) {
                 return (currentVisits || 0) + 1;
@@ -514,17 +511,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (transactionResult.committed) {
                     setTimeout(function() {
                         displayCounter(transactionResult.snapshot.val());
-                    }, 2000);
+                    }, 2000); // 2秒後にカウンターを表示し、ローディング画像を隠す
                 }
             });
 
             // 更新ボタンのイベントリスナー
-            var reloadButton = document.getElementById('reloadButton');
-            if (reloadButton) {
-                reloadButton.addEventListener('click', function() {
-                    location.reload();
-                });
-            }
+            document.getElementById('reloadButton').addEventListener('click', function() {
+                location.reload();
+            });
         };
     </script>
 </body>
