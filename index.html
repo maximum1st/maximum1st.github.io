@@ -202,26 +202,28 @@ ul.link-list {
 #counterContainer {
   position: relative;
   display: flex;
-  justify-content: center; /* 中央揃え */
+  justify-content: center; /* アイテムを水平方向に中央揃え */
   align-items: center; /* アイテムを垂直方向に中央揃え */
   flex-direction: row; /* アイテムを水平方向に並べる */
-  margin-bottom: 3px; /* 下部のマージンを設定 */
+  margin-bottom: 3px; /* ボタンとの距離を3pxに設定 */
 }
 
-/* カウンターのスタイル */
 #counter {
-  visibility: visible; /* カウンターを表示 */
+  visibility: visible; /* カウンターが見えるように設定 */
 }
 
-/* 各数字の画像スタイル */
 .digit {
   width: 16px; /* 数字の画像の幅 */
   height: 21px; /* 数字の画像の高さ */
-  margin: 0; /* 画像間のマージンをなくす */
+  margin-right: 0px; /* 隣の画像との間隔を3pxに設定 */
   display: inline-block; /* 画像をインラインブロック要素として表示 */
   vertical-align: middle; /* 画像を垂直方向の中央に揃える */
 }
 
+/* 最後の数字画像の右マージンを修正 */
+.digit:last-child {
+  margin-right: 0; /* 最後の要素のみマージンを0にする */
+}
 /* モバイルデバイスでのみ表示 */
 @media screen and (max-width: 768px) {
     #mobileOnlyContent {
