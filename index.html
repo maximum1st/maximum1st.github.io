@@ -212,6 +212,10 @@ ul.link-list {
         height: 21px; /* 画像の高さ */
         display: inline-block; /* 画像をインラインブロック要素として表示 */
     }
+         #loadingImage {
+           width: 128px;
+           height: 21px;
+       }
 
 /* モバイルデバイスでのみ表示 */
 @media screen and (max-width: 768px) {
@@ -399,15 +403,8 @@ ul.link-list {
     <button id="backToTopBtn" style="display:none;" onclick="backToTop()">戻る↑</button>
     <button id="scrollToBottomBtn" style="display:none;" onclick="scrollToBottom()">リンク↓</button>
 <div id="counter">
-    <img class="digit" id="digit1" src="https://maximum1st.github.io/images/start.png" alt="0" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit2" src="https://maximum1st.github.io/images/start.png" alt="0" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit3" src="https://maximum1st.github.io/images/start.png" alt="0" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit4" src="https://maximum1st.github.io/images/start.png" alt="0" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit5" src="https://maximum1st.github.io/images/start.png" alt="0" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit6" src="https://maximum1st.github.io/images/start.png" alt="0" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit7" src="https://maximum1st.github.io/images/start.png" alt="0" style="width: 16px; height: 21px;">
-    <img class="digit" id="digit8" src="https://maximum1st.github.io/images/start.png" alt="0" style="width: 16px; height: 21px;">
-    <!-- 以下同様に、digit4からdigit8までのimgタグを追加 -->
+    <img id="loadingImage" src="https://maximum1st.github.io/images/start.png" alt="Loading" style="width: 128px; height: 21px;">
+    <img id="counterImage" src="" alt="Counter" style="display: none;">
 </div>
 
     <button id="openTwitchAppPC" style="display:none;" onclick="openTwitchApp('PC')">My Twitch Web</button>
@@ -465,49 +462,63 @@ document.addEventListener('DOMContentLoaded', function() {
 });
     </script>
 <script>
-      var firebaseConfig = {
-        apiKey: "YOUR_API_KEY",
-        authDomain: "YOUR_AUTH_DOMAIN",
-        // その他のFirebase設定...
-      };
-      firebase.initializeApp(firebaseConfig);
+      <script>
+        // Firebaseの設定情報
+        var firebaseConfig = {
+            apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
+            authDomain: "counterimagedatabase.firebaseapp.com",
+            databaseURL: "https://counterimagedatabase-default-rtdb.firebaseio.com",
+            projectId: "counterimagedatabase",
+            storageBucket: "counterimagedatabase.appspot.com",
+            messagingSenderId: "341673352860",
+            appId: "1:341673352860:web:3caabbb16c1c7120c6d759"
+        };
+        firebase.initializeApp(firebaseConfig);
 
-      function checkDeviceType() {
-        var deviceType = navigator.userAgent;
-        var openTwitchAppPC = document.getElementById("openTwitchAppPC");
-        var openTwitchAppMobile = document.getElementById("openTwitchAppMobile");
-        if (deviceType.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {
-          openTwitchAppMobile.style.display = "block";
-        } else {
-          openTwitchAppPC.style.display = "block";
+        // デバイスタイプをチェックしてTwitchアプリボタンを表示する関数
+        function checkDeviceType() {
+            var deviceType = navigator.userAgent;
+            var openTwitchAppPC = document.getElementById("openTwitchAppPC");
+            var openTwitchAppMobile = document.getElementById("openTwitchAppMobile");
+            if (deviceType.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {
+                openTwitchAppMobile.style.display = "block";
+            } else {
+                openTwitchAppPC.style.display = "block";
+            }
         }
-      }
 
-      function displayCounter(count) {
-        var formattedCount = String(count).padStart(8, '0').split('');
-        var counterImage = 'https://maximum1st.github.io/images/' + formattedCount.join('') + '.png';
-        var imgElement = document.getElementById('counterImage');
-        imgElement.src = counterImage;
-        imgElement.style.display = 'block';
-      }
+        // カウンター表示関数
+        function displayCounter(count) {
+            var formattedCount = String(count).padStart(8, '0').split('');
+            var counterImage = 'https://maximum1st.github.io/images/' + formattedCount.join('') + '.png';
+            var imgElement = document.getElementById('counterImage');
+            imgElement.src = counterImage;
+            imgElement.style.display = 'block';
+            document.getElementById('loadingImage').style.display = 'none'; // 透明画像を非表示にする
+        }
 
-      window.onload = function() {
-        checkDeviceType();
-        var visitsRef = firebase.database().ref('visits');
-        visitsRef.transaction(function(currentVisits) {
-          return (currentVisits || 0) + 1;
-        }).then(function(transactionResult) {
-          if (transactionResult.committed) {
-            setTimeout(function() {
-              displayCounter(transactionResult.snapshot.val());
-            }, 2000);
-          }
-        });
+        // ページ読み込み時の処理
+        window.onload = function() {
+            checkDeviceType();
+            var visitsRef = firebase.database().ref('visits');
+            visitsRef.transaction(function(currentVisits) {
+                return (currentVisits || 0) + 1;
+            }).then(function(transactionResult) {
+                if (transactionResult.committed) {
+                    setTimeout(function() {
+                        displayCounter(transactionResult.snapshot.val());
+                    }, 2000);
+                }
+            });
 
-        document.getElementById('reloadButton').addEventListener('click', function() {
-          location.reload();
-        });
-      };
+            // 更新ボタンのイベントリスナー
+            var reloadButton = document.getElementById('reloadButton');
+            if (reloadButton) {
+                reloadButton.addEventListener('click', function() {
+                    location.reload();
+                });
+            }
+        };
     </script>
 </body>
 </html>
