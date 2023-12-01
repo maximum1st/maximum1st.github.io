@@ -457,46 +457,45 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
 <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
-<script>
-  // Firebaseの初期化
-  var firebaseConfig = {
-    apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
+// Firebaseの初期化
+var firebaseConfig = {
+   apiKey: "AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE",
     authDomain: "counterimagedatabase.firebaseapp.com",
     databaseURL: "https://counterimagedatabase-default-rtdb.firebaseio.com",
     projectId: "counterimagedatabase",
     storageBucket: "counterimagedatabase.appspot.com",
     messagingSenderId: "341673352860",
     appId: "1:341673352860:web:3caabbb16c1c7120c6d759"
-  };
-  firebase.initializeApp(firebaseConfig);
+};
+firebase.initializeApp(firebaseConfig);
 
-  // カウンターの更新と表示
-  function updateAndShowCounter() {
-    var countRef = firebase.database().ref('visitors/count');
-    countRef.transaction(function(currentCount) {
-      return (currentCount || 0) + 1;
-    });
-
-    countRef.on('value', function(snapshot) {
-      var count = snapshot.val();
-      var formattedCount = ('00000000' + count).slice(-8); // 8桁にフォーマット
-      // カウンターの各桁を更新
-      for (var i = 0; i < 8; i++) {
-        var digit = document.getElementById('digit' + (i + 1));
-        digit.src = 'https://maximum1st.github.io/images/' + formattedCount.charAt(i) + '.png';
-        // スタイルを動的に適用
-        digit.style.width = '16px';
-        digit.style.height = '21px';
-        digit.style.margin = '0';
-        digit.style.display = 'inline-block';
-        digit.style.verticalAlign = 'middle';
-      }
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-    updateAndShowCounter();
+// カウンターの更新と表示
+function updateAndShowCounter() {
+  var countRef = firebase.database().ref('visitors/count');
+  countRef.transaction(function(currentCount) {
+    return (currentCount || 0) + 1;
   });
-</script>
+
+  countRef.on('value', function(snapshot) {
+    var count = snapshot.val();
+    var formattedCount = ('00000000' + count).slice(-8); // 8桁にフォーマット
+    for (var i = 0; i < 8; i++) {
+      var digitElement = document.getElementById('digit' + (i + 1));
+      digitElement.src = 'https://maximum1st.github.io/images/' + formattedCount.charAt(i) + '.png';
+      // Apply styles directly to each digit image
+      digitElement.style.margin = '0';
+      digitElement.style.padding = '0';
+      digitElement.style.display = 'inline-block';
+      digitElement.style.verticalAlign = 'middle';
+    }
+  });
+}
+
+// Ensure the counter is updated on page load
+document.addEventListener('DOMContentLoaded', function() {
+  updateAndShowCounter();
+});
 </body>
 </html>
+    
+    
