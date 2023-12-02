@@ -62,10 +62,10 @@
     </div>
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
-    <script>
+   <script>
         // Firebaseの設定
         var firebaseConfig = {
-            apiKey: "AIzaSyBk-eiBZfasuK1Hrb0LOAfMT_D5o-mjQso",
+             apiKey: "AIzaSyBk-eiBZfasuK1Hrb0LOAfMT_D5o-mjQso",
             authDomain: "chat-f68a2.firebaseapp.com",
             projectId: "chat-f68a2",
             storageBucket: "chat-f68a2.appspot.com",
@@ -83,27 +83,58 @@
             }
         });
 
+        // ここに翻訳関数を追加
+        function translateMessage(message, language, callback) {
+            // ここに翻訳APIの呼び出しコードを追加（Google Cloud Translation APIを仮定）
+            // 重要：実際のAPIキーはクライアントサイドには直接含めないでください
+            var url = "https://translation.googleapis.com/language/translate/v2?key=AIzaSyBk-eiBZfasuK1Hrb0LOAfMT_D5o-mjQso";
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    q: message,
+                    target: language
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data && data.data && data.data.translations && data.data.translations.length > 0) {
+                    callback(data.data.translations[0].translatedText);
+                }
+            })
+            .catch(error => {
+                console.error('Translation error:', error);
+            });
+        }
+
         function sendMessage() {
             var username = document.getElementById('username').value.trim();
             var input = document.getElementById('message-input');
             var message = input.value.trim();
+            var language = document.getElementById('language-select').value;
             var currentTime = new Date().toLocaleTimeString();
 
             if (username && message) {
-                firebase.database().ref('messages').push().set({
-                    username: username,
-                    message: message,
-                    timestamp: currentTime
-                });
+                translateMessage(message, language, function(translatedMessage) {
+                    firebase.database().ref('messages').push().set({
+                        username: username,
+                        message: message,
+                        translatedMessage: translatedMessage,
+                        timestamp: currentTime,
+                        language: language
+                    });
 
-                input.value = '';
+                    input.value = '';
+                });
             }
         }
 
         firebase.database().ref('messages').on('child_added', function(snapshot) {
             var data = snapshot.val();
             var messageDiv = document.createElement('div');
-            messageDiv.textContent = `${data.username} (${data.timestamp}): ${data.message}`;
+            messageDiv.textContent = `${data.username} (${data.timestamp}) [${data.language}]: ${data.message} / ${data.translatedMessage}`;
             document.getElementById('chat-window').appendChild(messageDiv);
             document.getElementById('chat-window').scrollTop = document.getElementById('chat-window').scrollHeight;
         });
