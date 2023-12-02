@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <title>シンプルチャットアプリ</title>
+    <style>
+        body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+#chat-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+#chat-window {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#message-input {
+    width: calc(100% - 20px);
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#send-button {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#send-button:hover {
+    background-color: #45a049;
+}
+
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="chat-window"></div>
+        <input type="text" id="username" placeholder="ユーザー名">
+        <textarea id="message-input" placeholder="メッセージを入力"></textarea>
+        <button id="send-button">送信</button>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
+    <script>
+        // Firebaseの設定
+        var firebaseConfig = {
+            apiKey: "AIzaSyBk-eiBZfasuK1Hrb0LOAfMT_D5o-mjQso",
+            authDomain: "chat-f68a2.firebaseapp.com",
+            projectId: "chat-f68a2",
+            storageBucket: "chat-f68a2.appspot.com",
+            messagingSenderId: "997802940709",
+            appId: "1:997802940709:web:7e869d916f695b4df6a2cc",
+            measurementId: "G-XRNFW5H96V"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        document.getElementById('send-button').addEventListener('click', sendMessage);
+        document.getElementById('message-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        function sendMessage() {
+            var username = document.getElementById('username').value.trim();
+            var input = document.getElementById('message-input');
+            var message = input.value.trim();
+            var currentTime = new Date().toLocaleTimeString();
+
+            if (username && message) {
+                firebase.database().ref('messages').push().set({
+                    username: username,
+                    message: message,
+                    timestamp: currentTime
+                });
+
+                input.value = '';
+            }
+        }
+
+        firebase.database().ref('messages').on('child_added', function(snapshot) {
+            var data = snapshot.val();
+            var messageDiv = document.createElement('div');
+            messageDiv.textContent = `${data.username} (${data.timestamp}): ${data.message}`;
+            document.getElementById('chat-window').appendChild(messageDiv);
+            document.getElementById('chat-window').scrollTop = document.getElementById('chat-window').scrollHeight;
+        });
+    </script>
+</body>
+</html>
