@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="robots" content="noindex, nofollow">
     <title>マルチランゲージリアルタイムチャットアプリ</title>
-    <style>
-           body, html {
+            body, html {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -50,8 +49,6 @@
 #send-button:hover {
     background-color: #45a049;
 }
-
-    </style>
 </head>
 <body>
     <div id="chat-container">
@@ -80,15 +77,14 @@
 
         document.getElementById('send-button').addEventListener('click', sendMessage);
 
-        function translateMessage(message, language, callback) {
+        function translateMessage(message, callback) {
             var translationResults = {};
             var translationPromises = languages.map(function(lang) {
-                var url = "https://translation.googleapis.com/language/translate/v2";
+                var url = "https://translation.googleapis.com/language/translate/v2?key=" + firebaseConfig.apiKey;
                 return fetch(url, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': 'Bearer ' + firebaseConfig.apiKey
                     },
                     body: JSON.stringify({
                         q: message,
@@ -98,6 +94,10 @@
                 .then(response => response.json())
                 .then(data => {
                     translationResults[lang] = data.data.translations[0].translatedText;
+                })
+                .catch(error => {
+                    console.error('Translation error for language ' + lang + ':', error);
+                    translationResults[lang] = message; // エラーが発生した場合は元のメッセージを使用
                 });
             });
 
@@ -144,4 +144,3 @@
     </script>
 </body>
 </html>
-
