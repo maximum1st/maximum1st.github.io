@@ -36,7 +36,7 @@
         async function translateMessage(message, languages) {
             let translations = {};
             for (const lang of languages) {
-                const prompt = `Translate this to ${lang}: ${message}`;
+                const prompt = `Translate this text to ${lang}: ${message}`;
                 const response = await fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
                     method: 'POST',
                     headers: {
