@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>マルチランゲージ翻訳チャットアプリ</title>
-    <!-- CSSスタイルをここに追加 -->
+    <!-- ここにCSSスタイルを追加 -->
 </head>
 <body>
     <div id="chat-container">
@@ -33,7 +33,7 @@
 
             if (username && message) {
                 // サーバーに翻訳リクエストを送信
-                const response = await fetch('/translate', {
+                const response = await fetch('https://maximum1st-github-1wc7nr8hv-maximum1sts-projects.vercel.app/translate', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ text: message })
@@ -74,7 +74,6 @@
     </script>
 </body>
 </html>
-
 
 
 
