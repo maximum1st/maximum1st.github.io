@@ -1,6 +1,4 @@
-// 環境変数の読み込み
 require('dotenv').config();
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const { OpenAIApi } = require('openai');
@@ -10,8 +8,8 @@ const app = express();
 
 // CORSポリシーの設定
 const corsOptions = {
-  origin: 'https://maximum1st-git-develop-maximum1sts-projects.vercel.app',
-  optionsSuccessStatus: 200
+  origin: 'https://maximum1st-git-develop-maximum1sts-projects.vercel.app', // クライアント側のオリジン
+  optionsSuccessStatus: 200 // 一部のレガシーブラウザが必要とする設定
 };
 app.use(cors(corsOptions));
 
@@ -32,7 +30,7 @@ app.post('/translate', async (req, res) => {
         for (const lang of languages) {
             // OpenAIを使用して翻訳
             const response = await openai.createCompletion({
-                model: 'text-davinci-003', // または適切なモデル
+                model: 'text-davinci-003', // 適切なモデルを指定
                 prompt: `Translate this text to ${lang}: ${text}`,
                 max_tokens: 60
             });
@@ -41,7 +39,7 @@ app.post('/translate', async (req, res) => {
 
         res.json({ translations });
     } catch (error) {
-        console.error(error);
+        console.error('Error processing translation request:', error);
         res.status(500).send('Error processing translation request');
     }
 });
@@ -51,5 +49,6 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
+
 
 
