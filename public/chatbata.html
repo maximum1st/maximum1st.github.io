@@ -3,27 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>マルチランゲージ翻訳チャットアプリ</title>
-    <style>
-        /* チャットウィンドウの基本スタイル */
-        #chat-container {
-            width: 300px;
-            margin: auto;
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
-
-        #chat-window {
-            height: 200px;
-            overflow-y: auto;
-            border: 1px solid #ccc;
-            margin-bottom: 10px;
-        }
-
-        #message-input {
-            width: 100%;
-            margin-bottom: 10px;
-        }
-    </style>
+    <!-- ここにCSSスタイルを追加 -->
 </head>
 <body>
     <div id="chat-container">
@@ -47,34 +27,47 @@
         };
         firebase.initializeApp(firebaseConfig);
 
-        document.getElementById('send-button').addEventListener('click', sendMessage);
-
-        function sendMessage() {
+        document.getElementById('send-button').addEventListener('click', async function() {
             const username = document.getElementById('username').value.trim();
             const message = document.getElementById('message-input').value.trim();
 
             if (username && message) {
-                // Firebaseにメッセージを保存
+                // サーバーに翻訳リクエストを送信
+                const response = await fetch('/translate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: message })
+                });
+                const translated = await response.json();
+
+                // Firebaseに保存
                 firebase.database().ref('messages').push().set({
                     username: username,
                     message: message,
+                    translations: translated,
                     timestamp: new Date().toLocaleTimeString()
                 });
+
                 document.getElementById('message-input').value = '';
             }
-        }
+        });
 
         // メッセージのリアルタイム表示
         firebase.database().ref('messages').on('child_added', function(snapshot) {
             const data = snapshot.val();
             const messageDiv = document.createElement('div');
-            messageDiv.textContent = `${data.username} (${data.timestamp}): ${data.message}`;
+            messageDiv.innerHTML = `<strong>${data.username} (${data.timestamp}):</strong> ${data.message}<br><pre>${JSON.stringify(data.translations, null, 2)}</pre>`;
             document.getElementById('chat-window').appendChild(messageDiv);
             document.getElementById('chat-window').scrollTop = document.getElementById('chat-window').scrollHeight;
         });
     </script>
 </body>
 </html>
+
+
+
+
+
 
 
 
