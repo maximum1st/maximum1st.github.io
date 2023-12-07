@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>マルチランゲージ翻訳チャットアプリ</title>
-    <!-- ここにCSSスタイルを追加 -->
+    <!-- CSSスタイルをここに追加 -->
 </head>
 <body>
     <div id="chat-container">
@@ -33,23 +33,27 @@
 
             if (username && message) {
                 // サーバーに翻訳リクエストを送信
-                const response = await fetch('https://maximum1st-github-1wc7nr8hv-maximum1sts-projects.vercel.app/translate', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ text: message })
-                });
-
-                if (response.ok) {
-                    const translated = await response.json();
-
-                    // Firebaseに保存
-                    firebase.database().ref('messages').push().set({
-                        username: username,
-                        message: message,
-                        translations: translated,
-                        timestamp: new Date().toLocaleTimeString()
+                try {
+                    const response = await fetch('https://maximum1st-github-1wc7nr8hv-maximum1sts-projects.vercel.app/translate', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ text: message })
                     });
-                } else {
+
+                    if (response.ok) {
+                        const translated = await response.json();
+
+                        // Firebaseに保存
+                        firebase.database().ref('messages').push().set({
+                            username: username,
+                            message: message,
+                            translations: translated,
+                            timestamp: new Date().toLocaleTimeString()
+                        });
+                    } else {
+                        throw new Error('Translation failed');
+                    }
+                } catch (error) {
                     // 翻訳に失敗した場合は日本語のみを保存
                     firebase.database().ref('messages').push().set({
                         username: username,
@@ -74,7 +78,6 @@
     </script>
 </body>
 </html>
-
 
 
 
