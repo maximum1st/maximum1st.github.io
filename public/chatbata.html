@@ -1,38 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <title>マルチランゲージ翻訳チャットアプリ</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        #chat-container {
-            width: 80%;
-            margin: 20px auto;
-            background-color: white;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        #chat-window {
-            height: 300px;
-            overflow-y: auto;
-            border: 1px solid #ddd;
-            margin-bottom: 20px;
-            padding: 10px;
-        }
-        #message-input {
-            width: calc(100% - 90px);
-            display: inline-block;
-        }
-        #send-button {
-            width: 80px;
-            display: inline-block;
-        }
-    </style>
+    <!-- ここにCSSスタイルを追加 -->
 </head>
 <body>
     <div id="chat-container">
@@ -48,7 +20,6 @@
         var firebaseConfig = {
             apiKey: "AIzaSyBk-eiBZfasuK1Hrb0LOAfMT_D5o-mjQso",
             authDomain: "chat-f68a2.firebaseapp.com",
-            databaseURL: "https://chat-f68a2-default-rtdb.firebaseio.com",
             projectId: "chat-f68a2",
             storageBucket: "chat-f68a2.appspot.com",
             messagingSenderId: "997802940709",
@@ -59,25 +30,37 @@
 
         document.getElementById('send-button').addEventListener('click', sendMessage);
 
-        function sendMessage() {
+        async function sendMessage() {
             const username = document.getElementById('username').value.trim();
             const message = document.getElementById('message-input').value.trim();
 
             if (username && message) {
-                // メッセージをFirebaseに送信
+                // サーバーに翻訳リクエストを送信
+                const response = await fetch('/translate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ message })
+                });
+                const data = await response.json();
+
+                // Firebaseにメッセージと翻訳を保存
                 firebase.database().ref('messages').push().set({
                     username: username,
                     message: message,
+                    translations: data.translations,
                     timestamp: new Date().toLocaleTimeString()
                 });
                 document.getElementById('message-input').value = '';
             }
         }
 
+        // メッセージの表示
         firebase.database().ref('messages').on('child_added', function(snapshot) {
             const data = snapshot.val();
             const messageDiv = document.createElement('div');
-            messageDiv.innerHTML = `${data.username} (${data.timestamp}): ${data.message}`;
+            messageDiv.innerHTML = `${data.username} (${data.timestamp}): ${data.message}<br>Translations: <pre>${JSON.stringify(data.translations, null, 2)}</pre>`;
             document.getElementById('chat-window').appendChild(messageDiv);
             document.getElementById('chat-window').scrollTop = document.getElementById('chat-window').scrollHeight;
         });
