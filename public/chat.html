@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://maximum1st.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://maximum1st.github.io/favicon-16x16.png">
+    <title>とっくん研究ChatRoom！</title>
+    <style>
+    * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+        }
+
+        #twitch-video {
+            width: 100%;
+            height: 100vh;
+            background: #000;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
+
+    #link-button, #closeButton, #maximizeButton {
+            position: fixed;
+            right: 0;
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+            border-top-left-radius: 10px; /* 左上の角を丸くする */
+            border-bottom-left-radius: 10px; /* 左下の角を丸くする */
+            padding: 3px 3px; /* パディングを調整して幅を統一 */
+            width: auto; /* 幅を自動調整 */
+            max-width: none; /* 最大幅の制限を解除 */
+        }
+         #link-button, #closeButton, #maximizeButton {
+                -webkit-writing-mode: vertical-rl;
+                writing-mode: vertical-rl;
+            
+            }
+
+        #link-button {
+            top: 0;
+            background-color: #32CD32;
+            white-space: nowrap; /* テキストの折り返しを防ぐ */
+            
+        }
+
+        #closeButton {
+            top: 40px; /* ボタンの位置を調整 */
+            background-color: #FF6347;
+        }
+
+       
+        }    
+       #maximizeButton {
+            top: 140px; /* ボタンの位置を調整 */
+            background-color: #4CAF50;
+        }    
+
+       
+        #links-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(18, 18, 18, 0.9);
+            z-index: 1000;
+            overflow-y: auto;
+            padding-top: 50px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .links {
+            list-style-type: none;
+            width: 100%;
+            text-align: center;
+        }
+
+        .links li {
+            margin: 10px 0;
+        }
+
+        .links a {
+            color: #32CD32;
+            text-decoration: none;
+            display: inline;
+            margin: 0;
+            padding: 0;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .powered-by, .account-creation {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .account-creation a {
+            color: #32CD32;
+        }
+
+ @media (max-width: 768px) {
+            #link-button, #closeButton, #maximizeButton {
+                -webkit-writing-mode: vertical-rl;
+                writing-mode: vertical-rl;
+                padding: 10px 20px; /* パディングの調整 */
+            }
+ }
+            #link-button span, #closeButton span, #maximizeButton span {
+                display: block; /* spanをブロック要素として扱う */
+            }
+        }
+#link-button, #closeButton, #maximizeButton {
+            position: fixed;
+            right: 0;
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+            border-top-left-radius: 10px; /* 左上の角を丸くする */
+            border-bottom-left-radius: 10px; /* 左下の角を丸くする */
+}
+            padding: 3px 3px; /* パディングを調整して幅を統一 */
+            width: auto; /* 幅を自動調整 */
+            max-width: none; /* 最大幅の制限を解除 */
+        }
+#link-button {
+            top: 0;
+            background-color: #32CD32;
+            white-space: nowrap; /* テキストの折り返しを防ぐ */
+            
+        }
+
+        #closeButton {
+            top: 40px; /* ボタンの位置を調整 */
+            background-color: #FF6347;
+        }
+
+        
+
+        
+   
+  
+    </style>
+</head>
+<body>
+    <button id="link-button">チャット</button>
+    <button id="closeButton">閉じる</button>
+    <button id="maximizeButton">最大化</button>
+    <div id="twitch-video"></div>
+    <div id="links-overlay" class="container" style="display: none;">
+        <ul class="links">
+            <li><a href="https://organizations.minnit.chat/841046088185698/Main?embed&amp;embed&amp;dark&amp;nickname=&amp;nec=6041430" target="_blank">ゲストチャット</a></li>
+            <li><a href="https://app.gitter.im/#/room/#maximum1st:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-客人(PC用)</a></li>
+            <li><a href="https://app.gitter.im/#/room/#maximum1st-2:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-雑談(PC用)</a></li>
+            <li><a href="https://app.gitter.im/#/room/#maximum1st-3:gitter.im" target="_blank" rel="noopener noreferrer">とっくん研究-配予(PC用)</a></li>
+        </ul>
+        <div class="powered-by">Powered by Gitter and GitHub™</div>
+        <div class="account-creation">まず<a href="https://github.co.jp/" target="_blank" rel="noopener noreferrer">アカウント作成</a>それからチャットへ！</div>
+    </div>
+<script>const _0x1e282e=_0x425b;function _0x227b(){const _0x3d8871=['270KVrBGt','https://player.twitch.tv/?video=','1996rOFBVU','4436290TFkcvG','twitch-video','innerHTML','Bearer\x20','&first=1&type=archive','492933jNTaHH','getElementById','addEventListener','closeButton','click','\x22\x20frameborder=\x220\x22\x20allowfullscreen></iframe>','904314848','data','close','14428548JyUzyX','style','display','12932790XKrNKi','42tPBCoO','224564qIKMns','<iframe\x20src=\x22','json','ax75nx9uru5de4d1xr3t11lr18ml9m','13qjRKFm','block','11hNSQSe','none','148592GXnQUM','54GyFCdK','links-overlay','Error\x20fetching\x20Twitch\x20video:'];_0x227b=function(){return _0x3d8871;};return _0x227b();}function _0x425b(_0x193ad7,_0x350aa5){const _0x227b39=_0x227b();return _0x425b=function(_0x425b82,_0x464f36){_0x425b82=_0x425b82-0x65;let _0x3f985b=_0x227b39[_0x425b82];return _0x3f985b;},_0x425b(_0x193ad7,_0x350aa5);}(function(_0x132c84,_0x2459c5){const _0x12837a=_0x425b,_0x15cd80=_0x132c84();while(!![]){try{const _0x65150=-parseInt(_0x12837a(0x7b))/0x1*(parseInt(_0x12837a(0x77))/0x2)+parseInt(_0x12837a(0x80))/0x3*(parseInt(_0x12837a(0x85))/0x4)+parseInt(_0x12837a(0x86))/0x5+-parseInt(_0x12837a(0x76))/0x6*(parseInt(_0x12837a(0x69))/0x7)+-parseInt(_0x12837a(0x7f))/0x8*(parseInt(_0x12837a(0x83))/0x9)+parseInt(_0x12837a(0x75))/0xa+parseInt(_0x12837a(0x7d))/0xb*(parseInt(_0x12837a(0x72))/0xc);if(_0x65150===_0x2459c5)break;else _0x15cd80['push'](_0x15cd80['shift']());}catch(_0x4db2df){_0x15cd80['push'](_0x15cd80['shift']());}}}(_0x227b,0xd759f));const clientId='4oqdslgbp4efuim24x8kdftf2idtm6',accessToken=_0x1e282e(0x7a),userId=_0x1e282e(0x6f);async function fetchTwitchVideo(){const _0x2ed61f=_0x1e282e,_0xb0d73b={'Authorization':_0x2ed61f(0x67)+accessToken,'Client-Id':clientId};try{const _0x43bfa4=await fetch('https://api.twitch.tv/helix/videos?user_id='+userId+_0x2ed61f(0x68),{'headers':_0xb0d73b}),_0x2593b0=await _0x43bfa4[_0x2ed61f(0x79)](),_0x7086ee=_0x2593b0[_0x2ed61f(0x70)][0x0]['id'],_0x37ff7b=_0x2ed61f(0x84)+_0x7086ee+'&parent=maximum1st-git-develop-maximum1sts-projects.vercel.app&autoplay=false&muted=false';document[_0x2ed61f(0x6a)](_0x2ed61f(0x65))[_0x2ed61f(0x66)]=_0x2ed61f(0x78)+_0x37ff7b+_0x2ed61f(0x6e);}catch(_0xdefb8c){console['error'](_0x2ed61f(0x82),_0xdefb8c);}}document[_0x1e282e(0x6a)]('link-button')[_0x1e282e(0x6b)]('click',function(){const _0x2a2d4e=_0x1e282e;var _0x4fefa7=document[_0x2a2d4e(0x6a)](_0x2a2d4e(0x81));_0x4fefa7[_0x2a2d4e(0x73)][_0x2a2d4e(0x74)]=_0x4fefa7[_0x2a2d4e(0x73)]['display']===_0x2a2d4e(0x7c)?_0x2a2d4e(0x7e):_0x2a2d4e(0x7c);}),document['getElementById'](_0x1e282e(0x6c))[_0x1e282e(0x6b)](_0x1e282e(0x6d),function(){const _0x29c3c6=_0x1e282e;window[_0x29c3c6(0x71)]();}),fetchTwitchVideo();</script>
+
+<script>
+    // 動画を最大化する関数
+    function maximizeVideo() {
+        const twitchVideoContainer = document.getElementById('twitch-video');
+        if (twitchVideoContainer.requestFullscreen) {
+            twitchVideoContainer.requestFullscreen();
+        } else if (twitchVideoContainer.mozRequestFullScreen) { /* Firefox */
+            twitchVideoContainer.mozRequestFullScreen();
+        } else if (twitchVideoContainer.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+            twitchVideoContainer.webkitRequestFullscreen();
+        } else if (twitchVideoContainer.msRequestFullscreen) { /* IE/Edge */
+            twitchVideoContainer.msRequestFullscreen();
+        }
+    }
+
+    // 最大化ボタンにイベントリスナーを追加
+    document.getElementById('maximizeButton').addEventListener('click', maximizeVideo);
+</script>
+
+
+<script>
+    // ボタンの幅を揃える関数
+    function equalizeButtonWidths() {
+        var buttons = [document.getElementById('link-button'), document.getElementById('closeButton'), document.getElementById('maximizeButton')];
+        var maxWidth = 0;
+
+        // 最大幅を取得
+        buttons.forEach(function(button) {
+            if (button.offsetWidth > maxWidth) {
+                maxWidth = button.offsetWidth;
+            }
+        });
+
+        // すべてのボタンに最大幅を適用
+        buttons.forEach(function(button) {
+            button.style.width = maxWidth + 'px';
+        });
+    }
+
+    // ページロード時とウィンドウサイズ変更時に実行
+    window.addEventListener('load', equalizeButtonWidths);
+    window.addEventListener('resize', equalizeButtonWidths);
+</script>
+    <script>
+// ページが読み込まれた後にスタイルを変更
+window.addEventListener('DOMContentLoaded', (event) => {
+    const maximizeButton = document.getElementById('maximizeButton');
+    maximizeButton.style.backgroundColor = '#4CAF50'; // 背景色を変更
+    maximizeButton.style.color = '#FFFFFF'; // テキスト色を変更
+});
+    </script>
+    <script>
+    // ボタンの位置を設定する関数
+function positionButtons() {
+    const buttonIds = ['link-button', 'closeButton', 'maximizeButton'];
+    let lastButtonBottom = 0; // 最後のボタンの下端の位置
+
+    buttonIds.forEach((id, index) => {
+        const button = document.getElementById(id);
+        if (button) {
+            // 最初のボタンの場合は、独自の位置に設定
+            if (index === 0) {
+                button.style.top = '59px';
+                lastButtonBottom = button.offsetTop + button.offsetHeight;
+            } else {
+                // それ以外のボタンは、前のボタンの下端から一定の間隔をあけて配置
+                button.style.top = `${lastButtonBottom + 10}px`; // 10pxはボタン間の間隔です
+                lastButtonBottom = button.offsetTop + button.offsetHeight;
+            }
+        }
+    });
+}
+
+// ウィンドウのサイズが変わるたびにボタンの位置を調整
+window.addEventListener('resize', positionButtons);
+
+// 初回読み込み時にも実行
+window.addEventListener('load', positionButtons);
+</script>
+<script>
+    function adjustButtonPadding() {
+    // ボタンのIDを配列に格納
+    const buttonIds = ['link-button', 'closeButton', 'maximizeButton'];
+    // モバイルデバイスの最大幅を定義（例えば768px）
+    const mobileWidthThreshold = 768;
+
+    buttonIds.forEach((id) => {
+        const button = document.getElementById(id);
+        if (button) {
+            if (window.innerWidth <= mobileWidthThreshold) {
+                // モバイルデバイスの場合のパディング
+                button.style.padding = '3px 3px'; // ボタンの高さを1行のテキストに合わせて調整
+            } else {
+                // PCの場合のパディング
+                button.style.padding = '3px 3px'; // 元のパディングに戻す
+            }
+        }
+    });
+}
+
+// ウィンドウのサイズが変更されるたびにパディングを調整
+window.addEventListener('resize', adjustButtonPadding);
+
+// 初回読み込み時にも実行
+window.addEventListener('DOMContentLoaded', adjustButtonPadding);
+</script>
+    <script>
+       document.addEventListener('DOMContentLoaded', function() {
+  var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  
+  // iPadのユーザーエージェントをチェック
+  if (/iPad/i.test(userAgent)) {
+    var maximizeButton = document.getElementById('maximizeButton');
+    if (maximizeButton) {
+      maximizeButton.style.display = 'none'; // 最大化ボタンを非表示にする
+    }
+  }
+});
+    </script>
+    <script>
+    // Check if the user agent is for iPad with iOS 17.x
+    function checkUserAgentAndHideButton() {
+        var userAgent = navigator.userAgent;
+        var isIpadOS17 = userAgent.includes('iPad') && userAgent.includes('CPU OS 17');
+
+        if (isIpadOS17) {
+            // Hide the maximize button
+            var maximizeButton = document.getElementById('maximizeButton');
+            if (maximizeButton) {
+                maximizeButton.style.display = 'none';
+            }
+        }
+    }
+
+    // Run the function when the page loads
+    window.addEventListener('DOMContentLoaded', checkUserAgentAndHideButton);
+</script>
+   <script>var _0x419246=_0x42ec;function _0x42ec(_0x26a92f,_0xb43edf){var _0x14a88c=_0x14a8();return _0x42ec=function(_0x42ecad,_0x25d098){_0x42ecad=_0x42ecad-0x12e;var _0x15da33=_0x14a88c[_0x42ecad];return _0x15da33;},_0x42ec(_0x26a92f,_0xb43edf);}(function(_0x1a85ff,_0x3e65f5){var _0x128c35=_0x42ec,_0x2b8af6=_0x1a85ff();while(!![]){try{var _0x5cad14=-parseInt(_0x128c35(0x136))/0x1*(parseInt(_0x128c35(0x134))/0x2)+-parseInt(_0x128c35(0x145))/0x3+parseInt(_0x128c35(0x147))/0x4*(-parseInt(_0x128c35(0x14a))/0x5)+-parseInt(_0x128c35(0x13e))/0x6+-parseInt(_0x128c35(0x13c))/0x7*(-parseInt(_0x128c35(0x148))/0x8)+parseInt(_0x128c35(0x12f))/0x9+-parseInt(_0x128c35(0x13d))/0xa*(-parseInt(_0x128c35(0x135))/0xb);if(_0x5cad14===_0x3e65f5)break;else _0x2b8af6['push'](_0x2b8af6['shift']());}catch(_0x4350b2){_0x2b8af6['push'](_0x2b8af6['shift']());}}}(_0x14a8,0xaec2a),document[_0x419246(0x138)](_0x419246(0x13b),function(){var _0x43dcc5=_0x419246,_0xe559ea=document['createElement'](_0x43dcc5(0x144));_0xe559ea['textContent']='個人道義',_0xe559ea[_0x43dcc5(0x141)][_0x43dcc5(0x149)]=_0x43dcc5(0x131),_0xe559ea[_0x43dcc5(0x141)][_0x43dcc5(0x142)]=_0x43dcc5(0x137),_0xe559ea['style'][_0x43dcc5(0x146)]='-100px',_0xe559ea['style']['bottom']=_0x43dcc5(0x13a),_0xe559ea[_0x43dcc5(0x141)][_0x43dcc5(0x139)]='1000',document['body'][_0x43dcc5(0x130)](_0xe559ea);var _0x5012c0;document[_0x43dcc5(0x138)](_0x43dcc5(0x140),function(_0x1f9ee6){var _0x806e16=_0x43dcc5,_0x505bb5=_0x1f9ee6['clientX'],_0x54e26d=_0x1f9ee6['clientY'],_0x387412=window[_0x806e16(0x132)],_0x594006=window['innerHeight'];if(_0x505bb5>_0x387412-0x64&&_0x54e26d>_0x594006-0x64){if(_0x5012c0)clearTimeout(_0x5012c0);_0x5012c0=setTimeout(function(){var _0x19df61=_0x806e16;_0xe559ea[_0x19df61(0x141)]['display']=_0x19df61(0x133),_0xe559ea[_0x19df61(0x141)]['right']='0',_0xe559ea[_0x19df61(0x141)][_0x19df61(0x14b)]='0';},0xbb8);}else clearTimeout(_0x5012c0),_0xe559ea['style'][_0x806e16(0x149)]=_0x806e16(0x131),_0xe559ea[_0x806e16(0x141)][_0x806e16(0x146)]=_0x806e16(0x13a),_0xe559ea[_0x806e16(0x141)][_0x806e16(0x14b)]=_0x806e16(0x13a);}),_0xe559ea[_0x43dcc5(0x143)]=function(){var _0x3ff393=_0x43dcc5;window[_0x3ff393(0x13f)][_0x3ff393(0x14c)]=_0x3ff393(0x12e);};}));function _0x14a8(){var _0x396bda=['right','14164EnKFwB','240IJjsnv','display','5OuUxsE','bottom','href','https://maximum1st-git-develop-maximum1sts-projects.vercel.app/7676.html','1969569fiDyuL','appendChild','none','innerWidth','block','14dfNvOF','33IXWXEA','132laiIrV','fixed','addEventListener','zIndex','-100px','DOMContentLoaded','222747yEmHrQ','2712110RDZwbi','1236834dxNpgq','location','mousemove','style','position','onclick','button','3182046rIyoKy'];_0x14a8=function(){return _0x396bda;};return _0x14a8();}</script>
+</body>
+</html>
+

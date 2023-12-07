@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://maximum1st.github.io//favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://maximum1st.github.io//favicon-16x16.png">
+    <title>とっくん研究 - 動画ギャラリー</title>
+    <style>
+        body {
+            background-color: #181919;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            width: 800px;
+            text-align: center;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+        }
+
+        @media screen and (max-width: 800px) {
+            .container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>動画ギャラリー</h1>
+
+        <video controls>
+            <source src="path/to/your/video.mp4" type="video/mp4">
+            <source src="path/to/your/video.ogg" type="video/ogg">
+            あなたのブラウザはビデオタグをサポートしていません。
+        </video>
+
+        <p><a href="index.html">ホームに戻る</a></p>
+    </div>
+</body>
+</html>

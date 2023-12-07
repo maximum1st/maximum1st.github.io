@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://maximum1st.github.io//favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://maximum1st.github.io//favicon-16x16.png">
+    <title>Gran Turismo 7 - パーツリスト</title>
+    <style>
+         /* ベースの背景とテキストの色を変更 */
+    body {
+        background-color: #121212; /* ダークテーマの背景色 */
+        color: #FFFFFF; /* テキストは白または明るいグレーに */
+        display: flex;
+        justify-content: center;
+        padding-top: 60px;
+    }
+
+    .container {
+        width: 500px;
+    }
+
+    .checked-background {
+        background-color: #2e2e2e; /* ダークテーマ用に調整 */
+        color: #FFFFFF;
+    }
+        /* その他の要素も同様に調整 */
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    input[type="checkbox"] + label {
+        position: relative;
+        padding-left: 35px;
+        cursor: pointer;
+        display: inline-block;
+        color: #FFFFFF; /* ラベルのテキスト色も変更 */
+    }
+
+    input[type="checkbox"] + label:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        border: 2px solid #FFFFFF; /* 明るい枠線 */
+        box-sizing: border-box;
+    }
+
+    input[type="checkbox"]:checked + label:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 6px;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 16px;
+        border-right: 2px solid #FFFFFF; /* チェックマークの色 */
+        border-bottom: 2px solid #FFFFFF;
+        transform: translateY(-50%) rotate(45deg);
+    }
+
+    /* 無効なチェックボックスのスタイルも更新 */
+    input[type="checkbox"]:disabled + label:before {
+        background: #2e2e2e; /* 中間色 */
+        border-color: #555; /* 枠線の色をダークテーマ用に */
+    }
+
+    input[type="checkbox"]:disabled:checked + label:after {
+        border-right: 2px solid #bbbbbb; /* チェックマークの色を中間色に */
+        border-bottom: 2px solid #bbbbbb;
+    }
+    /* リンク色の調整 */
+    a {
+        color: #BB86FC; /* 明るい紫。他の色でも可 */
+        text-decoration: none; /* 好みに応じて */
+    }
+
+    a:hover {
+        text-decoration: underline; /* ホバー効果 */
+    }
+    .checked-row {
+        background-color: blue; /* ここで任意の青色のシェードを設定できます。 */
+        color: white; /* チェックされた行のテキスト色（必要に応じて変更可能） */
+    }
+    /* 新しいスタイル */
+    #back-link {
+        position: fixed;
+        right: 0;
+        top: 50px; 
+        padding: 8px 16px; 
+        /* background-color: rgba(0, 0, 0, 0.7); 背景色を削除 */
+        color: #00ff00; /* リンクの色を緑に変更 */
+        text-decoration: none;
+        border-radius: 0 0 0 10px;
+    }
+
+    #back-link:hover {
+        /* background-color: rgba(0, 0, 0, 0.9); ホバー時の背景色も削除 */
+        text-decoration: underline;
+    }
+    </style>
+</head>
+<body>
+
+    <!-- コンテナを追加して中央揃えと幅を制御 -->
+    <div class="container">
+        <div style="height: 60px;"></div> <!-- スペーサー（黒い帯と同じ効果） -->
+        <h1 id="parts-title">購入パーツ</h1>
+        
+        <!-- チェックリスト部分 -->
+        <div class="checklist">
+            <h3>アヴェンタドール LP 750-4 SV '15</h3>
+            <ul>
+                <li><input type="checkbox" disabled> コンフォートハード</li>
+    <li><input type="checkbox" disabled> コンフォートミディアム</li>
+    <li><input type="checkbox" disabled> コンフォートソフト</li>
+    <li><input type="checkbox" disabled> スポーツハード</li>
+    <li><input type="checkbox" disabled> スポーツミディアム</li>
+    <li><input type="checkbox" checked disabled> スポーツソフト</li>
+    <li><input type="checkbox" disabled> ダート</li>
+    <li><input type="checkbox" disabled> レーシングハード</li>
+    <li><input type="checkbox" disabled> レーシングミディアム</li>
+    <li><input type="checkbox" disabled> レーシングソフト</li>
+    <li><input type="checkbox" disabled> インターミディエイト</li>
+    <li><input type="checkbox" disabled> ヘビーウェット</li>
+    <li><input type="checkbox" disabled> スポーツブレーキパッド</li>
+    <li><input type="checkbox" disabled> スポーツブレーキシステム</li>
+    <li><input type="checkbox" checked disabled> レーシングブレーキパッド</li>
+    <li><input type="checkbox" disabled> レーシングブレーキシステム(スロット)</li>
+    <li><input type="checkbox" disabled> レーシングブレーキシステム(ドリルド)</li>
+    <li><input type="checkbox" checked disabled> カーボンセラミックブレーキシステム</li>
+    <li><input type="checkbox" checked disabled> 油圧サイドブレーキ</li>
+    <li><input type="checkbox" checked disabled> ブレーキバランスコントローラ</li>
+    <li><input type="checkbox" disabled> ストリートサスペンション</li>
+    <li><input type="checkbox" disabled> スポーツサスペンション(調整式)</li>
+    <li><input type="checkbox" checked disabled> フルカスタマイズサスペンション</li>
+    <li><input type="checkbox" disabled> スポーツコンピュータ</li>
+    <li><input type="checkbox" checked disabled> フルカスタムコンピュータ</li>
+    <li><input type="checkbox" disabled> スポーツエアクリーナ</li>
+    <li><input type="checkbox" checked disabled> レーシングエアクリーナ</li>
+    <li><input type="checkbox" disabled> スポーツマフラー</li>
+    <li><input type="checkbox" disabled> セミレーシングマフラー</li>
+    <li><input type="checkbox" checked disabled> レーシングマフラー</li>
+    <li><input type="checkbox" disabled> スポーツクラッチ&フライホイール</li>
+    <li><input type="checkbox" disabled> セミレーシングクラッチ&フライホイール</li>
+    <li><input type="checkbox" checked disabled> レーシングクラッチ&フライホイール</li>
+    <li><input type="checkbox" checked disabled> ボアアップ</li>
+    <li><input type="checkbox" disabled> ハイリフトカムシャフト</li>
+    <li><input type="checkbox" disabled> ハイコンプピストン</li>
+    <li><input type="checkbox" disabled> レーシングクランクシャフト</li>
+    <li><input type="checkbox" disabled> ストロークアップ</li>
+    <li><input type="checkbox" checked disabled> エンジンバランスチューン</li>
+    <li><input type="checkbox" checked disabled> ポート研磨</li>
+    <li><input type="checkbox" checked disabled> レーシングエギゾーストマニホールド</li>
+    <li><input type="checkbox" disabled> アンチラグシステム</li>
+    <li><input type="checkbox" disabled> スーパーチャージャー(低回転)</li>
+    <li><input type="checkbox" disabled> スーパーチャージャー(高回転)</li>
+    <li><input type="checkbox" disabled> ターボチャージャー(低回転)</li>
+    <li><input type="checkbox" disabled> ターボチャージャー(中回転)</li>
+    <li><input type="checkbox" disabled> ターボチャージャー(高回転)</li>
+    <li><input type="checkbox" disabled> スポーツインタークーラー</li>
+    <li><input type="checkbox" disabled> レーシングインタークーラー</li>
+    <li><input type="checkbox" disabled> 1ウェイLSD</li>
+    <li><input type="checkbox" disabled> 2ウェイLSD</li>
+    <li><input type="checkbox" checked disabled> フルカスタマイズLSD</li>
+    <li><input type="checkbox" disabled> アクティブLSDコントローラー</li>
+    <li><input type="checkbox" checked disabled> 駆動力配分センターデフ</li>
+    <li><input type="checkbox" disabled> 4WSコントローラー</li>
+    <li><input type="checkbox" disabled> ロークロスミッション</li>
+    <li><input type="checkbox" disabled> ハイクロスミッション</li>
+    <li><input type="checkbox" checked disabled> フルカスタマイズマニュアルミッション</li>
+    <li><input type="checkbox" disabled> フルカスタマイズシーケンシャル</li>
+    <li><input type="checkbox" disabled> ステアリングアングルアダプター</li>
+    <li><input type="checkbox" checked disabled> 軽量化ステージ1</li>
+    <li><input type="checkbox" checked disabled> 軽量化ステージ2</li>
+    <li><input type="checkbox" checked disabled> 軽量化ステージ3</li>
+    <li><input type="checkbox" checked disabled> ボディ剛性アップ</li>
+    <li><input type="checkbox" checked disabled> 軽量化ステージ4</li>
+    <li><input type="checkbox" disabled> ナイトロシステム</li>
+    <li><input type="checkbox" checked disabled> ワイドボディ※GT Autoで施工</li>
+  </ul></div>
+
+        <!-- エアロパーツセクション -->
+        <div class="checklist">
+            <h3 style="margin-bottom: 20px;">エアロパーツ※GT Autoで施工</h3>
+            <ul style="margin-top: 10px;">
+                <li><input type="checkbox" checked disabled> フロントカスタムエアロパーツ</li>
+    <li><input type="checkbox" checked disabled> サイドカスタムエアロパーツ</li>
+    <li><input type="checkbox" checked disabled> リアカスタムウィング</li>
+  </ul>
+  </div>
+
+        <div style="height: 100px;"></div> <!-- 追加のスペース -->
+
+        <a id="back-link" href="https://maximum1st.github.io/setting1.html">戻る</a>
+    </div>
+
+    <script>
+        // ここから開始
+        document.addEventListener('DOMContentLoaded', function () {
+    // チェックボックスの状態を確認して行のスタイルを更新する関数
+    function updateRowStyles() {
+        var checkboxes = document.querySelectorAll('.checklist input[type="checkbox"]');
+        checkboxes.forEach(function(checkbox) {
+            var listItem = checkbox.parentElement;
+
+            if (checkbox.checked) {
+                listItem.classList.add('checked-row'); // チェックされた場合は青色に
+            } else {
+                listItem.classList.remove('checked-row'); // チェックが外れた場合は青色を解除
+            }
+        });
+    }
+
+    // ページの読み込み時に行のスタイルを更新
+    updateRowStyles();
+});
+        // ここまで
+        // ここ開始
+document.addEventListener('DOMContentLoaded', function() {
+    var backLink = document.getElementById('back-link');
+    backLink.style.display = 'block'; // リンクを表示状態に設定します。
+});
+        // ここまで
+    </script>
+</body>
+</html>

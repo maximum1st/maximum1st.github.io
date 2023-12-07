@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://maximum1st.github.io//favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://maximum1st.github.io//favicon-16x16.png">
+  <title>動画の制約</title>
+  <style>
+    body {
+      background-color: #282828;
+      color: #f5f5f5;
+      font-family: Arial, sans-serif;
+      width: 800px;
+      margin: auto;
+      line-height: 2.5;
+    }
+
+    .bottom-right {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+    }
+
+    .top-right {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+    }
+
+    .top-right button,
+    .bottom-right button {
+      background-color: #282828;
+      color: #f5f5f5;
+      border: 2px solid #f5f5f5;
+      border-radius: 5px;
+      padding: 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .top-right button:hover,
+    .bottom-right button:hover {
+      background-color: #f5f5f5;
+      color: #282828;
+    }
+
+    h1 {
+      font-size: 30px;
+    }
+
+    .title-detail {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 24px;
+    }
+
+    span.invisible-dot {
+      color: #282828;
+    }
+
+    p.invisible-dot {
+      color: #282828;
+    }
+    
+    @media (max-width: 600px) {
+      body {
+        font-size: 16px;
+        width: 100%;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .title-detail {
+        font-size: 16px;
+      }
+
+      .top-right button,
+      .bottom-right button {
+        font-size: 14px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+<div class="bottom-right">
+  
+</div>
+
+<div class="top-right">
+  <button id="closeTabAlertButton">終了するには？</button>
+</div>
+  
+  <div id="section1">
+ <div style="height:60px;"></div>
+  </div>
+
+  
+  <div id="section2">
+  <h2>配信中または動画の制約</h2>
+  <p>僕はサブスクライバーに加入していますがアーカイブされた動画（配信後の動画）は14日〜60日で削除されるそうです。
+  GT７(グランツーリスモ７)を配信すると書いてありますが気分次第で別のゲームを配信することがありますのでご注意。
+  配信中のコメントはできません。ただし、動画内での返事は行なっています。日本語を使用してください。</p>
+    
+</div>
+
+
+  <div id="section9999">
+   <div style="height:88em;"></div>
+  </div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+function scrollToSection(sectionId) {
+  let speed = 500;
+  let target = $('#' + sectionId);
+  let position = target.offset().top;
+  $("html, body").animate({scrollTop:position}, speed, "swing");
+  return false;
+}
+
+document.getElementById('closeTabAlertButton').addEventListener('click', function() {
+  alert('終了する場合自身で閉じてください。他のタブは残っています。ブックマークなど直接来た方は閉じるとこのページには戻れません。最近ではサイトからページを閉じるのはセキュリティ面でのリスクがあり実装出来なくなりました。');
+});
+</script>
+</body>
+</html>

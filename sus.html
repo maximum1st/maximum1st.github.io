@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ベース設定探索</title>
+    <style>
+   body, html {
+            background-image: url('https://maximum1st.github.io/sus.png');
+            background-color: #121212;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title {
+            text-align: center;
+            width: 100%;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .form-group, .results div {
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            width: 100%;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        input[type="number"], select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #fff;
+            background-color: rgba(18, 18, 18, 0.5);
+            border-radius: 4px;
+            color: #fff;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border-radius: 4px;
+            border: none;
+            background-color: #39ff14;
+            color: #121212;
+            cursor: pointer;
+        }
+
+        .results {
+            width: 100%;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .results table {
+            margin: auto;
+            width: auto;
+        }
+
+        .results td {
+            padding: 0;
+        }
+
+        .results td:first-child {
+            padding-right: 0;
+        }
+
+        .results td:last-child {
+            padding-left: 0;
+        }
+
+        /* フロントとリアの結果のテキスト色を白に設定 */
+        .results div {
+            color: #fff;
+        }
+         /* 右上に閉じるボタンを配置するためのスタイル */
+    .close-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: red;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+
+    /* 左上に説明ボタンを配置するためのスタイル */
+    .info-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background-color: blue;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        text-decoration: none; /* リンクの下線を消す */
+    }
+
+        @media (max-width: 768px) {
+            table, td {
+                width: 100%;
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <h2>ベース設定計算機</h2>
+        </div>
+
+        <form>
+            <table>
+                <!-- Row 1 -->
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="carType">車種:</label>
+                            <select id="carType">
+                                <option value="sports">スポーツカー</option>
+                                <option value="lowDownforce">低ダウンフォースレースカー</option>
+                                <option value="highDownforce">高ダウンフォースレースカー</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="totalWeight">総重量 (kg):</label>
+                            <input type="number" id="totalWeight">
+                        </div>
+                    </td>
+                </tr>
+                <!-- Row 2 -->
+               <tr>
+    <td>
+        <div class="form-group">
+            <label for="frontDistribution">前重量配分 (%):</label>
+            <input type="number" id="frontDistribution" oninput="updateRearDistribution()">
+        </div>
+    </td>
+    <td>
+        <div class="form-group">
+            <label for="rearDistribution">後重量配分 (%):</label>
+            <input type="number" id="rearDistribution" oninput="updateFrontDistribution()">
+        </div>
+    </td>
+</tr>
+                <!-- Row 3 -->
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="frontSpringRate">F.SPレート (Hz):</label>
+                            <input type="number" id="frontSpringRate">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="rearSpringRate">R.SPレート (Hz):</label>
+                            <input type="number" id="rearSpringRate">
+                        </div>
+                    </td>
+                </tr>
+                <!-- Row 4 -->
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="frontDownforce">F.ダウンフォース (kg):</label>
+                            <input type="number" id="frontDownforce">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="rearDownforce">R.ダウンフォース (kg):</label>
+                            <input type="number" id="rearDownforce">
+                        </div>
+                    </td>
+                </tr>
+                <!-- Row 5 -->
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="frontMaxHeight">F.最高車高 (mm):</label>
+                            <input type="number" id="frontMaxHeight">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="rearMaxHeight">R.最高車高 (mm):</label>
+                            <input type="number" id="rearMaxHeight">
+                        </div>
+                    </td>
+                </tr>
+                <!-- Row 6 -->
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="frontMinHeight">F.最低車高 (mm):</label>
+                            <input type="number" id="frontMinHeight">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="rearMinHeight">R.最低車高 (mm):</label>
+                            <input type="number" id="rearMinHeight">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div class="button-container">
+                <button type="button" onclick="calculate()">計算する</button>
+            </div>
+        </form>
+
+        <div class="results">
+            <table>
+                <tr>
+                    <td>
+                        <div>
+                            <h3>フロントの結果:</h3>
+                            <p id="frontSpringForceResult">F.重量＆Dforceレート: 未計算</p>
+                            <p id="frontRecommendedHeightResult">F.Dforce無車高: 未計算</p>
+                            <p id="adjustedFrontRunningHeightResult">F.Dforce有車高: 未計算</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <h3>リアの結果:</h3>
+                            <p id="rearSpringForceResult">R.重量＆Dforceレート: 未計算</p>
+                            <p id="rearRecommendedHeightResult">R.Dforce無車高: 未計算</p>
+                            <p id="adjustedRearRunningHeightResult">R.Dforce有車高: 未計算</p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+  <!-- 閉じるボタン -->
+    <button class="close-button" onclick="window.close();">閉じる</button>
+
+    <!-- 説明ボタン -->
+    <a href="#" class="info-button">説明</a>
+
+    <script>
+    // kgfをNmに変換する関数
+    function convertKgfToNm(kgf) {
+        return kgf * 9.80665;
+    }
+
+    // 入力値に基づいて計算を行う関数
+    function calculate() {
+        // 入力値を取得
+        var totalWeight = parseFloat(document.getElementById('totalWeight').value);
+        var frontDistribution = parseFloat(document.getElementById('frontDistribution').value) / 100;
+        var rearDistribution = parseFloat(document.getElementById('rearDistribution').value) / 100;
+        var frontSpringRateHz = parseFloat(document.getElementById('frontSpringRate').value);
+        var rearSpringRateHz = parseFloat(document.getElementById('rearSpringRate').value);
+        var frontDownforce = parseFloat(document.getElementById('frontDownforce').value);
+        var rearDownforce = parseFloat(document.getElementById('rearDownforce').value);
+
+        // 前車重量と後車重量を計算
+        var frontWeightWithDownforce = totalWeight * frontDistribution + frontDownforce;
+        var rearWeightWithDownforce = totalWeight * rearDistribution + rearDownforce;
+
+        // フォースレートを計算
+        var frontSpringForce = frontSpringRateHz * frontWeightWithDownforce;
+        var rearSpringForce = rearSpringRateHz * rearWeightWithDownforce;
+
+        // 計算結果を表示
+        document.getElementById('frontSpringForceResult').innerHTML = 'F.重量＆Forceレート: ' + frontSpringForce.toFixed(2) + ' kgf<br>(' + convertKgfToNm(frontSpringForce).toFixed(2) + ' Nm)';
+    document.getElementById('rearSpringForceResult').innerHTML = 'R.重量＆Forceレート: ' + rearSpringForce.toFixed(2) + ' kgf<br>(' + convertKgfToNm(rearSpringForce).toFixed(2) + ' Nm)';
+        // ダウンフォースを考慮しない車高計算
+        var resultsWithoutDownforce = calculateRideHeightWithoutDownforce(totalWeight, frontDistribution, rearDistribution);
+
+        // 最大・最低車高を考慮して車高を調整
+        var frontMaxHeight = parseFloat(document.getElementById('frontMaxHeight').value);
+        var rearMaxHeight = parseFloat(document.getElementById('rearMaxHeight').value);
+        var frontMinHeight = parseFloat(document.getElementById('frontMinHeight').value);
+        var rearMinHeight = parseFloat(document.getElementById('rearMinHeight').value);
+
+        var limitedFrontRideHeight = limitHeightRange(resultsWithoutDownforce.frontRideHeight, frontMinHeight, frontMaxHeight);
+        var limitedRearRideHeight = limitHeightRange(resultsWithoutDownforce.rearRideHeight, rearMinHeight, rearMaxHeight);
+
+        // 最終的な車高を表示
+        document.getElementById('frontRecommendedHeightResult').textContent = 'F.Dforce無車高: ' + limitedFrontRideHeight.toFixed(2) + ' mm';
+        document.getElementById('rearRecommendedHeightResult').textContent = 'R.Dforce無車高: ' + limitedRearRideHeight.toFixed(2) + ' mm';
+
+        // ダウンフォースを考慮した走行時の車高を計算
+        var frontRunningHeightWithDownforce = calculateRideHeightWithDownforce(frontWeightWithDownforce) / 2;
+        var rearRunningHeightWithDownforce = calculateRideHeightWithDownforce(rearWeightWithDownforce) / 2;
+
+        // 車高を調整して表示
+        var adjustedFrontRunningHeight = limitHeightRange(frontRunningHeightWithDownforce, frontMinHeight, frontMaxHeight);
+        var adjustedRearRunningHeight = limitHeightRange(rearRunningHeightWithDownforce, rearMinHeight, rearMaxHeight);
+
+        // 走行時の車高を表示
+        document.getElementById('adjustedFrontRunningHeightResult').textContent = 'F.Dforce有車高: ' + adjustedFrontRunningHeight.toFixed(2) + ' mm';
+        document.getElementById('adjustedRearRunningHeightResult').textContent = 'R.Dforce有車高: ' + adjustedRearRunningHeight.toFixed(2) + ' mm';
+    }
+
+    // 前重量配分の自動更新
+    function updateFrontDistribution() {
+        var rearDistribution = parseFloat(document.getElementById('rearDistribution').value);
+        if (!isNaN(rearDistribution)) {
+            document.getElementById('frontDistribution').value = 100 - rearDistribution;
+        }
+    }
+
+    // 後重量配分の自動更新
+    function updateRearDistribution() {
+        var frontDistribution = parseFloat(document.getElementById('frontDistribution').value);
+        if (!isNaN(frontDistribution)) {
+            document.getElementById('rearDistribution').value = 100 - frontDistribution;
+        }
+    }
+
+    // 車高の範囲を制限
+    function limitHeightRange(height, minHeight, maxHeight) {
+        if (height < minHeight) {
+            return minHeight;
+        } else if (height > maxHeight) {
+            return maxHeight;
+        } else {
+            return height;
+        }
+    }
+
+    // ダウンフォースを考慮しない車高計算
+    function calculateRideHeightWithoutDownforce(totalWeight, frontDistribution, rearDistribution) {
+        var frontWeight = totalWeight * (frontDistribution / 100);
+        var rearWeight = totalWeight * (rearDistribution / 100);
+
+        var frontRideHeight = calculateHeightFromWeight(frontWeight) / 2;
+        var rearRideHeight = calculateHeightFromWeight(rearWeight) / 2;
+
+        return {
+            frontRideHeight: frontRideHeight,
+            rearRideHeight: rearRideHeight
+        };
+    }
+
+    // 重量から車高を計算
+    function calculateHeightFromWeight(weight) {
+        return 300 - weight / 10;
+    }
+
+    // ダウンフォースを考慮した車高計算
+    function calculateRideHeightWithDownforce(weightWithDownforce) {
+        return 300 - (weightWithDownforce / 10);
+    }
+</script>
+
+<script>function updateRearDistribution() {
+            var frontDistribution = parseFloat(document.getElementById('frontDistribution').value);
+            if (!isNaN(frontDistribution)) {
+                document.getElementById('rearDistribution').value = 100 - frontDistribution;
+            }
+        }
+
+        // 後重量配分を変更したときに前重量配分を自動更新する関数
+        function updateFrontDistribution() {
+            var rearDistribution = parseFloat(document.getElementById('rearDistribution').value);
+            if (!isNaN(rearDistribution)) {
+                document.getElementById('frontDistribution').value = 100 - rearDistribution;
+            }
+        }
+</script>
+</body>
+</html>

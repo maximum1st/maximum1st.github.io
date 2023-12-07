@@ -1,0 +1,479 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="wot-verification" content="1eb6dd3f52b95113ab5f"/>
+    <meta name="robots" content="noimageindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="とっくん,とっくん研究,Gran Turismo 7, GT7, Twitch, PS5, gaming, broadcasting, livestream, レーシングシュミレータ, 銚子">
+    <meta name="description" content="「とっくん研究」はGran Turismo 7（GT7）のブロードキャスト配信とゲームセッティングの研究を行っています。PS5を使ってTwitchで配信しており、視聴者との交流も大切にしています。">
+    
+<link rel="icon" type="image/png" sizes="32x32" href="https://maximum1st.github.io//favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://maximum1st.github.io//favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="style.css?v=1.1">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
+
+    <title>とっくん研究 - Gran Turismo 7のブロードキャスト配信とゲームセッティング研究</title>
+    <style>
+       body { /* １ */
+            background-color: #181919; /* 既存の背景色 */
+            background-image: url('https://maximum1st.github.io/haikei.png'); /* 既存の背景画像 */
+            background-size: cover; /* 背景画像をカバーとして設定 */
+            background-position: center; /* 背景画像を中央に配置 */
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    color: white;
+}
+
+.image-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.image-wrapper img {
+    max-width: 200px;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+}
+
+.image-wrapper .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    border-radius: 50%;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-top: -5px;
+}
+
+h2 {
+    color: #00C300;
+    font-size: 1.5rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    display: inline;
+    margin: 0 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5;
+}
+
+#backToTopBtn, #scrollToBottomBtn, #openTwitchAppPC, #openTwitchAppMobile {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    margin: 10px;
+    height: 3em;
+    transition: background-color 0.3s ease;
+    border-radius: 15px;
+}
+
+#openTwitchAppPC:hover, #openTwitchAppMobile:hover {
+    background-color: darkorange;
+}
+
+#backToTopBtn {
+    bottom: 20px;
+    right: 20px;
+}
+
+#scrollToBottomBtn {
+    top: 0;
+    right: 20px;
+}
+
+.language-switcher {
+    position: fixed;
+    top: 35px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+1
+.language-switcher a {
+    color: #00C300;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+.language-switcher a:hover {
+    color: #008200;
+}
+
+.clock {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    color: white;
+    border-radius: 0 0 5px 0;
+    font-size: 1rem;
+    z-index: 1000;
+}
+
+ul.link-list {
+    line-height: 50px;
+}
+
+.blink {
+    animation: blink 1.5s linear infinite;
+}
+.blink-blue-white {
+    animation: blink-blue-white 1.5s linear infinite;
+}
+.blink-yellow-white {
+    animation: blink-yellow-white 1.5s linear infinite;
+}
+@keyframes blink {
+    0% { color: white; }
+    50% { color: red; }
+    100% { color: white; }
+}
+@keyframes blink-blue-white {
+    0% { color: blue; }
+    50% { color: white; }
+    100% { color: blue; }
+}
+.left-aligned {
+    text-align: left;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+@keyframes blink-question-yellow {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+.blink-question-yellow::after {
+    content: '？';
+    color: yellow;
+    animation: blink-question-yellow 1s infinite;
+    margin-left: 5px;
+}
+.justify {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+/* モバイル専用コンテンツのスタイル */
+#mobileOnlyContent {
+    display: none; /* デフォルトでは非表示 */
+}
+/* カウンターコンテナのスタイル */
+#counterContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -3px; /* ボタンから3px上に移動 */
+}
+
+#counter {
+  display: flex;
+}
+
+.digit {
+  width: 16px;
+  height: 21px;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* モバイルデバイスでのみ表示 */
+@media screen and (max-width: 768px) {
+    #mobileOnlyContent {
+        display: block;
+        margin-bottom: 50px;
+    }
+    #openTwitchAppPC {
+        display: none; /* PC用ボタンは非表示 */
+    }
+}
+.image-link {
+        position: relative;
+        z-index: 9999; /* 画像を前面に表示 */
+    }
+    #downloadText {
+    margin-bottom: -5px; /* 画像との間に5pxのスペースを設定 */
+}
+/* PCデバイスでのみ表示 */
+@media screen and (min-width: 769px) {
+    #openTwitchAppMobile {
+        display: none; /* モバイル用ボタンは非表示 */
+    }
+}
+#openTwitchAppPC, #openTwitchAppMobile {
+    display: none; /* デフォルトでは非表示にしておき、JavaScriptで制御 */
+    margin: 0 auto; /* 左右のマージンを自動で調整してセンタリング */
+}
+ body, h1, h2, p, a, button, li {
+        color: white; /* テキストの色を白に設定 */
+        text-shadow: 
+            -1px -1px 0 #777,  
+            1px -1px 0 #777,
+            -1px 1px 0 #777,
+            1px 1px 0 #777; /* 各方向にグレーの影を追加 */
+    }
+  h2 {
+        color: #00c300; /* LINEアプリに似た緑色 */
+        -webkit-text-stroke: 1px #777; /* ウェブキットブラウザ用の文字の枠線 */
+        text-stroke: 1px #777; /* 標準の文字の枠線 (すべてのブラウザがサポートしているわけではありません) */
+        text-shadow: 
+            -1px -1px 0 #777,  
+            1px -1px 0 #777,
+            -1px 1px 0 #777,
+            1px 1px 0 #777; /* グレーの影を追加 */
+    }
+      
+.second-background {
+  position: fixed; /* 画面に固定 */
+  bottom: 0; /* 下部に配置 */
+  left: 50%; /* 左から50%の位置に設定 */
+  transform: translateX(-50%); /* 左方向に自身の幅の50%だけ移動し、センタリング */
+  width: 400px; /* 画像の幅 */
+  height: 188px; /* 画像の高さ */
+  background-image: url('https://maximum1st.github.io/GT.png'); /* 画像のパス */
+  background-repeat: no-repeat;
+  background-size: contain; /* 画像のサイズ調整 */
+  z-index: -1; /* 他の要素の背後に配置 */
+}
+      @media screen and (min-width: 769px) {
+  .second-background {
+    display: block; /* PCページでは表示 */
+  }
+}
+ /* 時計テキストに枠線を適用しない */
+.clock {
+  text-shadow: none;
+}
+
+/* ランゲージスイッチャーのテキストに枠線を適用しない */
+.language-switcher a {
+  text-shadow: none;
+}
+
+/* ボタンのテキストに枠線を適用しない */
+#backToTopBtn, #scrollToBottomBtn, #openTwitchAppPC, #openTwitchAppMobile {
+  text-shadow: none;
+}
+
+}
+.js-only-text {
+  text-shadow: 2px 2px 2px #000000; /* 最も濃い黒色の影 */
+}
+    </style>
+    
+</head>
+<body>
+    <div class="second-background"></div> <!-- 二枚目の背景画像用のdiv -->
+    <img src="https://maximum1st.github.io/GT.png" class="second-background" />
+    <noscript>
+        <div style="background-color: #ffdddd; border-left: 6px solid #f44336; margin-bottom: 15px; padding: 20px;">
+            <p>このウェブサイトはJavaScriptを使用しています。すべての機能はJavascriptに依存しています。正しく表示するには、ブラウザの設定からJavaScriptを有効にしてください。</p>
+        </div>
+    </noscript>
+        <script type="text/javascript">
+        // クロックを更新する関数
+    function updateClock() {
+        var now = moment().tz("Asia/Tokyo");
+        var time = now.format('YYYY/MM/DD HH:mm:ss');
+        document.getElementById('clock').innerText = time + " Japan/Tokyo";
+        setTimeout(updateClock, 1000);
+    }
+
+    // デバイスタイプをチェックしてTwitchアプリボタンを表示する関数
+    function checkDeviceType() {
+        var deviceType = navigator.userAgent;
+        var openTwitchAppPC = document.getElementById("openTwitchAppPC");
+        var openTwitchAppMobile = document.getElementById("openTwitchAppMobile");
+
+        if (deviceType.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {
+            openTwitchAppMobile.style.display = "block";
+            openTwitchAppMobile.onclick = function(event) {
+                event.preventDefault();
+                window.location.href = "twitch://stream/toshishige_maximum1st";
+            };
+        } else {
+            openTwitchAppPC.style.display = "block";
+            openTwitchAppPC.onclick = function(event) {
+                event.preventDefault();
+                window.open("https://www.twitch.tv/toshishige_maximum1st/about", "_blank");
+            };
+        }
+    }
+
+    // ページの読み込み時に関数を実行
+    window.onload = function() {
+        updateClock();
+        checkDeviceType();
+    };
+　　document.addEventListener('DOMContentLoaded', function() {
+        // 一番目の画像にクリックイベントリスナーを設定
+        var firstImageLink = document.getElementById('firstImageLink');
+        if (firstImageLink) {
+            firstImageLink.addEventListener('click', function() {
+                window.location.href = 'https://apps.apple.com/jp/app/twitch/id460177396';
+            });
+        }
+
+        // 二番目の画像にクリックイベントリスナーを設定
+        var secondImageLink = document.getElementById('secondImageLink');
+        if (secondImageLink) {
+            secondImageLink.addEventListener('click', function() {
+                window.location.href = 'https://play.google.com/store/apps/details?id=tv.twitch.android.app&hl=ja&gl=US';
+            });
+        }
+    });
+</script>
+    <div id="clock" class="clock"></div>
+
+    <div class="language-switcher">
+        <a href="https://maximum1st.github.io/">日本語</a>
+        <a href="en.html">English</a>
+        <a href="ko.html">한국어</a>
+        <a href="zh.html">中文</a>
+        <a href="ru.html">Русский</a>
+    </div>
+
+    <div class="image-wrapper">
+        <img src="r9T4y7U1I3O6P1A7S4D6F8G7H2J1K6L9M1N6B7V5C9X2.jpg" alt="Profile image">
+        <img src="https://maximum1st.github.io/toumei.png" class="overlay" alt="Profile image overlay">
+    </div>
+
+    <h1>とっくん研究</h1>
+    <p class="left-aligned justify">
+        レースゲームの「Gran Turismo 7（GT7）」をTwitchでPS5を使ってブロードキャスト配信を行っています。
+        ゲームプレイを共有するだけでなく、ゲームのセッティングについての研究も行っていますので、ぜひ見てください。
+        性格は臆病でお調子者ですが、優しいと言われることが多いです。仲良くしていただけると嬉しいです。
+        配信についてや雑談配信もたまにやっています。毎日配信はしていませんが、ランダムに配信してます。眠いなぁ〜、、、。
+    </p>
+
+    <p class="left-aligned justify">
+        レースゲームは単純作業で視聴者が少ないため、フォローやコメントをいただけるとうれしいです。また、現在は相棒と復縁中。
+        身を固めるため手入れのしやすい坊主頭です。今は、九州に引っ越すまで運動を控えていますが、引っ越したら運動を再開したいな。
+    </p>
+
+   
+    <button id="reloadButton" style="position: fixed; bottom: 10px; right: 10px; padding: 10px 20px;">更新</button>
+
+    <button id="backToTopBtn" style="display:none;" onclick="backToTop()">戻る↑</button>
+    <button id="scrollToBottomBtn" style="display:none;" onclick="scrollToBottom()">リンク↓</button>
+
+    <div id="counterContainer">
+        <div id="counter">
+            <img class="digit" id="digit1" src="https://maximum1st.github.io/images/0.png" alt="0" style="width: 16px; height: 21px;">
+            <img class="digit" id="digit2" src="https://maximum1st.github.io/images/0.png" alt="0" style="width: 16px; height: 21px;">
+            <img class="digit" id="digit3" src="https://maximum1st.github.io/images/0.png" alt="0" style="width: 16px; height: 21px;">
+            <img class="digit" id="digit4" src="https://maximum1st.github.io/images/0.png" alt="0" style="width: 16px; height: 21px;">
+            <img class="digit" id="digit5" src="https://maximum1st.github.io/images/0.png" alt="0" style="width: 16px; height: 21px;">
+            <img class="digit" id="digit6" src="https://maximum1st.github.io/images/0.png" alt="0" style="width: 16px; height: 21px;">
+            <img class="digit" id="digit7" src="https://maximum1st.github.io/images/0.png" alt="0" style="width: 16px; height: 21px;">
+            <img class="digit" id="digit8" src="https://maximum1st.github.io/images/0.png" alt="0" style="width: 16px; height: 21px;">
+        </div>
+    </div>
+
+
+    <button id="openTwitchAppPC" style="display:none;" onclick="openTwitchApp('PC')">My Twitch Web</button>
+    <button id="openTwitchAppMobile" style="display:none;" onclick="openTwitchApp('Mobile')">Twitch APP Mobile</button>
+
+
+        <div id="mobileOnlyContent">
+            
+            <p id="downloadText">↓こちらからダウンロード</p>
+    <img id="firstImageLink" src="https://maximum1st-git-develop-maximum1sts-projects.vercel.app/APPSTORE1.png" alt="iOS App Store">
+    <img id="secondImageLink" src="https://maximum1st-git-develop-maximum1sts-projects.vercel.app/APPSTORE2.png" alt="Google Play Store">
+</div>
+            
+
+    <!-- 他の追加したいコンテンツ -->
+</div>
+
+    
+    <h2>LINK`s</h2>
+    <ul class="link-list">
+        <li><a href="https://www.twitch.tv/toshishige_maximum1st/about" target="_blank">Twitch My</a></li>
+        <li><a href="https://twitter.com/maximum4rd" target="_blank">X My</a></li>
+        <li><a href="https://www.facebook.com/maximum1st" target="_blank">Facebook My</a></li>
+        <li><a href="https://www.instagram.com/maximum1st.tokkun/" target="_blank">Instagram My</a></li>
+        <li><a href="https://maximum1st-git-develop-maximum1sts-projects.vercel.app/chat.html" target="_blank" class="blink-question-yellow">GitterChat My</a></li>
+    </ul>
+    <ul class="link-list">
+        <li><a href="https://maximum1st.github.io/barizougon.html" target="_blank">罵詈雑言呪</a></li>
+        <li><a class="blink" href="https://maximum1st.github.io/jyoukyou.html" target="_blank">現在状況!</a></li>
+        <li><a href="https://calendar.google.com/calendar/embed?src=4dfce5e0adadb668659312dcd34b5d90de28c3d2bfd3a0e2b1d331f3fd41974c%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank">配信予定</a></li>
+        <li><a href="https://maximum1st.github.io/completesetup.html" class="blink-blue-white" target="_blank">完成設定</a></li>
+        <li><a href="https://maximum1st.github.io/sus.html" class="blink-yello-white" target="_blank">基本車高計算機</a></li>
+        <li><a href="https://maximum1st.github.io/seiyaku.html" target="_blank">動画制約</a></li>
+    </ul>
+    <script>
+// ドキュメントが完全に読み込まれた後に実行
+document.addEventListener('DOMContentLoaded', function() {
+    // 一番目の画像リンクにクリックイベントリスナーを設定
+    var firstImageLink = document.getElementById('firstImageLink');
+    if (firstImageLink) {
+        firstImageLink.onclick = function(event) {
+            event.preventDefault(); // デフォルトの動作を停止
+            window.open('https://apps.apple.com/jp/app/twitch/id460177396', '_blank');
+        };
+    }
+
+    // 二番目の画像リンクにクリックイベントリスナーを設定
+    var secondImageLink = document.getElementById('secondImageLink');
+    if (secondImageLink) {
+        secondImageLink.onclick = function(event) {
+            event.preventDefault(); // デフォルトの動作を停止
+            window.open('https://play.google.com/store/apps/details?id=tv.twitch.android.app&hl=ja&gl=US', '_blank');
+        };
+    }
+});
+    </script>
+<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+    <script>var _0x9a9ed2=_0x3db2;(function(_0x87618a,_0x41e55c){var _0x4fff5a=_0x3db2,_0xe062e4=_0x87618a();while(!![]){try{var _0x1bb733=parseInt(_0x4fff5a(0x74))/0x1+-parseInt(_0x4fff5a(0x89))/0x2*(-parseInt(_0x4fff5a(0x7c))/0x3)+-parseInt(_0x4fff5a(0x80))/0x4+-parseInt(_0x4fff5a(0x73))/0x5+parseInt(_0x4fff5a(0x7b))/0x6+parseInt(_0x4fff5a(0x91))/0x7+parseInt(_0x4fff5a(0x88))/0x8;if(_0x1bb733===_0x41e55c)break;else _0xe062e4['push'](_0xe062e4['shift']());}catch(_0x293876){_0xe062e4['push'](_0xe062e4['shift']());}}}(_0x26da,0xbca07));var firebaseConfig={'apiKey':_0x9a9ed2(0x7f),'authDomain':'counterimagedatabase.firebaseapp.com','databaseURL':_0x9a9ed2(0x8c),'projectId':_0x9a9ed2(0x83),'storageBucket':'counterimagedatabase.appspot.com','messagingSenderId':_0x9a9ed2(0x81),'appId':_0x9a9ed2(0x86)};firebase[_0x9a9ed2(0x82)](firebaseConfig);function _0x3db2(_0x27b07b,_0x163a92){var _0x26dad3=_0x26da();return _0x3db2=function(_0x3db2d8,_0x524ebd){_0x3db2d8=_0x3db2d8-0x73;var _0x46ce9d=_0x26dad3[_0x3db2d8];return _0x46ce9d;},_0x3db2(_0x27b07b,_0x163a92);}function updateAndShowCounter(){var _0x3d98f0=_0x9a9ed2,_0x194bd2=firebase[_0x3d98f0(0x8d)]()['ref'](_0x3d98f0(0x84));_0x194bd2[_0x3d98f0(0x7d)](function(_0x2fdde6){return(_0x2fdde6||0x0)+0x1;}),_0x194bd2['on']('value',function(_0x22c884){var _0x22ee53=_0x3d98f0,_0x5dd362=_0x22c884[_0x22ee53(0x7e)](),_0x1a055d=(_0x22ee53(0x92)+_0x5dd362)[_0x22ee53(0x85)](-0x8);for(var _0x1c0362=0x0;_0x1c0362<0x8;_0x1c0362++){var _0x42c9e6=document[_0x22ee53(0x8f)]('digit'+(_0x1c0362+0x1));_0x42c9e6[_0x22ee53(0x77)]=_0x22ee53(0x7a)+_0x1a055d[_0x22ee53(0x87)](_0x1c0362)+_0x22ee53(0x8e),_0x42c9e6[_0x22ee53(0x76)][_0x22ee53(0x93)]='0',_0x42c9e6[_0x22ee53(0x76)][_0x22ee53(0x75)]='0',_0x42c9e6[_0x22ee53(0x76)]['display']=_0x22ee53(0x8b),_0x42c9e6[_0x22ee53(0x76)][_0x22ee53(0x78)]=_0x22ee53(0x90);}});}function _0x26da(){var _0x1946a6=['style','src','verticalAlign','DOMContentLoaded','https://maximum1st.github.io/images/','6523608dLnTMH','49629fCbKEq','transaction','val','AIzaSyAzZO7gmBK1CMafobh9BNgOTS5IylglJIE','3463324FRfWKU','341673352860','initializeApp','counterimagedatabase','visitors/count','slice','1:341673352860:web:3caabbb16c1c7120c6d759','charAt','1728712qWqqXq','22AwzoNe','addEventListener','inline-block','https://counterimagedatabase-default-rtdb.firebaseio.com','database','.png','getElementById','middle','2835644AyDQlb','00000000','margin','1827340DDnuiK','113492oDfmAH','padding'];_0x26da=function(){return _0x1946a6;};return _0x26da();}document[_0x9a9ed2(0x8a)](_0x9a9ed2(0x79),function(){updateAndShowCounter();});</script>
+</body>
+</html>
+    
+    

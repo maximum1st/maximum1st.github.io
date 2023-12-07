@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://maximum1st.github.io//favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://maximum1st.github.io//favicon-16x16.png">
+  <title>とっくん研究状況- Gran Turismo 7｜Twitch</title>
+<style>
+    body {
+      background: #181919 url('r9T4y7U1I3O6P1A7S4D6F8G7H2J1K6L9M1N6B7V5C9X2.jpg') no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      background-position: 0% 10%;
+      font-family: Arial, sans-serif;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding-top: 30vh;
+      min-height: 100vh;
+      margin: 0;
+      position: relative;
+    }
+ 
+    body::after {
+      content: "";
+      background: url('https://maximum1st.github.io/toumei.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      opacity: 1;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: 2;
+    }
+
+    .content {
+      max-width: 80%;
+      margin: 0 auto;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 15px;
+      padding: 20px;
+      position: relative;
+      z-index: 3;
+    }
+
+    h1, p, .additional-info {
+      text-shadow: 
+      -2px -2px 0 #404040,  
+      2px -2px 0 #404040,
+      -2px 2px 0 #404040,
+      2px 2px 0 #404040;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      max-width: 600px;
+      text-align: left;
+    }
+
+    .additional-info {
+      font-size: 1.1rem;
+      margin-top: 2rem;
+      max-width: 600px;
+      text-align: left;
+    }
+
+
+
+
+
+
+  
+
+    @media (min-width: 600px) {
+      .content {
+        max-width: 600px;
+      }
+    }
+  
+ .timestamp-container {
+      position: fixed;
+      top: 60px; /* This has been changed from 0 to 60px */
+      left: 0;
+      z-index: 10;
+    }
+
+    .timestamp-container input {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      margin: 10px;
+    }
+
+#timestamp-input {
+  padding: 5px;
+  font-size: 1rem;
+  color: white;
+}
+   .timestamp-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background-color: #181919; /* You can change this to any color you want */
+      z-index: 5; /* Make sure this is less than the z-index of .timestamp-container */
+    }
+   .content, .additional-info, .footer {
+  text-align: justify !important;
+}
+   .footer {
+    position: fixed;
+    bottom: 0;
+    color: yellow;
+    font-size: 0.8rem;
+    width: 100%;
+   text-align: center !important;
+    padding: 1rem;
+    box-sizing: border-box;
+    background-color: #181919;
+    z-index: 4;
+  }
+</style>
+  <script defer>
+    window.onload = function() {
+      var input = document.getElementById('timestamp-input');
+
+      // Set the initial width based on the placeholder text
+      input.style.width = ((input.placeholder.length + 1) * 8) + 'px';
+
+      input.oninput = function() {
+        this.style.width = ((this.value.length + 1) * 8) + 'px';
+      };
+    };
+  </script>
+</head>
+  <body oncontextmenu="return false;">
+     <button id="closeButton" style="position: fixed; top: 10px; right: 10px; background-color: #333; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; z-index: 10;">閉じる</button>
+
+  <div class="timestamp-bg"></div>
+  <div class="timestamp-container">
+  <input type="text" id="timestamp-input" placeholder="Last2023/11/2 20:00">
+</div>
+
+  <div class="content">
+    <h1>とっくん研究状況 -「Gran Turismo 7」Twitch今の配信状況！</h1>
+    <p>今日配信するかわからない。ランダムで突発にやるかも。
+      GT7に限りませんハマればどんなゲームでも突発で配信します。配信予定に入れるのはとびきりの回のみで予めこのページで予告します。突発の告知についてはチャットの配予をみればやるかどうかわかります。</p>
+    <p>最近ファン用の隠しページを作りました興味があれば探してごらん。</p>
+    <div class="additional-info">
+      
+      <p>最新情報はこのページで更新されます。毎回チェックすることが吉！</p>
+      <p>※サイトは作成中で、翻訳も正しいとは限りません。</p>
+    </div>
+  </div>
+  <div class="footer">閉じると終了します。全ページPCでの動作を想定。</div>
+    <script>
+    // 閉じるボタンの機能を追加
+    document.getElementById('closeButton').addEventListener('click', function() {
+      window.close();
+    });
+  </script>
+</body>
+</html>

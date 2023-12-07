@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://maximum1st.github.io//favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://maximum1st.github.io//favicon-16x16.png">
+    <link rel="stylesheet" type="text/css" href="STYLE1.css">
+
+    <title>セッティングシート</title>
+    <style>
+
+
+:root {
+    --cell-background-color: #121212; /* セルの背景色を定義 */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+}
+
+.container {
+    margin: auto;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #121212;
+    border-radius: 5px;
+}
+
+h1, .title, h3 {
+    text-align: center;
+    color: #fff;
+}
+
+.background-content {
+    display: block;
+    margin: auto;
+    text-align: left;
+    width: fit-content;
+}
+
+.background-content li {
+    text-align: left;
+    list-style-position: inside;
+}
+
+.center-helper {
+    display: flex;
+    justify-content: center;
+}
+
+.table {
+    margin: auto;
+    text-align: left;
+    border: 1px solid #555;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #1f1f21;
+}
+
+th, td {
+    border: 1px solid #555;
+    padding: 8px;
+    background-color: var(--cell-background-color); /* 変数を適用 */
+}
+
+
+
+table.custom-table {
+    margin: 0 auto;
+    max-width: 500px;
+    width: 100%;
+}
+
+th, td {
+    text-align: center;
+}
+/* チェックボックスのスタイル */
+.custom-checkbox-container {
+    display: flex;
+    flex-direction: row; /* チェックボックスを水平に配置 */
+    justify-content: flex-start; /* チェックボックスとテキストを左寄せに配置 */
+    align-items: center; /* チェックボックスを垂直方向に中央に配置 */
+}
+
+.custom-checkbox {
+    margin-right: -20px; /* チェックボックスとテキスト間の横のスペースを設定 */
+    display: flex;
+    align-items: center; /* チェックボックスとテキストを垂直方向に中央に配置 */
+}
+
+.custom-checkbox span {
+    margin-left: 5px; /* テキストとチェックボックス間の横のスペースを設定 */
+}
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: relative;
+    height: 15px;
+    width: 15px;
+    background-color: transparent;
+    border: 2px solid blue;
+    border-radius: 3px;
+    margin-right: 5px; /* チェックボックスとテキスト間のスペースを設定 */
+}
+/* チェックボックスが選択されたときのスタイル */
+.custom-checkbox input:checked ~ .checkmark {
+    background-color: blue; /* チェックボックスが選択されたときの背景色を青に設定 */
+}
+/* 特定のセルに対するスタイル */
+.no-border th,
+.no-border td {
+    border: none; /* 枠線を非表示にする */
+}
+/* ページ上部のリンクスタイル */
+.top-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0; /* マージンを0に設定 */
+    padding: 0; /* パディングを0に設定 */
+    position: fixed; /* 固定位置に設定 */
+    top: 0; /* 上端に固定 */
+    left: 0; /* 左端に固定 */
+    right: 0; /* 右端に固定 */
+    background-color: #121212;
+    z-index: 1000; /* 他の要素よりも上に表示 */
+}
+
+/* リンクのスタイル */
+.top-navigation a {
+    text-decoration: none;
+    color: green;
+    margin: 0; /* マージンを0に設定 */
+    padding: 10px; /* パディングを追加 */
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <div class="fixed-top">
+            <div class="top-navigation">
+                <a href="https://maximum1st.github.io/completesetup.html" style="margin-top: 60px;">戻る</a>
+                <a href="https://maximum1st.github.io/parts1.html" style="margin-top: 60px;">パーツ</a>
+        </div>
+            
+        </div>
+        <table class="custom-table no-border" style="max-width: 500px; margin: auto; border: 0px;">
+            <tr>
+                <td>
+                    <h1>セッティングシート</h1>
+                    <h3 class="centered-h3 h3flow">アヴェンタドール LP 750-4 SV '15</h3>
+                    <h3 class="centered-h3 h3flow">(コントローラ仕様)</h3>
+                </td>
+            </tr>
+        </table>
+        
+           <table class="custom-table">
+                <tr>
+                    <th>コンフォート</th>
+                    <th>スポーツ</th>
+                    <th>レーシング</th>
+                </tr>
+                <td>
+    <p>
+        <label class="custom-checkbox custom-checkbox-blue">
+            <input type="checkbox" disabled>
+            <span class="checkmark"></span>
+        </label>
+        <span>ハード</span>
+    </p>
+    <p>
+        <label class="custom-checkbox custom-checkbox-blue">
+            <input type="checkbox" disabled>
+            <span class="checkmark"></span>
+        </label>
+        <span>ミディアム</span>
+    </p>
+    <p>
+        <label class="custom-checkbox custom-checkbox-blue">
+            <input type="checkbox" disabled>
+            <span class="checkmark"></span>
+        </label>
+        <span>ソフト</span>
+    </p>
+</td>
+
+<!-- スポーツのテーブル -->
+<td>
+<p>
+        <label class="custom-checkbox custom-checkbox-blue">
+            <input type="checkbox" disabled>
+            <span class="checkmark"></span>
+        </label>
+        <span>ハード</span>
+    </p>
+    <p>
+        <label class="custom-checkbox custom-checkbox-blue">
+            <input type="checkbox" disabled>
+            <span class="checkmark"></span>
+        </label>
+        <span>ミディアム</span>
+    </p>
+    <p>
+        <label class="custom-checkbox custom-checkbox-blue">
+            <input type="checkbox" checked disabled>
+            <span class="checkmark"></span>
+        </label>
+        <span>ソフト</span>
+    </p>
+</td>
+
+<!-- レーシングのテーブル -->
+<td>
+<p>
+        <label class="custom-checkbox custom-checkbox-blue">
+            <input type="checkbox" disabled>
+            <span class="checkmark"></span>
+        </label>
+        <span>ハード</span>
+    </p>
+    <p>
+        <label class="custom-checkbox custom-checkbox-blue">
+            <input type="checkbox" disabled>
+            <span class="checkmark"></span>
+        </label>
+        <span>ミディアム</span>
+    </p>
+    <p>
+        <label class="custom-checkbox custom-checkbox-blue">
+            <input type="checkbox" disabled>
+            <span class="checkmark"></span>
+        </label>
+        <span>ソフト</span>
+    </p>
+</td>
+    <table class="custom-table no-border">
+        <tr>
+            <th><h3 class="title">サスペンション</h3></th>
+        </tr>
+    </table>
+    <table class="custom-table"> 
+        <tr>
+            <th></th>
+            <th>前</th>
+            <th>後</th>
+        </tr>
+        <tr>
+            <td>車高調整</td>
+            <td>91mm</td>
+            <td>89mm</td>
+        </tr>
+        <tr>
+            <td>アンチロール</td>
+            <td>5</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>縮み側</td>
+            <td>40</td>
+            <td>40</td>
+        </tr>
+        <tr>
+            <td>伸び側</td>
+            <td>40</td>
+            <td>30</td>
+        </tr>
+        <tr>
+            <td>固有振動数</td>
+            <td>3.40</td>
+            <td>2.33</td>
+        </tr>
+        <tr>
+            <td>キャンバー</td>
+            <td>1.2</td>
+            <td>1.0</td>
+        </tr>
+        <tr>
+            <td>トー角</td>
+            <td>+0.22</td>
+            <td>-0.04</td>
+        </tr>
+    </table>
+    <h3 class="title">フルカスタマイズLSD</h3>
+    <table class="custom-table">
+        <tr>
+            <th></th>
+            <th>前</th>
+            <th>後</th>
+        </tr>
+        <tr>
+            <td>イニシャル</td>
+            <td>35</td>
+            <td>60</td>
+        </tr>
+        <tr>
+            <td>加速側</td>
+            <td>60</td>
+            <td>60</td>
+        </tr>
+        <tr>
+            <td>減速側</td>
+            <td>60</td>
+            <td>60</td>
+        </tr>
+    </table>
+    <h3 class="title">駆動力配分</h3>
+    <table class="custom-table">
+        <tr>
+            <td>35:65</td>
+        </tr>
+    </table>
+     <h3 class="title">ダウンフォース</h3>
+    <table class="custom-table">
+        <tr>
+            <th></th>
+            <th>値</th>
+        </tr>
+        <tr>
+            <td>前</td>
+            <td>200</td>
+        </tr>
+        <tr>
+            <td>後</td>
+            <td>300</td>
+        </tr>
+    </table>
+    <h3 class="title">フルカスタムコンピュータ</h3>
+    <table class="custom-table">
+        <tr>
+            <td>出力：100%</td>
+        </tr>
+    </table>
+    <h3 class="title">バラスト</h3>
+    <table class="custom-table">
+        <tr>
+            <td>バラスト：0-バラスト搭載位置：0</td>
+        </tr>
+    </table>
+    <h3 class="title">パワーリストラクター</h3>
+    <table class="custom-table">
+        <tr>
+            <td>100%</td>
+        </tr>
+    </table>
+    <h3 class="title">フルカスタマイズマニュアル</h3>
+    <table class="custom-table">
+        <tr>
+            <td>400km</td>
+        </tr>
+    </table>
+    <table class="custom-table">
+        <tr>
+            <th></th>
+            <th>値</th>
+        </tr>
+        <tr><td>1st</td><td>3.987</td></tr>
+        <tr><td>2nd</td><td>2.625</td></tr>
+        <tr><td>3rd</td><td>1.895</td></tr>
+        <tr><td>4rd</td><td>1.425</td></tr>
+        <tr><td>5rd</td><td>1.116</td></tr>
+        <tr><td>6rd</td><td>0.911</td></tr>
+        <tr><td>7rd</td><td>0.774</td></tr>
+        <tr><td>F</td><td>3.540</td></tr>
+    </table>
+    <h3 class="title">ナイトロ</h3>
+    <table class="custom-table">
+        <tr>
+            <td>なし</td>
+        </tr>
+    </table>
+    <table class="custom-table">
+        <tr>
+            <td>出力調整：0%</td>
+        </tr>
+    </table>
+    
+            <h3 class="title">ターボの過給機その他</h3>
+    <table class="custom-table">
+    <tr>
+        <td>ターボチャージャー</td>
+        <td>なし</td>
+    </tr>
+    <tr>
+        <td>アンチラグ</td>
+        <td>なし</td>
+    </tr>
+    <tr>
+        <td>アンチラグ設定</td>
+        <td>なし</td>
+    </tr>
+    <tr>
+        <td>インタークーラ</td>
+        <td>なし</td>
+    </tr>
+    <tr>
+        <td>スーパーチャージャ</td>
+        <td>なし</td>
+    </tr>
+</table>
+
+<h3 class="title">エアクリーナ</h3>
+<table class="custom-table">
+    <tr>
+        <td>エアクリーナ</td>
+        <td>レーシング</td>
+    </tr>
+</table>
+
+<h3 class="title">マフラー</h3>
+<table class="custom-table">
+    <tr>
+        <td>マフラー</td>
+        <td>レーシング</td>
+    </tr>
+</table>
+
+<h3 class="title">エギゾースト</h3>
+<table class="custom-table">
+    <tr>
+        <td>エギゾースト</td>
+        <td>レーシング</td>
+    </tr>
+</table>
+
+<h3 class="title">ブレーキシステム</h3>
+<table class="custom-table">
+    <tr>
+        <td>ブレーキシステム</td>
+        <td>カーボン</td>
+    </tr>
+</table>
+
+<h3 class="title">ブレーキパッド</h3>
+<table class="custom-table">
+    <tr>
+        <td>ブレーキパッド</td>
+        <td>レーシング</td>
+    </tr>
+</table>
+
+<h3 class="title">サイドブレーキ</h3>
+<table class="custom-table">
+    <tr>
+        <td>サイドブレーキ</td>
+        <td>ドリフト用</td>
+    </tr>
+    <tr>
+        <td>サイドブレーキトルク</td>
+        <td>100%</td>
+    </tr>
+</table>
+
+<h3 class="title">ブレーキコントローラー</h3>
+<table class="custom-table">
+    <tr>
+        <td>ブレーキコントローラー</td>
+        <td>5</td>
+    </tr>
+</table>
+
+<h3 class="title">舵角変更</h3>
+<table class="custom-table">
+    <tr>
+        <td>舵角変更</td>
+        <td>ノーマル</td>
+    </tr>
+</table>
+
+<h3 class="title">4WS</h3>
+<table class="custom-table">
+    <tr>
+        <td>4WS</td>
+        <td>なし</td>
+    </tr>
+</table>
+
+<h3 class="title">リア操舵角</h3>
+<table class="custom-table">
+    <tr>
+        <td>リア操舵角</td>
+        <td>0</td>
+    </tr>
+</table>
+
+<h3 class="title">クラッチフライホイル</h3>
+<table class="custom-table">
+    <tr>
+        <td>クラッチフライホイル</td>
+        <td>レーシング</td>
+    </tr>
+</table>
+
+<h3 class="title">プロペラシャフト</h3>
+<table class="custom-table">
+    <tr>
+        <td>プロペラシャフト</td>
+        <td>ノーマル</td>
+    </tr>
+</table>
+<div style="height:100px;"></div>
+
+    </div>
+    <script>
+    // ページが読み込まれた時に実行される処理
+        window.addEventListener('load', function () {
+            // チェックボックス要素を取得
+            var checkboxes = document.querySelectorAll('.custom-table input[type="checkbox"]');
+
+            // チェックボックスの状態に応じてスタイルを適用する関数
+            function updateCheckboxStyle() {
+                checkboxes.forEach(function (checkbox) {
+                    if (checkbox.checked) {
+                        checkbox.nextElementSibling.style.backgroundColor = 'blue'; // 選択時の背景色を青に設定
+                    } else {
+                        checkbox.nextElementSibling.style.backgroundColor = 'transparent'; // 未選択時の背景色を透明に設定
+                    }
+                });
+            }
+
+            // ページ読み込み時に初期のスタイルを設定
+            updateCheckboxStyle();
+
+            // チェックボックスの状態が変更されたときにスタイルを更新
+            checkboxes.forEach(function (checkbox) {
+                checkbox.addEventListener('change', updateCheckboxStyle);
+            });
+        });
+    </script>
+</body>
+</html>
