@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>マルチランゲージ翻訳チャットアプリ</title>
-    <!-- ここにCSSスタイルを追加 -->
+    <!-- CSSスタイルをここに追加 -->
 </head>
 <body>
     <div id="chat-container">
@@ -38,15 +38,26 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ text: message })
                 });
-                const translated = await response.json();
 
-                // Firebaseに保存
-                firebase.database().ref('messages').push().set({
-                    username: username,
-                    message: message,
-                    translations: translated,
-                    timestamp: new Date().toLocaleTimeString()
-                });
+                if (response.ok) {
+                    const translated = await response.json();
+
+                    // Firebaseに保存
+                    firebase.database().ref('messages').push().set({
+                        username: username,
+                        message: message,
+                        translations: translated,
+                        timestamp: new Date().toLocaleTimeString()
+                    });
+                } else {
+                    // 翻訳に失敗した場合は日本語のみを保存
+                    firebase.database().ref('messages').push().set({
+                        username: username,
+                        message: message,
+                        translations: { Japanese: message },
+                        timestamp: new Date().toLocaleTimeString()
+                    });
+                }
 
                 document.getElementById('message-input').value = '';
             }
@@ -63,6 +74,8 @@
     </script>
 </body>
 </html>
+
+
 
 
 
