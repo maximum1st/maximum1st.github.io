@@ -1,3 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>マルチランゲージ翻訳チャットアプリ</title>
+    <style>
+        /* チャットウィンドウの基本スタイル */
+        #chat-container {
+            width: 300px;
+            margin: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        #chat-window {
+            height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        #message-input {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="chat-window"></div>
+        <input type="text" id="username" placeholder="ユーザー名">
+        <textarea id="message-input" placeholder="メッセージを入力"></textarea>
+        <button id="send-button">送信</button>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+    <script>
+        // Firebaseの設定
+        var firebaseConfig = {
+            apiKey: "AIzaSyBk-eiBZfasuK1Hrb0LOAfMT_D5o-mjQso",
+            authDomain: "chat-f68a2.firebaseapp.com",
+            projectId: "chat-f68a2",
+            storageBucket: "chat-f68a2.appspot.com",
+            messagingSenderId: "997802940709",
+            appId: "1:997802940709:web:7e869d916f695b4df6a2cc",
+            measurementId: "G-XRNFW5H96V"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        document.getElementById('send-button').addEventListener('click', sendMessage);
+
+        function sendMessage() {
+            const username = document.getElementById('username').value.trim();
+            const message = document.getElementById('message-input').value.trim();
+
+            if (username && message) {
+                // Firebaseにメッセージを保存
+                firebase.database().ref('messages').push().set({
+                    username: username,
+                    message: message,
+                    timestamp: new Date().toLocaleTimeString()
+                });
+                document.getElementById('message-input').value = '';
+            }
+        }
+
+        // メッセージのリアルタイム表示
+        firebase.database().ref('messages').on('child_added', function(snapshot) {
+            const data = snapshot.val();
+            const messageDiv = document.createElement('div');
+            messageDiv.textContent = `${data.username} (${data.timestamp}): ${data.message}`;
+            document.getElementById('chat-window').appendChild(messageDiv);
+            document.getElementById('chat-window').scrollTop = document.getElementById('chat-window').scrollHeight;
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
 
 <!DOCTYPE html>
 <html lang="ja">
