@@ -1,26 +1,3 @@
-require('dotenv').config();
-const express = require('express');
-const bodyParser = require('body-parser');
-const { OpenAIApi } = require('openai');
-const cors = require('cors');
-
-const app = express();
-
-// CORSポリシーの設定
-const corsOptions = {
-  origin: 'https://maximum1st-git-develop-maximum1sts-projects.vercel.app', // クライアント側のオリジン
-  optionsSuccessStatus: 200 // 一部のレガシーブラウザが必要とする設定
-};
-app.use(cors(corsOptions));
-
-app.use(bodyParser.json());
-
-// OpenAI APIの初期化
-const openai = new OpenAIApi({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
-// 翻訳エンドポイント
 app.post('/translate', async (req, res) => {
     try {
         const { text } = req.body;
@@ -28,12 +5,12 @@ app.post('/translate', async (req, res) => {
         let translations = {};
 
         for (const lang of languages) {
-            // OpenAIを使用して翻訳
             const response = await openai.createCompletion({
-                model: 'text-davinci-003', // 適切なモデルを指定
+                model: 'text-davinci-003',
                 prompt: `Translate this text to ${lang}: ${text}`,
                 max_tokens: 60
             });
+            console.log(`Response for ${lang}:`, response.data.choices[0].text.trim());
             translations[lang] = response.data.choices[0].text.trim();
         }
 
@@ -44,11 +21,6 @@ app.post('/translate', async (req, res) => {
     }
 });
 
-// サーバーの起動
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
-});
 
 
 
