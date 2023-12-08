@@ -1,23 +1,37 @@
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
-const { OpenAIApi } = require('openai');
+const { Configuration, OpenAIApi } = require('openai');
 const cors = require('cors');
 
 const app = express();
 
+// 許可するドメインのリスト
+const allowedOrigins = [
+  'https://maximum1st-git-develop-maximum1sts-projects.vercel.app',
+  'https://maximum1st.github.io',
+  'https://maximum1st-github-1wc7nr8hv-maximum1sts-projects.vercel.app'
+];
+
 // CORSポリシーの設定
 app.use(cors({
-  origin: 'https://maximum1st-git-develop-maximum1sts-projects.vercel.app', // 許可するドメイン
-  optionsSuccessStatus: 200
+  origin: function (origin, callback) {
+    // originが許可リストにない場合は、エラーを返す
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  optionsSuccessStatus: 200 // レガシーブラウザのための設定
 }));
 
 app.use(bodyParser.json());
 
 // OpenAI APIの初期化
-const openai = new OpenAIApi({
+const openai = new OpenAIApi(new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
-});
+}));
 
 // 翻訳エンドポイント
 app.post('/translate', async (req, res) => {
@@ -47,7 +61,6 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
-
 
 
 
