@@ -221,13 +221,15 @@ ul.link-list {
   padding: 0;
 }
 
-.highlighted-text {
+.full-height-background {
     background-color: rgba(0, 0, 0, 0.5); /* ダークな半透明の背景 */
-    color: white; /* テキストの色を白に設定 */
-    display: inline; /* 要素の幅を内容に合わせる */
-    padding: 2px 4px; /* 内容にわずかなスペースを追加 */
-    box-sizing: border-box; /* パディングを要素のサイズに含める */
+    min-height: 100vh; /* 最小限ビューポートの高さとする */
+    width: 100%; /* 幅を100%にする */
+    position: relative; /* 他の要素との位置関係を確定するため */
+    box-sizing: border-box; /* ボーダーやパディングを幅に含める */
+    /* 必要に応じて他のスタイルを追加 */
 }
+
 
 
 /* モバイルデバイスでのみ表示 */
@@ -385,7 +387,7 @@ ul.link-list {
         <a href="zh.html">中文</a>
         <a href="ru.html">Русский</a>
     </div>
-
+<div class="full-height-background">
     <div class="image-wrapper">
         <img src="r9T4y7U1I3O6P1A7S4D6F8G7H2J1K6L9M1N6B7V5C9X2.jpg" alt="Profile image">
         <img src="https://maximum1st.github.io/toumei.png" class="overlay" alt="Profile image overlay">
@@ -395,21 +397,17 @@ ul.link-list {
 
     <div class="highlighted-text">
     <p class="left-aligned justify">
-        <span class="highlighted-text">
         レースゲームの「Gran Turismo 7（GT7）」をTwitchでPS5を使ってブロードキャスト配信を行っています。
         ゲームプレイを共有するだけでなく、ゲームのセッティングについての研究も行っていますので、ぜひ見てください。
         性格は臆病でお調子者ですが、優しいと言われることが多いです。仲良くしていただけると嬉しいです。
         配信についてや雑談配信もたまにやっています。毎日配信はしていませんが、ランダムに配信してます。眠いなぁ〜、、、。
-        </span>
     </p>
 
     <p class="left-aligned justify">
-        <span class="highlighted-text">
         レースゲームは単純作業で視聴者が少ないため、フォローやコメントをいただけるとうれしいです。また、現在は相棒と復縁中。
         身を固めるため手入れのしやすい坊主頭です。今は、九州に引っ越すまで運動を控えていますが、引っ越したら運動を再開したいな。
-        </span>
     </p>
-    </div>
+    
    
     <button id="reloadButton" style="position: fixed; bottom: 10px; right: 10px; padding: 10px 20px;">更新</button>
 
@@ -462,6 +460,7 @@ ul.link-list {
         <li><a href="https://maximum1st.github.io/sus.html" class="blink-yello-white" target="_blank">基本車高計算機</a></li>
         <li><a href="https://maximum1st.github.io/seiyaku.html" target="_blank">動画制約</a></li>
     </ul>
+    </div>
     <script>
 // ドキュメントが完全に読み込まれた後に実行
 document.addEventListener('DOMContentLoaded', function() {
