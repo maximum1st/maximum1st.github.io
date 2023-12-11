@@ -221,15 +221,15 @@ ul.link-list {
 }
 
 
-.page-background {
-    min-height: 100vh; /* ビューポートの高さに基づいて最小の高さを設定 */
-    width: 100%; /* 幅を100%に設定 */
-    background-color: #181919; /* 背景色 */
-    background-image: url('https://maximum1st.github.io/haikei.png'); /* 背景画像 */
-    background-size: cover; /* 画像がコンテナをカバーするように設定 */
-    background-position: center center; /* 画像をコンテナの中心に配置 */
-    background-attachment: fixed; /* 画像がスクロールに追従しないように設定 */
-    position: relative; /* 必要に応じてポジションを設定 */
+.full-height-background {
+    position: fixed; /* 画面に固定 */
+    top: 0;
+    left: 0;
+    width: 100%; /* 幅をビューポートの100%に */
+    height: 100%; /* 高さをビューポートの100%に */
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明の背景色 */
+    z-index: 999; /* 他の要素より前面に */
+    pointer-events: none; /* 背景がクリックを妨げないように */
 }
 
 
@@ -320,7 +320,7 @@ ul.link-list {
     
 </head>
 <body>
-    <div class="page-background">
+    <div class="full-height-background">
     <div class="second-background"></div> <!-- 二枚目の背景画像用のdiv -->
     <img src="https://maximum1st.github.io/GT.png" class="second-background" />
     <noscript>
