@@ -221,15 +221,16 @@ ul.link-list {
   padding: 0;
 }
 
+
 .full-height-background {
     background-color: rgba(0, 0, 0, 0.5); /* ダークな半透明の背景 */
-    min-height: 100vh; /* 最小限ビューポートの高さとする */
-    width: 100%; /* 幅を100%にする */
-    position: relative; /* 他の要素との位置関係を確定するため */
+    min-height: 100vh; /* ビューポートの高さに基づく最小の高さ */
+    width: 100%; /* コンテナの幅を100%にする */
+    position: absolute; /* ページ全体に対して位置を固定する */
+    top: 0; /* トップから開始 */
+    left: 0; /* 左端から開始 */
     box-sizing: border-box; /* ボーダーやパディングを幅に含める */
-    /* 必要に応じて他のスタイルを追加 */
 }
-
 
 
 /* モバイルデバイスでのみ表示 */
