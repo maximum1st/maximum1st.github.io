@@ -227,11 +227,12 @@ ul.link-list {
 
 .full-height-background {
     background-color: rgba(0, 0, 0, 0.5);
+    width: 660px; /* 背景の幅を660pxに設定 */
     min-height: 100%;
-    width: 100%;
-    position: absolute;
+    position: absolute; /* 背景をページ全体に伸縮させるための設定 */
     top: 0;
-    left: 0;
+    left: 50%; /* 中央揃えのため */
+    transform: translateX(-50%); /* 中央揃えのため */
     box-sizing: border-box;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
