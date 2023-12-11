@@ -224,11 +224,12 @@ ul.link-list {
 
 .full-height-background {
     background-color: rgba(0, 0, 0, 0.5); /* ダークな半透明の背景 */
-    min-height: 100vh; /* ビューポートの高さに基づく最小の高さ */
-    width: 600px; /* 幅を600pxにする */
+    width: 600px; /* 幅を600pxに設定 */
+    min-height: 100vh; /* 最低限の高さをビューポートの100%に設定 */
+    height: auto; /* 高さをコンテンツに合わせて自動調整 */
     margin-left: auto; /* 左右のマージンを自動で調整してセンタリング */
     margin-right: auto;
-    position: relative; /* 他の要素との位置関係を確定するため */
+    position: relative; /* ページ内での相対位置 */
     box-sizing: border-box; /* ボーダーやパディングを幅に含める */
 }
 
