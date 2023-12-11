@@ -220,15 +220,14 @@ ul.link-list {
   margin: 0;
   padding: 0;
 }
+
 .highlighted-text {
     background-color: rgba(0, 0, 0, 0.5); /* ダークな半透明の背景 */
-    padding: 0; /* テキスト周りのパディングを削除 */
-    margin: 0; /* テキスト周りのマージンを削除 */
     color: white; /* テキストの色を白に設定 */
-    width: 100%; /* 親要素の幅に合わせる */
-    box-sizing: border-box; /* パディングとボーダーが幅に含まれるように設定 */
+    display: inline; /* 要素の幅を内容に合わせる */
+    padding: 2px 4px; /* 内容にわずかなスペースを追加 */
+    box-sizing: border-box; /* パディングを要素のサイズに含める */
 }
-
 
 
 /* モバイルデバイスでのみ表示 */
