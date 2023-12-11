@@ -222,15 +222,16 @@ ul.link-list {
 
 
 .full-height-background {
-    position: fixed; /* 画面に固定 */
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%; /* 幅をビューポートの100%に */
-    height: 100%; /* 高さをビューポートの100%に */
-    background-color: rgba(0, 0, 0, 0.5); /* 半透明の背景色 */
-    z-index: 999; /* 他の要素より前面に */
-    pointer-events: none; /* 背景がクリックを妨げないように */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1; /* 背景を背面に */
+    pointer-events: none;
 }
+
 
 
 
@@ -290,7 +291,7 @@ ul.link-list {
   background-image: url('https://maximum1st.github.io/GT.png'); /* 画像のパス */
   background-repeat: no-repeat;
   background-size: contain; /* 画像のサイズ調整 */
-  z-index: -1; /* 他の要素の背後に配置 */
+  z-index: 1; /* 他の要素の背後に配置 */
 }
       @media screen and (min-width: 769px) {
   .second-background {
