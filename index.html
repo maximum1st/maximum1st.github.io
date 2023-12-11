@@ -229,13 +229,13 @@ ul.link-list {
     background-color: rgba(0, 0, 0, 0.5); /* ダークな半透明の背景 */
     min-height: 100vh; /* 最小限ビューポートの高さとする */
     width: 100%; /* 幅を100%にする */
-    position: relative; /* 他の要素との位置関係を確定するため */
+    position: fixed; /* 位置を固定 */
+    top: 0; /* 上部から0の位置に設定 */
+    left: 0; /* 左から0の位置に設定 */
     box-sizing: border-box; /* ボーダーやパディングを幅に含める */
     border-top-left-radius: 10px; /* 左上の角を丸める */
     border-top-right-radius: 10px; /* 右上の角を丸める */
 }
-
-
 
 
 /* モバイルデバイスでのみ表示 */
