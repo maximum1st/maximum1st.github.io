@@ -222,10 +222,11 @@ ul.link-list {
 }
 .highlighted-text {
     background-color: rgba(0, 0, 0, 0.5); /* ダークな半透明の背景 */
-    padding: 5px; /* テキストの周りに少しスペースを設ける */
-    margin: 0; /* 余白をなくす */
+    padding: 0; /* テキスト周りのパディングを削除 */
+    margin: 0; /* テキスト周りのマージンを削除 */
     color: white; /* テキストの色を白に設定 */
-    /* 他の必要なスタイル（フォントサイズ、行間など） */
+    width: 100%; /* 親要素の幅に合わせる */
+    box-sizing: border-box; /* パディングとボーダーが幅に含まれるように設定 */
 }
 
 
