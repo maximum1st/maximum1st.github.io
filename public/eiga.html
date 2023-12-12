@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>映画会館</title>
     <style>
-        html, body {
+          html, body {
             height: 100%;
             margin: 0;
             padding: 0;
@@ -22,19 +22,20 @@
         #maximizeButton, #closeButton {
             position: fixed;
             right: 10px;
+            top: 10px;
             z-index: 1000;
             padding: 5px;
-            background-color: #4CAF50;
             color: white;
             border: none;
             cursor: pointer;
             font-size: small;
         }
         #maximizeButton {
-            top: 10px;
+            background-color: #4CAF50;
         }
         #closeButton {
-            top: 45px; /* 最大化ボタンの下 */
+            background-color: #FF6347;
+            top: 40px;
         }
     </style>
 </head>
@@ -83,7 +84,11 @@
             }
         });
 
+        
+    </script>
+    <script>
         document.getElementById('closeButton').addEventListener('click', function() {
+            // 以前提示された閉じる処理
             window.close();
         });
     </script>
