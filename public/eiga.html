@@ -45,29 +45,7 @@
     <button id="closeButton">閉じる</button>
 
     <script>
-        async function fetchTwitchVideo() {
-            const clientId = '4oqdslgbp4efuim24x8kdftf2idtm6';
-            const accessToken = 'ax75nx9uru5de4d1xr3t11lr18ml9m';
-            const userId = '904314848';
-
-            try {
-                const response = await fetch(`https://api.twitch.tv/helix/videos?user_id=${userId}&first=1&type=archive`, {
-                    headers: {
-                        'Client-ID': clientId,
-                        'Authorization': `Bearer ${accessToken}`
-                    }
-                });
-                const data = await response.json();
-                const videoId = data.data[0].id;
-                const iframe = document.createElement('iframe');
-                iframe.src = `https://player.twitch.tv/?video=${videoId}&parent=maximum1st-git-develop-maximum1sts-projects.vercel.app&autoplay=false`;
-                document.getElementById('twitch-video-container').appendChild(iframe);
-            } catch (error) {
-                console.error('Error fetching Twitch video:', error);
-            }
-        }
-
-        fetchTwitchVideo();
+       function _0x2d96(_0x23a563,_0x4b46a2){const _0x278249=_0x2782();return _0x2d96=function(_0x2d965e,_0x320efa){_0x2d965e=_0x2d965e-0xec;let _0x2a6131=_0x278249[_0x2d965e];return _0x2a6131;},_0x2d96(_0x23a563,_0x4b46a2);}function _0x2782(){const _0x536df=['Bearer\x20','data','24uXiUMC','9ExVXsp','3031589OozCEn','132sfXZLl','json','ax75nx9uru5de4d1xr3t11lr18ml9m','28295NdGZPE','686HVHFyf','1934670YXNGLl','9128vJDrJm','161436Ucldqy','Error\x20fetching\x20Twitch\x20video:','twitch-video-container','&first=1&type=archive','https://api.twitch.tv/helix/videos?user_id=','18aHYPNu','4oqdslgbp4efuim24x8kdftf2idtm6','168518pIzSFA','337622xCULws','&parent=maximum1st-git-develop-maximum1sts-projects.vercel.app&autoplay=false','iframe','904314848'];_0x2782=function(){return _0x536df;};return _0x2782();}(function(_0x325458,_0x28a17e){const _0x2ab8fb=_0x2d96,_0x2fd938=_0x325458();while(!![]){try{const _0x1d8855=-parseInt(_0x2ab8fb(0xee))/0x1+parseInt(_0x2ab8fb(0xed))/0x2*(parseInt(_0x2ab8fb(0x103))/0x3)+-parseInt(_0x2ab8fb(0xf7))/0x4*(parseInt(_0x2ab8fb(0xfa))/0x5)+parseInt(_0x2ab8fb(0xfe))/0x6+parseInt(_0x2ab8fb(0xfb))/0x7*(-parseInt(_0x2ab8fb(0xfd))/0x8)+parseInt(_0x2ab8fb(0xf5))/0x9*(-parseInt(_0x2ab8fb(0xfc))/0xa)+-parseInt(_0x2ab8fb(0xf6))/0xb*(-parseInt(_0x2ab8fb(0xf4))/0xc);if(_0x1d8855===_0x28a17e)break;else _0x2fd938['push'](_0x2fd938['shift']());}catch(_0x4ff44a){_0x2fd938['push'](_0x2fd938['shift']());}}}(_0x2782,0x3e034));async function fetchTwitchVideo(){const _0x77165f=_0x2d96,_0x33c941=_0x77165f(0xec),_0x331212=_0x77165f(0xf9),_0x459f6c=_0x77165f(0xf1);try{const _0x3516cb=await fetch(_0x77165f(0x102)+_0x459f6c+_0x77165f(0x101),{'headers':{'Client-ID':_0x33c941,'Authorization':_0x77165f(0xf2)+_0x331212}}),_0x46a155=await _0x3516cb[_0x77165f(0xf8)](),_0x5ce1b1=_0x46a155[_0x77165f(0xf3)][0x0]['id'],_0x4c1f5f=document['createElement'](_0x77165f(0xf0));_0x4c1f5f['src']='https://player.twitch.tv/?video='+_0x5ce1b1+_0x77165f(0xef),document['getElementById'](_0x77165f(0x100))['appendChild'](_0x4c1f5f);}catch(_0x5adff8){console['error'](_0x77165f(0xff),_0x5adff8);}}fetchTwitchVideo();
     </script>
 
     <script>
