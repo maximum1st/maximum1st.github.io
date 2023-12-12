@@ -19,10 +19,9 @@
             height: 100%;
             border: none;
         }
-        #maximizeButton {
+        #maximizeButton, #closeButton {
             position: fixed;
             right: 10px;
-            top: 10px;
             z-index: 1000;
             padding: 5px;
             background-color: #4CAF50;
@@ -31,11 +30,18 @@
             cursor: pointer;
             font-size: small;
         }
+        #maximizeButton {
+            top: 10px;
+        }
+        #closeButton {
+            top: 45px; /* 最大化ボタンの下 */
+        }
     </style>
 </head>
 <body>
     <div id="twitch-video-container"></div>
     <button id="maximizeButton">最大化</button>
+    <button id="closeButton">閉じる</button>
 
     <script>
         async function fetchTwitchVideo() {
@@ -75,6 +81,10 @@
             } else if (elem.msRequestFullscreen) {
                 elem.msRequestFullscreen();
             }
+        });
+
+        document.getElementById('closeButton').addEventListener('click', function() {
+            window.close();
         });
     </script>
 </body>
