@@ -2,6 +2,86 @@
 <html>
 <head>
     <title>多言語リアルタイムチャット</title>
+    <!-- Firebaseの設定 -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-database.js"></script>
+</head>
+<body>
+    <div id="chat">
+        <input type="text" id="nameInput" placeholder="名前">
+        <input type="text" id="messageInput" placeholder="メッセージを入力">
+        <button onclick="sendMessage()">送信</button>
+        <ul id="messages"></ul>
+    </div>
+
+    <script>
+        // Firebaseの設定
+        var firebaseConfig = {
+            apiKey: "AIzaSyBk-eiBZfasuK1Hrb0LOAfMT_D5o-mjQso",
+            authDomain: "chat-f68a2.firebaseapp.com",
+            projectId: "chat-f68a2",
+            storageBucket: "chat-f68a2.appspot.com",
+            messagingSenderId: "997802940709",
+            appId: "1:997802940709:web:7e869d916f695b4df6a2cc",
+            measurementId: "G-XRNFW5H96V"
+        };
+
+        // Firebaseの初期化
+        firebase.initializeApp(firebaseConfig);
+
+        // Firebase Databaseの参照
+        var messagesRef = firebase.database().ref('messages');
+
+        // 新しいメッセージを送信
+        function sendMessage() {
+            var name = document.getElementById('nameInput').value;
+            var text = document.getElementById('messageInput').value;
+            messagesRef.push({name: name, text: text});
+            document.getElementById('messageInput').value = '';
+        }
+
+        // メッセージのリアルタイム表示
+        messagesRef.on('child_added', function(snapshot) {
+            var message = snapshot.val();
+            var li = document.createElement('li');
+            li.textContent = message.name + ": " + message.text;
+            document.getElementById('messages').appendChild(li);
+        });
+
+        // OpenAI APIを使った翻訳機能（例）
+        async function translateMessage(message, targetLanguage) {
+            // APIリクエストを作成（OpenAI APIエンドポイントと認証情報を使用）
+            const response = await fetch('OPENAI_API_ENDPOINT', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer vyty878fgyff87fguiy7g98guig98g9guig'
+                },
+                body: JSON.stringify({
+                    prompt: message,
+                    targetLanguage: targetLanguage
+                })
+            });
+
+            const data = await response.json();
+            return data.translatedText; // 翻訳されたテキストを返す
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>多言語リアルタイムチャット</title>
     <!-- https://maximum1st-git-develop-maximum1sts-projects.vercel.app/chatbata.html -->
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-database.js"></script>
