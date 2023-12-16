@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>多言語リアルタイムチャット</title>
-    <!-- Firebaseの設定 -->
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-database.js"></script>
 </head>
@@ -15,7 +14,6 @@
     </div>
 
     <script>
-        // Firebaseの設定
         var firebaseConfig = {
             apiKey: "AIzaSyBk-eiBZfasuK1Hrb0LOAfMT_D5o-mjQso",
             authDomain: "chat-f68a2.firebaseapp.com",
@@ -25,14 +23,9 @@
             appId: "1:997802940709:web:7e869d916f695b4df6a2cc",
             measurementId: "G-XRNFW5H96V"
         };
-
-        // Firebaseの初期化
         firebase.initializeApp(firebaseConfig);
-
-        // Firebase Databaseの参照
         var messagesRef = firebase.database().ref('messages');
 
-        // 新しいメッセージを送信
         function sendMessage() {
             var name = document.getElementById('nameInput').value;
             var text = document.getElementById('messageInput').value;
@@ -40,31 +33,26 @@
             document.getElementById('messageInput').value = '';
         }
 
-        // メッセージのリアルタイム表示
         messagesRef.on('child_added', function(snapshot) {
             var message = snapshot.val();
-            var li = document.createElement('li');
-            li.textContent = message.name + ": " + message.text;
-            document.getElementById('messages').appendChild(li);
+            displayMessage(message.name, message.text);
         });
 
-        // OpenAI APIを使った翻訳機能（例）
-        async function translateMessage(message, targetLanguage) {
-            // APIリクエストを作成（OpenAI APIエンドポイントと認証情報を使用）
-            const response = await fetch('OPENAI_API_ENDPOINT', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer vyty878fgyff87fguiy7g98guig98g9guig'
-                },
-                body: JSON.stringify({
-                    prompt: message,
-                    targetLanguage: targetLanguage
-                })
-            });
+        function displayMessage(name, text) {
+            var li = document.createElement('li');
+            li.textContent = name + ": " + text;
+            document.getElementById('messages').appendChild(li);
 
-            const data = await response.json();
-            return data.translatedText; // 翻訳されたテキストを返す
+            // サーバサイドのPHPスクリプトを通じて翻訳を行う
+            fetch('translate.php', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({text: text, targetLanguage: 'en'}) // 例：英語への翻訳
+            })
+            .then(response => response.json())
+            .then(data => {
+                li.textContent += " / Translated: " + data.translatedText;
+            });
         }
     </script>
 </body>
