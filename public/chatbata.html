@@ -41,60 +41,61 @@
         </div>
     </div>
     <script>
-var firebaseConfig = {
-    apiKey: "AIzaSyBk-eiBZfasuK1Hrb0LOAfMT_D5o-mjQso",
-    authDomain: "chat-f68a2.firebaseapp.com",
-    projectId: "chat-f68a2",
-    storageBucket: "chat-f68a2.appspot.com",
-    messagingSenderId: "997802940709",
-    appId: "1:997802940709:web:7e869d916f695b4df6a2cc",
-    measurementId: "G-XRNFW5H96V"
-};
+        var firebaseConfig = {
+            apiKey: "AIzaSyBk-eiBZfasuK1Hrb0LOAfMT_D5o-mjQso",
+            authDomain: "chat-f68a2.firebaseapp.com",
+            projectId: "chat-f68a2",
+            storageBucket: "chat-f68a2.appspot.com",
+            messagingSenderId: "997802940709",
+            appId: "1:997802940709:web:7e869d916f695b4df6a2cc",
+            measurementId: "G-XRNFW5H96V"
+        };
 
-firebase.initializeApp(firebaseConfig);
-var messagesRef = firebase.database().ref('messages');
+        firebase.initializeApp(firebaseConfig);
+        var messagesRef = firebase.database().ref('messages');
 
-function sendMessage() {
-    var name = document.getElementById('nameInput').value;
-    var text = document.getElementById('messageInput').value;
-    messagesRef.push({ name: name, text: text });
-    document.getElementById('messageInput').value = '';
-}
+        function sendMessage() {
+            var name = document.getElementById('nameInput').value;
+            var text = document.getElementById('messageInput').value;
+            var timestamp = new Date().toLocaleString();
+            messagesRef.push({ name: name, text: text, timestamp: timestamp });
+            document.getElementById('messageInput').value = '';
+        }
 
-messagesRef.on('child_added', function (snapshot) {
-    var message = snapshot.val();
-    displayMessage(message.name, message.text);
-});
+        messagesRef.on('child_added', function (snapshot) {
+            var message = snapshot.val();
+            displayMessage(message.name, message.text, message.timestamp);
+        });
 
-function displayMessage(name, text) {
-    var li = document.createElement('li');
-    li.textContent = name + ": " + text;
-    document.getElementById('messages').appendChild(li);
+        function displayMessage(name, text, timestamp) {
+            var li = document.createElement('li');
+            li.textContent = `${timestamp} - ${name}: ${text}`;
+            document.getElementById('messages').appendChild(li);
 
-    translateAndDisplay(li, text, 'en');
-    translateAndDisplay(li, text, 'ko');
-    translateAndDisplay(li, text, 'zh');
-    translateAndDisplay(li, text, 'ru');
-}
+            translateAndDisplay(li, text, 'en');
+            translateAndDisplay(li, text, 'ko');
+            translateAndDisplay(li, text, 'zh');
+            translateAndDisplay(li, text, 'ru');
+        }
 
-function translateAndDisplay(liElement, text, language) {
-    fetch('translate.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: text, targetLanguage: language })
-    })
-    .then(response => response.json())
-    .then(data => {
-        liElement.textContent += ` / ${language.toUpperCase()}: ${data.translatedText}`;
-    });
-}
+        function translateAndDisplay(liElement, text, language) {
+            fetch('translate.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: text, targetLanguage: language })
+            })
+            .then(response => response.json())
+            .then(data => {
+                liElement.textContent += ` / ${language.toUpperCase()}: ${data.translatedText}`;
+            });
+        }
 
-function handleKeyPress(e) {
-    if (e.key === 'Enter') {
-        sendMessage();
-    }
-}
-
+        function handleKeyPress(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        }
     </script>
 </body>
 </html>
+
