@@ -4,17 +4,40 @@
     <title>多言語リアルタイムチャット</title>
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-database.js"></script>
+    <style>
+        #chat {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        #messages {
+            list-style-type: none;
+            padding: 0;
+            overflow-y: scroll;
+            flex-grow: 1;
+        }
+        #inputArea {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+        }
+        #inputArea input, #inputArea button {
+            margin: 5px;
+        }
+    </style>
 </head>
 <body>
     <div id="chat">
-        <input type="text" id="nameInput" placeholder="名前">
-        <input type="text" id="messageInput" placeholder="メッセージを入力">
-        <button onclick="sendMessage()">送信</button>
         <ul id="messages"></ul>
+        <div id="inputArea">
+            <input type="text" id="nameInput" placeholder="名前">
+            <input type="text" id="messageInput" placeholder="メッセージを入力">
+            <button onclick="sendMessage()">送信</button>
+        </div>
     </div>
 
     <script>
-        var firebaseConfig = {
+          var firebaseConfig = {
             apiKey: "AIzaSyBk-eiBZfasuK1Hrb0LOAfMT_D5o-mjQso",
             authDomain: "chat-f68a2.firebaseapp.com",
             projectId: "chat-f68a2",
