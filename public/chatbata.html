@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>マルチランゲージ翻訳チャットアプリ</title>
-    <!-- ここにCSSスタイルを追加 -->
+    <title>多言語リアルタイムチャット</title>
+    <!-- https://maximum1st-git-develop-maximum1sts-projects.vercel.app/chatbata.html -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-database.js"></script>
 </head>
 <body>
-    <div id="chat-container">
-        <div id="chat-window"></div>
-        <input type="text" id="username" placeholder="ユーザー名">
-        <textarea id="message-input" placeholder="メッセージを入力"></textarea>
-        <button id="send-button">送信</button>
+    <div id="chat">
+        <input type="text" id="messageInput" placeholder="メッセージを入力">
+        <button onclick="sendMessage()">送信</button>
+        <ul id="messages"></ul>
     </div>
-    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+
     <script>
         // Firebaseの設定
         var firebaseConfig = {
@@ -25,55 +24,26 @@
             appId: "1:997802940709:web:7e869d916f695b4df6a2cc",
             measurementId: "G-XRNFW5H96V"
         };
+
+        // Firebaseの初期化
         firebase.initializeApp(firebaseConfig);
 
-        document.getElementById('send-button').addEventListener('click', async function() {
-            const username = document.getElementById('username').value.trim();
-            const message = document.getElementById('message-input').value.trim();
+        // Firebase Databaseの参照
+        var messagesRef = firebase.database().ref('messages');
 
-            if (username && message) {
-                // サーバーに翻訳リクエストを送信
-                try {
-                    const response = await fetch('https://maximum1st-github-1wc7nr8hv-maximum1sts-projects.vercel.app/translate', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ text: message })
-                    });
-
-                    if (response.ok) {
-                        const translated = await response.json();
-
-                        // Firebaseに保存
-                        firebase.database().ref('messages').push().set({
-                            username: username,
-                            message: message,
-                            translations: translated,
-                            timestamp: new Date().toLocaleTimeString()
-                        });
-                    } else {
-                        throw new Error('Translation failed');
-                    }
-                } catch (error) {
-                    // 翻訳に失敗した場合は日本語のみを保存
-                    firebase.database().ref('messages').push().set({
-                        username: username,
-                        message: message,
-                        translations: { Japanese: message },
-                        timestamp: new Date().toLocaleTimeString()
-                    });
-                }
-
-                document.getElementById('message-input').value = '';
-            }
-        });
+        // 新しいメッセージを送信
+        function sendMessage() {
+            var text = document.getElementById('messageInput').value;
+            messagesRef.push({text: text});
+            document.getElementById('messageInput').value = '';
+        }
 
         // メッセージのリアルタイム表示
-        firebase.database().ref('messages').on('child_added', function(snapshot) {
-            const data = snapshot.val();
-            const messageDiv = document.createElement('div');
-            messageDiv.innerHTML = `<strong>${data.username} (${data.timestamp}):</strong> ${data.message}<br><pre>${JSON.stringify(data.translations, null, 2)}</pre>`;
-            document.getElementById('chat-window').appendChild(messageDiv);
-            document.getElementById('chat-window').scrollTop = document.getElementById('chat-window').scrollHeight;
+        messagesRef.on('child_added', function(snapshot) {
+            var message = snapshot.val();
+            var li = document.createElement('li');
+            li.textContent = message.text;
+            document.getElementById('messages').appendChild(li);
         });
     </script>
 </body>
