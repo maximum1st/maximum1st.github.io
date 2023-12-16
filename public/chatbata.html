@@ -43,15 +43,22 @@
             li.textContent = name + ": " + text;
             document.getElementById('messages').appendChild(li);
 
-            // サーバサイドのPHPスクリプトを通じて翻訳を行う
+            // 複数の言語への翻訳を行う
+            translateAndDisplay(li, text, 'en');
+            translateAndDisplay(li, text, 'ko');
+            translateAndDisplay(li, text, 'zh');
+            translateAndDisplay(li, text, 'ru');
+        }
+
+        function translateAndDisplay(liElement, text, language) {
             fetch('translate.php', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({text: text, targetLanguage: 'en'}) // 例：英語への翻訳
+                body: JSON.stringify({text: text, targetLanguage: language})
             })
             .then(response => response.json())
             .then(data => {
-                li.textContent += " / Translated: " + data.translatedText;
+                liElement.textContent += ` / ${language.toUpperCase()}: ${data.translatedText}`;
             });
         }
     </script>
