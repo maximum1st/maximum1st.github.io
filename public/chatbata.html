@@ -5,6 +5,11 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-database.js"></script>
     <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
         #chat {
             display: flex;
             flex-direction: column;
@@ -18,11 +23,12 @@
         }
         #inputArea {
             display: flex;
-            justify-content: space-between;
+            align-items: center;
             padding: 10px;
         }
-        #inputArea input, #inputArea button {
+        #inputArea input {
             margin: 5px;
+            flex-grow: 1;
         }
     </style>
 </head>
@@ -31,59 +37,64 @@
         <ul id="messages"></ul>
         <div id="inputArea">
             <input type="text" id="nameInput" placeholder="名前">
-            <input type="text" id="messageInput" placeholder="メッセージを入力">
-            <button onclick="sendMessage()">送信</button>
+            <input type="text" id="messageInput" placeholder="メッセージを入力" onkeypress="handleKeyPress(event)">
         </div>
     </div>
-
     <script>
-          var firebaseConfig = {
-            apiKey: "AIzaSyBk-eiBZfasuK1Hrb0LOAfMT_D5o-mjQso",
-            authDomain: "chat-f68a2.firebaseapp.com",
-            projectId: "chat-f68a2",
-            storageBucket: "chat-f68a2.appspot.com",
-            messagingSenderId: "997802940709",
-            appId: "1:997802940709:web:7e869d916f695b4df6a2cc",
-            measurementId: "G-XRNFW5H96V"
-        };
-        firebase.initializeApp(firebaseConfig);
-        var messagesRef = firebase.database().ref('messages');
+var firebaseConfig = {
+    apiKey: "AIzaSyBk-eiBZfasuK1Hrb0LOAfMT_D5o-mjQso",
+    authDomain: "chat-f68a2.firebaseapp.com",
+    projectId: "chat-f68a2",
+    storageBucket: "chat-f68a2.appspot.com",
+    messagingSenderId: "997802940709",
+    appId: "1:997802940709:web:7e869d916f695b4df6a2cc",
+    measurementId: "G-XRNFW5H96V"
+};
 
-        function sendMessage() {
-            var name = document.getElementById('nameInput').value;
-            var text = document.getElementById('messageInput').value;
-            messagesRef.push({name: name, text: text});
-            document.getElementById('messageInput').value = '';
-        }
+firebase.initializeApp(firebaseConfig);
+var messagesRef = firebase.database().ref('messages');
 
-        messagesRef.on('child_added', function(snapshot) {
-            var message = snapshot.val();
-            displayMessage(message.name, message.text);
-        });
+function sendMessage() {
+    var name = document.getElementById('nameInput').value;
+    var text = document.getElementById('messageInput').value;
+    messagesRef.push({ name: name, text: text });
+    document.getElementById('messageInput').value = '';
+}
 
-        function displayMessage(name, text) {
-            var li = document.createElement('li');
-            li.textContent = name + ": " + text;
-            document.getElementById('messages').appendChild(li);
+messagesRef.on('child_added', function (snapshot) {
+    var message = snapshot.val();
+    displayMessage(message.name, message.text);
+});
 
-            // 複数の言語への翻訳を行う
-            translateAndDisplay(li, text, 'en');
-            translateAndDisplay(li, text, 'ko');
-            translateAndDisplay(li, text, 'zh');
-            translateAndDisplay(li, text, 'ru');
-        }
+function displayMessage(name, text) {
+    var li = document.createElement('li');
+    li.textContent = name + ": " + text;
+    document.getElementById('messages').appendChild(li);
 
-        function translateAndDisplay(liElement, text, language) {
-            fetch('translate.php', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({text: text, targetLanguage: language})
-            })
-            .then(response => response.json())
-            .then(data => {
-                liElement.textContent += ` / ${language.toUpperCase()}: ${data.translatedText}`;
-            });
-        }
+    translateAndDisplay(li, text, 'en');
+    translateAndDisplay(li, text, 'ko');
+    translateAndDisplay(li, text, 'zh');
+    translateAndDisplay(li, text, 'ru');
+}
+
+function translateAndDisplay(liElement, text, language) {
+    fetch('translate.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: text, targetLanguage: language })
+    })
+    .then(response => response.json())
+    .then(data => {
+        liElement.textContent += ` / ${language.toUpperCase()}: ${data.translatedText}`;
+    });
+}
+
+function handleKeyPress(e) {
+    if (e.key === 'Enter') {
+        sendMessage();
+    }
+}
+
     </script>
 </body>
 </html>
