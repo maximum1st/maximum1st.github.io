@@ -79,7 +79,7 @@
         }
 
         function translateAndDisplay(liElement, text, language) {
-            fetch('translate.php', {
+            fetch('https://160.251.212.118/translate.php', { // サーバーのドメインを含むURL
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ text: text, targetLanguage: language })
