@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>３００多言語リアルタイムチャット</title>
+    <title>４００多言語リアルタイムチャット</title>
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-database.js"></script>
     <style>
@@ -30,6 +30,9 @@
             margin: 5px;
             flex-grow: 1;
         }
+        #error {
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -39,10 +42,11 @@
             <input type="text" id="nameInput" placeholder="名前">
             <input type="text" id="messageInput" placeholder="メッセージを入力" onkeypress="handleKeyPress(event)">
         </div>
+        <div id="error"></div>
     </div>
     <script>
         var firebaseConfig = {
-            apiKey: "AIzaSyBk-eiBZfasuK1Hrb0LOAfMT_D5o-mjQso",
+             apiKey: "AIzaSyBk-eiBZfasuK1Hrb0LOAfMT_D5o-mjQso",
             authDomain: "chat-f68a2.firebaseapp.com",
             projectId: "chat-f68a2",
             storageBucket: "chat-f68a2.appspot.com",
@@ -73,7 +77,7 @@
             li.textContent = `${timestamp} - ${name}: ${text}`;
             document.getElementById('messages').appendChild(li);
 
-            var languages = ['en', 'ko', 'zh', 'ru'];
+            var languages = ['en', 'ko', 'zh', 'ru']; // 対応する言語コード
             languages.forEach(lang => {
                 translateAndDisplay(li, text, lang);
             });
@@ -85,23 +89,29 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ text: text, targetLanguage: language })
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('サーバーからのレスポンスが受信できませんでした。');
+                }
+                return response.json();
+            })
             .then(data => {
-                if (data.translatedText) {
+                if (data.error) {
+                    showError('翻訳エラー: ' + data.error);
+                } else if (data.translatedText) {
                     var translation = document.createElement('div');
                     translation.textContent = `/${language.toUpperCase()}: ${data.translatedText}`;
                     liElement.appendChild(translation);
-                } else if (data.error) {
-                    console.error('Translation error:', data.error);
                 }
             })
-            .catch(error => console.error('Translation fetch error:', error));
+            .catch(error => {
+                showError('エラー: ' + error.message);
+            });
         }
 
-        function handleKeyPress(e) {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
+        function showError(message) {
+            var errorDiv = document.getElementById('error');
+            errorDiv.textContent = message;
         }
     </script>
 </body>
