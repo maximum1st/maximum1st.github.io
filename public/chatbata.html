@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>２０多言語リアルタイムチャット</title>
+    <title>多言語リアルタイムチャット</title>
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-database.js"></script>
     <style>
-          body {
+        body {
             background-color: #121212;
             color: white;
             font-family: Arial, sans-serif;
@@ -41,7 +41,6 @@
         </div>
     </div>
     <script>
-        // Firebase設定
         var firebaseConfig = {
             apiKey: "AIzaSyBk-eiBZfasuK1Hrb0LOAfMT_D5o-mjQso",
             authDomain: "chat-f68a2.firebaseapp.com",
@@ -54,7 +53,6 @@
         firebase.initializeApp(firebaseConfig);
         var messagesRef = firebase.database().ref('messages');
 
-        // メッセージ送信関数
         function sendMessage() {
             var name = document.getElementById('nameInput').value.trim();
             var text = document.getElementById('messageInput').value.trim();
@@ -65,28 +63,24 @@
             }
         }
 
-        // メッセージ受信時の処理
         messagesRef.on('child_added', function (snapshot) {
             var message = snapshot.val();
             displayMessage(message.name, message.text, message.timestamp);
         });
 
-        // メッセージ表示関数
         function displayMessage(name, text, timestamp) {
             var li = document.createElement('li');
             li.textContent = `${timestamp} - ${name}: ${text}`;
             document.getElementById('messages').appendChild(li);
 
-            // 言語に翻訳して表示
-            var languages = ['en', 'ko', 'zh', 'ru']; // サポートされている言語
+            var languages = ['en', 'ko', 'zh', 'ru'];
             languages.forEach(lang => {
                 translateAndDisplay(li, text, lang);
             });
         }
 
-        // 翻訳関数
         function translateAndDisplay(liElement, text, language) {
-            fetch('https://160.251.212.118/translate.php', { // サーバーのURLを指定
+            fetch('https://160.251.212.118/translate.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ text: text, targetLanguage: language })
@@ -104,7 +98,6 @@
             .catch(error => console.error('Translation fetch error:', error));
         }
 
-        // キープレスイベント
         function handleKeyPress(e) {
             if (e.key === 'Enter') {
                 sendMessage();
