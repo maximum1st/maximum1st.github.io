@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>60多言語リアルタイムチャット</title>
+    <title>多言語リアルタイムチャット</title>
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-database.js"></script>
     <style>
@@ -26,7 +26,7 @@
             align-items: center;
             padding: 10px;
         }
-        #inputArea input {
+        #inputArea input, #inputArea button {
             margin: 5px;
             flex-grow: 1;
         }
@@ -40,13 +40,14 @@
         <ul id="messages"></ul>
         <div id="inputArea">
             <input type="text" id="nameInput" placeholder="名前">
-            <input type="text" id="messageInput" placeholder="メッセージを入力" onkeypress="handleKeyPress(event)">
+            <input type="text" id="messageInput" placeholder="メッセージを入力">
+            <button onclick="sendMessage()">送信</button>
         </div>
         <div id="error"></div>
     </div>
     <script>
         var firebaseConfig = {
-             apiKey: "AIzaSyBk-eiBZfasuK1Hrb0LOAfMT_D5o-mjQso",
+            apiKey: "AIzaSyBk-eiBZfasuK1Hrb0LOAfMT_D5o-mjQso",
             authDomain: "chat-f68a2.firebaseapp.com",
             projectId: "chat-f68a2",
             storageBucket: "chat-f68a2.appspot.com",
