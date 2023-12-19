@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>多言語リアルタイムチャット</title>
+    <title>1多言語リアルタイムチャット</title>
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-database.js"></script>
     <style>
@@ -41,7 +41,7 @@
         </div>
     </div>
     <script>
-        var firebaseConfig = {
+         var firebaseConfig = {
             apiKey: "AIzaSyBk-eiBZfasuK1Hrb0LOAfMT_D5o-mjQso",
             authDomain: "chat-f68a2.firebaseapp.com",
             projectId: "chat-f68a2",
@@ -54,7 +54,7 @@
         firebase.initializeApp(firebaseConfig);
         var messagesRef = firebase.database().ref('messages');
 
-        function sendMessage() {
+         function sendMessage() {
             var name = document.getElementById('nameInput').value;
             var text = document.getElementById('messageInput').value;
             var timestamp = new Date().toLocaleString();
@@ -72,31 +72,38 @@
             li.textContent = `${timestamp} - ${name}: ${text}`;
             document.getElementById('messages').appendChild(li);
 
-            translateAndDisplay(li, text, 'en');
-            translateAndDisplay(li, text, 'ko');
-            translateAndDisplay(li, text, 'zh');
-            translateAndDisplay(li, text, 'ru');
+            // Translate and display in multiple languages
+            var languages = ['en', 'ko', 'zh', 'ru'];
+            languages.forEach(lang => {
+                translateAndDisplay(li, text, lang);
+            });
         }
 
         function translateAndDisplay(liElement, text, language) {
-            fetch('https://160.251.212.118/translate.php', {
+            fetch('https://160.251.212.118/translate.php', { // Update this URL
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ text: text, targetLanguage: language })
             })
             .then(response => response.json())
             .then(data => {
-                liElement.textContent += ` / ${language.toUpperCase()}: ${data.translatedText}`;
-            });
+                if (data.translatedText) {
+                    var translation = document.createElement('div');
+                    translation.textContent = `/${language.toUpperCase()}: ${data.translatedText}`;
+                    liElement.appendChild(translation);
+                } else if (data.error) {
+                    console.error('Translation error:', data.error);
+                }
+            })
+            .catch(error => console.error('Translation fetch error:', error));
         }
 
-        function handleKeyPress(e) {
+         function handleKeyPress(e) {
             if (e.key === 'Enter') {
                 sendMessage();
             }
+         }
         }
     </script>
 </body>
 </html>
-
-
