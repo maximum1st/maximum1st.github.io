@@ -84,7 +84,7 @@
         }
 
         function translateAndDisplay(liElement, text, language) {
-            fetch('https://160.251.212.118/maximum1st.php', {
+            fetch('http://160.251.212.118/maximum1st.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ text: text, targetLanguage: language })
