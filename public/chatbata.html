@@ -1,6 +1,107 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>多言語リアルタイムチャット</title>
+    <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-database.js"></script>
+    <style>
+        /* 既存のスタイル */
+    </style>
+</head>
+<body>
+    <div id="chat">
+        <ul id="messages"></ul>
+        <div id="inputArea">
+            <input type="text" id="nameInput" placeholder="名前">
+            <input type="text" id="messageInput" placeholder="メッセージを入力" onkeypress="handleKeyPress(event)">
+        </div>
+    </div>
+    <script>
+        // Firebase設定
+        var firebaseConfig = {
+            apiKey: "AIzaSyBk-eiBZfasuK1Hrb0LOAfMT_D5o-mjQso",
+            authDomain: "chat-f68a2.firebaseapp.com",
+            projectId: "chat-f68a2",
+            storageBucket: "chat-f68a2.appspot.com",
+            messagingSenderId: "997802940709",
+            appId: "1:997802940709:web:7e869d916f695b4df6a2cc",
+            measurementId: "G-XRNFW5H96V"
+        };
+        firebase.initializeApp(firebaseConfig);
+        var messagesRef = firebase.database().ref('messages');
+
+        // メッセージ送信関数
+        function sendMessage() {
+            var name = document.getElementById('nameInput').value.trim();
+            var text = document.getElementById('messageInput').value.trim();
+            if (name && text) {
+                var timestamp = new Date().toLocaleString();
+                messagesRef.push({ name: name, text: text, timestamp: timestamp });
+                document.getElementById('messageInput').value = '';
+            }
+        }
+
+        // メッセージ受信時の処理
+        messagesRef.on('child_added', function (snapshot) {
+            var message = snapshot.val();
+            displayMessage(message.name, message.text, message.timestamp);
+        });
+
+        // メッセージ表示関数
+        function displayMessage(name, text, timestamp) {
+            var li = document.createElement('li');
+            li.textContent = `${timestamp} - ${name}: ${text}`;
+            document.getElementById('messages').appendChild(li);
+
+            // 言語に翻訳して表示
+            var languages = ['en', 'ko', 'zh', 'ru'];
+            languages.forEach(lang => {
+                translateAndDisplay(li, text, lang);
+            });
+        }
+
+        // 翻訳関数
+        function translateAndDisplay(liElement, text, language) {
+            fetch('https://160.251.212.118/translate.php', { // サーバーのURLに更新
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: text, targetLanguage: language })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.translatedText) {
+                    var translation = document.createElement('div');
+                    translation.textContent = `/${language.toUpperCase()}: ${data.translatedText}`;
+                    liElement.appendChild(translation);
+                } else if (data.error) {
+                    console.error('Translation error:', data.error);
+                }
+            })
+            .catch(error => console.error('Translation fetch error:', error));
+        }
+
+        // キープレスイベント
+        function handleKeyPress(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
     <title>1多言語リアルタイムチャット</title>
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-database.js"></script>
