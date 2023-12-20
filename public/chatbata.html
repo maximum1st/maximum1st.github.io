@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>１１多言語リアルタイムチャット</title>
+    <title>多言語リアルタイムチャット</title>
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-database.js"></script>
     <style>
@@ -46,8 +46,9 @@
         <div id="error"></div>
     </div>
     <script>
+        // Firebase設定
         var firebaseConfig = {
-            apiKey: "AIzaSyD_QPxmnR9KMzRMqvQJOGgm7orgw6Tc-hU",
+             apiKey: "AIzaSyD_QPxmnR9KMzRMqvQJOGgm7orgw6Tc-hU",
   authDomain: "chat-f68a2.firebaseapp.com",
   databaseURL: "https://chat-f68a2-default-rtdb.firebaseio.com",
   projectId: "chat-f68a2",
@@ -56,9 +57,11 @@
   appId: "1:997802940709:web:88cf9d04fb8cd7e1f6a2cc",
   measurementId: "G-DYXK8199KS"
         };
+        };
         firebase.initializeApp(firebaseConfig);
         var messagesRef = firebase.database().ref('messages');
 
+        // メッセージ送信
         function sendMessage() {
             var name = document.getElementById('nameInput').value.trim();
             var text = document.getElementById('messageInput').value.trim();
@@ -69,52 +72,49 @@
             }
         }
 
+        // メッセージ読み込み
         messagesRef.on('child_added', function (snapshot) {
             var message = snapshot.val();
             displayMessage(message.name, message.text, message.timestamp);
         });
 
+        // メッセージ表示
         function displayMessage(name, text, timestamp) {
             var li = document.createElement('li');
             li.textContent = `${timestamp} - ${name}: ${text}`;
             document.getElementById('messages').appendChild(li);
 
+            // 翻訳リクエスト
             var languages = ['en', 'ko', 'zh', 'ru']; // 対応する言語コード
             languages.forEach(lang => {
                 translateAndDisplay(li, text, lang);
             });
         }
 
+        // 翻訳実行
         function translateAndDisplay(liElement, text, language) {
-            fetch('https://160.251.212.118/translate.php', {
+            fetch('https://yourserver.com/translate.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ text: text, targetLanguage: language })
             })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('サーバーからのレスポンスが受信できませんでした。');
-                }
-                return response.json();
-            })
+            .then(response => response.json())
             .then(data => {
-                if (data.error) {
-                    showError('翻訳エラー: ' + data.error);
-                } else if (data.translatedText) {
+                if (data.translatedText) {
                     var translation = document.createElement('div');
                     translation.textContent = `/${language.toUpperCase()}: ${data.translatedText}`;
                     liElement.appendChild(translation);
                 }
             })
             .catch(error => {
-                showError('エラー: ' + error.message);
+                console.error('Error:', error);
             });
-        }
-
-        function showError(message) {
-            var errorDiv = document.getElementById('error');
-            errorDiv.textContent = message;
         }
     </script>
 </body>
 </html>
+
+
+
+
+
