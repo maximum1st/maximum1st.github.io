@@ -48,7 +48,7 @@
     <script>
         // Firebase設定
         var firebaseConfig = {
-             apiKey: "AIzaSyD_QPxmnR9KMzRMqvQJOGgm7orgw6Tc-hU",
+              apiKey: "AIzaSyD_QPxmnR9KMzRMqvQJOGgm7orgw6Tc-hU",
   authDomain: "chat-f68a2.firebaseapp.com",
   databaseURL: "https://chat-f68a2-default-rtdb.firebaseio.com",
   projectId: "chat-f68a2",
@@ -56,7 +56,6 @@
   messagingSenderId: "997802940709",
   appId: "1:997802940709:web:88cf9d04fb8cd7e1f6a2cc",
   measurementId: "G-DYXK8199KS"
-        };
         };
         firebase.initializeApp(firebaseConfig);
         var messagesRef = firebase.database().ref('messages');
@@ -93,7 +92,7 @@
 
         // 翻訳実行
         function translateAndDisplay(liElement, text, language) {
-            fetch('https://yourserver.com/translate.php', {
+            fetch('https://160.251.212.118/translate.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ text: text, targetLanguage: language })
@@ -113,8 +112,6 @@
     </script>
 </body>
 </html>
-
-
 
 
 
