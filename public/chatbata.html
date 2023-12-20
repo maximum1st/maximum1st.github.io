@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>多言語リアルタイムチャット</title>
+    <title>９０多言語リアルタイムチャット</title>
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-database.js"></script>
     <style>
@@ -85,7 +85,7 @@
         }
 
         function translateAndDisplay(liElement, text, language) {
-            fetch('http://160.251.212.118/maximum1st.php', {
+            fetch('https://160.251.212.118/maximum1st.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ text: text, targetLanguage: language })
